@@ -4,7 +4,8 @@
   "info": {
     "singularName": "inventory-vehicle",
     "pluralName": "inventory-vehicles",
-    "displayName": "Inventory Vehicles"
+    "displayName": "Inventory Vehicles",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,7 +16,7 @@
     }
   },
   "attributes": {
-    "Title": {
+    "title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,7 +25,7 @@
       "type": "string",
       "required": true
     },
-    "ArmoredLevel": {
+    "armoredLevel": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -40,7 +41,7 @@
       },
       "type": "string"
     },
-    "VehicleID": {
+    "vehicleID": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -48,7 +49,7 @@
       },
       "type": "string"
     },
-    "Engine": {
+    "engine": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -56,26 +57,40 @@
       },
       "type": "string"
     },
-    "MainListImage": {
+    "mainListImage": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": true,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
+      }
     },
-    "InStock": {
+    "inStock": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
       "type": "boolean"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "inventory_vehicles"
     }
   }
 }

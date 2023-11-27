@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "TopBanner": {
+    "topBanner": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {},

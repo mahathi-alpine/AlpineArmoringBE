@@ -677,6 +677,80 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Categories';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    slug: Attribute.UID<'api::category.category', 'title'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    inventory_vehicles: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::inventory-vehicle.inventory-vehicle'
+    >;
+    bannerImage: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::category.category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHomepageHomepage extends Schema.SingleType {
   collectionName: 'homepages';
   info: {
@@ -689,7 +763,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     draftAndPublish: false;
   };
   attributes: {
-    TopBanner: Attribute.Component<'slices.homepage-top-banner'>;
+    topBanner: Attribute.Component<'slices.homepage-top-banner'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -714,6 +788,7 @@ export interface ApiInventoryVehicleInventoryVehicle
     singularName: 'inventory-vehicle';
     pluralName: 'inventory-vehicles';
     displayName: 'Inventory Vehicles';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -724,14 +799,14 @@ export interface ApiInventoryVehicleInventoryVehicle
     };
   };
   attributes: {
-    Title: Attribute.String &
+    title: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    ArmoredLevel: Attribute.String &
+    armoredLevel: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -743,31 +818,42 @@ export interface ApiInventoryVehicleInventoryVehicle
           localized: true;
         };
       }>;
-    VehicleID: Attribute.String &
+    vehicleID: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Engine: Attribute.String &
+    engine: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    MainListImage: Attribute.Media &
+    mainListImage: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
         };
       }>;
-    InStock: Attribute.Boolean &
+    inStock: Attribute.Boolean &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    slug: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    category: Attribute.Relation<
+      'api::inventory-vehicle.inventory-vehicle',
+      'manyToOne',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -868,6 +954,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::category.category': ApiCategoryCategory;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory-vehicle.inventory-vehicle': ApiInventoryVehicleInventoryVehicle;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;

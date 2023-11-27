@@ -7,9 +7,9 @@ export interface SlicesHomepageTopBanner extends Schema.Component {
     description: '';
   };
   attributes: {
-    Title: Attribute.String & Attribute.Required;
-    Subtitle: Attribute.String;
-    Media: Attribute.Media & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    subtitle: Attribute.String;
+    media: Attribute.Media & Attribute.Required;
   };
 }
 
