@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "list_inventories",
+  "collectionName": "list_vehicles_we_armors",
   "info": {
-    "singularName": "list-inventory",
-    "pluralName": "list-inventories",
-    "displayName": "ListInventory",
-    "description": ""
+    "singularName": "list-vehicles-we-armor",
+    "pluralName": "list-vehicles-we-armors",
+    "displayName": "ListVehiclesWeArmor"
   },
   "options": {
     "draftAndPublish": false
@@ -26,18 +25,18 @@
       "required": true
     },
     "bannerImage": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
       "allowedTypes": [
         "images",
         "videos"
       ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "required": true
     },
     "bannerText": {
       "pluginOptions": {

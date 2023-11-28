@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "title": {
+    "heading": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -46,28 +46,42 @@
         }
       },
       "type": "uid",
-      "targetField": "title",
-      "required": true
-    },
-    "inventory_vehicles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::inventory-vehicle.inventory-vehicle",
-      "mappedBy": "category"
+      "required": true,
+      "targetField": "heading"
     },
     "bannerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "videos"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
+      }
+    },
+    "inventories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inventory.inventory",
+      "mappedBy": "category"
+    },
+    "bannerText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
       },
-      "required": true
+      "type": "text"
+    },
+    "vehicles_we_armors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "mappedBy": "category"
     }
   }
 }
