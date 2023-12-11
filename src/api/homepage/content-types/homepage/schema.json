@@ -17,6 +17,18 @@
       "repeatable": false,
       "pluginOptions": {},
       "component": "slices.homepage-top-banner"
+    },
+    "horizontalSlider": {
+      "type": "dynamiczone",
+      "components": [
+        "slices.tab-section"
+      ]
+    },
+    "tabSection": {
+      "type": "dynamiczone",
+      "components": [
+        "slices.tab-section"
+      ]
     }
   }
 }
