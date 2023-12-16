@@ -694,7 +694,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     };
   };
   attributes: {
-    heading: Attribute.String &
+    title: Attribute.String &
       Attribute.Required &
       Attribute.Unique &
       Attribute.SetPluginOptions<{
@@ -709,7 +709,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    slug: Attribute.UID<'api::category.category', 'heading'> &
+    slug: Attribute.UID<'api::category.category', 'title'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -717,7 +717,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
         };
       }>;
     bannerImage: Attribute.Media &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -739,6 +738,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::vehicles-we-armor.vehicles-we-armor'
     >;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -860,6 +865,11 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    vehicles_we_armor: Attribute.Relation<
+      'api::inventory.inventory',
+      'manyToOne',
+      'api::vehicles-we-armor.vehicles-we-armor'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1011,6 +1021,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     singularName: 'vehicles-we-armor';
     pluralName: 'vehicles-we-armors';
     displayName: 'VehiclesWeArmor';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1029,6 +1040,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         };
       }>;
     slug: Attribute.UID<'api::vehicles-we-armor.vehicles-we-armor', 'title'> &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1052,6 +1064,11 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: true;
         };
       }>;
+    stock: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToMany',
+      'api::inventory.inventory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

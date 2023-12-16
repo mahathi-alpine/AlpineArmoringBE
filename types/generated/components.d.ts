@@ -21,7 +21,7 @@ export interface SlicesTabSection extends Schema.Component {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
+    description: Attribute.Text;
     image: Attribute.Media & Attribute.Required;
     titleNav: Attribute.String;
   };

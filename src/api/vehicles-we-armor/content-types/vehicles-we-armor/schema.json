@@ -4,7 +4,8 @@
   "info": {
     "singularName": "vehicles-we-armor",
     "pluralName": "vehicles-we-armors",
-    "displayName": "VehiclesWeArmor"
+    "displayName": "VehiclesWeArmor",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -31,20 +32,21 @@
         }
       },
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "featuredImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
-      "required": true
+      }
     },
     "category": {
       "type": "relation",
@@ -59,6 +61,12 @@
         }
       },
       "type": "text"
+    },
+    "stock": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inventory.inventory",
+      "mappedBy": "vehicles_we_armor"
     }
   }
 }
