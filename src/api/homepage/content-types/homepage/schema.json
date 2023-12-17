@@ -29,6 +29,14 @@
       "components": [
         "slices.tab-section"
       ]
+    },
+    "allVehiclesImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }
