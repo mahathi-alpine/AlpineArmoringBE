@@ -12,14 +12,6 @@
     },
     "subtitle": {
       "type": "string"
-    },
-    "media": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "videos"
-      ]
     }
   }
 }

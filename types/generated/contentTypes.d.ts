@@ -783,6 +783,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     horizontalSlider: Attribute.DynamicZone<['slices.tab-section']>;
     tabSection: Attribute.DynamicZone<['slices.tab-section']>;
     allVehiclesImage: Attribute.Media & Attribute.Required;
+    industryPartners: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
