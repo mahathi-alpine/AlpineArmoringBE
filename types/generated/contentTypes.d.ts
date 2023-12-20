@@ -914,14 +914,12 @@ export interface ApiListInventoryListInventory extends Schema.SingleType {
   };
   attributes: {
     heading: Attribute.String &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     bannerImage: Attribute.Media &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -963,6 +961,7 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
     singularName: 'list-vehicles-we-armor';
     pluralName: 'list-vehicles-we-armors';
     displayName: 'ListVehiclesWeArmor';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -974,14 +973,12 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
   };
   attributes: {
     heading: Attribute.String &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     bannerImage: Attribute.Media &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
