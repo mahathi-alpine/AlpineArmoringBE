@@ -782,7 +782,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     topBanner: Attribute.Component<'slices.homepage-top-banner'>;
     horizontalSlider: Attribute.DynamicZone<['slices.tab-section']>;
     tabSection: Attribute.DynamicZone<['slices.tab-section']>;
-    allVehiclesImage: Attribute.Media & Attribute.Required;
+    allVehiclesImage: Attribute.Media;
     industryPartners: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
