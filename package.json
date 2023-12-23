@@ -1,8 +1,8 @@
 {
-  "name": "alpine-be",
+  "name": "alpine-armoring",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Armored Vehicles",
   "scripts": {
     "dev": "strapi develop",
     "start": "strapi start",
@@ -26,7 +26,7 @@
     "styled-components": "5.3.3"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Swipe&Hype"
   },
   "strapi": {
     "uuid": "26bcca17-05e9-4e42-b71d-f4691246590a"
