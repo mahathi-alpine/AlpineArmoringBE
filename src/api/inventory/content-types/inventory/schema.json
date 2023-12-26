@@ -90,6 +90,14 @@
       "relation": "manyToOne",
       "target": "api::vehicles-we-armor.vehicles-we-armor",
       "inversedBy": "stock"
+    },
+    "order": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
     }
   }
 }

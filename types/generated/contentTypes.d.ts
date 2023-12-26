@@ -872,6 +872,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'manyToOne',
       'api::vehicles-we-armor.vehicles-we-armor'
     >;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -913,19 +919,13 @@ export interface ApiListInventoryListInventory extends Schema.SingleType {
     };
   };
   attributes: {
-    heading: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     bannerImage: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
         };
       }>;
-    bannerText: Attribute.Text &
+    bannerText: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -972,19 +972,13 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
     };
   };
   attributes: {
-    heading: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     bannerImage: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
         };
       }>;
-    bannerText: Attribute.Text &
+    bannerText: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
