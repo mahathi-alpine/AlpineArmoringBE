@@ -67,6 +67,12 @@
       "relation": "oneToMany",
       "target": "api::inventory.inventory",
       "mappedBy": "vehicles_we_armor"
+    },
+    "make": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::make.make",
+      "inversedBy": "vehicles_we_armors"
     }
   }
 }

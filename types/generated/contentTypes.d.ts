@@ -1007,6 +1007,61 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
   };
 }
 
+export interface ApiMakeMake extends Schema.CollectionType {
+  collectionName: 'makes';
+  info: {
+    singularName: 'make';
+    pluralName: 'makes';
+    displayName: 'Makes';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    vehicles_we_armors: Attribute.Relation<
+      'api::make.make',
+      'oneToMany',
+      'api::vehicles-we-armor.vehicles-we-armor'
+    >;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::make.make', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::make.make', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::make.make',
+      'oneToMany',
+      'api::make.make'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiVehiclesWeArmorVehiclesWeArmor
   extends Schema.CollectionType {
   collectionName: 'vehicles_we_armors';
@@ -1062,6 +1117,11 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'oneToMany',
       'api::inventory.inventory'
     >;
+    make: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'manyToOne',
+      'api::make.make'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1107,6 +1167,7 @@ declare module '@strapi/types' {
       'api::inventory.inventory': ApiInventoryInventory;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
+      'api::make.make': ApiMakeMake;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
     }
   }
