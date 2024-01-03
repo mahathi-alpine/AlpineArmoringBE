@@ -727,18 +727,18 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::inventory.inventory'
     >;
-    bannerText: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     vehicles_we_armors: Attribute.Relation<
       'api::category.category',
       'oneToMany',
       'api::vehicles-we-armor.vehicles-we-armor'
     >;
     order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bannerText: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -811,7 +811,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -887,7 +887,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::inventory.inventory',
       'oneToOne',
@@ -1079,7 +1078,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -1131,7 +1130,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToOne',
