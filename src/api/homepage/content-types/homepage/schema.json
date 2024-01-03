@@ -45,6 +45,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "ballistingTestingsMedia": {
+      "type": "dynamiczone",
+      "components": [
+        "slices.tab-section"
+      ]
     }
   }
 }

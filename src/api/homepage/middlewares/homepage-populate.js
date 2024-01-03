@@ -31,6 +31,14 @@ const populate = {
   industryPartners:{
     populate: true,
     fields: ['url']
+  },
+  ballistingTestingsMedia:{
+    populate: {
+      image: {
+        populate: true,
+        fields: ['url', 'mime', 'alternativeText', 'width', 'height']
+      }
+    }
   }
 };
 

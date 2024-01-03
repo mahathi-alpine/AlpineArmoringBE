@@ -784,6 +784,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     tabSection: Attribute.DynamicZone<['slices.tab-section']>;
     allVehiclesImage: Attribute.Media;
     industryPartners: Attribute.Media;
+    ballistingTestingsMedia: Attribute.DynamicZone<['slices.tab-section']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
