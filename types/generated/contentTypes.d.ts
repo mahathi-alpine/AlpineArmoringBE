@@ -785,6 +785,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     allVehiclesImage: Attribute.Media;
     industryPartners: Attribute.Media;
     ballistingTestingsMedia: Attribute.DynamicZone<['slices.tab-section']>;
+    hpMiddleText: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -844,7 +845,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
-    descriptionBanner: Attribute.String &
+    shortDescription: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -885,6 +886,83 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    trans: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    power: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    color_ext: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    color_int: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    trim: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    wheels: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    driveTrain: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    height: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    length: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    width: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    wheelbase: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    weight: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    specifications: Attribute.Relation<
+      'api::inventory.inventory',
+      'oneToMany',
+      'api::specification.specification'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1068,6 +1146,37 @@ export interface ApiMakeMake extends Schema.CollectionType {
   };
 }
 
+export interface ApiSpecificationSpecification extends Schema.CollectionType {
+  collectionName: 'specifications';
+  info: {
+    singularName: 'specification';
+    pluralName: 'specifications';
+    displayName: 'Specifications';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    media: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::specification.specification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::specification.specification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiVehiclesWeArmorVehiclesWeArmor
   extends Schema.CollectionType {
   collectionName: 'vehicles_we_armors';
@@ -1173,6 +1282,7 @@ declare module '@strapi/types' {
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::make.make': ApiMakeMake;
+      'api::specification.specification': ApiSpecificationSpecification;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
     }
   }

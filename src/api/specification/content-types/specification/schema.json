@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "specifications",
+  "info": {
+    "singularName": "specification",
+    "pluralName": "specifications",
+    "displayName": "Specifications",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

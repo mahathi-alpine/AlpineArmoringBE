@@ -51,6 +51,9 @@
       "components": [
         "slices.tab-section"
       ]
+    },
+    "hpMiddleText": {
+      "type": "richtext"
     }
   }
 }
