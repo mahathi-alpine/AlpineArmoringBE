@@ -7,7 +7,7 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
+      "type": "text",
       "required": false
     },
     "description": {
@@ -20,9 +20,7 @@
       "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "videos"
       ]
     },
     "titleNav": {
@@ -30,6 +28,9 @@
     },
     "subtitle": {
       "type": "string"
+    },
+    "linkText": {
+      "type": "richtext"
     }
   }
 }

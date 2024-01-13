@@ -963,6 +963,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'oneToMany',
       'api::specification.specification'
     >;
+    armor_level: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

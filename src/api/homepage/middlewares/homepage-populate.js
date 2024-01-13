@@ -36,7 +36,7 @@ const populate = {
     populate: {
       image: {
         populate: true,
-        fields: ['url', 'mime', 'alternativeText', 'width', 'height']
+        fields: ['url', 'mime', 'alternativeText', 'width', 'height', 'previewUrl']
       }
     }
   }

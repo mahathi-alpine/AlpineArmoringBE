@@ -212,6 +212,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::specification.specification"
+    },
+    "armor_level": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
