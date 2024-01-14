@@ -1,47 +1,42 @@
 'use strict';
 
 /**
- * `homepage` middleware
+ * `inventory-populate` middleware
  */
 
 const populate = {
-  topBanner:{
-    populate: true
-  },
-  horizontalSlider:{
+  specifications:{
     populate: {
-      image: {
+      media: {
         populate: true,
         fields: ['url']
       }
-    }
+    },
   },
-  tabSection:{
+  accessories:{
     populate: {
-      image: {
+      media: {
         populate: true,
         fields: ['url']
       }
-    }
+    },
   },
-  allVehiclesImage:{
+  gallery:{
     populate: true,
-    fields: ['url']
-  },
-  industryPartners:{
-    populate: true,
-    fields: ['url']
+    fields: ['url', 'alternativeText']
   }
 };
 
 module.exports = (config, { strapi }) => {
   // Add your own logic here.
   return async (ctx, next) => {
-    strapi.log.info('In homepage middleware.');
+    strapi.log.info('In inventory-populate middleware.');
+
     ctx.query = {
       populate,
       ...ctx.query
     }
+
     await next();
   };
 };

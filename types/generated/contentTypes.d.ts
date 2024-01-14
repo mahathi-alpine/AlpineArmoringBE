@@ -960,7 +960,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       }>;
     specifications: Attribute.Relation<
       'api::inventory.inventory',
-      'oneToMany',
+      'manyToMany',
       'api::specification.specification'
     >;
     armor_level: Attribute.String &
@@ -969,6 +969,17 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    year: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    accessories: Attribute.Relation<
+      'api::inventory.inventory',
+      'manyToMany',
+      'api::specification.specification'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1166,6 +1177,16 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     media: Attribute.Media;
+    inventories: Attribute.Relation<
+      'api::specification.specification',
+      'manyToMany',
+      'api::inventory.inventory'
+    >;
+    inventory_accessories: Attribute.Relation<
+      'api::specification.specification',
+      'manyToMany',
+      'api::inventory.inventory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

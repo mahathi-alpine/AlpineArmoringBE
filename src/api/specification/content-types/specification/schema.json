@@ -22,6 +22,18 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "inventories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::inventory.inventory",
+      "mappedBy": "specifications"
+    },
+    "inventory_accessories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::inventory.inventory",
+      "mappedBy": "accessories"
     }
   }
 }

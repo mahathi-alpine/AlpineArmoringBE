@@ -210,8 +210,9 @@
     },
     "specifications": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::specification.specification"
+      "relation": "manyToMany",
+      "target": "api::specification.specification",
+      "inversedBy": "inventories"
     },
     "armor_level": {
       "pluginOptions": {
@@ -220,6 +221,20 @@
         }
       },
       "type": "string"
+    },
+    "year": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "accessories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::specification.specification",
+      "inversedBy": "inventory_accessories"
     }
   }
 }
