@@ -38,7 +38,7 @@
     "featuredImage": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
@@ -54,14 +54,6 @@
       "target": "api::category.category",
       "inversedBy": "vehicles_we_armors"
     },
-    "descriptionBanner": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
     "stock": {
       "type": "relation",
       "relation": "oneToMany",
@@ -73,6 +65,24 @@
       "relation": "manyToOne",
       "target": "api::make.make",
       "inversedBy": "vehicles_we_armors"
+    },
+    "beforeAfterSlider": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "slices.before-after-slider"
+    },
+    "descriptionBanner": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
     }
   }
 }

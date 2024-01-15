@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SlicesBeforeAfterSlider extends Schema.Component {
+  collectionName: 'components_slices_before_after_sliders';
+  info: {
+    displayName: 'Before/After Slider';
+  };
+  attributes: {
+    before: Attribute.Media;
+    after: Attribute.Media;
+  };
+}
+
 export interface SlicesHomepageTopBanner extends Schema.Component {
   collectionName: 'components_slices_homepage_top_banners';
   info: {
@@ -31,6 +42,7 @@ export interface SlicesTabSection extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'slices.before-after-slider': SlicesBeforeAfterSlider;
       'slices.homepage-top-banner': SlicesHomepageTopBanner;
       'slices.tab-section': SlicesTabSection;
     }

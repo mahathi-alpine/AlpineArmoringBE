@@ -1237,7 +1237,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         };
       }>;
     featuredImage: Attribute.Media &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -1248,12 +1247,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'manyToOne',
       'api::category.category'
     >;
-    descriptionBanner: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     stock: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToMany',
@@ -1264,6 +1257,18 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'manyToOne',
       'api::make.make'
     >;
+    beforeAfterSlider: Attribute.Component<'slices.before-after-slider'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    descriptionBanner: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

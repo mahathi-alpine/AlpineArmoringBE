@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_slices_before_after_sliders",
+  "info": {
+    "displayName": "Before/After Slider"
+  },
+  "options": {},
+  "attributes": {
+    "before": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "after": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
