@@ -716,12 +716,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    bannerImage: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
     inventories: Attribute.Relation<
       'api::category.category',
       'oneToMany',
@@ -738,7 +732,13 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    bannerText: Attribute.RichText &
+    inventoryBanner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    allBanner: Attribute.Component<'slices.banner'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -764,6 +764,40 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::category.category'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiContactPageContactPage extends Schema.SingleType {
+  collectionName: 'contact_pages';
+  info: {
+    singularName: 'contact-page';
+    pluralName: 'contact-pages';
+    displayName: 'Contact Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    formTitle: Attribute.String;
+    formDescription: Attribute.RichText;
+    salesInfo: Attribute.RichText;
+    partsInfo: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1020,13 +1054,7 @@ export interface ApiListInventoryListInventory extends Schema.SingleType {
     };
   };
   attributes: {
-    bannerImage: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    bannerText: Attribute.RichText &
+    banner: Attribute.Component<'slices.banner'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1073,13 +1101,7 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
     };
   };
   attributes: {
-    bannerImage: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    bannerText: Attribute.RichText &
+    banner: Attribute.Component<'slices.banner'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1309,6 +1331,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
