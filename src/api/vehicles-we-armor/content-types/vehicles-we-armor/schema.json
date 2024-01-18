@@ -83,6 +83,18 @@
         }
       },
       "type": "richtext"
+    },
+    "accessories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::specification.specification",
+      "inversedBy": "vehicles_we_armor_accessories"
+    },
+    "specificationsAll": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::specification.specification",
+      "inversedBy": "vehicles_we_armor_specifications"
     }
   }
 }

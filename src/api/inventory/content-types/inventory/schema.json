@@ -208,12 +208,6 @@
       },
       "type": "string"
     },
-    "specifications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::specification.specification",
-      "inversedBy": "inventories"
-    },
     "armor_level": {
       "pluginOptions": {
         "i18n": {
@@ -235,6 +229,12 @@
       "relation": "manyToMany",
       "target": "api::specification.specification",
       "inversedBy": "inventory_accessories"
+    },
+    "specifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::specification.specification",
+      "mappedBy": "inventory_specifications"
     }
   }
 }

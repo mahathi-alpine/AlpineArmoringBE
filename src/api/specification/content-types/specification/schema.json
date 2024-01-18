@@ -23,17 +23,32 @@
         "images"
       ]
     },
-    "inventories": {
+    "inventory_specifications": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::inventory.inventory",
-      "mappedBy": "specifications"
+      "inversedBy": "specifications"
     },
     "inventory_accessories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::inventory.inventory",
       "mappedBy": "accessories"
+    },
+    "vehicles_we_armor_accessories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "mappedBy": "accessories"
+    },
+    "displayTitle": {
+      "type": "string"
+    },
+    "vehicles_we_armor_specifications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "mappedBy": "specificationsAll"
     }
   }
 }

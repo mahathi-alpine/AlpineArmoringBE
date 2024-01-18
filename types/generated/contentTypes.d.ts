@@ -992,11 +992,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    specifications: Attribute.Relation<
-      'api::inventory.inventory',
-      'manyToMany',
-      'api::specification.specification'
-    >;
     armor_level: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1010,6 +1005,11 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
       }>;
     accessories: Attribute.Relation<
+      'api::inventory.inventory',
+      'manyToMany',
+      'api::specification.specification'
+    >;
+    specifications: Attribute.Relation<
       'api::inventory.inventory',
       'manyToMany',
       'api::specification.specification'
@@ -1199,7 +1199,7 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     media: Attribute.Media;
-    inventories: Attribute.Relation<
+    inventory_specifications: Attribute.Relation<
       'api::specification.specification',
       'manyToMany',
       'api::inventory.inventory'
@@ -1208,6 +1208,17 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
       'api::specification.specification',
       'manyToMany',
       'api::inventory.inventory'
+    >;
+    vehicles_we_armor_accessories: Attribute.Relation<
+      'api::specification.specification',
+      'manyToMany',
+      'api::vehicles-we-armor.vehicles-we-armor'
+    >;
+    displayTitle: Attribute.String;
+    vehicles_we_armor_specifications: Attribute.Relation<
+      'api::specification.specification',
+      'manyToMany',
+      'api::vehicles-we-armor.vehicles-we-armor'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1291,6 +1302,16 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: true;
         };
       }>;
+    accessories: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'manyToMany',
+      'api::specification.specification'
+    >;
+    specificationsAll: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'manyToMany',
+      'api::specification.specification'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
