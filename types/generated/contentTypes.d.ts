@@ -1014,6 +1014,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'manyToMany',
       'api::specification.specification'
     >;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1328,6 +1334,12 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    gallery: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;

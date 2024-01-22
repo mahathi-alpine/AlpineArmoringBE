@@ -235,6 +235,14 @@
       "relation": "manyToMany",
       "target": "api::specification.specification",
       "mappedBy": "inventory_specifications"
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
     }
   }
 }
