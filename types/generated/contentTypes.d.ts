@@ -846,7 +846,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   pluginOptions: {
     i18n: {
@@ -1022,6 +1022,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::inventory.inventory',
       'oneToOne',
@@ -1253,7 +1254,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   pluginOptions: {
     i18n: {
@@ -1344,6 +1345,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToOne',

@@ -2,6 +2,61 @@
 # yarn lockfile v1
 
 
+"@algolia/client-abtesting@5.0.0-alpha.97":
+  version "5.0.0-alpha.97"
+  resolved "https://registry.yarnpkg.com/@algolia/client-abtesting/-/client-abtesting-5.0.0-alpha.97.tgz#15535a3c7c96b479fd118da385cd29d4da301528"
+  integrity sha512-QexSTGod+alXB2SVu7eeTFIx8DRE3kXueQWozwEVjId1G6AQZU77FflxR2rzD4mqL0nasShULRSmVwq/1uLpkA==
+  dependencies:
+    "@algolia/client-common" "5.0.0-alpha.98"
+    "@algolia/requester-browser-xhr" "5.0.0-alpha.98"
+    "@algolia/requester-node-http" "5.0.0-alpha.98"
+
+"@algolia/client-analytics@5.0.0-alpha.97":
+  version "5.0.0-alpha.97"
+  resolved "https://registry.yarnpkg.com/@algolia/client-analytics/-/client-analytics-5.0.0-alpha.97.tgz#e6817f816964f52e648d509e74ac94a3aa618900"
+  integrity sha512-0CK5BvCQnZr0xJPAXexvelLcoyPT5ZiVbD09xYuCNJLcDQkezyEEql/aU7WQcyaFfu28zm94zN5GVKtJLEHL8w==
+  dependencies:
+    "@algolia/client-common" "5.0.0-alpha.98"
+    "@algolia/requester-browser-xhr" "5.0.0-alpha.98"
+    "@algolia/requester-node-http" "5.0.0-alpha.98"
+
+"@algolia/client-common@5.0.0-alpha.98":
+  version "5.0.0-alpha.98"
+  resolved "https://registry.yarnpkg.com/@algolia/client-common/-/client-common-5.0.0-alpha.98.tgz#353140aaf0200fe5df05beecab39e44e7a1f0a80"
+  integrity sha512-s1m9alfX1nXeh9Nal3xMVbfNeSIcDGkT4X3DjB+PsErq1AdJxiHyAHkvnZ484h6bnRFHxJQawi5AmN29odKgeQ==
+
+"@algolia/client-personalization@5.0.0-alpha.97":
+  version "5.0.0-alpha.97"
+  resolved "https://registry.yarnpkg.com/@algolia/client-personalization/-/client-personalization-5.0.0-alpha.97.tgz#9b049c3edbd25cf41e05afabc3a373d834be3905"
+  integrity sha512-1whVVvw6s+CQHxyTMu1f3OPob+vBI/57wZEB/nRlABnijJgmZMfyLTxxj4wyqqqKb6rohzIwe8Q3T/veM867mg==
+  dependencies:
+    "@algolia/client-common" "5.0.0-alpha.98"
+    "@algolia/requester-browser-xhr" "5.0.0-alpha.98"
+    "@algolia/requester-node-http" "5.0.0-alpha.98"
+
+"@algolia/client-search@5.0.0-alpha.97":
+  version "5.0.0-alpha.97"
+  resolved "https://registry.yarnpkg.com/@algolia/client-search/-/client-search-5.0.0-alpha.97.tgz#7bc5cee18afaa582fcb3e4262bbd64a80e51dfef"
+  integrity sha512-Y8z0hXdHSjmxGRRB7rpBuotnUIVXg1rFm5VT8qkBjor+1d8+K+rDzHb71VJneVMUDcfGykLm547+fb4VLweRaw==
+  dependencies:
+    "@algolia/client-common" "5.0.0-alpha.98"
+    "@algolia/requester-browser-xhr" "5.0.0-alpha.98"
+    "@algolia/requester-node-http" "5.0.0-alpha.98"
+
+"@algolia/requester-browser-xhr@5.0.0-alpha.98":
+  version "5.0.0-alpha.98"
+  resolved "https://registry.yarnpkg.com/@algolia/requester-browser-xhr/-/requester-browser-xhr-5.0.0-alpha.98.tgz#3b1133a1b9138aa165ba2e40814b3a194e8ec4eb"
+  integrity sha512-2gFp7Q9DVtVbV96sdP/FgC0LwntKSv9wv1h/L8QdMeXWQ97qF8B1taBD+LVHH2Jtnq2cI0vIzvKE1Fv9NwIA1w==
+  dependencies:
+    "@algolia/client-common" "5.0.0-alpha.98"
+
+"@algolia/requester-node-http@5.0.0-alpha.98":
+  version "5.0.0-alpha.98"
+  resolved "https://registry.yarnpkg.com/@algolia/requester-node-http/-/requester-node-http-5.0.0-alpha.98.tgz#721c25236a11e5eec32a4ddca8312de6db6d289c"
+  integrity sha512-z8EDpsUiP4ydnyROz0XhYRRsb+vyKXLfsYXK8JVKhQ944R906RZ6MwIW3fqo0/uZWDjL/nzsKUxl6sRZLIxBTA==
+  dependencies:
+    "@algolia/client-common" "5.0.0-alpha.98"
+
 "@ampproject/remapping@^2.2.0":
   version "2.2.1"
   resolved "https://registry.npmjs.org/@ampproject/remapping/-/remapping-2.2.1.tgz"
@@ -2595,6 +2650,19 @@ ajv@^8.0.0, ajv@^8.9.0:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
+
+algoliasearch@^5.0.0-alpha.97:
+  version "5.0.0-alpha.97"
+  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-5.0.0-alpha.97.tgz#62b887108529dd86c1ea36f90b1620a269bf8fc4"
+  integrity sha512-6d/c1ZUoqG1q3TMFUG1Aw+C/zmYl6B0KYNmmAzLzQ7+xF0LTrBszj7h/sjUN2Fg9C22QtMVGBBXYtcA8cnTn/g==
+  dependencies:
+    "@algolia/client-abtesting" "5.0.0-alpha.97"
+    "@algolia/client-analytics" "5.0.0-alpha.97"
+    "@algolia/client-common" "5.0.0-alpha.98"
+    "@algolia/client-personalization" "5.0.0-alpha.97"
+    "@algolia/client-search" "5.0.0-alpha.97"
+    "@algolia/requester-browser-xhr" "5.0.0-alpha.98"
+    "@algolia/requester-node-http" "5.0.0-alpha.98"
 
 ansi-align@^3.0.0:
   version "3.0.1"
