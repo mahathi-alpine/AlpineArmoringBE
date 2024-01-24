@@ -23,7 +23,7 @@ const populate = {
   },
   gallery:{
     populate: true,
-    fields: ['url', 'alternativeText', 'height', 'width']
+    fields: ['url', 'alternativeText', 'height', 'width', 'formats']
   }
 };
 
