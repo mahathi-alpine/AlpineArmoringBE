@@ -1020,6 +1020,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    titleDisplay: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1205,7 +1211,7 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String;
-    media: Attribute.Media;
+    image: Attribute.Media;
     inventory_specifications: Attribute.Relation<
       'api::specification.specification',
       'manyToMany',
@@ -1341,6 +1347,12 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+      }>;
+    titleDisplay: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     createdAt: Attribute.DateTime;

@@ -7,7 +7,7 @@
 const populate = {
   specifications:{
     populate: {
-      media: {
+      image: {
         populate: true,
         fields: ['url']
       }
@@ -15,7 +15,7 @@ const populate = {
   },
   accessories:{
     populate: {
-      media: {
+      image: {
         populate: true,
         fields: ['url']
       }
@@ -24,6 +24,10 @@ const populate = {
   gallery:{
     populate: true,
     fields: ['url', 'alternativeText', 'height', 'width', 'formats']
+  },
+  category:{
+    populate: true,
+    fields: ['title', 'slug']
   }
 };
 
