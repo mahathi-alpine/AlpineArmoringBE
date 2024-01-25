@@ -1355,6 +1355,12 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: true;
         };
       }>;
+    pdf: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

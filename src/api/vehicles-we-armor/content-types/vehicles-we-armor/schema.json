@@ -150,6 +150,14 @@
         }
       },
       "type": "richtext"
+    },
+    "pdf": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }
