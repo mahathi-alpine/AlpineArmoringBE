@@ -32,6 +32,17 @@ const populate = {
     populate: true,
     fields: ['url']
   },
+  blogs:{
+    populate: {
+      thumbnail: {
+        populate: true,
+        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+      },    
+      categories: {
+        populate: true
+      }
+    }
+  },
   ballistingTestingsMedia:{
     populate: {
       image: {

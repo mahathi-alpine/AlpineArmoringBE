@@ -677,6 +677,105 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
+  info: {
+    singularName: 'blog';
+    pluralName: 'blogs';
+    displayName: 'Blog';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::blog.blog', 'title'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    excerpt: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    categories: Attribute.Relation<
+      'api::blog.blog',
+      'oneToMany',
+      'api::blog-category.blog-category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::blog.blog',
+      'oneToMany',
+      'api::blog.blog'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
+  collectionName: 'blog_categories';
+  info: {
+    singularName: 'blog-category';
+    pluralName: 'blog-categories';
+    displayName: 'BlogCategories';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.UID<'api::blog-category.blog-category', 'name'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blog-category.blog-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blog-category.blog-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -820,6 +919,11 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     industryPartners: Attribute.Media;
     ballistingTestingsMedia: Attribute.DynamicZone<['slices.tab-section']>;
     hpMiddleText: Attribute.RichText;
+    blogs: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToMany',
+      'api::blog.blog'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1020,7 +1124,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    titleDisplay: Attribute.RichText &
+    titleDisplay: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1349,13 +1453,13 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: false;
         };
       }>;
-    titleDisplay: Attribute.RichText &
+    pdf: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    pdf: Attribute.String &
+    titleDisplay: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1401,6 +1505,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::blog.blog': ApiBlogBlog;
+      'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::category.category': ApiCategoryCategory;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::homepage.homepage': ApiHomepageHomepage;

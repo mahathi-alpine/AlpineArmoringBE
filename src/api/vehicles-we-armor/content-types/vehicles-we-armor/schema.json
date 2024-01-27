@@ -143,14 +143,6 @@
         }
       }
     },
-    "titleDisplay": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
-    },
     "pdf": {
       "pluginOptions": {
         "i18n": {
@@ -158,6 +150,14 @@
         }
       },
       "type": "string"
+    },
+    "titleDisplay": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     }
   }
 }

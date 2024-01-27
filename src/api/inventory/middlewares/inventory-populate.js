@@ -9,7 +9,7 @@ const populate = {
     populate: {
       image: {
         populate: true,
-        fields: ['url']
+        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
       }
     },
   },
@@ -17,7 +17,7 @@ const populate = {
     populate: {
       image: {
         populate: true,
-        fields: ['url']
+        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
       }
     },
   },

@@ -250,7 +250,7 @@
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "text"
     }
   }
 }
