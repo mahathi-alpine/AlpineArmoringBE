@@ -25,6 +25,10 @@ const populate = {
     populate: true,
     fields: ['url', 'alternativeText', 'height', 'width', 'formats']
   },
+  video:{
+    populate: true,
+    fields: ['url']
+  },
   category:{
     populate: true,
     fields: ['title', 'slug']

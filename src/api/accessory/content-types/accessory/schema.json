@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "specifications",
+  "collectionName": "accessories",
   "info": {
-    "singularName": "specification",
-    "pluralName": "specifications",
-    "displayName": "Specifications",
+    "singularName": "accessory",
+    "pluralName": "accessories",
+    "displayName": "Accessories",
     "description": ""
   },
   "options": {
@@ -20,7 +20,8 @@
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images"
+        "images",
+        "videos"
       ]
     },
     "displayTitle": {

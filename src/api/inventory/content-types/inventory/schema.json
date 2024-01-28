@@ -59,7 +59,8 @@
           "localized": true
         }
       },
-      "type": "string"
+      "type": "string",
+      "default": "This armored vehicle is in stock and available to ship immediately"
     },
     "VIN": {
       "pluginOptions": {
@@ -224,17 +225,10 @@
       },
       "type": "string"
     },
-    "accessories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::specification.specification",
-      "inversedBy": "inventory_accessories"
-    },
     "specifications": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::specification.specification",
-      "mappedBy": "inventory_specifications"
+      "relation": "oneToMany",
+      "target": "api::specification.specification"
     },
     "description": {
       "pluginOptions": {
@@ -251,6 +245,24 @@
         }
       },
       "type": "text"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "accessories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::accessory.accessory"
     }
   }
 }

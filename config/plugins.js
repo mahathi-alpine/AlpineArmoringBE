@@ -2,6 +2,12 @@ module.exports = {
   'drag-drop-content-types': {
     enabled: true
   },
+  'import-export-entries': {
+    enabled: true,
+    config: {
+      // serverPublicHostname: 'https://res.cloudinary.com'
+    },
+  },
   upload: {
     config: {
       provider: 'cloudinary',

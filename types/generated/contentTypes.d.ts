@@ -677,6 +677,38 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAccessoryAccessory extends Schema.CollectionType {
+  collectionName: 'accessories';
+  info: {
+    singularName: 'accessory';
+    pluralName: 'accessories';
+    displayName: 'Accessories';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    image: Attribute.Media;
+    displayTitle: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::accessory.accessory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::accessory.accessory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBlogBlog extends Schema.CollectionType {
   collectionName: 'blogs';
   info: {
@@ -986,7 +1018,8 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
-      }>;
+      }> &
+      Attribute.DefaultTo<'This armored vehicle is in stock and available to ship immediately'>;
     VIN: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1106,14 +1139,9 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    accessories: Attribute.Relation<
-      'api::inventory.inventory',
-      'manyToMany',
-      'api::specification.specification'
-    >;
     specifications: Attribute.Relation<
       'api::inventory.inventory',
-      'manyToMany',
+      'oneToMany',
       'api::specification.specification'
     >;
     description: Attribute.RichText &
@@ -1128,6 +1156,17 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    video: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    accessories: Attribute.Relation<
+      'api::inventory.inventory',
+      'oneToMany',
+      'api::accessory.accessory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1363,27 +1402,7 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     image: Attribute.Media;
-    inventory_specifications: Attribute.Relation<
-      'api::specification.specification',
-      'manyToMany',
-      'api::inventory.inventory'
-    >;
-    inventory_accessories: Attribute.Relation<
-      'api::specification.specification',
-      'manyToMany',
-      'api::inventory.inventory'
-    >;
-    vehicles_we_armor_accessories: Attribute.Relation<
-      'api::specification.specification',
-      'manyToMany',
-      'api::vehicles-we-armor.vehicles-we-armor'
-    >;
     displayTitle: Attribute.String;
-    vehicles_we_armor_specifications: Attribute.Relation<
-      'api::specification.specification',
-      'manyToMany',
-      'api::vehicles-we-armor.vehicles-we-armor'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1466,16 +1485,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: true;
         };
       }>;
-    accessories: Attribute.Relation<
-      'api::vehicles-we-armor.vehicles-we-armor',
-      'manyToMany',
-      'api::specification.specification'
-    >;
-    specificationsAll: Attribute.Relation<
-      'api::vehicles-we-armor.vehicles-we-armor',
-      'manyToMany',
-      'api::specification.specification'
-    >;
     description: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1500,16 +1509,26 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: false;
         };
       }>;
-    pdf: Attribute.String &
+    titleDisplay: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    titleDisplay: Attribute.Text &
+    equipment: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToMany',
+      'api::accessory.accessory'
+    >;
+    specs: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToMany',
+      'api::specification.specification'
+    >;
+    pdf: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -1552,6 +1571,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::accessory.accessory': ApiAccessoryAccessory;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::category.category': ApiCategoryCategory;

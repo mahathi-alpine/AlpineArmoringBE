@@ -84,18 +84,6 @@
       },
       "type": "richtext"
     },
-    "accessories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::specification.specification",
-      "inversedBy": "vehicles_we_armor_accessories"
-    },
-    "specificationsAll": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::specification.specification",
-      "inversedBy": "vehicles_we_armor_specifications"
-    },
     "description": {
       "pluginOptions": {
         "i18n": {
@@ -143,14 +131,6 @@
         }
       }
     },
-    "pdf": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
     "titleDisplay": {
       "pluginOptions": {
         "i18n": {
@@ -158,6 +138,28 @@
         }
       },
       "type": "text"
+    },
+    "equipment": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::accessory.accessory"
+    },
+    "specs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specification.specification"
+    },
+    "pdf": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }
