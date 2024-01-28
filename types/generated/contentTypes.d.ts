@@ -879,8 +879,6 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
   };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
-    formTitle: Attribute.String;
-    formDescription: Attribute.RichText;
     salesInfo: Attribute.RichText;
     partsInfo: Attribute.RichText;
     createdAt: Attribute.DateTime;
@@ -1302,6 +1300,55 @@ export interface ApiMakeMake extends Schema.CollectionType {
   };
 }
 
+export interface ApiManufacturingManufacturing extends Schema.SingleType {
+  collectionName: 'manufacturings';
+  info: {
+    singularName: 'manufacturing';
+    pluralName: 'manufacturings';
+    displayName: 'Manufacturing';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    section1Title: Attribute.Text;
+    section1Image: Attribute.Media;
+    section1Text1: Attribute.RichText;
+    section1Text2: Attribute.RichText;
+    section1Gallery: Attribute.Media;
+    banner: Attribute.Component<'slices.banner'>;
+    section1Image2: Attribute.Media;
+    section2Title: Attribute.Text;
+    section2Heading: Attribute.RichText;
+    section2Image: Attribute.Media;
+    section2Text: Attribute.RichText;
+    section2Gallery: Attribute.Media;
+    section2Text2: Attribute.RichText;
+    section3Title: Attribute.Text;
+    section3Heading: Attribute.RichText;
+    section3Text: Attribute.RichText;
+    section3Gallery: Attribute.Media;
+    section3Text2: Attribute.RichText;
+    section3Image: Attribute.Media;
+    section1Heading: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::manufacturing.manufacturing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::manufacturing.manufacturing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSpecificationSpecification extends Schema.CollectionType {
   collectionName: 'specifications';
   info: {
@@ -1514,6 +1561,7 @@ declare module '@strapi/types' {
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::make.make': ApiMakeMake;
+      'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::specification.specification': ApiSpecificationSpecification;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
     }

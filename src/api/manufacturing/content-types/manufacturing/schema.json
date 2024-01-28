@@ -1,0 +1,120 @@
+{
+  "kind": "singleType",
+  "collectionName": "manufacturings",
+  "info": {
+    "singularName": "manufacturing",
+    "pluralName": "manufacturings",
+    "displayName": "Manufacturing",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "section1Title": {
+      "type": "text"
+    },
+    "section1Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section1Text1": {
+      "type": "richtext"
+    },
+    "section1Text2": {
+      "type": "richtext"
+    },
+    "section1Gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "section1Image2": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section2Title": {
+      "type": "text"
+    },
+    "section2Heading": {
+      "type": "richtext"
+    },
+    "section2Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section2Text": {
+      "type": "richtext"
+    },
+    "section2Gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section2Text2": {
+      "type": "richtext"
+    },
+    "section3Title": {
+      "type": "text"
+    },
+    "section3Heading": {
+      "type": "richtext"
+    },
+    "section3Text": {
+      "type": "richtext"
+    },
+    "section3Gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section3Text2": {
+      "type": "richtext"
+    },
+    "section3Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section1Heading": {
+      "type": "richtext"
+    }
+  }
+}

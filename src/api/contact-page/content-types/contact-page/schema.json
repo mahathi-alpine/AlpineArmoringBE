@@ -17,12 +17,6 @@
       "repeatable": false,
       "component": "slices.banner"
     },
-    "formTitle": {
-      "type": "string"
-    },
-    "formDescription": {
-      "type": "richtext"
-    },
     "salesInfo": {
       "type": "richtext"
     },
