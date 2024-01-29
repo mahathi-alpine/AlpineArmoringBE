@@ -30,7 +30,7 @@ const populate = {
   },
   industryPartners:{
     populate: true,
-    fields: ['url']
+    fields: ['url', 'alternativeText', 'width', 'height', 'formats']
   },
   blogs:{
     populate: {
