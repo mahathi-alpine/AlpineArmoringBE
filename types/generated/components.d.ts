@@ -32,6 +32,7 @@ export interface SlicesHomepageTopBanner extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     subtitle: Attribute.String;
+    description: Attribute.RichText;
   };
 }
 

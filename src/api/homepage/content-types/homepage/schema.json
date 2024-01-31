@@ -53,6 +53,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::blog.blog"
+    },
+    "hpIntroText": {
+      "type": "richtext"
     }
   }
 }

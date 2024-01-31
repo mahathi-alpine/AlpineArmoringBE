@@ -953,6 +953,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
       'oneToMany',
       'api::blog.blog'
     >;
+    hpIntroText: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
