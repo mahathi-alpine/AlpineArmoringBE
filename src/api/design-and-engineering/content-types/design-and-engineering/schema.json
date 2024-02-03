@@ -1,0 +1,80 @@
+{
+  "kind": "singleType",
+  "collectionName": "design_and_engineerings",
+  "info": {
+    "singularName": "design-and-engineering",
+    "pluralName": "design-and-engineerings",
+    "displayName": "DesignAndEngineering",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "section1Title": {
+      "type": "text"
+    },
+    "section1Text": {
+      "type": "richtext"
+    },
+    "section1Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section1Text2": {
+      "type": "richtext"
+    },
+    "section2Title": {
+      "type": "text"
+    },
+    "section2Text": {
+      "type": "richtext"
+    },
+    "section2Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section2Text2": {
+      "type": "richtext"
+    },
+    "section2Image2": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "section3Title": {
+      "type": "text"
+    },
+    "section3Heading": {
+      "type": "richtext"
+    },
+    "section3Text": {
+      "type": "richtext"
+    },
+    "section3Armor": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
+    }
+  }
+}

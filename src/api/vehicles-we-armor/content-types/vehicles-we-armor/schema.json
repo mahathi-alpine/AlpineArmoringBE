@@ -150,8 +150,21 @@
       "target": "api::specification.specification"
     },
     "pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "files"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "videoUpload": {
+      "allowedTypes": [
+        "videos"
       ],
       "type": "media",
       "multiple": false,
@@ -160,6 +173,14 @@
           "localized": false
         }
       }
+    },
+    "videoYoutube": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
     }
   }
 }

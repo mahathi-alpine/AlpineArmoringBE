@@ -930,6 +930,51 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
   };
 }
 
+export interface ApiDesignAndEngineeringDesignAndEngineering
+  extends Schema.SingleType {
+  collectionName: 'design_and_engineerings';
+  info: {
+    singularName: 'design-and-engineering';
+    pluralName: 'design-and-engineerings';
+    displayName: 'DesignAndEngineering';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    section1Title: Attribute.Text;
+    section1Text: Attribute.RichText;
+    section1Image: Attribute.Media;
+    section1Text2: Attribute.RichText;
+    section2Title: Attribute.Text;
+    section2Text: Attribute.RichText;
+    section2Image: Attribute.Media;
+    section2Text2: Attribute.RichText;
+    section2Image2: Attribute.Media;
+    banner: Attribute.Component<'slices.banner'>;
+    section3Title: Attribute.Text;
+    section3Heading: Attribute.RichText;
+    section3Text: Attribute.RichText;
+    section3Armor: Attribute.Component<'slices.tab-section', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::design-and-engineering.design-and-engineering',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::design-and-engineering.design-and-engineering',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomepageHomepage extends Schema.SingleType {
   collectionName: 'homepages';
   info: {
@@ -1531,6 +1576,18 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: false;
         };
       }>;
+    videoUpload: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    videoYoutube: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1576,6 +1633,7 @@ declare module '@strapi/types' {
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::category.category': ApiCategoryCategory;
       'api::contact-page.contact-page': ApiContactPageContactPage;
+      'api::design-and-engineering.design-and-engineering': ApiDesignAndEngineeringDesignAndEngineering;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;

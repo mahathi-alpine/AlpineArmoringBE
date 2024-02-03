@@ -6,4 +6,13 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::vehicles-we-armor.vehicles-we-armor');
+module.exports = createCoreRouter('api::vehicles-we-armor.vehicles-we-armor', {
+    config: {
+        find: {
+            middlewares: ['api::vehicles-we-armor.vehicles-we-armor-populate']
+        }, findOne: {
+            middlewares: ['api::vehicles-we-armor.vehicles-we-armor-populate']
+        }
+    }
+});
+
