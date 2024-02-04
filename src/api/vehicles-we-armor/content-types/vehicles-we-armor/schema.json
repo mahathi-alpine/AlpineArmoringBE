@@ -76,14 +76,6 @@
       },
       "component": "slices.before-after-slider"
     },
-    "descriptionBanner": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext"
-    },
     "description": {
       "pluginOptions": {
         "i18n": {
@@ -163,11 +155,12 @@
       }
     },
     "videoUpload": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "videos"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -181,6 +174,14 @@
         }
       },
       "type": "string"
+    },
+    "descriptionBanner": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     }
   }
 }

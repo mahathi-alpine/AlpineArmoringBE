@@ -114,7 +114,7 @@
       ]
     },
     "section1Heading": {
-      "type": "richtext"
+      "type": "text"
     }
   }
 }

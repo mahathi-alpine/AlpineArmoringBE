@@ -957,6 +957,14 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
     section3Heading: Attribute.RichText;
     section3Text: Attribute.RichText;
     section3Armor: Attribute.Component<'slices.tab-section', true>;
+    section4Title: Attribute.Text;
+    section4Heading: Attribute.RichText;
+    section4Image: Attribute.Media;
+    section4Text: Attribute.RichText;
+    section5Title: Attribute.Text;
+    section5Heading: Attribute.RichText;
+    section5Image: Attribute.Media;
+    section5Text: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -992,13 +1000,14 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     allVehiclesImage: Attribute.Media;
     industryPartners: Attribute.Media;
     ballistingTestingsMedia: Attribute.DynamicZone<['slices.tab-section']>;
-    hpMiddleText: Attribute.RichText;
     blogs: Attribute.Relation<
       'api::homepage.homepage',
       'oneToMany',
       'api::blog.blog'
     >;
-    hpIntroText: Attribute.RichText;
+    hpIntroTextSubtitle: Attribute.Text;
+    hpIntroText: Attribute.Text;
+    hpMiddleText: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1415,7 +1424,7 @@ export interface ApiManufacturingManufacturing extends Schema.SingleType {
     section3Gallery: Attribute.Media;
     section3Text2: Attribute.RichText;
     section3Image: Attribute.Media;
-    section1Heading: Attribute.RichText;
+    section1Heading: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1524,12 +1533,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: true;
         };
       }>;
-    descriptionBanner: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     description: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1586,6 +1589,12 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+      }>;
+    descriptionBanner: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     createdAt: Attribute.DateTime;

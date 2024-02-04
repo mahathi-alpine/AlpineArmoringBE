@@ -75,6 +75,41 @@
       "type": "component",
       "repeatable": true,
       "component": "slices.tab-section"
+    },
+    "section4Title": {
+      "type": "text"
+    },
+    "section4Heading": {
+      "type": "richtext"
+    },
+    "section4Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section4Text": {
+      "type": "richtext"
+    },
+    "section5Title": {
+      "type": "text"
+    },
+    "section5Heading": {
+      "type": "richtext"
+    },
+    "section5Image": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "section5Text": {
+      "type": "richtext"
     }
   }
 }
