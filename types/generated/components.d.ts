@@ -4,11 +4,12 @@ export interface SlicesBanner extends Schema.Component {
   collectionName: 'components_slices_banners';
   info: {
     displayName: 'Banner';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
-    description: Attribute.RichText;
     media: Attribute.Media;
+    description: Attribute.Text;
   };
 }
 

@@ -834,7 +834,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
         };
       }>;
     image: Attribute.Media &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
