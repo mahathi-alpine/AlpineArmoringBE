@@ -693,6 +693,7 @@ export interface ApiAboutAbout extends Schema.SingleType {
     text: Attribute.RichText;
     quote: Attribute.Component<'slices.text-filling'>;
     image1: Attribute.Media;
+    text2: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

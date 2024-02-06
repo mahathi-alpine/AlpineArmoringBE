@@ -33,6 +33,9 @@
         "images",
         "videos"
       ]
+    },
+    "text2": {
+      "type": "richtext"
     }
   }
 }
