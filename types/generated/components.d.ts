@@ -53,6 +53,17 @@ export interface SlicesTabSection extends Schema.Component {
   };
 }
 
+export interface SlicesTextFilling extends Schema.Component {
+  collectionName: 'components_slices_text_fillings';
+  info: {
+    displayName: 'TextFilling';
+  };
+  attributes: {
+    text: Attribute.Text;
+    title: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -60,6 +71,7 @@ declare module '@strapi/types' {
       'slices.before-after-slider': SlicesBeforeAfterSlider;
       'slices.homepage-top-banner': SlicesHomepageTopBanner;
       'slices.tab-section': SlicesTabSection;
+      'slices.text-filling': SlicesTextFilling;
     }
   }
 }

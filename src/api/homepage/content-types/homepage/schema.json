@@ -51,14 +51,15 @@
       "relation": "oneToMany",
       "target": "api::blog.blog"
     },
-    "hpIntroTextSubtitle": {
-      "type": "text"
-    },
-    "hpIntroText": {
-      "type": "text"
+    "quote": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text-filling"
     },
     "hpMiddleText": {
-      "type": "text"
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text-filling"
     }
   }
 }

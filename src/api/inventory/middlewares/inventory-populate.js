@@ -32,7 +32,11 @@ const populate = {
   category:{
     populate: true,
     fields: ['title', 'slug']
-  }
+  },
+  featuredImage:{
+    populate: true,
+    fields: ['url', 'alternativeText', 'height', 'width', 'formats']
+  },
 };
 
 module.exports = (config, { strapi }) => {

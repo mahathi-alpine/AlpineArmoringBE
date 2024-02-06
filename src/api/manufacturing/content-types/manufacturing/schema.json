@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "section1Title": {
-      "type": "text"
-    },
     "section1Image": {
       "type": "media",
       "multiple": false,
@@ -44,21 +41,6 @@
       "repeatable": false,
       "component": "slices.banner"
     },
-    "section1Image2": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
-    "section2Title": {
-      "type": "text"
-    },
-    "section2Heading": {
-      "type": "richtext"
-    },
     "section2Image": {
       "type": "media",
       "multiple": false,
@@ -81,12 +63,6 @@
       ]
     },
     "section2Text2": {
-      "type": "richtext"
-    },
-    "section3Title": {
-      "type": "text"
-    },
-    "section3Heading": {
       "type": "richtext"
     },
     "section3Text": {
@@ -114,7 +90,19 @@
       ]
     },
     "section1Heading": {
-      "type": "text"
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text-filling"
+    },
+    "section2Heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text-filling"
+    },
+    "section3Heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text-filling"
     }
   }
 }

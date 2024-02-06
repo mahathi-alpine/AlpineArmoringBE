@@ -28,6 +28,12 @@ const populate = {
     populate: true,
     fields: ['url']
   },
+  quote:{
+    populate: true
+  },
+  hpMiddleText:{
+    populate: true
+  },
   industryPartners:{
     populate: true,
     fields: ['url', 'alternativeText', 'width', 'height', 'formats']

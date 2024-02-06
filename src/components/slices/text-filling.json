@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_slices_text_fillings",
+  "info": {
+    "displayName": "TextFilling"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

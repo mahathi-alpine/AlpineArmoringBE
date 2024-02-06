@@ -677,6 +677,39 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutAbout extends Schema.SingleType {
+  collectionName: 'abouts';
+  info: {
+    singularName: 'about';
+    pluralName: 'abouts';
+    displayName: 'About';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    text: Attribute.RichText;
+    quote: Attribute.Component<'slices.text-filling'>;
+    image1: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAccessoryAccessory extends Schema.CollectionType {
   collectionName: 'accessories';
   info: {
@@ -1004,9 +1037,8 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
       'oneToMany',
       'api::blog.blog'
     >;
-    hpIntroTextSubtitle: Attribute.Text;
-    hpIntroText: Attribute.Text;
-    hpMiddleText: Attribute.Text;
+    quote: Attribute.Component<'slices.text-filling'>;
+    hpMiddleText: Attribute.Component<'slices.text-filling'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1404,26 +1436,22 @@ export interface ApiManufacturingManufacturing extends Schema.SingleType {
     draftAndPublish: false;
   };
   attributes: {
-    section1Title: Attribute.Text;
     section1Image: Attribute.Media;
     section1Text1: Attribute.RichText;
     section1Text2: Attribute.RichText;
     section1Gallery: Attribute.Media;
     banner: Attribute.Component<'slices.banner'>;
-    section1Image2: Attribute.Media;
-    section2Title: Attribute.Text;
-    section2Heading: Attribute.RichText;
     section2Image: Attribute.Media;
     section2Text: Attribute.RichText;
     section2Gallery: Attribute.Media;
     section2Text2: Attribute.RichText;
-    section3Title: Attribute.Text;
-    section3Heading: Attribute.RichText;
     section3Text: Attribute.RichText;
     section3Gallery: Attribute.Media;
     section3Text2: Attribute.RichText;
     section3Image: Attribute.Media;
-    section1Heading: Attribute.Text;
+    section1Heading: Attribute.Component<'slices.text-filling'>;
+    section2Heading: Attribute.Component<'slices.text-filling'>;
+    section3Heading: Attribute.Component<'slices.text-filling'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1636,6 +1664,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::about.about': ApiAboutAbout;
       'api::accessory.accessory': ApiAccessoryAccessory;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
