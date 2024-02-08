@@ -13,6 +13,7 @@
     "@retikolo/drag-drop-content-types": "^1.5.0",
     "@strapi/plugin-cloud": "4.15.4",
     "@strapi/plugin-i18n": "4.15.4",
+    "@strapi/plugin-seo": "^1.9.8",
     "@strapi/plugin-users-permissions": "4.15.4",
     "@strapi/provider-upload-cloudinary": "^4.15.5",
     "@strapi/strapi": "4.15.4",

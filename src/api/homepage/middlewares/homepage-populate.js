@@ -31,6 +31,18 @@ const populate = {
   quote:{
     populate: true
   },
+  seo:{
+    metaImage: {
+      populate: true,
+      fields: ['url']
+    },
+    metaSocial: {
+      image: {
+        populate: true,
+        fields: ['url']
+      },
+    }
+  },
   hpMiddleText:{
     populate: true
   },

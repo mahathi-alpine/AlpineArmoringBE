@@ -8,6 +8,9 @@ module.exports = {
       // serverPublicHostname: 'https://res.cloudinary.com'
     },
   },
+  seo: {
+    enabled: true,
+  },
   upload: {
     config: {
       provider: 'cloudinary',

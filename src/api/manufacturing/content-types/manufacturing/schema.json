@@ -89,11 +89,6 @@
         "videos"
       ]
     },
-    "section1Heading": {
-      "type": "component",
-      "repeatable": false,
-      "component": "slices.text-filling"
-    },
     "section2Heading": {
       "type": "component",
       "repeatable": false,
@@ -103,6 +98,17 @@
       "type": "component",
       "repeatable": false,
       "component": "slices.text-filling"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "section1Title": {
+      "type": "text"
+    },
+    "section1Heading": {
+      "type": "text"
     }
   }
 }

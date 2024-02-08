@@ -694,6 +694,7 @@ export interface ApiAboutAbout extends Schema.SingleType {
     quote: Attribute.Component<'slices.text-filling'>;
     image1: Attribute.Media;
     text2: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -946,6 +947,7 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
     banner: Attribute.Component<'slices.banner'>;
     salesInfo: Attribute.RichText;
     partsInfo: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -998,6 +1000,7 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
     section5Heading: Attribute.RichText;
     section5Image: Attribute.Media;
     section5Text: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1040,6 +1043,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     >;
     quote: Attribute.Component<'slices.text-filling'>;
     hpMiddleText: Attribute.Component<'slices.text-filling'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1300,6 +1304,12 @@ export interface ApiListInventoryListInventory extends Schema.SingleType {
           localized: true;
         };
       }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1342,6 +1352,12 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
   };
   attributes: {
     banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1450,9 +1466,11 @@ export interface ApiManufacturingManufacturing extends Schema.SingleType {
     section3Gallery: Attribute.Media;
     section3Text2: Attribute.RichText;
     section3Image: Attribute.Media;
-    section1Heading: Attribute.Component<'slices.text-filling'>;
     section2Heading: Attribute.Component<'slices.text-filling'>;
     section3Heading: Attribute.Component<'slices.text-filling'>;
+    seo: Attribute.Component<'shared.seo'>;
+    section1Title: Attribute.Text;
+    section1Heading: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1463,6 +1481,40 @@ export interface ApiManufacturingManufacturing extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::manufacturing.manufacturing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiShippingShipping extends Schema.SingleType {
+  collectionName: 'shippings';
+  info: {
+    singularName: 'shipping';
+    pluralName: 'shippings';
+    displayName: 'Shipping';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.RichText;
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    boxes: Attribute.Component<'slices.tab-section', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shipping.shipping',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::shipping.shipping',
       'oneToOne',
       'admin::user'
     > &
@@ -1678,6 +1730,7 @@ declare module '@strapi/types' {
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::make.make': ApiMakeMake;
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
+      'api::shipping.shipping': ApiShippingShipping;
       'api::specification.specification': ApiSpecificationSpecification;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
     }
