@@ -29,6 +29,31 @@
       "type": "component",
       "repeatable": true,
       "component": "slices.tab-section"
+    },
+    "licenseText": {
+      "type": "richtext"
+    },
+    "licenseImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "licensePDF1": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "licensePDF2": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

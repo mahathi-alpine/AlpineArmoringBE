@@ -1504,6 +1504,10 @@ export interface ApiShippingShipping extends Schema.SingleType {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
     boxes: Attribute.Component<'slices.tab-section', true>;
+    licenseText: Attribute.RichText;
+    licenseImage: Attribute.Media;
+    licensePDF1: Attribute.Media;
+    licensePDF2: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
