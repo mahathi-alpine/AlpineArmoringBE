@@ -744,6 +744,38 @@ export interface ApiAccessoryAccessory extends Schema.CollectionType {
   };
 }
 
+export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
+  collectionName: 'become_a_dealers';
+  info: {
+    singularName: 'become-a-dealer';
+    pluralName: 'become-a-dealers';
+    displayName: 'BecomeADealer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    text: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::become-a-dealer.become-a-dealer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::become-a-dealer.become-a-dealer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBlogBlog extends Schema.CollectionType {
   collectionName: 'blogs';
   info: {
@@ -1723,6 +1755,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::accessory.accessory': ApiAccessoryAccessory;
+      'api::become-a-dealer.become-a-dealer': ApiBecomeADealerBecomeADealer;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::category.category': ApiCategoryCategory;
