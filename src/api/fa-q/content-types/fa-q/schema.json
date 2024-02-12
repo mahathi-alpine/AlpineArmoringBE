@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fa_qs",
+  "info": {
+    "singularName": "fa-q",
+    "pluralName": "fa-qs",
+    "displayName": "FAQs",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    }
+  }
+}

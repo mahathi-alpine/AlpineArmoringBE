@@ -980,6 +980,11 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
     salesInfo: Attribute.RichText;
     partsInfo: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
+    fa_qs: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToMany',
+      'api::fa-q.fa-q'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1047,6 +1052,53 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFaQFaQ extends Schema.CollectionType {
+  collectionName: 'fa_qs';
+  info: {
+    singularName: 'fa-q';
+    pluralName: 'fa-qs';
+    displayName: 'FAQs';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::fa-q.fa-q', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::fa-q.fa-q', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFaqFaq extends Schema.SingleType {
+  collectionName: 'faqs';
+  info: {
+    singularName: 'faq';
+    pluralName: 'faqs';
+    displayName: 'FAQ';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    fa_qs: Attribute.Relation<'api::faq.faq', 'oneToMany', 'api::fa-q.fa-q'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1761,6 +1813,8 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::design-and-engineering.design-and-engineering': ApiDesignAndEngineeringDesignAndEngineering;
+      'api::fa-q.fa-q': ApiFaQFaQ;
+      'api::faq.faq': ApiFaqFaq;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;

@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "contact_pages",
+  "collectionName": "faqs",
   "info": {
-    "singularName": "contact-page",
-    "pluralName": "contact-pages",
-    "displayName": "Contact Page",
+    "singularName": "faq",
+    "pluralName": "faqs",
+    "displayName": "FAQ",
     "description": ""
   },
   "options": {
@@ -16,12 +16,6 @@
       "type": "component",
       "repeatable": false,
       "component": "slices.banner"
-    },
-    "salesInfo": {
-      "type": "richtext"
-    },
-    "partsInfo": {
-      "type": "richtext"
     },
     "seo": {
       "type": "component",
