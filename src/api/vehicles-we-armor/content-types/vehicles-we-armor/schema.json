@@ -16,15 +16,6 @@
     }
   },
   "attributes": {
-    "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": true
-    },
     "slug": {
       "pluginOptions": {
         "i18n": {
@@ -32,7 +23,6 @@
         }
       },
       "type": "uid",
-      "targetField": "title",
       "required": true
     },
     "featuredImage": {
@@ -123,7 +113,7 @@
         }
       }
     },
-    "titleDisplay": {
+    "title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
