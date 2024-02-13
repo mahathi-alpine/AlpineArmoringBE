@@ -11,6 +11,16 @@ module.exports = {
   seo: {
     enabled: true,
   },
+  'sitemap': {
+    enabled: true,
+    config: {
+      cron: '0 0 0 * * *',
+      xsl: true,
+      autoGenerate: false,
+      caching: true,
+      allowedFields: ['id', 'uid'],
+    },
+  },
   upload: {
     config: {
       provider: 'cloudinary',
