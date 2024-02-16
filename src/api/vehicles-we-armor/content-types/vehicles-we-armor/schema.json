@@ -172,6 +172,15 @@
         }
       },
       "type": "text"
+    },
+    "protectionLevel": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "default": "A4, A6, A9, A11"
     }
   }
 }

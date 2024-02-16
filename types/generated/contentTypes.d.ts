@@ -1928,6 +1928,13 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: true;
         };
       }>;
+    protectionLevel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<'A4, A6, A9, A11'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
