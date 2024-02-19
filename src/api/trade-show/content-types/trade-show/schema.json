@@ -40,13 +40,6 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
-    },
-    "thumbnail": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
     }
   }
 }

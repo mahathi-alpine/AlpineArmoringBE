@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "trade_shows_pages",
+  "info": {
+    "singularName": "trade-shows-page",
+    "pluralName": "trade-shows-pages",
+    "displayName": "TradeShowsPage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

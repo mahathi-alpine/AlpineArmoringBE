@@ -1828,6 +1828,39 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestimonialsPageTestimonialsPage extends Schema.SingleType {
+  collectionName: 'testimonials_pages';
+  info: {
+    singularName: 'testimonials-page';
+    pluralName: 'testimonials-pages';
+    displayName: 'TestimonialsPage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimonials-page.testimonials-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimonials-page.testimonials-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiTradeShowTradeShow extends Schema.CollectionType {
   collectionName: 'trade_shows';
   info: {
@@ -1847,7 +1880,6 @@ export interface ApiTradeShowTradeShow extends Schema.CollectionType {
     description: Attribute.Text;
     gallery: Attribute.Media;
     seo: Attribute.Component<'shared.seo'>;
-    thumbnail: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1858,6 +1890,40 @@ export interface ApiTradeShowTradeShow extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::trade-show.trade-show',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
+  collectionName: 'trade_shows_pages';
+  info: {
+    singularName: 'trade-shows-page';
+    pluralName: 'trade-shows-pages';
+    displayName: 'TradeShowsPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::trade-shows-page.trade-shows-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::trade-shows-page.trade-shows-page',
       'oneToOne',
       'admin::user'
     > &
@@ -2130,7 +2196,9 @@ declare module '@strapi/types' {
       'api::media.media': ApiMediaMedia;
       'api::shipping.shipping': ApiShippingShipping;
       'api::specification.specification': ApiSpecificationSpecification;
+      'api::testimonials-page.testimonials-page': ApiTestimonialsPageTestimonialsPage;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
+      'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
       'api::video.video': ApiVideoVideo;
       'api::video-page.video-page': ApiVideoPageVideoPage;
