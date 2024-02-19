@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trade_shows",
+  "info": {
+    "singularName": "trade-show",
+    "pluralName": "trade-shows",
+    "displayName": "TradeShows",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "International Trade Shows",
+        "USA Armored Trade Shows"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

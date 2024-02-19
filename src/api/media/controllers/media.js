@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * blog-page controller
+ * media controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::blog-page.blog-page');
+module.exports = createCoreController('api::media.media');

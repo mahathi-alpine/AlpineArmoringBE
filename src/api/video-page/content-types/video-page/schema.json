@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "videos_pages",
+  "info": {
+    "singularName": "video-page",
+    "pluralName": "videos-pages",
+    "displayName": "VideosPage"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

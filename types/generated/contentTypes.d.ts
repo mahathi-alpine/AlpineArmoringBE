@@ -981,39 +981,6 @@ export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiBlogPageBlogPage extends Schema.SingleType {
-  collectionName: 'blog_pages';
-  info: {
-    singularName: 'blog-page';
-    pluralName: 'blog-pages';
-    displayName: 'Blog Page';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    seo: Attribute.Component<'shared.seo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::blog-page.blog-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::blog-page.blog-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-  };
-}
-
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -1737,6 +1704,55 @@ export interface ApiManufacturingManufacturing extends Schema.SingleType {
   };
 }
 
+export interface ApiMediaMedia extends Schema.SingleType {
+  collectionName: 'medias';
+  info: {
+    singularName: 'media';
+    pluralName: 'medias';
+    displayName: 'Media';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    blogs: Attribute.Relation<
+      'api::media.media',
+      'oneToMany',
+      'api::blog.blog'
+    >;
+    videos: Attribute.Relation<
+      'api::media.media',
+      'oneToMany',
+      'api::video.video'
+    >;
+    tradeShows: Attribute.Relation<
+      'api::media.media',
+      'oneToMany',
+      'api::trade-show.trade-show'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::media.media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::media.media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiShippingShipping extends Schema.SingleType {
   collectionName: 'shippings';
   info: {
@@ -1802,6 +1818,46 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::specification.specification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ApiTradeShowTradeShow extends Schema.CollectionType {
+  collectionName: 'trade_shows';
+  info: {
+    singularName: 'trade-show';
+    pluralName: 'trade-shows';
+    displayName: 'TradeShows';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    category: Attribute.Enumeration<
+      ['International Trade Shows', 'USA Armored Trade Shows']
+    >;
+    description: Attribute.Text;
+    gallery: Attribute.Media;
+    seo: Attribute.Component<'shared.seo'>;
+    thumbnail: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::trade-show.trade-show',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::trade-show.trade-show',
       'oneToOne',
       'admin::user'
     > &
@@ -1962,6 +2018,81 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
   };
 }
 
+export interface ApiVideoVideo extends Schema.CollectionType {
+  collectionName: 'videos';
+  info: {
+    singularName: 'video';
+    pluralName: 'videos';
+    displayName: 'Videos';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    URLExternal: Attribute.String;
+    category: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'api::blog-category.blog-category'
+    >;
+    media: Attribute.Media;
+    location: Attribute.Text;
+    order: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ApiVideoPageVideoPage extends Schema.SingleType {
+  collectionName: 'videos_pages';
+  info: {
+    singularName: 'video-page';
+    pluralName: 'videos-pages';
+    displayName: 'VideosPage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::video-page.video-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::video-page.video-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1985,7 +2116,6 @@ declare module '@strapi/types' {
       'api::become-a-dealer.become-a-dealer': ApiBecomeADealerBecomeADealer;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
-      'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::category.category': ApiCategoryCategory;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::design-and-engineering.design-and-engineering': ApiDesignAndEngineeringDesignAndEngineering;
@@ -1997,9 +2127,13 @@ declare module '@strapi/types' {
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::make.make': ApiMakeMake;
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
+      'api::media.media': ApiMediaMedia;
       'api::shipping.shipping': ApiShippingShipping;
       'api::specification.specification': ApiSpecificationSpecification;
+      'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
+      'api::video.video': ApiVideoVideo;
+      'api::video-page.video-page': ApiVideoPageVideoPage;
     }
   }
 }
