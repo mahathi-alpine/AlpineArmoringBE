@@ -22,7 +22,8 @@
           "localized": true
         }
       },
-      "type": "uid"
+      "type": "uid",
+      "targetField": "title"
     },
     "featuredImage": {
       "type": "media",
@@ -253,6 +254,18 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::accessory.accessory"
+    },
+    "OEM": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

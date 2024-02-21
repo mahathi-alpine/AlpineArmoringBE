@@ -37,6 +37,10 @@ const populate = {
     populate: true,
     fields: ['url', 'alternativeText', 'height', 'width', 'formats']
   },
+  OEM:{
+    populate: true,
+    fields: ['url']
+  },
 };
 
 module.exports = (config, { strapi }) => {

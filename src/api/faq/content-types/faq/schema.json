@@ -21,11 +21,6 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
-    },
-    "fa_qs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::fa-q.fa-q"
     }
   }
 }

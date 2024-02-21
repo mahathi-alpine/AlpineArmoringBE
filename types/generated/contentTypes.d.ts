@@ -1211,7 +1211,6 @@ export interface ApiFaqFaq extends Schema.SingleType {
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
-    fa_qs: Attribute.Relation<'api::faq.faq', 'oneToMany', 'api::fa-q.fa-q'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
@@ -1286,7 +1285,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     };
   };
   attributes: {
-    slug: Attribute.UID &
+    slug: Attribute.UID<'api::inventory.inventory', 'title'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1458,6 +1457,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'oneToMany',
       'api::accessory.accessory'
     >;
+    OEM: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1828,39 +1833,6 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   };
 }
 
-export interface ApiTestimonialsPageTestimonialsPage extends Schema.SingleType {
-  collectionName: 'testimonials_pages';
-  info: {
-    singularName: 'testimonials-page';
-    pluralName: 'testimonials-pages';
-    displayName: 'TestimonialsPage';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::testimonials-page.testimonials-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::testimonials-page.testimonials-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-  };
-}
-
 export interface ApiTradeShowTradeShow extends Schema.CollectionType {
   collectionName: 'trade_shows';
   info: {
@@ -1952,7 +1924,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     };
   };
   attributes: {
-    slug: Attribute.UID &
+    slug: Attribute.UID<'api::vehicles-we-armor.vehicles-we-armor', 'title'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2196,7 +2168,6 @@ declare module '@strapi/types' {
       'api::media.media': ApiMediaMedia;
       'api::shipping.shipping': ApiShippingShipping;
       'api::specification.specification': ApiSpecificationSpecification;
-      'api::testimonials-page.testimonials-page': ApiTestimonialsPageTestimonialsPage;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
