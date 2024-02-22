@@ -1457,7 +1457,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    weight: Attribute.Decimal &
+    weight: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

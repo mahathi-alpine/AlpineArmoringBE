@@ -266,7 +266,7 @@
           "localized": true
         }
       },
-      "type": "decimal"
+      "type": "string"
     }
   }
 }
