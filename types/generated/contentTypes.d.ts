@@ -855,6 +855,7 @@ export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     text: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -928,6 +929,12 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'oneToMany',
       'api::blog-category.blog-category'
     >;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1458,6 +1465,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
       }>;
     weight: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -2029,6 +2042,12 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         };
       }> &
       Attribute.DefaultTo<'A4, A6, A9, A11'>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

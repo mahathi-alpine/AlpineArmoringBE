@@ -66,6 +66,16 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::blog-category.blog-category"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo"
     }
   }
 }
