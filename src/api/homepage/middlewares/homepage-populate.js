@@ -20,7 +20,7 @@ const populate = {
     populate: {
       image: {
         populate: true,
-        fields: ['url']
+        fields: ['url', 'alternativeText']
       }
     }
   },
@@ -65,7 +65,7 @@ const populate = {
     populate: {
       image: {
         populate: true,
-        fields: ['url', 'mime', 'alternativeText', 'width', 'height', 'previewUrl']
+        fields: ['formats', 'url', 'mime', 'alternativeText', 'width', 'height', 'previewUrl']
       }
     }
   }

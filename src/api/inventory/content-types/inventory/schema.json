@@ -160,14 +160,6 @@
       },
       "type": "string"
     },
-    "weight": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
     "armor_level": {
       "pluginOptions": {
         "i18n": {
@@ -264,6 +256,14 @@
       "pluginOptions": {
         "i18n": {
           "localized": false
+        }
+      },
+      "type": "decimal"
+    },
+    "weight": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
         }
       },
       "type": "decimal"
