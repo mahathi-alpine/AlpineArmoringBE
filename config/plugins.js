@@ -21,6 +21,9 @@ module.exports = {
       allowedFields: ['id', 'uid'],
     },
   },
+  redirects : {
+    enabled: true,
+  },
   upload: {
     config: {
       provider: 'cloudinary',

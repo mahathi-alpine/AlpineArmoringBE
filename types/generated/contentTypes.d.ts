@@ -570,6 +570,51 @@ export interface PluginSitemapSitemapCache extends Schema.CollectionType {
   };
 }
 
+export interface PluginRedirectsRedirect extends Schema.CollectionType {
+  collectionName: 'redirects';
+  info: {
+    singularName: 'redirect';
+    pluralName: 'redirects';
+    displayName: 'redirect';
+  };
+  options: {
+    draftAndPublish: false;
+    comment: '';
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    from: Attribute.String & Attribute.Required;
+    to: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<['permanent', 'temporary']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'permanent'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::redirects.redirect',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::redirects.redirect',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -2164,6 +2209,7 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::sitemap.sitemap': PluginSitemapSitemap;
       'plugin::sitemap.sitemap-cache': PluginSitemapSitemapCache;
+      'plugin::redirects.redirect': PluginRedirectsRedirect;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
