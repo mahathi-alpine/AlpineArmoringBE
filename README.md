@@ -5,6 +5,7 @@
 2. Run **yarn install**
 3. Install [PostgreSQL](https://www.postgresql.org/download/)
 4. Create .env file in the root of project, [Copy/paste this file and just replace the DATABASE_PASSWORD](https://docs.google.com/document/d/1t2CIepNM1pjvF1ovW8LmHYX8-_8Yj5aBDTyULjhI7C4/edit?usp=sharing)
+5. At this point, the database is empty and you are starting with the clean Strapi. Now you can export database from production/staging and import in on localhost.
 
 ### `Start the Strapi application`
 
