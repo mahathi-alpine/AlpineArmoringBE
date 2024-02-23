@@ -75,19 +75,6 @@ export interface SlicesBeforeAfterSlider extends Schema.Component {
   };
 }
 
-export interface SlicesHomepageTopBanner extends Schema.Component {
-  collectionName: 'components_slices_homepage_top_banners';
-  info: {
-    displayName: 'Homepage Top Banner';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    subtitle: Attribute.String;
-    description: Attribute.Text;
-  };
-}
-
 export interface SlicesTabSection extends Schema.Component {
   collectionName: 'components_slices_tab_sections';
   info: {
@@ -122,7 +109,6 @@ declare module '@strapi/types' {
       'shared.seo': SharedSeo;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
-      'slices.homepage-top-banner': SlicesHomepageTopBanner;
       'slices.tab-section': SlicesTabSection;
       'slices.text-filling': SlicesTextFilling;
     }

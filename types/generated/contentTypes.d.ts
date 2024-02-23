@@ -1287,7 +1287,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     draftAndPublish: false;
   };
   attributes: {
-    topBanner: Attribute.Component<'slices.homepage-top-banner'>;
     tabSection: Attribute.DynamicZone<['slices.tab-section']>;
     allVehiclesImage: Attribute.Media;
     industryPartners: Attribute.Media;
@@ -1300,6 +1299,8 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     quote: Attribute.Component<'slices.text-filling'>;
     hpMiddleText: Attribute.Component<'slices.text-filling'>;
     seo: Attribute.Component<'shared.seo'>;
+    topBannerTitle: Attribute.Text;
+    topBannerDescription: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

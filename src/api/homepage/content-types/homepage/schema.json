@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "topBanner": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {},
-      "component": "slices.homepage-top-banner"
-    },
     "tabSection": {
       "type": "dynamiczone",
       "components": [
@@ -65,6 +59,12 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "topBannerTitle": {
+      "type": "text"
+    },
+    "topBannerDescription": {
+      "type": "text"
     }
   }
 }
