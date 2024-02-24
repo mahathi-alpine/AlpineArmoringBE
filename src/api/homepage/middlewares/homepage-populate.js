@@ -5,32 +5,6 @@
  */
 
 const populate = {
-  topBanner:{
-    populate: true
-  },
-  horizontalSlider:{
-    populate: {
-      image: {
-        populate: true,
-        fields: ['url', 'formats']
-      }
-    }
-  },
-  tabSection:{
-    populate: {
-      image: {
-        populate: true,
-        fields: ['url', 'alternativeText']
-      }
-    }
-  },
-  allVehiclesImage:{
-    populate: true,
-    fields: ['url']
-  },
-  quote:{
-    populate: true
-  },
   seo:{
     metaImage: {
       populate: true,
@@ -43,12 +17,31 @@ const populate = {
       },
     }
   },
+  quote:{
+    populate: true
+  },
+  allVehiclesImage:{
+    populate: true,
+    fields: ['url', 'alternativeText']
+  },
   hpMiddleText:{
     populate: true
   },
-  industryPartners:{
-    populate: true,
-    fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+  tabSection:{
+    populate: {
+      image: {
+        populate: true,
+        fields: ['url', 'alternativeText', 'mime']
+      }
+    }
+  },
+  ballistingTestingsMedia:{
+    populate: {
+      image: {
+        populate: true,
+        fields: ['formats', 'url', 'mime', 'alternativeText', 'width', 'height', 'previewUrl']
+      }
+    }
   },
   blogs:{
     populate: {
@@ -61,13 +54,9 @@ const populate = {
       }
     }
   },
-  ballistingTestingsMedia:{
-    populate: {
-      image: {
-        populate: true,
-        fields: ['formats', 'url', 'mime', 'alternativeText', 'width', 'height', 'previewUrl']
-      }
-    }
+  industryPartners:{
+    populate: true,
+    fields: ['url', 'alternativeText', 'width', 'height', 'formats']
   }
 };
 
