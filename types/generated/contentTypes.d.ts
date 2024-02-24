@@ -886,6 +886,39 @@ export interface ApiAccessoryAccessory extends Schema.CollectionType {
   };
 }
 
+export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
+  collectionName: 'ballistic_charts';
+  info: {
+    singularName: 'ballistic-chart';
+    pluralName: 'ballistic-charts';
+    displayName: 'Ballistic Chart';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ballistic-chart.ballistic-chart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ballistic-chart.ballistic-chart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
   collectionName: 'become_a_dealers';
   info: {
@@ -895,7 +928,7 @@ export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
@@ -903,7 +936,6 @@ export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
     seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::become-a-dealer.become-a-dealer',
       'oneToOne',
@@ -1176,7 +1208,7 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     section1Title: Attribute.Text;
@@ -1204,7 +1236,6 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
     seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::design-and-engineering.design-and-engineering',
       'oneToOne',
@@ -2217,6 +2248,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::accessory.accessory': ApiAccessoryAccessory;
+      'api::ballistic-chart.ballistic-chart': ApiBallisticChartBallisticChart;
       'api::become-a-dealer.become-a-dealer': ApiBecomeADealerBecomeADealer;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;

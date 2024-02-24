@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "become_a_dealers",
+  "collectionName": "ballistic_charts",
   "info": {
-    "singularName": "become-a-dealer",
-    "pluralName": "become-a-dealers",
-    "displayName": "BecomeADealer",
-    "description": ""
+    "singularName": "ballistic-chart",
+    "pluralName": "ballistic-charts",
+    "displayName": "Ballistic Chart"
   },
   "options": {
     "draftAndPublish": false
@@ -16,9 +15,6 @@
       "type": "component",
       "repeatable": false,
       "component": "slices.banner"
-    },
-    "text": {
-      "type": "richtext"
     },
     "seo": {
       "type": "component",
