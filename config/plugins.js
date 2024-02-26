@@ -37,7 +37,7 @@ module.exports = {
         delete: {},
       },
       breakpoints: {
-        xlarge: 1920,
+        xlarge: 2200,
         large: 1000,
         medium: 750,
         small: 500,

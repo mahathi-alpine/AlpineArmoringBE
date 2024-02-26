@@ -58,7 +58,7 @@ export interface SlicesBanner extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.Text;
     media: Attribute.Media;
     description: Attribute.Text;
   };

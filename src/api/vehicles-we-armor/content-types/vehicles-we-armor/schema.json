@@ -10,18 +10,10 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "uid",
       "required": true,
       "targetField": "title"
@@ -33,11 +25,7 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "pluginOptions": {}
     },
     "category": {
       "type": "relation",
@@ -60,19 +48,11 @@
     "beforeAfterSlider": {
       "type": "component",
       "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "component": "slices.before-after-slider"
     },
     "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "richtext"
     },
     "dimensions1": {
@@ -82,11 +62,7 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "pluginOptions": {}
     },
     "dimensions2": {
       "type": "media",
@@ -95,11 +71,7 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "pluginOptions": {}
     },
     "gallery": {
       "type": "media",
@@ -108,18 +80,10 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "pluginOptions": {}
     },
     "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "text"
     },
     "equipment": {
@@ -139,11 +103,7 @@
       "allowedTypes": [
         "files"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "pluginOptions": {}
     },
     "videoUpload": {
       "type": "media",
@@ -152,45 +112,25 @@
       "allowedTypes": [
         "videos"
       ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      "pluginOptions": {}
     },
     "videoYoutube": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
+      "pluginOptions": {},
       "type": "string"
     },
     "descriptionBanner": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "type": "text"
     },
     "protectionLevel": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
+      "pluginOptions": {},
       "type": "string",
       "default": "A4, A6, A9, A11"
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+      "pluginOptions": {},
       "component": "shared.seo"
     }
   }

@@ -7,7 +7,7 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "text"
     },
     "media": {
       "type": "media",
