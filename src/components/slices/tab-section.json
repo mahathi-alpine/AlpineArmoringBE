@@ -30,7 +30,10 @@
       "type": "string"
     },
     "linkText": {
-      "type": "richtext"
+      "type": "text"
+    },
+    "linkURL": {
+      "type": "string"
     }
   }
 }
