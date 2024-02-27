@@ -1553,6 +1553,25 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    flag: Attribute.Enumeration<['sold', 'coming soon']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    ownPage: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<true>;
+    label: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1888,6 +1907,39 @@ export interface ApiShippingShipping extends Schema.SingleType {
   };
 }
 
+export interface ApiSoldVehicleSoldVehicle extends Schema.SingleType {
+  collectionName: 'sold_vehicles';
+  info: {
+    singularName: 'sold-vehicle';
+    pluralName: 'sold-vehicles';
+    displayName: 'SoldVehicles';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sold-vehicle.sold-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sold-vehicle.sold-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiSpecificationSpecification extends Schema.CollectionType {
   collectionName: 'specifications';
   info: {
@@ -2183,6 +2235,7 @@ declare module '@strapi/types' {
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::media.media': ApiMediaMedia;
       'api::shipping.shipping': ApiShippingShipping;
+      'api::sold-vehicle.sold-vehicle': ApiSoldVehicleSoldVehicle;
       'api::specification.specification': ApiSpecificationSpecification;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;

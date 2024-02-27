@@ -277,6 +277,35 @@
         }
       },
       "component": "shared.seo"
+    },
+    "flag": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "sold",
+        "coming soon"
+      ]
+    },
+    "ownPage": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": true
+    },
+    "label": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean"
     }
   }
 }
