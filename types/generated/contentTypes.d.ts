@@ -1103,11 +1103,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    inventories: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::inventory.inventory'
-    >;
     vehicles_we_armors: Attribute.Relation<
       'api::category.category',
       'oneToMany',
@@ -1131,6 +1126,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    inventories: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::inventory.inventory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1382,9 +1382,9 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    category: Attribute.Relation<
+    categories: Attribute.Relation<
       'api::inventory.inventory',
-      'manyToOne',
+      'manyToMany',
       'api::category.category'
     >;
     shortDescription: Attribute.String &

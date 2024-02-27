@@ -29,7 +29,7 @@ const populate = {
     populate: true,
     fields: ['url']
   },
-  category:{
+  categories:{
     populate: true,
     fields: ['title', 'slug']
   },
