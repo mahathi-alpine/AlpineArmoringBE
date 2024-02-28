@@ -1076,57 +1076,19 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   options: {
     draftAndPublish: false;
   };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
   attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    image: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    slug: Attribute.UID<'api::category.category', 'title'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    image: Attribute.Media;
+    slug: Attribute.UID<'api::category.category', 'title'> & Attribute.Required;
     vehicles_we_armors: Attribute.Relation<
       'api::category.category',
       'oneToMany',
       'api::vehicles-we-armor.vehicles-we-armor'
     >;
-    order: Attribute.Integer &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    inventoryBanner: Attribute.Component<'slices.banner'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    allBanner: Attribute.Component<'slices.banner'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    inventories: Attribute.Relation<
+    order: Attribute.Integer;
+    inventoryBanner: Attribute.Component<'slices.banner'>;
+    allBanner: Attribute.Component<'slices.banner'>;
+    inventory_vehicles: Attribute.Relation<
       'api::category.category',
       'manyToMany',
       'api::inventory.inventory'
@@ -1148,12 +1110,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
-    localizations: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::category.category'
-    >;
-    locale: Attribute.String;
   };
 }
 
@@ -1382,11 +1338,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    categories: Attribute.Relation<
-      'api::inventory.inventory',
-      'manyToMany',
-      'api::category.category'
-    >;
     shortDescription: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1572,6 +1523,11 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    categories: Attribute.Relation<
+      'api::inventory.inventory',
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

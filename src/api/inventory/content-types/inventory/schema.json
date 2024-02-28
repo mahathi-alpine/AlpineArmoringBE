@@ -38,12 +38,6 @@
         }
       }
     },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "inventories"
-    },
     "shortDescription": {
       "pluginOptions": {
         "i18n": {
@@ -306,6 +300,12 @@
         }
       },
       "type": "boolean"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "inventory_vehicles"
     }
   }
 }
