@@ -827,9 +827,10 @@ export interface ApiAboutAbout extends Schema.SingleType {
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     text: Attribute.RichText;
-    quote: Attribute.Component<'slices.text-filling'>;
     seo: Attribute.Component<'shared.seo'>;
     boxes: Attribute.Component<'slices.tab-section', true>;
+    bottomImage: Attribute.Media;
+    quote: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1822,6 +1823,39 @@ export interface ApiMediaMedia extends Schema.SingleType {
   };
 }
 
+export interface ApiNewsPageNewsPage extends Schema.SingleType {
+  collectionName: 'news_pages';
+  info: {
+    singularName: 'news-page';
+    pluralName: 'news-pages';
+    displayName: 'NewsPage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::news-page.news-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::news-page.news-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiShippingShipping extends Schema.SingleType {
   collectionName: 'shippings';
   info: {
@@ -2189,6 +2223,7 @@ declare module '@strapi/types' {
       'api::make.make': ApiMakeMake;
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::media.media': ApiMediaMedia;
+      'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::shipping.shipping': ApiShippingShipping;
       'api::sold-vehicle.sold-vehicle': ApiSoldVehicleSoldVehicle;
       'api::specification.specification': ApiSpecificationSpecification;

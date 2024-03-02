@@ -20,11 +20,6 @@
     "text": {
       "type": "richtext"
     },
-    "quote": {
-      "type": "component",
-      "repeatable": false,
-      "component": "slices.text-filling"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
@@ -34,6 +29,18 @@
       "type": "component",
       "repeatable": true,
       "component": "slices.tab-section"
+    },
+    "bottomImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "quote": {
+      "type": "text"
     }
   }
 }
