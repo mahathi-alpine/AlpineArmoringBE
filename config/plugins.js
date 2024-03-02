@@ -38,7 +38,8 @@ module.exports = {
       },
       breakpoints: {
         xlarge: 2200,
-        large: 1000,
+        large: 1300,
+        medium: 750,
         small: 500
       }
     },

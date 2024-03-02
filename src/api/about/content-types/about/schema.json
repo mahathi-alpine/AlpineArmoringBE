@@ -25,22 +25,15 @@
       "repeatable": false,
       "component": "slices.text-filling"
     },
-    "image1": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
-    "text2": {
-      "type": "richtext"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "boxes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
     }
   }
 }

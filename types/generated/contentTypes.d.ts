@@ -828,9 +828,8 @@ export interface ApiAboutAbout extends Schema.SingleType {
     banner: Attribute.Component<'slices.banner'>;
     text: Attribute.RichText;
     quote: Attribute.Component<'slices.text-filling'>;
-    image1: Attribute.Media;
-    text2: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
+    boxes: Attribute.Component<'slices.tab-section', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
