@@ -37,10 +37,14 @@ const populate = {
     populate: true,
     fields: ['url', 'alternativeText', 'height', 'width', 'formats']
   },
-  OEM:{
+  OEMWindowSticker:{
     populate: true,
     fields: ['url']
   },
+  OEMArmoringSpecs:{
+    populate: true,
+    fields: ['url']
+  }
 };
 
 module.exports = (config, { strapi }) => {
