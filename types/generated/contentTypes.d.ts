@@ -2097,6 +2097,14 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
     title: Attribute.String;
     image: Attribute.Media;
     displayTitle: Attribute.String;
+    category: Attribute.Enumeration<
+      [
+        'Armoring Features',
+        'Conversion Accessories',
+        'Communications & Electronics',
+        'Other Options'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2227,22 +2235,32 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     dimensions2: Attribute.Media;
     gallery: Attribute.Media;
     title: Attribute.Text;
-    equipment: Attribute.Relation<
-      'api::vehicles-we-armor.vehicles-we-armor',
-      'oneToMany',
-      'api::accessory.accessory'
-    >;
-    specs: Attribute.Relation<
-      'api::vehicles-we-armor.vehicles-we-armor',
-      'oneToMany',
-      'api::specification.specification'
-    >;
     pdf: Attribute.Media;
     videoUpload: Attribute.Media;
     videoYoutube: Attribute.String;
     descriptionBanner: Attribute.Text;
     protectionLevel: Attribute.String & Attribute.DefaultTo<'A4, A6, A9, A11'>;
     seo: Attribute.Component<'shared.seo'>;
+    armoringFeatures: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToMany',
+      'api::specification.specification'
+    >;
+    conversionAccessories: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToMany',
+      'api::specification.specification'
+    >;
+    communications: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToMany',
+      'api::specification.specification'
+    >;
+    otherOptions: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToMany',
+      'api::specification.specification'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

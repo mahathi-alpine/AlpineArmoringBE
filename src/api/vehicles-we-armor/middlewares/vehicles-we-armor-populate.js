@@ -25,7 +25,7 @@ const populate = {
     populate: true,
     fields: ['url', 'alternativeText', 'width', 'height']
   },
-  specs:{
+  armoringFeatures:{
     populate: {
       image: {
         populate: true,
@@ -33,7 +33,23 @@ const populate = {
       }
     },
   },
-  equipment:{
+  conversionAccessories:{
+    populate: {
+      image: {
+        populate: true,
+        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+      }
+    },
+  },
+  otherOptions:{
+    populate: {
+      image: {
+        populate: true,
+        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+      }
+    },
+  },
+  communications:{
     populate: {
       image: {
         populate: true,

@@ -25,6 +25,15 @@
     },
     "displayTitle": {
       "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Armoring Features",
+        "Conversion Accessories",
+        "Communications & Electronics",
+        "Other Options"
+      ]
     }
   }
 }

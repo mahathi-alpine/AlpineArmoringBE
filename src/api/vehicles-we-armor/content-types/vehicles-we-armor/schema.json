@@ -86,16 +86,6 @@
       "pluginOptions": {},
       "type": "text"
     },
-    "equipment": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::accessory.accessory"
-    },
-    "specs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::specification.specification"
-    },
     "pdf": {
       "type": "media",
       "multiple": false,
@@ -132,6 +122,26 @@
       "repeatable": false,
       "pluginOptions": {},
       "component": "shared.seo"
+    },
+    "armoringFeatures": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specification.specification"
+    },
+    "conversionAccessories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specification.specification"
+    },
+    "communications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specification.specification"
+    },
+    "otherOptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specification.specification"
     }
   }
 }
