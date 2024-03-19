@@ -15,6 +15,7 @@ module.exports = {
     enabled: true,
     config: {
       cron: '0 0 0 * * *',
+      hostname: 'https://alpinetesting.cloudflex-ha.com',
       xsl: true,
       autoGenerate: false,
       caching: true,
