@@ -12,10 +12,9 @@ module.exports = {
     enabled: true,
   },
   'sitemap': {
-    enabled: true,
+    enabled: false,
     config: {
       cron: '0 0 0 * * *',
-      hostname: 'https://alpinetesting.cloudflex-ha.com',
       xsl: true,
       autoGenerate: false,
       caching: true,
