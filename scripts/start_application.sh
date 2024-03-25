@@ -31,5 +31,8 @@ nvm use 18.17.0
 # Build the application
 yarn build
 
+# Create logging directory
+mkdir /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log
+
 # Run the application in the background using Yarn
 nohup yarn start > /home/ubuntu/logs/strapi.log 2>&1 &
