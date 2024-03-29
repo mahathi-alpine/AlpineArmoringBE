@@ -37,5 +37,5 @@ yarn build
 # Create logging directory
 mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log
 
-# Run the application in the background using Yarn
-nohup yarn start > /home/ubuntu/logs/strapi.log 2>&1 &
+# Run the application in the background using Yarn and PM2 for resiliency
+pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1

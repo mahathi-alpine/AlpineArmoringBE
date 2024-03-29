@@ -10,3 +10,6 @@ nvm install 18.17.0
 
 # Install Yarn
 npm install -g yarn
+
+# Install pm2
+npm install -g pm2

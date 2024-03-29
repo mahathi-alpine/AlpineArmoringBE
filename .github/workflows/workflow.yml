@@ -1,8 +1,8 @@
 name: CI/CD Pipeline - Alpine Test
 
-# on:
-#   push:
-#     branches: [ joseph-test ]
+on:
+  push:
+    branches: [ c303-test ]
 
 env:
   
