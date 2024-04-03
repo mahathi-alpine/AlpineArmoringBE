@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = ({ env }) => ({
   'drag-drop-content-types': {
     enabled: true
   },
@@ -26,22 +26,20 @@ module.exports = {
   },
   upload: {
     config: {
-      provider: 'cloudinary',
+      provider: 'aws-s3',
       providerOptions: {
-        cloud_name: process.env.CLOUDINARY_NAME,
-        api_key: process.env.CLOUDINARY_KEY,
-        api_secret: process.env.CLOUDINARY_SECRET
+        region: env('AWS_REGION'),
+        params: {
+          ACL: env('AWS_ACL', 'public-read'),
+          signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15 * 60),
+          Bucket: env('AWS_BUCKET'),
+        },
       },
       actionOptions: {
         upload: {},
+        uploadStream: {},
         delete: {},
       },
-      breakpoints: {
-        xlarge: 2200,
-        large: 1300,
-        medium: 750,
-        small: 500
-      }
     },
   },
   email: {
@@ -58,4 +56,4 @@ module.exports = {
       },
     },
   },
-}
+})
