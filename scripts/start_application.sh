@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Navigate to the project directory
-cd /var/www/html/myapp
+cd /var/www/html/alpine
 
 # Fix node version error - hardcoded to 18.17.0 for now
 source ~/.nvm/nvm.sh
@@ -21,7 +21,7 @@ if [ -z "$env_vars" ]; then
 fi
 
 # Write the file content to the specified file path
-echo -e "$env_vars" > /var/www/html/myapp/.env
+echo -e "$env_vars" > /var/www/html/alpine/.env
 
 # Check if the file was written successfully
 if [ $? -eq 0 ]; then

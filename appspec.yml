@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/html/myapp
+    destination: /var/www/html/alpine
 permissions:
-  - object: /var/www/html/myapp
+  - object: /var/www/html/alpine
     pattern: "**"
     owner: ubuntu
     group: ubuntu
