@@ -1,8 +1,8 @@
 name: CI/CD Pipeline - Alpine Test
 
-on:
-  push:
-    branches: [ c303-test ]
+# on:
+  # push:
+    # branches: [ staging ]
 
 env:
   
@@ -33,7 +33,7 @@ jobs:
         id: deploy
         run: |
           aws deploy create-deployment \
-            --application-name alpine-backend \
-            --deployment-group-name alpine-prod-blue-green \
+            --application-name alpine-backend-staging \
+            --deployment-group-name alpine-staging-blue-green \
             --deployment-config-name CodeDeployDefault.AllAtOnce \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
