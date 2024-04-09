@@ -2,7 +2,7 @@ name: CI/CD Pipeline - Alpine Test
 
 on:
   push:
-    branches: [ c303-test ]
+    branches: [ main ]
 
 env:
   

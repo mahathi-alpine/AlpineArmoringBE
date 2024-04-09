@@ -2118,14 +2118,14 @@ export interface ApiVideoVideo extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     URLExternal: Attribute.String;
-    category: Attribute.Relation<
-      'api::video.video',
-      'oneToOne',
-      'api::blog-category.blog-category'
-    >;
     media: Attribute.Media;
     location: Attribute.Text;
     order: Attribute.Integer;
+    category: Attribute.Relation<
+      'api::video.video',
+      'oneToOne',
+      'api::videos-category.videos-category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2166,6 +2166,36 @@ export interface ApiVideoPageVideoPage extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::video-page.video-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVideosCategoryVideosCategory extends Schema.CollectionType {
+  collectionName: 'videos_categories';
+  info: {
+    singularName: 'videos-category';
+    pluralName: 'videos-categories';
+    displayName: 'VideosCategories';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.UID<'api::videos-category.videos-category', 'name'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::videos-category.videos-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::videos-category.videos-category',
       'oneToOne',
       'admin::user'
     > &
@@ -2220,6 +2250,7 @@ declare module '@strapi/types' {
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
       'api::video.video': ApiVideoVideo;
       'api::video-page.video-page': ApiVideoPageVideoPage;
+      'api::videos-category.videos-category': ApiVideosCategoryVideosCategory;
     }
   }
 }

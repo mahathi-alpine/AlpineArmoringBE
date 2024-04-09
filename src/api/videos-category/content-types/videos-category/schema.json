@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "videos_categories",
+  "info": {
+    "singularName": "videos-category",
+    "pluralName": "videos-categories",
+    "displayName": "VideosCategories"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}
