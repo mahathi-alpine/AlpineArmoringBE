@@ -44,6 +44,9 @@
     },
     "Test": {
       "type": "string"
+    },
+    "Test2": {
+      "type": "string"
     }
   }
 }
