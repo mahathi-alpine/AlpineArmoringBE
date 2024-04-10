@@ -1,18 +1,5 @@
 #!/bin/bash
 
-su - ubuntu <<EOF
-
-# Navigate to the project directory
-cd /var/www/html/alpine
-
-# Fix node version error - hardcoded to 18.17.0 for now
-sudo source ~/.nvm/nvm.sh
-
-sudo nvm use 18.17.0
-
-# Install project dependencies
-yarn install
-
 # Get enviornment variables from parameter store
 env_vars=$(aws ssm get-parameter --name "env_vars" --query "Parameter.Value" --output text)
 
@@ -33,11 +20,9 @@ else
     exit 1
 fi
 
-# Build the application
-yarn build
 
-# Create logging directory
-mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log
+# Install project dependencies and build the application and create the logging directory
+su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && yarn install && yarn build && mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log'
 
 # Run the application in the background using Yarn and PM2 for resiliency
-pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1
+su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
