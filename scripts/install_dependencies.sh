@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Yarn
-# npm install --global yarn
+npm install --global yarn
 
 # Install pm2
 npm install --global pm2
