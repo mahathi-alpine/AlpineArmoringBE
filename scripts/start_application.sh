@@ -20,9 +20,13 @@ else
     exit 1
 fi
 
+su - ubuntu -c 'ln -s "$(which node)" /usr/bin/node && ln -s "$(which npm)" /usr/bin/npm'
 
-# Install project dependencies and build the application and create the logging directory
-su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && sudo yarn install && sudo yarn build && mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log'
+# Create logging directory
+mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log && chmod 777 /home/ubuntu/logs/strapi.log
+
+# Install project dependencies and build the application
+su - ubuntu -c 'cd /var/www/html/alpine && source ~/.bashrc && nvm use 18.17.0 && yarn install && yarn build'
 
 # Run the application in the background using Yarn and PM2 for resiliency
-su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
+su - ubuntu -c 'cd /var/www/html/alpine && source ~/.bashrc && nvm use 18.17.0 && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
