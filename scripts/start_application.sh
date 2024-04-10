@@ -22,7 +22,7 @@ fi
 
 
 # Install project dependencies and build the application and create the logging directory
-su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && sudo yarn install && sudo yarn build && mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log'
+su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && npm install -g yarn && sudo yarn install && sudo yarn build && mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log'
 
 # Run the application in the background using Yarn and PM2 for resiliency
 su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
