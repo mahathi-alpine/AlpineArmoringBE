@@ -24,5 +24,8 @@ su - ubuntu -c 'ln -s "$(which node)" /usr/bin/node && ln -s "$(which npm)" /usr
 # Create logging directory
 mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log && chmod 777 /home/ubuntu/logs/strapi.log
 
+# Update permissions on project directory
+chmod -R 777 /var/www/html/alpine
+
 # Install project dependencies and build the application
 su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && yarn install && yarn build && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
