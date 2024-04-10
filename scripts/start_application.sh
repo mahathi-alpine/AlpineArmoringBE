@@ -6,9 +6,9 @@ su - ubuntu <<EOF
 cd /var/www/html/alpine
 
 # Fix node version error - hardcoded to 18.17.0 for now
-source ~/.nvm/nvm.sh
+sudo source ~/.nvm/nvm.sh
 
-nvm use 18.17.0
+sudo nvm use 18.17.0
 
 # Install project dependencies
 yarn install
