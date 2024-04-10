@@ -15,5 +15,5 @@ su - ubuntu -c 'source ~/.bashrc'
 su - ubuntu -c 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
 
 # Install or update Node.js LTS using NVM within the specified range
-su - ubuntu -c 'nvm install 18.17.0'
+su - ubuntu -c 'source ~/.bashrc && nvm install 18.17.0'
 
