@@ -36,13 +36,6 @@ module.exports = ({ env }) => ({
             Bucket: env('AWS_BUCKET'),
           },
         },
-      },
-      breakpoints: {
-        xlarge: 2200,
-        large: 1300,
-        medium: 750,
-        small: 500,
-        thumbnail: 480
       }
     },
   },
