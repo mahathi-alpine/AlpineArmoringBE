@@ -29,7 +29,6 @@ module.exports = ({ env }) => ({
       provider: 'aws-s3',
       providerOptions: {
         s3Options: {
-          rootPath: 'strapi',
           region: env('AWS_REGION'),
           params: {
             ACL: env('AWS_ACL', 'private'),
