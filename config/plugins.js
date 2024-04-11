@@ -29,10 +29,11 @@ module.exports = ({ env }) => ({
       provider: 'aws-s3',
       providerOptions: {
         s3Options: {
+          rootPath: 'strapi',
           region: env('AWS_REGION'),
           params: {
-            ACL: env('AWS_ACL', 'private'),
-            signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
+            // ACL: env('AWS_ACL', 'private'),
+            // signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
             Bucket: env('AWS_BUCKET'),
           },
         },
@@ -41,7 +42,8 @@ module.exports = ({ env }) => ({
         xlarge: 2200,
         large: 1300,
         medium: 750,
-        small: 500
+        small: 500,
+        thumbnail: 480
       }
     },
   },
