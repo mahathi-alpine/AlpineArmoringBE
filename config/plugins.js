@@ -32,8 +32,8 @@ module.exports = ({ env }) => ({
           rootPath: 'strapi',
           region: env('AWS_REGION'),
           params: {
-            // ACL: env('AWS_ACL', 'private'),
-            // signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
+            ACL: env('AWS_ACL', 'private'),
+            signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
             Bucket: env('AWS_BUCKET'),
           },
         },
