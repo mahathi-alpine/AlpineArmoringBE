@@ -28,7 +28,6 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'aws-s3',
       providerOptions: {
-        rootPath: 'strapi',
         s3Options: {
           region: env('AWS_REGION'),
           params: {
