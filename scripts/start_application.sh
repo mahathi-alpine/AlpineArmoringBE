@@ -19,6 +19,9 @@ else
     exit 1
 fi
 
+# Remove previous deployments from pm2
+su - ubuntu -c 'pm2 delete all'
+
 su - ubuntu -c 'ln -s "$(which node)" /usr/bin/node && ln -s "$(which npm)" /usr/bin/npm'
 
 # Create logging directory
