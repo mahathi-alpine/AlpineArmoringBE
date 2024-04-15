@@ -8,52 +8,44 @@ const populate = {
   beforeAfterSlider:{
     populate: {
       before: {
-        populate: true,
-        fields: ['url', 'alternativeText']
+        populate: true
       },    
       after: {
-        populate: true,
-        fields: ['url', 'alternativeText']
+        populate: true
       }
     }
   },
   dimensions1:{
-    populate: true,
-    fields: ['url', 'alternativeText', 'width', 'height']
+    populate: true
   },
   dimensions2:{
-    populate: true,
-    fields: ['url', 'alternativeText', 'width', 'height']
+    populate: true
   },
   armoringFeatures:{
     populate: {
       image: {
-        populate: true,
-        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+        populate: true
       }
     },
   },
   conversionAccessories:{
     populate: {
       image: {
-        populate: true,
-        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+        populate: true
       }
     },
   },
   otherOptions:{
     populate: {
       image: {
-        populate: true,
-        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+        populate: true
       }
     },
   },
   communications:{
     populate: {
       image: {
-        populate: true,
-        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+        populate: true
       }
     },
   },
@@ -62,12 +54,10 @@ const populate = {
     fields: ['title']
   },
   gallery:{
-    populate: true,
-    fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+    populate: true
   },
   featuredImage:{
-    populate: true,
-    fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+    populate: true
   },
   pdf:{
     populate: true,

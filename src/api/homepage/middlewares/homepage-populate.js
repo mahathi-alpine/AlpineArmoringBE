@@ -21,8 +21,7 @@ const populate = {
     populate: true
   },
   allVehiclesImage:{
-    populate: true,
-    fields: ['url', 'alternativeText']
+    populate: true
   },
   hpMiddleText:{
     populate: true
@@ -30,8 +29,7 @@ const populate = {
   tabSection:{
     populate: {
       image: {
-        populate: true,
-        fields: ['url', 'alternativeText', 'mime']
+        populate: true
       }
     }
   },
@@ -46,8 +44,7 @@ const populate = {
   blogs:{
     populate: {
       thumbnail: {
-        populate: true,
-        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+        populate: true
       },    
       categories: {
         populate: true
@@ -55,8 +52,7 @@ const populate = {
     }
   },
   industryPartners:{
-    populate: true,
-    fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+    populate: true
   }
 };
 

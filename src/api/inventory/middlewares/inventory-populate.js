@@ -8,22 +8,19 @@ const populate = {
   specifications:{
     populate: {
       image: {
-        populate: true,
-        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+        populate: true
       }
     },
   },
   accessories:{
     populate: {
       image: {
-        populate: true,
-        fields: ['url', 'alternativeText', 'width', 'height', 'formats']
+        populate: true
       }
     },
   },
   gallery:{
-    populate: true,
-    fields: ['url', 'alternativeText', 'height', 'width', 'formats']
+    populate: true
   },
   video:{
     populate: true,
@@ -34,8 +31,7 @@ const populate = {
     fields: ['title', 'slug']
   },
   featuredImage:{
-    populate: true,
-    fields: ['url', 'alternativeText', 'height', 'width', 'formats']
+    populate: true
   },
   OEMWindowSticker:{
     populate: true,
