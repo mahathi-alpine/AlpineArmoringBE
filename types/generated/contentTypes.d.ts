@@ -843,8 +843,6 @@ export interface ApiAboutAbout extends Schema.SingleType {
     boxes: Attribute.Component<'slices.tab-section', true>;
     bottomImage: Attribute.Media;
     quote: Attribute.Text;
-    Test: Attribute.String;
-    Test2: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

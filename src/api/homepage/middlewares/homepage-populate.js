@@ -36,8 +36,7 @@ const populate = {
   ballistingTestingsMedia:{
     populate: {
       image: {
-        populate: true,
-        fields: ['formats', 'url', 'mime', 'alternativeText', 'width', 'height', 'previewUrl']
+        populate: true
       }
     }
   },
