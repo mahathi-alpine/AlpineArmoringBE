@@ -60,7 +60,8 @@ const populate = {
     populate: true
   },
   pdf:{
-    populate: true
+    populate: true,
+    fields: ['url', 'isUrlSigned', 'provider', 'createdAt', 'ext', 'hash',  'mime', 'name', 'updatedAt', 'provider_metadata']
   },
   videoUpload:{
     populate: true,
