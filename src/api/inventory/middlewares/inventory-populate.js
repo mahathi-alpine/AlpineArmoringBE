@@ -34,12 +34,10 @@ const populate = {
     populate: true
   },
   OEMWindowSticker:{
-    populate: true,
-    fields: ['url']
+    populate: true
   },
   OEMArmoringSpecs:{
-    populate: true,
-    fields: ['url']
+    populate: true
   }
 };
 

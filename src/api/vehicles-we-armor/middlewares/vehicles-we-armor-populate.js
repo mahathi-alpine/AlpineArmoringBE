@@ -60,8 +60,7 @@ const populate = {
     populate: true
   },
   pdf:{
-    populate: true,
-    fields: ['url']
+    populate: true
   },
   videoUpload:{
     populate: true,
