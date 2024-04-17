@@ -19,9 +19,6 @@ else
     exit 1
 fi
 
-# Remove previous deployments from pm2
-su - ubuntu -c 'pm2 delete all'
-
 su - ubuntu -c 'ln -s "$(which node)" /usr/bin/node && ln -s "$(which npm)" /usr/bin/npm'
 
 # Create logging directory
@@ -30,5 +27,5 @@ mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log && chmod 777 /h
 # Update permissions on project directory
 chmod -R 777 /var/www/html/alpine
 
-# Install project dependencies and build the application
-su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && yarn install && yarn build && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
+# Install project dependencies, remove previous deployments from pm2, and build the application
+su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && yarn install && yarn build && pm2 delete all && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
