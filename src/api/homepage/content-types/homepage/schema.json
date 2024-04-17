@@ -67,7 +67,8 @@
       "type": "text"
     },
     "disableCoolVideos": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   }
 }
