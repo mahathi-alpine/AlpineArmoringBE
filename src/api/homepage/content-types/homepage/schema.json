@@ -65,10 +65,6 @@
     },
     "topBannerDescription": {
       "type": "text"
-    },
-    "disableCoolVideos": {
-      "type": "boolean",
-      "default": false
     }
   }
 }

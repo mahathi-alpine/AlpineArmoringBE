@@ -1267,7 +1267,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     seo: Attribute.Component<'shared.seo'>;
     topBannerTitle: Attribute.Text;
     topBannerDescription: Attribute.Text;
-    disableCoolVideos: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
