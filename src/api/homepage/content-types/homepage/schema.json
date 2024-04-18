@@ -66,8 +66,8 @@
     "topBannerDescription": {
       "type": "text"
     },
-    "TEst": {
-      "type": "string"
+    "disableCoolVideos": {
+      "type": "boolean"
     }
   }
 }

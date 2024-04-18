@@ -28,6 +28,8 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'aws-s3',
       providerOptions: {
+        baseUrl: env('AWS_CLOUDFRONT_URL'),
+        rootPath: '/',
         s3Options: {
           region: env('AWS_REGION'),
           // credentials: {
