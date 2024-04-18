@@ -32,10 +32,10 @@ module.exports = ({ env }) => ({
         // rootPath: '/',
         s3Options: {
           region: env('AWS_REGION'),
-          credentials: {
-            accessKeyId: env('AWS_ACCESS_KEY_ID'),
-            secretAccessKey: env('AWS_ACCESS_SECRET')
-          },
+          // credentials: {
+          //   accessKeyId: env('AWS_ACCESS_KEY_ID'),
+          //   secretAccessKey: env('AWS_ACCESS_SECRET')
+          // },
           params: {
             ACL: env('AWS_ACL', 'private'),
             signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
