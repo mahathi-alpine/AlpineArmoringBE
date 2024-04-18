@@ -36,8 +36,9 @@ module.exports = ({ env }) => ({
           signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
           Bucket: env('AWS_BUCKET'),
         },
-        cdnUrl: env('AWS_CLOUDFRONT_URL')
-      },
+        baseUrl: env('AWS_CLOUDFRONT_URL'),
+        cdnUrl: env('AWS_CLOUDFRONT_URL'),
+        // rootPath: env('CDN_ROOT_PATH'),
       breakpoints: {
         xlarge: 2200,
         large: 1300,
