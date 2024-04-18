@@ -2938,10 +2938,10 @@ available-typed-arrays@^1.0.7:
   dependencies:
     possible-typed-array-names "^1.0.0"
 
-aws-sdk@^2.713.0:
-  version "2.1601.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1601.0.tgz#9b5290b3a2ae38d3ce38b017d79b12925ca0eac4"
-  integrity sha512-znwVdKs3g0j1cAFfi+PGPSmBxXjiekJXp1nnOUq4rxXYvN7av8gxptXaQz+vqB4uhNFsD+OXNQh+6bd9eQxZmw==
+aws-sdk@2.1292.0:
+  version "2.1292.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1292.0.tgz#bff92d794b8bbb71628c2f7b9d799c34ef2f27b4"
+  integrity sha512-GqN75aYmaZrirMCJI5CwvYW/bQRyBs59t/tDYBuwb9RMppL8vv9cEwGu3H74yxeoz89LyrbQtoOB8ZgHxNDNmA==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -2952,7 +2952,7 @@ aws-sdk@^2.713.0:
     url "0.10.3"
     util "^0.12.4"
     uuid "8.0.0"
-    xml2js "0.6.2"
+    xml2js "0.4.19"
 
 aws-sign2@~0.7.0:
   version "0.7.0"
@@ -9414,13 +9414,12 @@ strapi-plugin-sitemap@^3.0.8:
     sitemap "^7.1.0"
     xml2js "^0.5.0"
 
-strapi-provider-upload-aws-s3-cloudfront@^3.6.4:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/strapi-provider-upload-aws-s3-cloudfront/-/strapi-provider-upload-aws-s3-cloudfront-3.6.4.tgz#f727bb5cf9fc81b5950d5c917b46bff097717491"
-  integrity sha512-LFcvI+yZj6dWROUfHufiHqRFbAd3HN63y7OEXZvDUBlxhuuAp9GITxjgIF1jxCm7U4OmpAF6qXLQLtTXADNqyQ==
+strapi-provider-upload-aws-s3-plus-cdn@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/strapi-provider-upload-aws-s3-plus-cdn/-/strapi-provider-upload-aws-s3-plus-cdn-4.0.0.tgz#4405a7ac339cf7920f95178129e5f2c6c0c5e3f7"
+  integrity sha512-26sCTkROX7/Elm467RdJbyKCSYLROZPN5Ylu2XKUcl1D6mKffMJxwarHtmJeL7LvA5M+XB/zWI35Bab7A8Tlfg==
   dependencies:
-    aws-sdk "^2.713.0"
-    lodash "^4.17.19"
+    aws-sdk "2.1292.0"
 
 stream-chain@2.2.5, stream-chain@^2.2.5:
   version "2.2.5"
@@ -10443,13 +10442,13 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xml2js@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.6.2.tgz#dd0b630083aa09c161e25a4d0901e2b2a929b499"
-  integrity sha512-T4rieHaC1EXcES0Kxxj4JWgaUQHDk+qwHcYOCFHfiwKz7tOVPLq7Hjq9dM1WCMhylqMEfP7hMcOIChvotiZegA==
+xml2js@0.4.19:
+  version "0.4.19"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.19.tgz#686c20f213209e94abf0d1bcf1efaa291c7827a7"
+  integrity sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==
   dependencies:
     sax ">=0.6.0"
-    xmlbuilder "~11.0.0"
+    xmlbuilder "~9.0.1"
 
 xml2js@^0.4.19:
   version "0.4.23"
@@ -10471,6 +10470,11 @@ xmlbuilder@~11.0.0:
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
   integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
+
+xmlbuilder@~9.0.1:
+  version "9.0.7"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
+  integrity sha512-7YXTQc3P2l9+0rjaUbLwMKRhtmwg1M1eDf6nag7urC7pIPYLD9W/jmzQ4ptRSUbodw5S0jfoGTflLemQibSpeQ==
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"
