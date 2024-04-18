@@ -26,22 +26,31 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
-      provider: 'aws-s3',
+      provider: 'aws-s3-cloudfront',
       providerOptions: {
-        baseUrl: env('AWS_CLOUDFRONT_URL'),
-        s3Options: {
-          region: env('AWS_REGION'),
-          // credentials: {
-          //   accessKeyId: env('AWS_ACCESS_KEY_ID'),
-          //   secretAccessKey: env('AWS_ACCESS_SECRET')
-          // },
-          params: {
-            ACL: env('AWS_ACL', 'private'),
-            signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
-            Bucket: env('AWS_BUCKET'),
-          },
+        // accessKeyId: env('AWS_ACCESS_KEY_ID'),
+        // secretAccessKey: env('AWS_ACCESS_SECRET'),
+        region: env('AWS_REGION'),
+        params: {
+          Bucket: env('AWS_BUCKET'),
+          // CacheControl: 'public,max-age=691200,s-maxage=31536000,immutable',
         },
+        cloudfrontURL: env('AWS_CLOUDFRONT_URL'),
       },
+      // providerOptions: {
+      //   s3Options: {
+      //     region: env('AWS_REGION'),
+      //     credentials: {
+      //       accessKeyId: env('AWS_ACCESS_KEY_ID'),
+      //       secretAccessKey: env('AWS_ACCESS_SECRET')
+      //     },
+      //     params: {
+      //       ACL: env('AWS_ACL', 'private'),
+      //       signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
+      //       Bucket: env('AWS_BUCKET'),
+      //     },
+      //   },
+      // },
       breakpoints: {
         xlarge: 2200,
         large: 1300,

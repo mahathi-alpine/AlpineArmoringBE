@@ -29,6 +29,7 @@
     "strapi-plugin-populate-deep": "^3.0.1",
     "strapi-plugin-redirects": "^0.0.6",
     "strapi-plugin-sitemap": "^3.0.8",
+    "strapi-provider-upload-aws-s3-cloudfront": "^3.6.4",
     "styled-components": "5.3.3"
   },
   "author": {
