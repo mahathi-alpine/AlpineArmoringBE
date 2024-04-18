@@ -1267,6 +1267,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     seo: Attribute.Component<'shared.seo'>;
     topBannerTitle: Attribute.Text;
     topBannerDescription: Attribute.Text;
+    TEst: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

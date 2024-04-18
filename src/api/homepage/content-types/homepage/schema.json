@@ -65,6 +65,9 @@
     },
     "topBannerDescription": {
       "type": "text"
+    },
+    "TEst": {
+      "type": "string"
     }
   }
 }
