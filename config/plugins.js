@@ -39,6 +39,7 @@ module.exports = ({ env }) => ({
         baseUrl: env('AWS_CLOUDFRONT_URL'),
         cdnUrl: env('AWS_CLOUDFRONT_URL'),
         // rootPath: env('CDN_ROOT_PATH'),
+      },
       breakpoints: {
         xlarge: 2200,
         large: 1300,
