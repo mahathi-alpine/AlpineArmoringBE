@@ -17,6 +17,9 @@ const populate = {
       },
     }
   },
+  bannerVideo:{
+    populate: true
+  },
   quote:{
     populate: true
   },

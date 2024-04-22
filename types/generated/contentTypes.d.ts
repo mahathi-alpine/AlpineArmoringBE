@@ -1285,6 +1285,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     topBannerTitle: Attribute.Text;
     topBannerDescription: Attribute.Text;
     disableCoolVideos: Attribute.Boolean;
+    bannerVideo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

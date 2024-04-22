@@ -68,6 +68,13 @@
     },
     "disableCoolVideos": {
       "type": "boolean"
+    },
+    "bannerVideo": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
