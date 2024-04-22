@@ -4,7 +4,19 @@
  * `vehicles-we-armor-populate` middleware
  */
 
-const populate = {  
+const populate = { 
+  seo:{
+    metaImage: {
+      populate: true,
+      fields: ['url']
+    },
+    metaSocial: {
+      image: {
+        populate: true,
+        fields: ['url']
+      },
+    }
+  }, 
   beforeAfterSlider:{
     populate: {
       before: {

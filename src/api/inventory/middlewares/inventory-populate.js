@@ -5,6 +5,18 @@
  */
 
 const populate = {
+  seo:{
+    metaImage: {
+      populate: true,
+      fields: ['url']
+    },
+    metaSocial: {
+      image: {
+        populate: true,
+        fields: ['url']
+      },
+    }
+  },
   specifications:{
     populate: {
       image: {
