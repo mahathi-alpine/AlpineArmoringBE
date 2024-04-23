@@ -89,15 +89,8 @@
         "videos"
       ]
     },
-    "section2Heading": {
-      "type": "component",
-      "repeatable": false,
-      "component": "slices.text-filling"
-    },
     "section3Heading": {
-      "type": "component",
-      "repeatable": false,
-      "component": "slices.text-filling"
+      "type": "richtext"
     },
     "seo": {
       "type": "component",
@@ -108,6 +101,15 @@
       "type": "text"
     },
     "section1Heading": {
+      "type": "text"
+    },
+    "section2Title": {
+      "type": "text"
+    },
+    "section2Text3": {
+      "type": "richtext"
+    },
+    "section3Title": {
       "type": "text"
     }
   }

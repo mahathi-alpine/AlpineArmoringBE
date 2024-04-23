@@ -1739,11 +1739,13 @@ export interface ApiManufacturingManufacturing extends Schema.SingleType {
     section3Gallery: Attribute.Media;
     section3Text2: Attribute.RichText;
     section3Image: Attribute.Media;
-    section2Heading: Attribute.Component<'slices.text-filling'>;
-    section3Heading: Attribute.Component<'slices.text-filling'>;
+    section3Heading: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
     section1Title: Attribute.Text;
     section1Heading: Attribute.Text;
+    section2Title: Attribute.Text;
+    section2Text3: Attribute.RichText;
+    section3Title: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
