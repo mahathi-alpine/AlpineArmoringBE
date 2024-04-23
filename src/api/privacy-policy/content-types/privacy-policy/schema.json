@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "banner": {
-      "type": "component",
-      "repeatable": false,
-      "component": "slices.banner"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,

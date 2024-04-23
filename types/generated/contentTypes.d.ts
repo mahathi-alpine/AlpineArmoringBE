@@ -1851,7 +1851,6 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
     draftAndPublish: false;
   };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
     text: Attribute.RichText;
     createdAt: Attribute.DateTime;
@@ -1996,7 +1995,6 @@ export interface ApiTradeShowTradeShow extends Schema.CollectionType {
     >;
     description: Attribute.Text;
     gallery: Attribute.Media;
-    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
