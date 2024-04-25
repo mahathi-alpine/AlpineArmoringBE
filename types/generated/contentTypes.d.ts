@@ -1370,7 +1370,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }> &
-      Attribute.DefaultTo<20>;
+      Attribute.DefaultTo<50>;
     gallery: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {

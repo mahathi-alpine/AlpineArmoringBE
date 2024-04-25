@@ -84,7 +84,7 @@
         }
       },
       "type": "integer",
-      "default": 20
+      "default": 50
     },
     "gallery": {
       "type": "media",
