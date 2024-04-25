@@ -1369,7 +1369,8 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
-      }>;
+      }> &
+      Attribute.DefaultTo<20>;
     gallery: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
