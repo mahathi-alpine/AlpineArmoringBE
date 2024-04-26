@@ -17,6 +17,9 @@
     },
     "text": {
       "type": "richtext"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

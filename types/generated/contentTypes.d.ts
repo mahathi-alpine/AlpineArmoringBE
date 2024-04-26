@@ -1227,6 +1227,7 @@ export interface ApiFaQFaQ extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     text: Attribute.RichText;
+    order: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::fa-q.fa-q', 'oneToOne', 'admin::user'> &
