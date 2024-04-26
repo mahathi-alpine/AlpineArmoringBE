@@ -6,4 +6,13 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::list-inventory.list-inventory');
+module.exports = createCoreRouter('api::list-inventory.list-inventory', {
+    config: {
+        find: {
+            middlewares: ['api::list-inventory.list-inventory-populate']
+        }, findOne: {
+            middlewares: ['api::list-inventory.list-inventory-populate']
+        }
+    }
+});
+
