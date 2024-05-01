@@ -1213,6 +1213,45 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
   };
 }
 
+export interface ApiEmailEmail extends Schema.CollectionType {
+  collectionName: 'emails';
+  info: {
+    singularName: 'email';
+    pluralName: 'emails';
+    displayName: 'Emails';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    email: Attribute.Email;
+    name: Attribute.Text;
+    phoneNumber: Attribute.String;
+    mobileNumber: Attribute.String;
+    company: Attribute.String;
+    inquiry: Attribute.String;
+    preferredContact: Attribute.String;
+    country: Attribute.String;
+    message: Attribute.Text;
+    date: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email.email',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email.email',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaQFaQ extends Schema.CollectionType {
   collectionName: 'fa_qs';
   info: {
@@ -2253,6 +2292,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::design-and-engineering.design-and-engineering': ApiDesignAndEngineeringDesignAndEngineering;
+      'api::email.email': ApiEmailEmail;
       'api::fa-q.fa-q': ApiFaQFaQ;
       'api::faq.faq': ApiFaqFaq;
       'api::homepage.homepage': ApiHomepageHomepage;

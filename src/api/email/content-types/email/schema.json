@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emails",
+  "info": {
+    "singularName": "email",
+    "pluralName": "emails",
+    "displayName": "Emails",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "name": {
+      "type": "text"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "mobileNumber": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "inquiry": {
+      "type": "string"
+    },
+    "preferredContact": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    },
+    "date": {
+      "type": "datetime"
+    }
+  }
+}
