@@ -70,11 +70,9 @@
       "type": "boolean"
     },
     "bannerVideo": {
-      "allowedTypes": [
-        "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.video"
     }
   }
 }

@@ -18,7 +18,14 @@ const populate = {
     }
   },
   bannerVideo:{
-    populate: true
+    populate: {
+      video_webm: {
+        populate: true
+      },    
+      video_mp4: {
+        populate: true
+      }
+    }
   },
   quote:{
     populate: true

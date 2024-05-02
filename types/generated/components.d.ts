@@ -104,6 +104,18 @@ export interface SlicesTextFilling extends Schema.Component {
   };
 }
 
+export interface SlicesVideo extends Schema.Component {
+  collectionName: 'components_slices_videos';
+  info: {
+    displayName: 'video';
+    icon: 'play';
+  };
+  attributes: {
+    video_webm: Attribute.Media;
+    video_mp4: Attribute.Media;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -113,6 +125,7 @@ declare module '@strapi/types' {
       'slices.before-after-slider': SlicesBeforeAfterSlider;
       'slices.tab-section': SlicesTabSection;
       'slices.text-filling': SlicesTextFilling;
+      'slices.video': SlicesVideo;
     }
   }
 }
