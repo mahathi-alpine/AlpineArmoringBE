@@ -20,6 +20,13 @@
     },
     "description": {
       "type": "text"
+    },
+    "mediaMP4": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

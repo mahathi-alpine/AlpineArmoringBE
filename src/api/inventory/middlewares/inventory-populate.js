@@ -36,7 +36,11 @@ const populate = {
   },
   video:{
     populate: true,
-    fields: ['url']
+    fields: ['url', 'mime']
+  },
+  videoMP4:{
+    populate: true,
+    fields: ['url', 'mime']
   },
   categories:{
     populate: true,

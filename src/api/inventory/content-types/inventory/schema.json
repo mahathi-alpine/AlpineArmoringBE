@@ -320,6 +320,18 @@
           "localized": false
         }
       }
+    },
+    "videoMP4": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

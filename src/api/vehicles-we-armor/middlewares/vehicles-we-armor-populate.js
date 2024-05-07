@@ -77,7 +77,11 @@ const populate = {
   },
   videoUpload:{
     populate: true,
-    fields: ['url']
+    fields: ['url', 'mime']
+  },
+  videoMP4:{
+    populate: true,
+    fields: ['url', 'mime']
   },
 }
 
