@@ -144,11 +144,18 @@
       "target": "api::specification.specification"
     },
     "videoMP4": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "dimensionsHeight": {
+      "type": "integer"
+    },
+    "dimensionsWidth": {
+      "type": "integer"
     }
   }
 }

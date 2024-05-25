@@ -41,6 +41,9 @@
     },
     "date": {
       "type": "datetime"
+    },
+    "route": {
+      "type": "string"
     }
   }
 }

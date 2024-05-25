@@ -1235,6 +1235,7 @@ export interface ApiEmailEmail extends Schema.CollectionType {
     country: Attribute.String;
     message: Attribute.Text;
     date: Attribute.DateTime;
+    route: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2154,6 +2155,8 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'api::specification.specification'
     >;
     videoMP4: Attribute.Media;
+    dimensionsHeight: Attribute.Integer;
+    dimensionsWidth: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
