@@ -269,7 +269,9 @@
       "type": "enumeration",
       "enum": [
         "sold",
-        "coming soon"
+        "coming soon",
+        "demo",
+        "export only"
       ]
     },
     "ownPage": {
