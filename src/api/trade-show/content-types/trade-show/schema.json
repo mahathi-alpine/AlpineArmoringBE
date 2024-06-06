@@ -38,6 +38,9 @@
     },
     "date": {
       "type": "date"
+    },
+    "location": {
+      "type": "string"
     }
   }
 }
