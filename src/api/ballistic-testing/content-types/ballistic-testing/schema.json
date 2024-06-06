@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "ballistic_testings",
+  "info": {
+    "singularName": "ballistic-testing",
+    "pluralName": "ballistic-testings",
+    "displayName": "Ballistic Testing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.banner"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.seo"
+    }
+  }
+}
