@@ -41,6 +41,14 @@
     },
     "quote": {
       "type": "text"
+    },
+    "timeline": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
