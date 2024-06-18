@@ -19,7 +19,7 @@
       "type": "enumeration",
       "enum": [
         "International Trade Shows",
-        "USA Armored Trade Shows"
+        "USA Trade Shows"
       ]
     },
     "description": {
