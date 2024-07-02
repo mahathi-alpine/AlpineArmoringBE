@@ -82,6 +82,22 @@
         }
       },
       "type": "richtext"
+    },
+    "region": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "North America",
+        "South America",
+        "Europe",
+        "Middle East",
+        "Africa",
+        "Asia"
+      ]
     }
   }
 }
