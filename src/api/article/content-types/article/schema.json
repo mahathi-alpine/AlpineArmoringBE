@@ -93,10 +93,24 @@
       "enum": [
         "North America",
         "South America",
+        "Central America",
         "Europe",
         "Middle East",
         "Africa",
-        "Asia"
+        "Asia",
+        "Oceania"
+      ]
+    },
+    "type": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "country",
+        "state"
       ]
     }
   }

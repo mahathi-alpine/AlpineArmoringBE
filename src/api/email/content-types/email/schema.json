@@ -47,6 +47,9 @@
     },
     "state": {
       "type": "string"
+    },
+    "hear": {
+      "type": "string"
     }
   }
 }

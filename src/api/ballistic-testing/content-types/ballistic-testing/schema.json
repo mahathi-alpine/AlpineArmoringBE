@@ -4,7 +4,8 @@
   "info": {
     "singularName": "ballistic-testing",
     "pluralName": "ballistic-testings",
-    "displayName": "Ballistic Testing"
+    "displayName": "Ballistic Testing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,13 +14,117 @@
   "attributes": {
     "banner": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "slices.banner"
     },
     "seo": {
       "type": "component",
       "repeatable": true,
       "component": "shared.seo"
+    },
+    "section1Title": {
+      "type": "text"
+    },
+    "section2Title": {
+      "type": "text"
+    },
+    "section3Title": {
+      "type": "text"
+    },
+    "section1Heading": {
+      "type": "text"
+    },
+    "section2Heading": {
+      "type": "text"
+    },
+    "section3Heading": {
+      "type": "text"
+    },
+    "section4Title": {
+      "type": "text"
+    },
+    "section4Heading": {
+      "type": "text"
+    },
+    "mainTitle": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "richtext"
+    },
+    "section1Text": {
+      "type": "richtext"
+    },
+    "section2Text": {
+      "type": "richtext"
+    },
+    "section3Text": {
+      "type": "richtext"
+    },
+    "section4Text": {
+      "type": "richtext"
+    },
+    "section4Gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section4Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section3Video": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video.video"
+    },
+    "section2Armor": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
+    },
+    "section1Gallery1": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "section1Gallery2": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "titleGallery1": {
+      "type": "string"
+    },
+    "titleGallery2": {
+      "type": "string"
+    },
+    "section4Text2": {
+      "type": "richtext"
+    },
+    "section4Image2": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
     }
   }
 }
