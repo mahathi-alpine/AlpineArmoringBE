@@ -110,7 +110,8 @@
       "type": "enumeration",
       "enum": [
         "country",
-        "state"
+        "state",
+        "city"
       ]
     }
   }
