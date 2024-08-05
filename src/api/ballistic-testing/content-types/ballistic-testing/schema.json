@@ -165,6 +165,12 @@
         "images",
         "videos"
       ]
+    },
+    "linkURL1": {
+      "type": "string"
+    },
+    "linkURL2": {
+      "type": "string"
     }
   }
 }
