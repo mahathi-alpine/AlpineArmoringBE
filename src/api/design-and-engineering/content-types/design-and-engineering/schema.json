@@ -118,12 +118,49 @@
       "component": "shared.seo"
     },
     "section1Image2": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "section6Title": {
+      "type": "text"
+    },
+    "section6Heading": {
+      "type": "text"
+    },
+    "section6Text": {
+      "type": "richtext"
+    },
+    "section6Gallery": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "section6Image": {
       "allowedTypes": [
         "images",
         "videos"
       ],
       "type": "media",
       "multiple": false
+    },
+    "section6Image2": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "section6Text2": {
+      "type": "richtext"
     }
   }
 }
