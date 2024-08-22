@@ -270,9 +270,8 @@
       "enum": [
         "sold",
         "coming soon",
-        "demo",
-        "export only",
-        "rental"
+        "pre-owned",
+        "export only"
       ]
     },
     "ownPage": {
@@ -338,12 +337,13 @@
       }
     },
     "gallery2": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
       ],
-      "type": "media",
-      "multiple": true,
       "pluginOptions": {
         "i18n": {
           "localized": false
