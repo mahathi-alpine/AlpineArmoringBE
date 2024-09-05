@@ -848,6 +848,10 @@ export interface ApiAboutAbout extends Schema.SingleType {
     boxes: Attribute.Component<'slices.tab-section', true>;
     bottomImage: Attribute.Media;
     quote: Attribute.Text;
+    timeline: Attribute.Media;
+    certificate1: Attribute.Media;
+    certificate2: Attribute.Media;
+    section1Text: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -897,12 +901,13 @@ export interface ApiAccessoryAccessory extends Schema.CollectionType {
   };
 }
 
-export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
-  collectionName: 'ballistic_charts';
+export interface ApiAllDownloadAllDownload extends Schema.SingleType {
+  collectionName: 'all_downloads';
   info: {
-    singularName: 'ballistic-chart';
-    pluralName: 'ballistic-charts';
-    displayName: 'Ballistic Chart';
+    singularName: 'all-download';
+    pluralName: 'all-downloads';
+    displayName: 'AllDownloads';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -910,6 +915,146 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
+    vehiclePDFs: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::all-download.all-download',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::all-download.all-download',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::article.article', 'title'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    excerpt: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    region: Attribute.Enumeration<
+      [
+        'North America',
+        'South America',
+        'Central America',
+        'Europe',
+        'Middle East',
+        'Africa',
+        'Asia',
+        'Oceania'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Attribute.Enumeration<['country', 'state', 'city']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::article.article',
+      'oneToMany',
+      'api::article.article'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
+  collectionName: 'ballistic_charts';
+  info: {
+    singularName: 'ballistic-chart';
+    pluralName: 'ballistic-charts';
+    displayName: 'Ballistic Chart';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    chart: Attribute.Media;
+    BallisticStandards: Attribute.Component<'slices.ballistic-standard', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -920,6 +1065,72 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::ballistic-chart.ballistic-chart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBallisticTestingBallisticTesting extends Schema.SingleType {
+  collectionName: 'ballistic_testings';
+  info: {
+    singularName: 'ballistic-testing';
+    pluralName: 'ballistic-testings';
+    displayName: 'Ballistic Testing';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo', true>;
+    section1Title: Attribute.Text;
+    section2Title: Attribute.Text;
+    section3Title: Attribute.Text;
+    section1Heading: Attribute.Text;
+    section2Heading: Attribute.Text;
+    section3Heading: Attribute.Text;
+    section4Title: Attribute.Text;
+    section4Heading: Attribute.Text;
+    mainTitle: Attribute.String;
+    heading: Attribute.RichText;
+    section1Text: Attribute.RichText;
+    section2Text: Attribute.RichText;
+    section3Text: Attribute.RichText;
+    section4Text: Attribute.RichText;
+    section4Gallery: Attribute.Media;
+    section4Image: Attribute.Media;
+    section3Video: Attribute.Relation<
+      'api::ballistic-testing.ballistic-testing',
+      'oneToMany',
+      'api::video.video'
+    >;
+    section2Armor: Attribute.Component<'slices.tab-section', true>;
+    section1Gallery1: Attribute.Media;
+    section1Gallery2: Attribute.Media;
+    titleGallery1: Attribute.String;
+    titleGallery2: Attribute.String;
+    section4Text2: Attribute.RichText;
+    section4Image2: Attribute.Media;
+    certificate1: Attribute.Media;
+    certificate2: Attribute.Media;
+    section1Gallery12: Attribute.Media;
+    section1Gallery22: Attribute.Media;
+    linkURL1: Attribute.String;
+    linkURL2: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ballistic-testing.ballistic-testing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ballistic-testing.ballistic-testing',
       'oneToOne',
       'admin::user'
     > &
@@ -1196,6 +1407,14 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
     section5Image: Attribute.Media;
     section5Text: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
+    section1Image2: Attribute.Media;
+    section6Title: Attribute.Text;
+    section6Heading: Attribute.Text;
+    section6Text: Attribute.RichText;
+    section6Gallery: Attribute.Media;
+    section6Image: Attribute.Media;
+    section6Image2: Attribute.Media;
+    section6Text2: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1236,6 +1455,8 @@ export interface ApiEmailEmail extends Schema.CollectionType {
     message: Attribute.Text;
     date: Attribute.DateTime;
     route: Attribute.String;
+    state: Attribute.String;
+    hear: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1536,7 +1757,9 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    flag: Attribute.Enumeration<['sold', 'coming soon']> &
+    flag: Attribute.Enumeration<
+      ['sold', 'coming soon', 'pre-owned', 'export only']
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -1578,6 +1801,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    gallery2: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1599,6 +1828,37 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'api::inventory.inventory'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiLandingLanding extends Schema.SingleType {
+  collectionName: 'landings';
+  info: {
+    singularName: 'landing';
+    pluralName: 'landings';
+    displayName: 'Landing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::landing.landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::landing.landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -2039,10 +2299,12 @@ export interface ApiTradeShowTradeShow extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     category: Attribute.Enumeration<
-      ['International Trade Shows', 'USA Armored Trade Shows']
+      ['International Trade Shows', 'USA Trade Shows']
     >;
     description: Attribute.Text;
     gallery: Attribute.Media;
+    date: Attribute.Date;
+    location: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2295,7 +2557,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::accessory.accessory': ApiAccessoryAccessory;
+      'api::all-download.all-download': ApiAllDownloadAllDownload;
+      'api::article.article': ApiArticleArticle;
       'api::ballistic-chart.ballistic-chart': ApiBallisticChartBallisticChart;
+      'api::ballistic-testing.ballistic-testing': ApiBallisticTestingBallisticTesting;
       'api::become-a-dealer.become-a-dealer': ApiBecomeADealerBecomeADealer;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
@@ -2307,6 +2572,7 @@ declare module '@strapi/types' {
       'api::faq.faq': ApiFaqFaq;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
+      'api::landing.landing': ApiLandingLanding;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::make.make': ApiMakeMake;

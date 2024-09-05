@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_slices_ballistic_standards",
+  "info": {
+    "displayName": "Ballistic Standard"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "text2": {
+      "type": "string"
+    },
+    "pdf": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

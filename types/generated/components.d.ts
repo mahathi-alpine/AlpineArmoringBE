@@ -52,6 +52,19 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
+export interface SlicesBallisticStandard extends Schema.Component {
+  collectionName: 'components_slices_ballistic_standards';
+  info: {
+    displayName: 'Ballistic Standard';
+  };
+  attributes: {
+    label: Attribute.String;
+    name: Attribute.String;
+    text2: Attribute.String;
+    pdf: Attribute.Media;
+  };
+}
+
 export interface SlicesBanner extends Schema.Component {
   collectionName: 'components_slices_banners';
   info: {
@@ -122,6 +135,7 @@ declare module '@strapi/types' {
     export interface Components {
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
+      'slices.ballistic-standard': SlicesBallisticStandard;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
       'slices.tab-section': SlicesTabSection;
