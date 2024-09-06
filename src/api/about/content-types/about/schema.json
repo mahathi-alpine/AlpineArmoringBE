@@ -75,6 +75,11 @@
     },
     "section1Text": {
       "type": "richtext"
+    },
+    "timeline1": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.timeline"
     }
   }
 }
