@@ -35,6 +35,13 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "ammunitionChartPDF": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

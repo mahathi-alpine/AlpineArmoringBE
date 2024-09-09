@@ -1056,6 +1056,7 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
     seo: Attribute.Component<'shared.seo'>;
     BallisticStandards: Attribute.Component<'slices.ballistic-standard', true>;
     bulletPoster: Attribute.Media;
+    ammunitionChartPDF: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
