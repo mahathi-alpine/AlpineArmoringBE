@@ -916,7 +916,9 @@ export interface ApiAllDownloadAllDownload extends Schema.SingleType {
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
-    vehiclePDFs: Attribute.Media;
+    OEMBrochures2024: Attribute.Media;
+    PDFDocuments: Attribute.Media;
+    ArmoredVehicles: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

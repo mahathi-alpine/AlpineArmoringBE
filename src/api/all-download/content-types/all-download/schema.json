@@ -22,7 +22,7 @@
       "repeatable": false,
       "component": "shared.seo"
     },
-    "vehiclePDFs": {
+    "OEMBrochures2024": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -32,6 +32,20 @@
         "videos",
         "audios"
       ]
+    },
+    "PDFDocuments": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "ArmoredVehicles": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
