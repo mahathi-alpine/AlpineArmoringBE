@@ -852,6 +852,7 @@ export interface ApiAboutAbout extends Schema.SingleType {
     certificate1: Attribute.Media;
     certificate2: Attribute.Media;
     section1Text: Attribute.RichText;
+    timeline1: Attribute.Component<'shared.timeline', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1053,8 +1054,8 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
-    chart: Attribute.Media;
     BallisticStandards: Attribute.Component<'slices.ballistic-standard', true>;
+    bulletPoster: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

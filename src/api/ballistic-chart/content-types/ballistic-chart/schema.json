@@ -22,20 +22,19 @@
       "repeatable": false,
       "component": "shared.seo"
     },
-    "chart": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
     "BallisticStandards": {
       "displayName": "Ballistic Standard",
       "type": "component",
       "repeatable": true,
       "component": "slices.ballistic-standard"
+    },
+    "bulletPoster": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

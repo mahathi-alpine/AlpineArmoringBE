@@ -52,6 +52,18 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
+export interface SharedTimeline extends Schema.Component {
+  collectionName: 'components_shared_timelines';
+  info: {
+    displayName: 'timeline';
+  };
+  attributes: {
+    year: Attribute.String;
+    image: Attribute.Media;
+    Caption: Attribute.Text;
+  };
+}
+
 export interface SlicesBallisticStandard extends Schema.Component {
   collectionName: 'components_slices_ballistic_standards';
   info: {
@@ -135,6 +147,7 @@ declare module '@strapi/types' {
     export interface Components {
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
+      'shared.timeline': SharedTimeline;
       'slices.ballistic-standard': SlicesBallisticStandard;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
