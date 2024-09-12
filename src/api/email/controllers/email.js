@@ -12,7 +12,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     try {
       await strapi.plugins['email'].services.email.send({
         to: 'sales@alpineco.com', 
-        subject: 'New Contact Form Submission',
+        subject: `Alpine Armoring - Inquiry about ${inquiry} from ${name} (${state} ${country})`,
         text: `
           Name: ${name}
           Email: ${email}
@@ -24,8 +24,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
           How Did You Hear About Us? ${hear}   
           Country: ${country}
           State: ${state}
-          Message: ${message}
-          Route: ${route}
+          Comments: ${message}
+          Referrer page: https://www.alpineco.com/${route}
         `,
       });
       console.log('Email sent successfully');
