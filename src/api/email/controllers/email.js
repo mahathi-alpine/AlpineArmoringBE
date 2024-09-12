@@ -1,36 +1,38 @@
-// 'use strict';
-
-// /**
-//  * email controller
-//  */
-
-// const { createCoreController } = require('@strapi/strapi').factories;
-
-// module.exports = createCoreController('api::email.email');
-
 'use strict';
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::email.email', ({ strapi }) => ({
- async create(ctx) {
-    // Call the original create method to save the email data
-    const emailData = await strapi.service('api::email.email').create(ctx.request.body);
+  async create(ctx) {
+    const emailData = await super.create(ctx);
 
-    // Extract necessary data from the request body
-    const { email, name, message } = ctx.request.body;
-    console.log(email)
+    const { data } = ctx.request.body;
+    const { name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date } = data;
 
+    try {
+      await strapi.plugins['email'].services.email.send({
+        to: 'sales@alpineco.com', 
+        subject: 'New Contact Form Submission',
+        text: `
+          Name: ${name}
+          Email: ${email}
+          Mobile Number: ${mobileNumber}
+          Phone Number: ${phoneNumber}
+          Customer Type: ${company}          
+          Inquiry: ${inquiry}        
+          I Prefer To Be Contacted Via: ${preferredContact}
+          How Did You Hear About Us? ${hear}   
+          Country: ${country}
+          State: ${state}
+          Message: ${message}
+          Route: ${route}
+        `,
+      });
+      console.log('Email sent successfully');
+    } catch (err) {
+      console.error('Error sending email:', err);
+    }
 
-    // Send the email using the configured email provider
-    // await strapi.plugins['email'].services.email.send({
-    //   to: 'recipient@example.com', 
-    //   from: 'your-email@example.com', 
-    //   subject: 'New Contact Form Submission',
-    //   text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    // });
-
-    // Return the saved email data
-    ctx.send(emailData);
- },
+    return emailData;
+  },
 }));

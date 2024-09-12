@@ -52,13 +52,13 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'amazon-ses',
       providerOptions: {
-        // key: env('AWS_SES_KEY'),
-        // secret: env('AWS_SES_SECRET'),
-        // amazon: 'https://email.us-east-1.amazonaws.com',
+        key: env('AWS_ACCESS_KEY_ID'),
+        secret: env('AWS_ACCESS_SECRET'),
+        amazon: 'https://email.us-east-1.amazonaws.com'
       },
       settings: {
-        // defaultFrom: 'myemail@protonmail.com',
-        // defaultReplyTo: 'myemail@protonmail.com',
+        defaultFrom: 'sales@alpineco.com',
+        defaultReplyTo: 'sales@alpineco.com'
       },
     },
   },
