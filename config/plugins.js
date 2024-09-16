@@ -12,7 +12,7 @@ module.exports = ({ env }) => ({
     enabled: true,
   },
   'sitemap': {
-    enabled: false,
+    enabled: true,
     config: {
       cron: '0 0 0 * * *',
       xsl: true,
