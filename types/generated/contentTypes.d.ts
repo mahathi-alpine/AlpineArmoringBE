@@ -1488,6 +1488,7 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'oneToMany',
       'api::fa-q.fa-q'
     >;
+    mapImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

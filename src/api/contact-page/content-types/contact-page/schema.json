@@ -32,6 +32,13 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::fa-q.fa-q"
+    },
+    "mapImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
