@@ -92,6 +92,16 @@
         }
       },
       "type": "integer"
+    },
+    "videos": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.you-tube-video"
     }
   }
 }
