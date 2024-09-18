@@ -8,7 +8,10 @@ const populate = {
     populate: {
       media: {
         fields: ['url', 'mime', 'alternativeText', 'width', 'height', 'formats']
-      }
+      },
+      mediaMP4: {
+        fields: ['url', 'mime', 'width', 'height']
+      },
     },
   },  
   seo: {
