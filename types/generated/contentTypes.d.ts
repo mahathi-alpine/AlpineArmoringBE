@@ -2576,6 +2576,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'api::specification.specification'
     >;
     videoMP4: Attribute.Media;
+    videoURL: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

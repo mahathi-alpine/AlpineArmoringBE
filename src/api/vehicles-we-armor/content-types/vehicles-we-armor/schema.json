@@ -150,6 +150,9 @@
       "allowedTypes": [
         "videos"
       ]
+    },
+    "videoURL": {
+      "type": "string"
     }
   }
 }
