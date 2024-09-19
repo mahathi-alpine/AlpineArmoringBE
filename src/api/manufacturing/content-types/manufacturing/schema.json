@@ -100,9 +100,6 @@
     "section1Title": {
       "type": "text"
     },
-    "section1Heading": {
-      "type": "text"
-    },
     "section2Title": {
       "type": "text"
     },
@@ -111,6 +108,9 @@
     },
     "section3Title": {
       "type": "text"
+    },
+    "section1Heading": {
+      "type": "richtext"
     }
   }
 }

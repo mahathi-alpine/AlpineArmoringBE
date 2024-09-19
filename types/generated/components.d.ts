@@ -97,7 +97,6 @@ export interface SlicesBanner extends Schema.Component {
   attributes: {
     title: Attribute.Text;
     media: Attribute.Media;
-    description: Attribute.Text;
     mediaMP4: Attribute.Media;
   };
 }
@@ -121,12 +120,12 @@ export interface SlicesTabSection extends Schema.Component {
   };
   attributes: {
     title: Attribute.Text;
-    description: Attribute.Text;
     image: Attribute.Media;
     titleNav: Attribute.String;
     subtitle: Attribute.String;
     linkText: Attribute.Text;
     linkURL: Attribute.String;
+    description: Attribute.RichText;
   };
 }
 

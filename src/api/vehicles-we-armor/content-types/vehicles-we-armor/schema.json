@@ -150,12 +150,6 @@
       "allowedTypes": [
         "videos"
       ]
-    },
-    "dimensionsHeight": {
-      "type": "integer"
-    },
-    "dimensionsWidth": {
-      "type": "integer"
     }
   }
 }

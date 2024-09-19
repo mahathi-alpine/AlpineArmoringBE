@@ -18,15 +18,13 @@
         "videos"
       ]
     },
-    "description": {
-      "type": "text"
-    },
     "mediaMP4": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

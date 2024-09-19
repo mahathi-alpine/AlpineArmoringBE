@@ -31,56 +31,11 @@
     "section3Title": {
       "type": "text"
     },
-    "section1Heading": {
-      "type": "text"
-    },
-    "section2Heading": {
-      "type": "text"
-    },
-    "section3Heading": {
-      "type": "text"
-    },
-    "section4Title": {
-      "type": "text"
-    },
-    "section4Heading": {
-      "type": "text"
-    },
     "mainTitle": {
       "type": "string"
     },
     "heading": {
       "type": "richtext"
-    },
-    "section1Text": {
-      "type": "richtext"
-    },
-    "section2Text": {
-      "type": "richtext"
-    },
-    "section3Text": {
-      "type": "richtext"
-    },
-    "section4Text": {
-      "type": "richtext"
-    },
-    "section4Gallery": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
-    "section4Image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
     },
     "section3Video": {
       "type": "relation",
@@ -113,18 +68,6 @@
     },
     "titleGallery2": {
       "type": "string"
-    },
-    "section4Text2": {
-      "type": "richtext"
-    },
-    "section4Image2": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
     },
     "certificate1": {
       "type": "media",
@@ -171,6 +114,21 @@
     },
     "linkURL2": {
       "type": "string"
+    },
+    "section1Heading": {
+      "type": "richtext"
+    },
+    "section2Heading": {
+      "type": "richtext"
+    },
+    "section3Heading": {
+      "type": "richtext"
+    },
+    "section4Title": {
+      "type": "richtext"
+    },
+    "section4Heading": {
+      "type": "richtext"
     }
   }
 }

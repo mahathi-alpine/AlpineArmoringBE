@@ -946,13 +946,10 @@ export interface ApiAboutAbout extends Schema.SingleType {
     text: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
     boxes: Attribute.Component<'slices.tab-section', true>;
-    bottomImage: Attribute.Media;
-    quote: Attribute.Text;
-    timeline: Attribute.Media;
     certificate1: Attribute.Media;
     certificate2: Attribute.Media;
-    section1Text: Attribute.RichText;
     timeline1: Attribute.Component<'shared.timeline', true>;
+    quote: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -963,41 +960,6 @@ export interface ApiAboutAbout extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::about.about',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-  };
-}
-
-export interface ApiAccessoryAccessory extends Schema.CollectionType {
-  collectionName: 'accessories';
-  info: {
-    singularName: 'accessory';
-    pluralName: 'accessories';
-    displayName: 'Accessories';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    title: Attribute.String;
-    image: Attribute.Media;
-    displayTitle: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::accessory.accessory',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::accessory.accessory',
       'oneToOne',
       'admin::user'
     > &
@@ -1214,19 +1176,8 @@ export interface ApiBallisticTestingBallisticTesting extends Schema.SingleType {
     section1Title: Attribute.Text;
     section2Title: Attribute.Text;
     section3Title: Attribute.Text;
-    section1Heading: Attribute.Text;
-    section2Heading: Attribute.Text;
-    section3Heading: Attribute.Text;
-    section4Title: Attribute.Text;
-    section4Heading: Attribute.Text;
     mainTitle: Attribute.String;
     heading: Attribute.RichText;
-    section1Text: Attribute.RichText;
-    section2Text: Attribute.RichText;
-    section3Text: Attribute.RichText;
-    section4Text: Attribute.RichText;
-    section4Gallery: Attribute.Media;
-    section4Image: Attribute.Media;
     section3Video: Attribute.Relation<
       'api::ballistic-testing.ballistic-testing',
       'oneToMany',
@@ -1237,14 +1188,17 @@ export interface ApiBallisticTestingBallisticTesting extends Schema.SingleType {
     section1Gallery2: Attribute.Media;
     titleGallery1: Attribute.String;
     titleGallery2: Attribute.String;
-    section4Text2: Attribute.RichText;
-    section4Image2: Attribute.Media;
     certificate1: Attribute.Media;
     certificate2: Attribute.Media;
     section1Gallery12: Attribute.Media;
     section1Gallery22: Attribute.Media;
     linkURL1: Attribute.String;
     linkURL2: Attribute.String;
+    section1Heading: Attribute.RichText;
+    section2Heading: Attribute.RichText;
+    section3Heading: Attribute.RichText;
+    section4Title: Attribute.RichText;
+    section4Heading: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1552,19 +1506,16 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
     section4Heading: Attribute.RichText;
     section4Image: Attribute.Media;
     section4Text: Attribute.RichText;
-    section5Title: Attribute.Text;
-    section5Heading: Attribute.RichText;
     section5Image: Attribute.Media;
-    section5Text: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
     section1Image2: Attribute.Media;
     section6Title: Attribute.Text;
-    section6Heading: Attribute.Text;
     section6Text: Attribute.RichText;
     section6Gallery: Attribute.Media;
     section6Image: Attribute.Media;
     section6Image2: Attribute.Media;
     section6Text2: Attribute.RichText;
+    section6Heading: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1881,11 +1832,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    accessories: Attribute.Relation<
-      'api::inventory.inventory',
-      'oneToMany',
-      'api::accessory.accessory'
-    >;
     height: Attribute.Decimal &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1961,12 +1907,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
       }>;
     videoMP4: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    gallery2: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -2242,10 +2182,10 @@ export interface ApiManufacturingManufacturing extends Schema.SingleType {
     section3Heading: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
     section1Title: Attribute.Text;
-    section1Heading: Attribute.Text;
     section2Title: Attribute.Text;
     section2Text3: Attribute.RichText;
     section3Title: Attribute.Text;
+    section1Heading: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2636,8 +2576,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'api::specification.specification'
     >;
     videoMP4: Attribute.Media;
-    dimensionsHeight: Attribute.Integer;
-    dimensionsWidth: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2789,7 +2727,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
-      'api::accessory.accessory': ApiAccessoryAccessory;
       'api::all-download.all-download': ApiAllDownloadAllDownload;
       'api::article.article': ApiArticleArticle;
       'api::ballistic-chart.ballistic-chart': ApiBallisticChartBallisticChart;

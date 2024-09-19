@@ -94,12 +94,6 @@
     "section4Text": {
       "type": "richtext"
     },
-    "section5Title": {
-      "type": "text"
-    },
-    "section5Heading": {
-      "type": "richtext"
-    },
     "section5Image": {
       "type": "media",
       "multiple": false,
@@ -108,9 +102,6 @@
         "images",
         "videos"
       ]
-    },
-    "section5Text": {
-      "type": "richtext"
     },
     "seo": {
       "type": "component",
@@ -129,37 +120,40 @@
     "section6Title": {
       "type": "text"
     },
-    "section6Heading": {
-      "type": "text"
-    },
     "section6Text": {
       "type": "richtext"
     },
     "section6Gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "section6Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "section6Image2": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "section6Text2": {
+      "type": "richtext"
+    },
+    "section6Heading": {
       "type": "richtext"
     }
   }

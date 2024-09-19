@@ -30,27 +30,6 @@
       "repeatable": true,
       "component": "slices.tab-section"
     },
-    "bottomImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
-    "quote": {
-      "type": "text"
-    },
-    "timeline": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
     "certificate1": {
       "type": "media",
       "multiple": false,
@@ -73,13 +52,13 @@
         "audios"
       ]
     },
-    "section1Text": {
-      "type": "richtext"
-    },
     "timeline1": {
       "type": "component",
       "repeatable": true,
       "component": "shared.timeline"
+    },
+    "quote": {
+      "type": "text"
     }
   }
 }

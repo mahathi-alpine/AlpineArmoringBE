@@ -205,11 +205,6 @@
         }
       }
     },
-    "accessories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::accessory.accessory"
-    },
     "height": {
       "pluginOptions": {
         "i18n": {
@@ -328,20 +323,6 @@
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "videos"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
-    "gallery2": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
         "videos"
       ],
       "pluginOptions": {
