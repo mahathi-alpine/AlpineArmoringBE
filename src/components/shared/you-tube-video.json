@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_you_tube_videos",
+  "info": {
+    "displayName": "YouTubeVideo"
+  },
+  "options": {},
+  "attributes": {
+    "videoLink": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    }
+  }
+}

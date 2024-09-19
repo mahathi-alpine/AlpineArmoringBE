@@ -64,6 +64,17 @@ export interface SharedTimeline extends Schema.Component {
   };
 }
 
+export interface SharedYouTubeVideo extends Schema.Component {
+  collectionName: 'components_shared_you_tube_videos';
+  info: {
+    displayName: 'YouTubeVideo';
+  };
+  attributes: {
+    videoLink: Attribute.String;
+    text: Attribute.String;
+  };
+}
+
 export interface SlicesBallisticStandard extends Schema.Component {
   collectionName: 'components_slices_ballistic_standards';
   info: {
@@ -148,6 +159,7 @@ declare module '@strapi/types' {
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
       'shared.timeline': SharedTimeline;
+      'shared.you-tube-video': SharedYouTubeVideo;
       'slices.ballistic-standard': SlicesBallisticStandard;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
