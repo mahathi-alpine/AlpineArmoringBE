@@ -71,12 +71,6 @@
       },
       "type": "string"
     },
-    "vehicles_we_armor": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::vehicles-we-armor.vehicles-we-armor",
-      "inversedBy": "stock"
-    },
     "order": {
       "pluginOptions": {
         "i18n": {
@@ -346,6 +340,12 @@
         }
       },
       "type": "boolean"
+    },
+    "vehicles_we_armor": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "inversedBy": "stock"
     }
   }
 }

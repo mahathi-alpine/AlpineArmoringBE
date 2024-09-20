@@ -1737,11 +1737,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    vehicles_we_armor: Attribute.Relation<
-      'api::inventory.inventory',
-      'manyToOne',
-      'api::vehicles-we-armor.vehicles-we-armor'
-    >;
     order: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1924,6 +1919,11 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    vehicles_we_armor: Attribute.Relation<
+      'api::inventory.inventory',
+      'manyToMany',
+      'api::vehicles-we-armor.vehicles-we-armor'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2533,11 +2533,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'manyToOne',
       'api::category.category'
     >;
-    stock: Attribute.Relation<
-      'api::vehicles-we-armor.vehicles-we-armor',
-      'oneToMany',
-      'api::inventory.inventory'
-    >;
     make: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'manyToOne',
@@ -2577,6 +2572,11 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     >;
     videoMP4: Attribute.Media;
     videoURL: Attribute.String;
+    stock: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'manyToMany',
+      'api::inventory.inventory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

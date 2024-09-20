@@ -33,12 +33,6 @@
       "target": "api::category.category",
       "inversedBy": "vehicles_we_armors"
     },
-    "stock": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::inventory.inventory",
-      "mappedBy": "vehicles_we_armor"
-    },
     "make": {
       "type": "relation",
       "relation": "manyToOne",
@@ -153,6 +147,12 @@
     },
     "videoURL": {
       "type": "string"
+    },
+    "stock": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::inventory.inventory",
+      "mappedBy": "vehicles_we_armor"
     }
   }
 }
