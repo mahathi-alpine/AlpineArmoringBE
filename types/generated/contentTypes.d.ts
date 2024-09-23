@@ -1399,11 +1399,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
     image: Attribute.Media;
     slug: Attribute.UID<'api::category.category', 'title'> & Attribute.Required;
-    vehicles_we_armors: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::vehicles-we-armor.vehicles-we-armor'
-    >;
     order: Attribute.Integer;
     inventoryBanner: Attribute.Component<'slices.banner'>;
     allBanner: Attribute.Component<'slices.banner'>;
@@ -1413,6 +1408,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::inventory.inventory'
     >;
     seo: Attribute.Component<'shared.seo'>;
+    vehicles_we_armors: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::vehicles-we-armor.vehicles-we-armor'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2530,7 +2530,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     featuredImage: Attribute.Media;
     category: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
-      'manyToOne',
+      'manyToMany',
       'api::category.category'
     >;
     make: Attribute.Relation<
@@ -2577,6 +2577,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'manyToMany',
       'api::inventory.inventory'
     >;
+    order: Attribute.Integer & Attribute.DefaultTo<100>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -29,7 +29,7 @@
     },
     "category": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "vehicles_we_armors"
     },
@@ -153,6 +153,10 @@
       "relation": "manyToMany",
       "target": "api::inventory.inventory",
       "mappedBy": "vehicles_we_armor"
+    },
+    "order": {
+      "type": "integer",
+      "default": 100
     }
   }
 }

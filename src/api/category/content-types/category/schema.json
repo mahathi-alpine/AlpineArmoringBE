@@ -33,12 +33,6 @@
       "required": true,
       "targetField": "title"
     },
-    "vehicles_we_armors": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vehicles-we-armor.vehicles-we-armor",
-      "mappedBy": "category"
-    },
     "order": {
       "pluginOptions": {},
       "type": "integer"
@@ -65,6 +59,12 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "vehicles_we_armors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "mappedBy": "category"
     }
   }
 }
