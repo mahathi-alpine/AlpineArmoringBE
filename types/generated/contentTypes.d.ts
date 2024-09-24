@@ -1924,6 +1924,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'manyToMany',
       'api::vehicles-we-armor.vehicles-we-armor'
     >;
+    videoURL: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
