@@ -9,6 +9,9 @@ const populate = {
       media: {
         fields: ['url', 'mime', 'alternativeText', 'width', 'height', 'formats']
       },
+      imageMobile: {
+        fields: ['url', 'mime', 'alternativeText', 'width', 'height', 'formats']
+      },
       mediaMP4: {
         fields: ['url', 'mime', 'width', 'height']
       },

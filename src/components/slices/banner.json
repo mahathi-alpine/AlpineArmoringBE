@@ -25,6 +25,13 @@
       "allowedTypes": [
         "videos"
       ]
+    },
+    "imageMobile": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
