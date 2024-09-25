@@ -63,7 +63,7 @@ const populate = {
   },
   stock:{
     populate: true,
-    fields: ['title', 'flag']
+    fields: ['title', 'flag', 'hide']
   },
   gallery:{
     populate: true

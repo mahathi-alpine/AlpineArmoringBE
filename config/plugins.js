@@ -59,8 +59,6 @@ module.exports = ({ env }) => ({
       settings: {
         defaultFrom: 'sales@alpineco.com',
         defaultReplyTo: 'sales@alpineco.com'
-        // defaultFrom: 'stefaneste93@gmail.com',
-        // defaultReplyTo: 'stefaneste93@gmail.com'
       },
     },
   },
