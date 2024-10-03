@@ -2,12 +2,9 @@ module.exports = ({ env }) => ({
   'drag-drop-content-types': {
     enabled: true
   },
-  'import-export-entries': {
-    enabled: true,
-    config: {
-      // serverPublicHostname: 'https://res.cloudinary.com'
-    },
-  },
+  // 'import-export-entries': {
+  //   enabled: true
+  // },
   seo: {
     enabled: true,
   },

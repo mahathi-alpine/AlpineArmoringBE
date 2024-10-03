@@ -7,6 +7,7 @@ import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
 import i18N from "@strapi/plugin-i18n/strapi-admin";
 import seo from "@strapi/plugin-seo/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
+import excelExport from "strapi-plugin-excel-export-2024/strapi-admin";
 import importExportEntries from "strapi-plugin-import-export-entries/strapi-admin";
 import redirects from "strapi-plugin-redirects/strapi-admin";
 import sitemap from "strapi-plugin-sitemap/strapi-admin";
@@ -19,6 +20,7 @@ renderAdmin(document.getElementById("strapi"), {
     i18n: i18N,
     seo: seo,
     "users-permissions": usersPermissions,
+    "excel-export": excelExport,
     "import-export-entries": importExportEntries,
     redirects: redirects,
     sitemap: sitemap,
