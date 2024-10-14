@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "rentals_websites",
+  "info": {
+    "singularName": "rentals-website",
+    "pluralName": "rentals-websites",
+    "displayName": "RentalsWebsite"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bannerVideo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.video"
+    },
+    "topBannerTitle": {
+      "type": "text"
+    },
+    "topBannerDescription": {
+      "type": "text"
+    }
+  }
+}
