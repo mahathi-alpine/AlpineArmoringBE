@@ -2334,6 +2334,7 @@ export interface ApiRentalsWebsiteRentalsWebsite extends Schema.SingleType {
     singularName: 'rentals-website';
     pluralName: 'rentals-websites';
     displayName: 'RentalsWebsite';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -2342,6 +2343,7 @@ export interface ApiRentalsWebsiteRentalsWebsite extends Schema.SingleType {
     bannerVideo: Attribute.Component<'slices.video'>;
     topBannerTitle: Attribute.Text;
     topBannerDescription: Attribute.Text;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
