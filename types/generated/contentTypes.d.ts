@@ -2344,6 +2344,7 @@ export interface ApiRentalsWebsiteRentalsWebsite extends Schema.SingleType {
     topBannerTitle: Attribute.Text;
     topBannerDescription: Attribute.Text;
     seo: Attribute.Component<'shared.seo'>;
+    quote: Attribute.Component<'slices.text-filling'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
