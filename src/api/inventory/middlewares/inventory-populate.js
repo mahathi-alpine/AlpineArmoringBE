@@ -49,6 +49,9 @@ const populate = {
   featuredImage:{
     populate: true
   },
+  transparentImage:{
+    populate: true
+  },
   OEMWindowSticker:{
     populate: true,
     fields: ['url', 'isUrlSigned', 'provider', 'createdAt', 'ext', 'hash',  'mime', 'name', 'updatedAt', 'provider_metadata']
