@@ -1172,7 +1172,7 @@ export interface ApiBallisticTestingBallisticTesting extends Schema.SingleType {
   };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo', true>;
+    seo: Attribute.Component<'shared.seo'>;
     section1Title: Attribute.Text;
     section2Title: Attribute.Text;
     section3Title: Attribute.Text;
