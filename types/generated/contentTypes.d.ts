@@ -2351,6 +2351,11 @@ export interface ApiRentalsWebsiteRentalsWebsite extends Schema.SingleType {
     topBannerDescription: Attribute.Text;
     seo: Attribute.Component<'shared.seo'>;
     quote: Attribute.Component<'slices.text-filling'>;
+    featuredRentalVehicles: Attribute.Relation<
+      'api::rentals-website.rentals-website',
+      'oneToMany',
+      'api::inventory.inventory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

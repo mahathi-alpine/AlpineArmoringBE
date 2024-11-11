@@ -32,6 +32,11 @@
       "type": "component",
       "repeatable": false,
       "component": "slices.text-filling"
+    },
+    "featuredRentalVehicles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inventory.inventory"
     }
   }
 }
