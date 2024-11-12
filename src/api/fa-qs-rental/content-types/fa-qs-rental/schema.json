@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fa_qs_rentals",
+  "info": {
+    "singularName": "fa-qs-rental",
+    "pluralName": "fa-qs-rentals",
+    "displayName": "FAQsRentals"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,14 +1,13 @@
 {
   "kind": "singleType",
-  "collectionName": "rentals_websites",
+  "collectionName": "rentals_homepages",
   "info": {
-    "singularName": "rentals-website",
-    "pluralName": "rentals-websites",
-    "displayName": "RentalsWebsite",
-    "description": ""
+    "singularName": "rentals-homepage",
+    "pluralName": "rentals-homepages",
+    "displayName": "RentalsHomepage"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -23,11 +22,6 @@
     "topBannerDescription": {
       "type": "text"
     },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
     "quote": {
       "type": "component",
       "repeatable": false,
@@ -37,6 +31,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::inventory.inventory"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

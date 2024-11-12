@@ -1608,6 +1608,41 @@ export interface ApiFaQFaQ extends Schema.CollectionType {
   };
 }
 
+export interface ApiFaQsRentalFaQsRental extends Schema.CollectionType {
+  collectionName: 'fa_qs_rentals';
+  info: {
+    singularName: 'fa-qs-rental';
+    pluralName: 'fa-qs-rentals';
+    displayName: 'FAQsRentals';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.RichText;
+    order: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::fa-qs-rental.fa-qs-rental',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::fa-qs-rental.fa-qs-rental',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiFaqFaq extends Schema.SingleType {
   collectionName: 'faqs';
   info: {
@@ -2334,38 +2369,72 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
   };
 }
 
-export interface ApiRentalsWebsiteRentalsWebsite extends Schema.SingleType {
-  collectionName: 'rentals_websites';
+export interface ApiRentalPolicyRentalPolicy extends Schema.SingleType {
+  collectionName: 'rental_policies';
   info: {
-    singularName: 'rentals-website';
-    pluralName: 'rentals-websites';
-    displayName: 'RentalsWebsite';
-    description: '';
+    singularName: 'rental-policy';
+    pluralName: 'rental-policies';
+    displayName: 'RentalPolicy';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
-    bannerVideo: Attribute.Component<'slices.video'>;
-    topBannerTitle: Attribute.Text;
-    topBannerDescription: Attribute.Text;
+    text: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
-    quote: Attribute.Component<'slices.text-filling'>;
-    featuredRentalVehicles: Attribute.Relation<
-      'api::rentals-website.rentals-website',
-      'oneToMany',
-      'api::inventory.inventory'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::rentals-website.rentals-website',
+      'api::rental-policy.rental-policy',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::rentals-website.rentals-website',
+      'api::rental-policy.rental-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ApiRentalsHomepageRentalsHomepage extends Schema.SingleType {
+  collectionName: 'rentals_homepages';
+  info: {
+    singularName: 'rentals-homepage';
+    pluralName: 'rentals-homepages';
+    displayName: 'RentalsHomepage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bannerVideo: Attribute.Component<'slices.video'>;
+    topBannerTitle: Attribute.Text;
+    topBannerDescription: Attribute.Text;
+    quote: Attribute.Component<'slices.text-filling'>;
+    featuredRentalVehicles: Attribute.Relation<
+      'api::rentals-homepage.rentals-homepage',
+      'oneToMany',
+      'api::inventory.inventory'
+    >;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rentals-homepage.rentals-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rentals-homepage.rentals-homepage',
       'oneToOne',
       'admin::user'
     > &
@@ -2795,6 +2864,7 @@ declare module '@strapi/types' {
       'api::design-and-engineering.design-and-engineering': ApiDesignAndEngineeringDesignAndEngineering;
       'api::email.email': ApiEmailEmail;
       'api::fa-q.fa-q': ApiFaQFaQ;
+      'api::fa-qs-rental.fa-qs-rental': ApiFaQsRentalFaQsRental;
       'api::faq.faq': ApiFaqFaq;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
@@ -2806,7 +2876,8 @@ declare module '@strapi/types' {
       'api::media.media': ApiMediaMedia;
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
-      'api::rentals-website.rentals-website': ApiRentalsWebsiteRentalsWebsite;
+      'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;
+      'api::rentals-homepage.rentals-homepage': ApiRentalsHomepageRentalsHomepage;
       'api::shipping.shipping': ApiShippingShipping;
       'api::sold-vehicle.sold-vehicle': ApiSoldVehicleSoldVehicle;
       'api::specification.specification': ApiSpecificationSpecification;
