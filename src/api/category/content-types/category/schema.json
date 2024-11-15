@@ -65,6 +65,9 @@
       "relation": "manyToMany",
       "target": "api::vehicles-we-armor.vehicles-we-armor",
       "mappedBy": "category"
+    },
+    "bottomText": {
+      "type": "richtext"
     }
   }
 }

@@ -1413,6 +1413,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::vehicles-we-armor.vehicles-we-armor'
     >;
+    bottomText: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2056,6 +2057,12 @@ export interface ApiListInventoryListInventory extends Schema.SingleType {
         };
       }>;
     seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bottomText: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
