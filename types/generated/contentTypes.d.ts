@@ -2416,6 +2416,7 @@ export interface ApiRentalsHomepageRentalsHomepage extends Schema.SingleType {
     singularName: 'rentals-homepage';
     pluralName: 'rentals-homepages';
     displayName: 'RentalsHomepage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -2431,6 +2432,13 @@ export interface ApiRentalsHomepageRentalsHomepage extends Schema.SingleType {
       'api::inventory.inventory'
     >;
     seo: Attribute.Component<'shared.seo'>;
+    featuredVehiclesTitle: Attribute.Text;
+    section1Title: Attribute.Text;
+    section1Text: Attribute.RichText;
+    section1text2: Attribute.RichText;
+    section1List: Attribute.Component<'slices.tab-section', true>;
+    section2title: Attribute.Text;
+    section2text: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

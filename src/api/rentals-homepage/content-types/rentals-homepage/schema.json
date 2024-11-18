@@ -4,7 +4,8 @@
   "info": {
     "singularName": "rentals-homepage",
     "pluralName": "rentals-homepages",
-    "displayName": "RentalsHomepage"
+    "displayName": "RentalsHomepage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -36,6 +37,29 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "featuredVehiclesTitle": {
+      "type": "text"
+    },
+    "section1Title": {
+      "type": "text"
+    },
+    "section1Text": {
+      "type": "richtext"
+    },
+    "section1text2": {
+      "type": "richtext"
+    },
+    "section1List": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
+    },
+    "section2title": {
+      "type": "text"
+    },
+    "section2text": {
+      "type": "richtext"
     }
   }
 }
