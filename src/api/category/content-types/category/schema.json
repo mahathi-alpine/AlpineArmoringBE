@@ -68,6 +68,12 @@
     },
     "bottomText": {
       "type": "richtext"
+    },
+    "bottomTextInventory": {
+      "type": "richtext"
+    },
+    "heading": {
+      "type": "text"
     }
   }
 }

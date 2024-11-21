@@ -1414,6 +1414,8 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::vehicles-we-armor.vehicles-we-armor'
     >;
     bottomText: Attribute.RichText;
+    bottomTextInventory: Attribute.RichText;
+    heading: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
