@@ -1686,7 +1686,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
   attributes: {
     tabSection: Attribute.DynamicZone<['slices.tab-section']>;
     allVehiclesImage: Attribute.Media;
-    industryPartners: Attribute.Media;
     ballistingTestingsMedia: Attribute.DynamicZone<['slices.tab-section']>;
     blogs: Attribute.Relation<
       'api::homepage.homepage',
@@ -1700,6 +1699,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     topBannerDescription: Attribute.Text;
     disableCoolVideos: Attribute.Boolean;
     bannerVideo: Attribute.Component<'slices.video'>;
+    industryPartners: Attribute.Component<'slices.tab-section', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

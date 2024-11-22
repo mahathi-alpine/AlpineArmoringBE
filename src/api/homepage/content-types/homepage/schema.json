@@ -26,14 +26,6 @@
         "images"
       ]
     },
-    "industryPartners": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "ballistingTestingsMedia": {
       "type": "dynamiczone",
       "components": [
@@ -73,6 +65,11 @@
       "type": "component",
       "repeatable": false,
       "component": "slices.video"
+    },
+    "industryPartners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
     }
   }
 }

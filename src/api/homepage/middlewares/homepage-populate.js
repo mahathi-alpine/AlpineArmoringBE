@@ -60,8 +60,12 @@ const populate = {
       }
     }
   },
-  industryPartners:{
-    populate: true
+  industryPartners: {
+    populate: {
+      image: {
+        populate: true
+      }
+    }
   }
 };
 
