@@ -1199,6 +1199,8 @@ export interface ApiBallisticTestingBallisticTesting extends Schema.SingleType {
     section3Heading: Attribute.RichText;
     section4Title: Attribute.RichText;
     section4Heading: Attribute.RichText;
+    flipImage1: Attribute.Media;
+    flipImage2: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

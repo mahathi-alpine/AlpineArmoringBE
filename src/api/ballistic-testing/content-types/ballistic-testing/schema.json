@@ -129,6 +129,21 @@
     },
     "section4Heading": {
       "type": "richtext"
+    },
+    "flipImage1": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "flipImage2": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
