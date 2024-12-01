@@ -356,11 +356,25 @@
       "type": "string"
     },
     "transparentImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "rentalsGallery": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "pluginOptions": {
         "i18n": {
           "localized": false

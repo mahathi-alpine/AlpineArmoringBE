@@ -34,6 +34,9 @@ const populate = {
   gallery:{
     populate: true
   },
+  rentalsGallery:{
+    populate: true
+  },
   video:{
     populate: true,
     fields: ['url', 'mime']
