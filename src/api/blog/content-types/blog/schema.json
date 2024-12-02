@@ -102,6 +102,12 @@
         }
       },
       "component": "shared.you-tube-video"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "blogs"
     }
   }
 }

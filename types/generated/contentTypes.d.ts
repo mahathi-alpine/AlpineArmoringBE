@@ -1122,6 +1122,46 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuthorAuthor extends Schema.CollectionType {
+  collectionName: 'authors';
+  info: {
+    singularName: 'author';
+    pluralName: 'authors';
+    displayName: 'Authors';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    Name: Attribute.String;
+    linkedinURL: Attribute.Text;
+    blogs: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::blog.blog'
+    >;
+    slug: Attribute.UID<'api::author.author', 'Name'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
   collectionName: 'ballistic_charts';
   info: {
@@ -1333,6 +1373,11 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    authors: Attribute.Relation<
+      'api::blog.blog',
+      'manyToOne',
+      'api::author.author'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1977,6 +2022,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
       }>;
     rentalsGallery: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    rentalsVehicleID: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -2879,6 +2930,7 @@ declare module '@strapi/types' {
       'api::about.about': ApiAboutAbout;
       'api::all-download.all-download': ApiAllDownloadAllDownload;
       'api::article.article': ApiArticleArticle;
+      'api::author.author': ApiAuthorAuthor;
       'api::ballistic-chart.ballistic-chart': ApiBallisticChartBallisticChart;
       'api::ballistic-testing.ballistic-testing': ApiBallisticTestingBallisticTesting;
       'api::become-a-dealer.become-a-dealer': ApiBecomeADealerBecomeADealer;
