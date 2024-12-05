@@ -52,6 +52,9 @@ const populate = {
   featuredImage:{
     populate: true
   },
+  rentalsFeaturedImage:{
+    populate: true
+  },  
   transparentImage:{
     populate: true
   },
