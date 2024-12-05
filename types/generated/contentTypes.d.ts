@@ -2039,6 +2039,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    rentalsDescription: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
