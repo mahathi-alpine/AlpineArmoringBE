@@ -2691,6 +2691,7 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
+    titleH1: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2846,6 +2847,7 @@ export interface ApiVideoPageVideoPage extends Schema.SingleType {
     singularName: 'video-page';
     pluralName: 'videos-pages';
     displayName: 'VideosPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -2853,6 +2855,7 @@ export interface ApiVideoPageVideoPage extends Schema.SingleType {
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
+    titleH1: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

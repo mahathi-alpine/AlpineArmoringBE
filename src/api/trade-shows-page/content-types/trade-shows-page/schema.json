@@ -21,6 +21,9 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "titleH1": {
+      "type": "string"
     }
   }
 }

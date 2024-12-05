@@ -7,7 +7,9 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const emailData = await super.create(ctx);
 
     const { data } = ctx.request.body;
-    const { name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date } = data;
+    const { testField, name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date } = data;
+
+    // console.log(data)
 
     function getCurrentDateTime() {
       const now = new Date();
@@ -23,10 +25,12 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       return `${month}/${day}/${now.getFullYear()} ${hours}:${minutes} ${amPm}`;
     }
     
+    const emailDomain = testField ? 'rental@armoredautos.com' : 'sales@alpineco.com';
+    // const emailDomain = testField ? 'stefaneste93@gmail.com' : 'petkovics93@yahoo.com';
 
     try {
       await strapi.plugins['email'].services.email.send({
-        to: 'sales@alpineco.com', 
+        to: emailDomain, 
         subject: `Alpine Armoring - Inquiry about ${inquiry} from ${name} (${state} ${country})`,
         html: `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
