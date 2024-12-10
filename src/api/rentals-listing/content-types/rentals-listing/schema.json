@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "rentals_listings",
+  "info": {
+    "singularName": "rentals-listing",
+    "pluralName": "rentals-listings",
+    "displayName": "RentalsListing"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "bottomText": {
+      "type": "richtext"
+    }
+  }
+}

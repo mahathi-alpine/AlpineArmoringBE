@@ -2544,6 +2544,40 @@ export interface ApiRentalsHomepageRentalsHomepage extends Schema.SingleType {
   };
 }
 
+export interface ApiRentalsListingRentalsListing extends Schema.SingleType {
+  collectionName: 'rentals_listings';
+  info: {
+    singularName: 'rentals-listing';
+    pluralName: 'rentals-listings';
+    displayName: 'RentalsListing';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    seo: Attribute.Component<'shared.seo'>;
+    bottomText: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rentals-listing.rentals-listing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rentals-listing.rentals-listing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiShippingShipping extends Schema.SingleType {
   collectionName: 'shippings';
   info: {
@@ -2981,6 +3015,7 @@ declare module '@strapi/types' {
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;
       'api::rentals-homepage.rentals-homepage': ApiRentalsHomepageRentalsHomepage;
+      'api::rentals-listing.rentals-listing': ApiRentalsListingRentalsListing;
       'api::shipping.shipping': ApiShippingShipping;
       'api::sold-vehicle.sold-vehicle': ApiSoldVehicleSoldVehicle;
       'api::specification.specification': ApiSpecificationSpecification;
