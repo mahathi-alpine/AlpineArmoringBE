@@ -1505,6 +1505,11 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'api::fa-q.fa-q'
     >;
     mapImage: Attribute.Media;
+    rentals_faqs: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToMany',
+      'api::fa-qs-rental.fa-qs-rental'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

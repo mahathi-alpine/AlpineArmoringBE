@@ -34,11 +34,17 @@
       "target": "api::fa-q.fa-q"
     },
     "mapImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "rentals_faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::fa-qs-rental.fa-qs-rental"
     }
   }
 }
