@@ -49,6 +49,9 @@ const populate = {
     populate: true,
     fields: ['title', 'slug']
   },
+  faqs:{
+    populate: true
+  },
   featuredImage:{
     populate: true
   },

@@ -75,6 +75,17 @@ export interface SharedYouTubeVideo extends Schema.Component {
   };
 }
 
+export interface SlicesAccordion extends Schema.Component {
+  collectionName: 'components_slices_accordions';
+  info: {
+    displayName: 'Accordion';
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.RichText;
+  };
+}
+
 export interface SlicesBallisticStandard extends Schema.Component {
   collectionName: 'components_slices_ballistic_standards';
   info: {
@@ -161,6 +172,7 @@ declare module '@strapi/types' {
       'shared.seo': SharedSeo;
       'shared.timeline': SharedTimeline;
       'shared.you-tube-video': SharedYouTubeVideo;
+      'slices.accordion': SlicesAccordion;
       'slices.ballistic-standard': SlicesBallisticStandard;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
