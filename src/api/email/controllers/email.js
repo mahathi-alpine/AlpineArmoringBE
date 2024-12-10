@@ -7,7 +7,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const emailData = await super.create(ctx);
 
     const { data } = ctx.request.body;
-    const { testField, name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date } = data;
+    const { dates, name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date } = data;
 
     // console.log(data)
 
@@ -26,7 +26,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     }
     
     // const emailDomain = testField ? 'rental@armoredautos.com' : 'sales@alpineco.com';
-    const emailDomain = testField ? 'stefaneste93@gmail.com' : 'sales@alpineco.com';
+    const emailDomain = dates ? 'stefaneste93@gmail.com' : 'sales@alpineco.com';
 
     try {
       await strapi.plugins['email'].services.email.send({
