@@ -25,8 +25,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       return `${month}/${day}/${now.getFullYear()} ${hours}:${minutes} ${amPm}`;
     }
     
-    // const emailDomain = testField ? 'rental@armoredautos.com' : 'sales@alpineco.com';
-    const emailDomain = fromDate ? 'stefaneste93@gmail.com' : 'sales@alpineco.com';
+    const emailDomain = fromDate ? 'rental@armoredautos.com' : 'sales@alpineco.com';
 
     try {
       await strapi.plugins['email'].services.email.send({

@@ -987,6 +987,7 @@ export interface ApiAllDownloadAllDownload extends Schema.SingleType {
     OEMBrochures2024: Attribute.Media;
     PDFDocuments: Attribute.Media;
     ArmoredVehicles: Attribute.Media;
+    stockVideos: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
