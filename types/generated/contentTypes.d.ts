@@ -1617,6 +1617,12 @@ export interface ApiEmailEmail extends Schema.CollectionType {
     route: Attribute.String;
     state: Attribute.String;
     hear: Attribute.String;
+    vehicleType: Attribute.String;
+    vehicleModel: Attribute.String;
+    fromDate: Attribute.Date;
+    toDate: Attribute.Date;
+    driverNeeded: Attribute.String;
+    mileage: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

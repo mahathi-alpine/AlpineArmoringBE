@@ -50,6 +50,24 @@
     },
     "hear": {
       "type": "string"
+    },
+    "vehicleType": {
+      "type": "string"
+    },
+    "vehicleModel": {
+      "type": "string"
+    },
+    "fromDate": {
+      "type": "date"
+    },
+    "toDate": {
+      "type": "date"
+    },
+    "driverNeeded": {
+      "type": "string"
+    },
+    "mileage": {
+      "type": "string"
     }
   }
 }
