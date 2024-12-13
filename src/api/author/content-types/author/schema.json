@@ -27,6 +27,9 @@
     "slug": {
       "type": "uid",
       "targetField": "Name"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

@@ -1143,6 +1143,7 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
       'api::blog.blog'
     >;
     slug: Attribute.UID<'api::author.author', 'Name'>;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
