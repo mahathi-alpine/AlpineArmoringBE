@@ -26,6 +26,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const emailDomain = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
     // const emailDomain = !country ? 'stefaneste93@gmail.com' : 'petkovics93@yahoo.com';
     const subjectPrefix = !country ? 'Rental Alpine Armoring' : 'Alpine Armoring';
+    const emailColorsDark = !country ? '#06374e' : '#9c9477';
+    const emailColorsLight = !country ? '#84a8cc' : '#c3bfaf';
 
     try {
       await strapi.plugins['email'].services.email.send({
@@ -35,7 +37,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
             <tbody>
 
-              <tr style="background-color:rgb(156,148,119);">
+              <tr style="background-color:${emailColorsDark}; ${!country ? 'color: white;' : `color: black;`}">
                 <td colspan="2" style="padding:1.5pt">
                   <p align="center" style="margin:0in;">
                     <b>Website submission ${getCurrentDateTime()}</b>
@@ -43,7 +45,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
-              <tr style="background-color:rgb(195,191,175);">
+              <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Name:</b></span></p>
                 </td>
@@ -72,7 +74,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               `}
 
-              <tr style="background-color:rgb(195,191,175);">
+              <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>State:</b></span></p>
                 </td>
@@ -90,7 +92,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
-              <tr style="background-color:rgb(195,191,175);">
+              <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span"><b>Mobile Number:</b></span></p>
                 </td>
@@ -108,12 +110,12 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
-              <tr style="background-color:rgb(195,191,175);">
+              <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Email:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span style="color:rgb(5,99,193)"><u><a href="mailto:${email}" style="color:rgb(5,99,193);margin-top:0px;margin-bottom:0px" target="_blank">${email}</a></u></span></p>
+                  <p style="margin:0in;"><span style="color:rgb(5,99,193)"><u><a href="mailto:${email}" style="color:black;margin-top:0px;margin-bottom:0px" target="_blank">${email}</a></u></span></p>
                 </td>
               </tr>
 
@@ -138,7 +140,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               `}
 
               ${country ? `
-              <tr style="background-color:rgb(195,191,175);">
+              <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>I Prefer To Be Contacted Via:</b></span></p>
                 </td>
@@ -147,7 +149,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
               ` : `
-              <tr style="background-color:rgb(195,191,175);">
+              <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Vehicle Type:</b></span></p>
                 </td>
@@ -177,7 +179,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               `}
 
-              <tr style="background-color:rgb(195,191,175);">
+              <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Comments:</b></span></p>
                 </td>
@@ -197,12 +199,14 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </tr>
               ` : null }
 
-              <tr style="background-color:rgb(156,148,119);">
+              <tr style="background-color:${emailColorsDark}; ${!country ? 'color: white;' : `color: black;`}">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Referrer page:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span style="color:rgb(5,99,193)"><u><a href="${route}" style="color:rgb(5,99,193);margin-top:0px;margin-bottom:0px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=${route}&amp;source=gmail&amp;ust=1726743921528000&amp;usg=AOvVaw21rcKaKVWd5eFzmb8o8PuT">${route}</a></u></span></p>
+                  <p style="margin:0in;"><span style="color:rgb(5,99,193)"><u>
+                    <a href="${route}" style="${!country ? 'color: white;' : `color: black;`} margin-top:0px;margin-bottom:0px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=${route}&amp;source=gmail&amp;ust=1726743921528000&amp;usg=AOvVaw21rcKaKVWd5eFzmb8o8PuT">${route}</a>
+                  </u></span></p>
                 </td>
               </tr>
 
