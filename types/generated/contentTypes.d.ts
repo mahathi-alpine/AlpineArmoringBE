@@ -1507,11 +1507,6 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'api::fa-q.fa-q'
     >;
     mapImage: Attribute.Media;
-    rentals_faqs: Attribute.Relation<
-      'api::contact-page.contact-page',
-      'oneToMany',
-      'api::fa-qs-rental.fa-qs-rental'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2502,6 +2497,47 @@ export interface ApiRentalPolicyRentalPolicy extends Schema.SingleType {
   };
 }
 
+export interface ApiRentalsContactPageRentalsContactPage
+  extends Schema.SingleType {
+  collectionName: 'rentals_contact_pages';
+  info: {
+    singularName: 'rentals-contact-page';
+    pluralName: 'rentals-contact-pages';
+    displayName: 'RentalsContactPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    salesInfo: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
+    fa_qs: Attribute.Relation<
+      'api::rentals-contact-page.rentals-contact-page',
+      'oneToMany',
+      'api::fa-qs-rental.fa-qs-rental'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rentals-contact-page.rentals-contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rentals-contact-page.rentals-contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface ApiRentalsHomepageRentalsHomepage extends Schema.SingleType {
   collectionName: 'rentals_homepages';
   info: {
@@ -3022,6 +3058,7 @@ declare module '@strapi/types' {
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;
+      'api::rentals-contact-page.rentals-contact-page': ApiRentalsContactPageRentalsContactPage;
       'api::rentals-homepage.rentals-homepage': ApiRentalsHomepageRentalsHomepage;
       'api::rentals-listing.rentals-listing': ApiRentalsListingRentalsListing;
       'api::shipping.shipping': ApiShippingShipping;

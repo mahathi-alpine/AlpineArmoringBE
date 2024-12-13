@@ -1,14 +1,13 @@
 {
   "kind": "singleType",
-  "collectionName": "contact_pages",
+  "collectionName": "rentals_contact_pages",
   "info": {
-    "singularName": "contact-page",
-    "pluralName": "contact-pages",
-    "displayName": "Contact Page",
-    "description": ""
+    "singularName": "rentals-contact-page",
+    "pluralName": "rentals-contact-pages",
+    "displayName": "RentalsContactPage"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -20,9 +19,6 @@
     "salesInfo": {
       "type": "richtext"
     },
-    "partsInfo": {
-      "type": "richtext"
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
@@ -31,15 +27,7 @@
     "fa_qs": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::fa-q.fa-q"
-    },
-    "mapImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "target": "api::fa-qs-rental.fa-qs-rental"
     }
   }
 }
