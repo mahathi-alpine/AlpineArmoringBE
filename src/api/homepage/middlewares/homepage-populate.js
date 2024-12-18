@@ -6,15 +6,21 @@
 
 const populate = {
   seo:{
-    metaImage: {
-      populate: true,
-      fields: ['url']
-    },
-    metaSocial: {
-      image: {
-        populate: true,
-        fields: ['url']
+    populate: {
+      metaImage: {
+        populate: {
+          image: {
+            populate: true
+          }
+        },
       },
+      metaSocial: {
+        populate: {
+          image: {
+            populate: true
+          }
+        },
+      }
     }
   },
   bannerVideo:{

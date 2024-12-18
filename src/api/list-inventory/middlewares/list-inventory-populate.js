@@ -17,18 +17,24 @@ const populate = {
       },
     },
   },  
-  seo: {
-    metaImage: {
-      populate: true,
-      fields: ['url']
-    },
-    metaSocial: {
-      image: {
-        populate: true,
-        fields: ['url']
+  seo:{
+    populate: {
+      metaImage: {
+        populate: {
+          image: {
+            populate: true
+          }
+        },
+      },
+      metaSocial: {
+        populate: {
+          image: {
+            populate: true
+          }
+        },
       }
     }
-  }
+  },
 }
 
 module.exports = (config, { strapi }) => {
