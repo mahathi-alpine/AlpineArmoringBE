@@ -420,6 +420,14 @@
         }
       },
       "component": "slices.accordion"
+    },
+    "rentalsShortDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
     }
   }
 }
