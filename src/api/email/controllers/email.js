@@ -25,6 +25,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     
     const emailDomain = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
     // const emailDomain = !country ? 'stefaneste93@gmail.com' : 'petkovics93@yahoo.com';
+    const fromEmail = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
     const subjectPrefix = !country ? 'Rental Alpine Armoring' : 'Alpine Armoring';
     const emailColorsDark = !country ? '#06374e' : '#9c9477';
     const emailColorsLight = !country ? '#84a8cc' : '#c3bfaf';
@@ -32,6 +33,9 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     try {
       await strapi.plugins['email'].services.email.send({
         to: emailDomain, 
+        from: fromEmail,
+        // to: 'petkovics93@yahoo.com', 
+        // from: 'stefaneste93@gmail.com',
         subject: `${subjectPrefix} - Inquiry${!country ? ` from ${name} (${state})` : ` about ${inquiry} from ${name} (${state} ${country})`}`,
         html: `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">

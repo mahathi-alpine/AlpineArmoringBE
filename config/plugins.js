@@ -53,10 +53,10 @@ module.exports = ({ env }) => ({
         secret: env('AWS_ACCESS_SECRET'),
         amazon: 'https://email.us-east-1.amazonaws.com'
       },
-      settings: {
-        defaultFrom: 'sales@alpineco.com',
-        defaultReplyTo: 'sales@alpineco.com'
-      },
+      // settings: {
+      //   defaultFrom: 'sales@alpineco.com',
+      //   defaultReplyTo: 'sales@alpineco.com'
+      // },
     },
   },
 })
