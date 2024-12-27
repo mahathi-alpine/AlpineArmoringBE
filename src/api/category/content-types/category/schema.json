@@ -74,6 +74,11 @@
     },
     "heading": {
       "type": "text"
+    },
+    "faqs_vehicles_we_armor": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion"
     }
   }
 }

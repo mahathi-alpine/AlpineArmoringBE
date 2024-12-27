@@ -1465,6 +1465,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     bottomText: Attribute.RichText;
     bottomTextInventory: Attribute.RichText;
     heading: Attribute.Text;
+    faqs_vehicles_we_armor: Attribute.Component<'slices.accordion', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
