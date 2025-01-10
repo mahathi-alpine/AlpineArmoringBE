@@ -1739,23 +1739,83 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    tabSection: Attribute.DynamicZone<['slices.tab-section']>;
-    allVehiclesImage: Attribute.Media;
-    ballistingTestingsMedia: Attribute.DynamicZone<['slices.tab-section']>;
+    tabSection: Attribute.DynamicZone<['slices.tab-section']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    allVehiclesImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ballistingTestingsMedia: Attribute.DynamicZone<['slices.tab-section']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     blogs: Attribute.Relation<
       'api::homepage.homepage',
       'oneToMany',
       'api::blog.blog'
     >;
-    quote: Attribute.Component<'slices.text-filling'>;
-    hpMiddleText: Attribute.Component<'slices.text-filling'>;
-    seo: Attribute.Component<'shared.seo'>;
-    topBannerTitle: Attribute.Text;
-    topBannerDescription: Attribute.Text;
-    disableCoolVideos: Attribute.Boolean;
-    bannerVideo: Attribute.Component<'slices.video'>;
-    industryPartners: Attribute.Component<'slices.tab-section', true>;
+    quote: Attribute.Component<'slices.text-filling'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    hpMiddleText: Attribute.Component<'slices.text-filling'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    topBannerTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    topBannerDescription: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    disableCoolVideos: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    bannerVideo: Attribute.Component<'slices.video'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    industryPartners: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1773,6 +1833,12 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToMany',
+      'api::homepage.homepage'
+    >;
+    locale: Attribute.String;
   };
 }
 

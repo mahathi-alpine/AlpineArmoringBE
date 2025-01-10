@@ -10,13 +10,22 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "tabSection": {
       "type": "dynamiczone",
       "components": [
         "slices.tab-section"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "allVehiclesImage": {
       "type": "media",
@@ -24,13 +33,23 @@
       "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "ballistingTestingsMedia": {
       "type": "dynamiczone",
       "components": [
         "slices.tab-section"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "blogs": {
       "type": "relation",
@@ -40,36 +59,76 @@
     "quote": {
       "type": "component",
       "repeatable": false,
-      "component": "slices.text-filling"
+      "component": "slices.text-filling",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "hpMiddleText": {
       "type": "component",
       "repeatable": false,
-      "component": "slices.text-filling"
+      "component": "slices.text-filling",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "topBannerTitle": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "topBannerDescription": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "disableCoolVideos": {
-      "type": "boolean"
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "bannerVideo": {
       "type": "component",
       "repeatable": false,
-      "component": "slices.video"
+      "component": "slices.video",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "industryPartners": {
       "type": "component",
       "repeatable": true,
-      "component": "slices.tab-section"
+      "component": "slices.tab-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
