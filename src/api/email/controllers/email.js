@@ -34,8 +34,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       await strapi.plugins['email'].services.email.send({
         to: emailDomain, 
         from: fromEmail,
-        // to: 'petkovics93@yahoo.com', 
-        // from: 'stefaneste93@gmail.com',
+        ...((!country) ? { cc: 'sales@alpineco.com' } : {}), 
         subject: `${subjectPrefix} - Inquiry${!country ? ` from ${name} (${state})` : ` about ${inquiry} from ${name} (${state} ${country})`}`,
         html: `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
