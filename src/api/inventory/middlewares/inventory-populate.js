@@ -45,11 +45,11 @@ const populate = {
   },
   video:{
     populate: true,
-    fields: ['url', 'mime']
+    // fields: ['url', 'mime']
   },
   videoMP4:{
     populate: true,
-    fields: ['url', 'mime']
+    // fields: ['url', 'mime']
   },
   categories:{
     populate: true,
