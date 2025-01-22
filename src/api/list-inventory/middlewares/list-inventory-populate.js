@@ -17,6 +17,9 @@ const populate = {
       },
     },
   },  
+  faqs:{
+    populate: true
+  },
   seo:{
     populate: {
       metaImage: {

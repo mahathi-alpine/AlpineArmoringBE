@@ -89,6 +89,9 @@ const populate = {
     populate: true,
     fields: ['url', 'mime']
   },
+  faqs:{
+    populate: true
+  }
 }
 
 module.exports = (config, { strapi }) => {

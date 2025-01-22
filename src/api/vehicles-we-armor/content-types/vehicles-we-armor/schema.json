@@ -157,6 +157,11 @@
     "order": {
       "type": "integer",
       "default": 100
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion"
     }
   }
 }

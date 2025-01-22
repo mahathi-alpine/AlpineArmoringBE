@@ -79,6 +79,11 @@
       "type": "component",
       "repeatable": true,
       "component": "slices.accordion"
+    },
+    "faqs_stock": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion"
     }
   }
 }

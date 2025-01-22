@@ -1598,6 +1598,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     bottomTextInventory: Attribute.RichText;
     heading: Attribute.Text;
     faqs_vehicles_we_armor: Attribute.Component<'slices.accordion', true>;
+    faqs_stock: Attribute.Component<'slices.accordion', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2347,17 +2348,35 @@ export interface ApiListInventoryListInventory extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     bottomText: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -2409,11 +2428,35 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    bottomText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -3255,6 +3298,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'api::inventory.inventory'
     >;
     order: Attribute.Integer & Attribute.DefaultTo<100>;
+    faqs: Attribute.Component<'slices.accordion', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
