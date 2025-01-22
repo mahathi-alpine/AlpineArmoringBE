@@ -1,4 +1,29 @@
 module.exports = ({ env }) => ({
+  translate: {
+    enabled: true,
+    config: {
+      provider: 'deepl',
+      providerOptions: {
+        apiKey: env('DEEPL_API_KEY'),
+        // apiUrl: 'https://api-free.deepl.com',
+        localeMap: {
+          EN: 'EN-US',
+          ES: 'ES',
+        },
+        apiOptions: {
+          // see <https://github.com/DeepLcom/deepl-node#text-translation-options> for supported options.
+          formality: 'default'
+        },
+      },
+      translatedFieldTypes: [
+        'string',
+        { type: 'text', format: 'plain' },
+        { type: 'richtext', format: 'markdown' },
+        'component',
+        'dynamiczone',
+      ],
+    },
+  },
   'drag-drop-content-types': {
     enabled: true
   },

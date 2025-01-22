@@ -10,6 +10,7 @@ import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import excelExport from "strapi-plugin-excel-export-2024/strapi-admin";
 import redirects from "strapi-plugin-redirects/strapi-admin";
 import sitemap from "strapi-plugin-sitemap/strapi-admin";
+import translate from "strapi-plugin-translate/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
 renderAdmin(document.getElementById("strapi"), {
@@ -22,5 +23,6 @@ renderAdmin(document.getElementById("strapi"), {
     "excel-export": excelExport,
     redirects: redirects,
     sitemap: sitemap,
+    translate: translate,
   },
 });
