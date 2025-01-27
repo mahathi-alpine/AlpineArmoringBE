@@ -23,9 +23,11 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       return `${month}/${day}/${now.getFullYear()} ${hours}:${minutes} ${amPm}`;
     }
     
-    const emailDomain = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
+    // const emailDomain = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
     // const emailDomain = !country ? 'stefaneste93@gmail.com' : 'petkovics93@yahoo.com';
-    const fromEmail = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
+    const emailDomain = !country ?  process.env.EMAIL_SENDER_RENTALS : process.env.EMAIL_SENDER_MAIN;
+    // const fromEmail = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
+    const fromEmail = !country ? process.env.EMAIL_SENDER_RENTALS : process.env.EMAIL_SENDER_MAIN;
     const subjectPrefix = !country ? 'Rental Alpine Armoring' : 'Alpine Armoring';
     const emailColorsDark = !country ? '#06374e' : '#9c9477';
     const emailColorsLight = !country ? '#84a8cc' : '#c3bfaf';
