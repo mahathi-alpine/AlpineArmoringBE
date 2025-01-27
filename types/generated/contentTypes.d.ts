@@ -1545,6 +1545,15 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    blogDynamic: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2085,13 +2094,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     };
   };
   attributes: {
-    slug: Attribute.UID<'api::inventory.inventory', 'title'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     featuredImage: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -2432,6 +2434,13 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
         translate: {
           translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -3413,61 +3422,190 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    slug: Attribute.UID<'api::vehicles-we-armor.vehicles-we-armor', 'title'> &
-      Attribute.Required;
-    featuredImage: Attribute.Media;
+    featuredImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     category: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'manyToMany',
       'api::category.category'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     make: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'manyToOne',
       'api::make.make'
-    >;
-    beforeAfterSlider: Attribute.Component<'slices.before-after-slider'>;
-    description: Attribute.RichText;
-    dimensions1: Attribute.Media;
-    dimensions2: Attribute.Media;
-    gallery: Attribute.Media;
-    title: Attribute.Text;
-    pdf: Attribute.Media;
-    videoUpload: Attribute.Media;
-    videoYoutube: Attribute.String;
-    descriptionBanner: Attribute.Text;
-    protectionLevel: Attribute.String & Attribute.DefaultTo<'A4, A6, A9, A11'>;
-    seo: Attribute.Component<'shared.seo'>;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    beforeAfterSlider: Attribute.Component<'slices.before-after-slider'> &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    dimensions1: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    dimensions2: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    gallery: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pdf: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    videoUpload: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    videoYoutube: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    descriptionBanner: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    protectionLevel: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }> &
+      Attribute.DefaultTo<'A4, A6, A9, A11'>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     armoringFeatures: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToMany',
       'api::specification.specification'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     conversionAccessories: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToMany',
       'api::specification.specification'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     communications: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToMany',
       'api::specification.specification'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     otherOptions: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToMany',
       'api::specification.specification'
-    >;
-    videoMP4: Attribute.Media;
-    videoURL: Attribute.String;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    videoMP4: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    videoURL: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     stock: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'manyToMany',
       'api::inventory.inventory'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     order: Attribute.Integer & Attribute.DefaultTo<100>;
-    faqs: Attribute.Component<'slices.accordion', true>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -3486,6 +3624,12 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToMany',
+      'api::vehicles-we-armor.vehicles-we-armor'
+    >;
+    locale: Attribute.String;
   };
 }
 

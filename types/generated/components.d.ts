@@ -125,6 +125,17 @@ export interface SlicesBeforeAfterSlider extends Schema.Component {
   };
 }
 
+export interface SlicesSingleMedia extends Schema.Component {
+  collectionName: 'components_slices_single_medias';
+  info: {
+    displayName: 'SingleMedia';
+    description: '';
+  };
+  attributes: {
+    media: Attribute.Media;
+  };
+}
+
 export interface SlicesTabSection extends Schema.Component {
   collectionName: 'components_slices_tab_sections';
   info: {
@@ -153,6 +164,16 @@ export interface SlicesTextFilling extends Schema.Component {
   };
 }
 
+export interface SlicesText extends Schema.Component {
+  collectionName: 'components_slices_texts';
+  info: {
+    displayName: 'Text';
+  };
+  attributes: {
+    Content: Attribute.RichText;
+  };
+}
+
 export interface SlicesVideo extends Schema.Component {
   collectionName: 'components_slices_videos';
   info: {
@@ -176,8 +197,10 @@ declare module '@strapi/types' {
       'slices.ballistic-standard': SlicesBallisticStandard;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
+      'slices.single-media': SlicesSingleMedia;
       'slices.tab-section': SlicesTabSection;
       'slices.text-filling': SlicesTextFilling;
+      'slices.text': SlicesText;
       'slices.video': SlicesVideo;
     }
   }

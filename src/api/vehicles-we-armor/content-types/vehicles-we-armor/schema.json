@@ -10,14 +10,12 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
-    "slug": {
-      "pluginOptions": {},
-      "type": "uid",
-      "required": true,
-      "targetField": "title"
-    },
     "featuredImage": {
       "type": "media",
       "multiple": false,
@@ -25,28 +23,50 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {}
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "category": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
-      "inversedBy": "vehicles_we_armors"
+      "inversedBy": "vehicles_we_armors",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "make": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::make.make",
-      "inversedBy": "vehicles_we_armors"
+      "inversedBy": "vehicles_we_armors",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "beforeAfterSlider": {
       "type": "component",
       "repeatable": false,
-      "pluginOptions": {},
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "component": "slices.before-after-slider"
     },
     "description": {
-      "pluginOptions": {},
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "type": "richtext"
     },
     "dimensions1": {
@@ -56,7 +76,11 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {}
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "dimensions2": {
       "type": "media",
@@ -65,7 +89,11 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {}
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "gallery": {
       "type": "media",
@@ -74,10 +102,18 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {}
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "title": {
-      "pluginOptions": {},
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "type": "text"
     },
     "pdf": {
@@ -87,7 +123,11 @@
       "allowedTypes": [
         "files"
       ],
-      "pluginOptions": {}
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "videoUpload": {
       "type": "media",
@@ -96,46 +136,86 @@
       "allowedTypes": [
         "videos"
       ],
-      "pluginOptions": {}
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "videoYoutube": {
-      "pluginOptions": {},
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "type": "string"
     },
     "descriptionBanner": {
-      "pluginOptions": {},
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "type": "text"
     },
     "protectionLevel": {
-      "pluginOptions": {},
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "type": "string",
       "default": "A4, A6, A9, A11"
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "pluginOptions": {},
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "component": "shared.seo"
     },
     "armoringFeatures": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::specification.specification"
+      "target": "api::specification.specification",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "conversionAccessories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::specification.specification"
+      "target": "api::specification.specification",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "communications": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::specification.specification"
+      "target": "api::specification.specification",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "otherOptions": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::specification.specification"
+      "target": "api::specification.specification",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "videoMP4": {
       "type": "media",
@@ -143,16 +223,31 @@
       "required": false,
       "allowedTypes": [
         "videos"
-      ]
+      ],
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "videoURL": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "stock": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::inventory.inventory",
-      "mappedBy": "vehicles_we_armor"
+      "mappedBy": "vehicles_we_armor",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "order": {
       "type": "integer",
@@ -161,7 +256,24 @@
     "faqs": {
       "type": "component",
       "repeatable": true,
-      "component": "slices.accordion"
+      "component": "slices.accordion",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
     }
   }
 }

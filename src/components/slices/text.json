@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_slices_texts",
+  "info": {
+    "displayName": "Text"
+  },
+  "options": {},
+  "attributes": {
+    "Content": {
+      "type": "richtext"
+    }
+  }
+}
