@@ -1,15 +1,16 @@
 {
   "collectionName": "components_slices_text_fillings",
   "info": {
-    "displayName": "TextFilling"
+    "displayName": "TextFilling",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "text": {
-      "type": "text"
-    },
     "title": {
       "type": "string"
+    },
+    "text": {
+      "type": "richtext"
     }
   }
 }

@@ -24,6 +24,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "slugify": "^1.6.6",
     "strapi-plugin-excel-export-2024": "^1.0.7",
     "strapi-plugin-populate-deep": "^3.0.1",
     "strapi-plugin-redirects": "^0.0.6",

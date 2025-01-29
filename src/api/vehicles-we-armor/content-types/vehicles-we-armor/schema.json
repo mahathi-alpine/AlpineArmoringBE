@@ -242,12 +242,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::inventory.inventory",
-      "mappedBy": "vehicles_we_armor",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "mappedBy": "vehicles_we_armor"
     },
     "order": {
       "type": "integer",

@@ -34,13 +34,13 @@ export interface SharedSeo extends Schema.Component {
     metaTitle: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
-        maxLength: 60;
+        maxLength: 200;
       }>;
     metaDescription: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         minLength: 50;
-        maxLength: 260;
+        maxLength: 300;
       }>;
     metaImage: Attribute.Media;
     metaSocial: Attribute.Component<'shared.meta-social', true>;
@@ -157,10 +157,11 @@ export interface SlicesTextFilling extends Schema.Component {
   collectionName: 'components_slices_text_fillings';
   info: {
     displayName: 'TextFilling';
+    description: '';
   };
   attributes: {
-    text: Attribute.Text;
     title: Attribute.String;
+    text: Attribute.RichText;
   };
 }
 

@@ -1012,11 +1012,17 @@ export interface ApiAboutAbout extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     text: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     seo: Attribute.Component<'shared.seo'> &
@@ -1024,11 +1030,17 @@ export interface ApiAboutAbout extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     boxes: Attribute.Component<'slices.tab-section', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     certificate1: Attribute.Media &
@@ -1036,11 +1048,17 @@ export interface ApiAboutAbout extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     certificate2: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     timeline1: Attribute.Component<'shared.timeline', true> &
@@ -1048,11 +1066,17 @@ export interface ApiAboutAbout extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
-    quote: Attribute.Text &
+    quote: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -2109,8 +2133,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         translate: {
           translate: 'translate';
         };
-      }> &
-      Attribute.DefaultTo<'This armored vehicle is in stock and available to ship immediately'>;
+      }>;
     VIN: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2126,16 +2149,13 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     engine: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
+          localized: false;
         };
       }>;
     order: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }> &
       Attribute.DefaultTo<50>;
@@ -2148,10 +2168,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     trans: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
+          localized: false;
         };
       }>;
     power: Attribute.String &
@@ -2230,12 +2247,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'api::inventory.inventory',
       'oneToMany',
       'api::specification.specification'
-    > &
-      Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
+    >;
     description: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2296,10 +2308,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
+          localized: false;
         };
       }>;
     flag: Attribute.Enumeration<
@@ -2329,17 +2338,14 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'api::category.category'
     > &
       Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
+        i18n: {
+          localized: false;
         };
       }>;
     OEMWindowSticker: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
+          localized: false;
         };
       }>;
     OEMArmoringSpecs: Attribute.Media &
@@ -2366,7 +2372,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     hide: Attribute.Boolean &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     vehicles_we_armor: Attribute.Relation<
@@ -2375,17 +2381,17 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'api::vehicles-we-armor.vehicles-we-armor'
     > &
       Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     videoURL: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
+          localized: false;
         };
       }>;
     transparentImage: Attribute.Media &
@@ -2415,7 +2421,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     rentalsDescription: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     faqs: Attribute.Component<'slices.accordion', true> &
@@ -2437,10 +2443,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
       }>;
     slug: Attribute.String &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;

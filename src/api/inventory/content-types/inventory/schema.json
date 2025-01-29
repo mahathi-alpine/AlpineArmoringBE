@@ -38,8 +38,7 @@
           "translate": "translate"
         }
       },
-      "type": "string",
-      "default": "This armored vehicle is in stock and available to ship immediately"
+      "type": "string"
     },
     "VIN": {
       "pluginOptions": {
@@ -60,10 +59,7 @@
     "engine": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
+          "localized": false
         }
       },
       "type": "string"
@@ -71,7 +67,7 @@
     "order": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "integer",
@@ -93,10 +89,7 @@
     "trans": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
+          "localized": false
         }
       },
       "type": "string"
@@ -192,12 +185,7 @@
     "specifications": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::specification.specification",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
+      "target": "api::specification.specification"
     },
     "description": {
       "pluginOptions": {
@@ -282,10 +270,7 @@
       "repeatable": false,
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
+          "localized": false
         }
       },
       "component": "shared.seo"
@@ -327,8 +312,8 @@
       "target": "api::category.category",
       "mappedBy": "inventory_vehicles",
       "pluginOptions": {
-        "translate": {
-          "translate": "translate"
+        "i18n": {
+          "localized": false
         }
       }
     },
@@ -341,10 +326,7 @@
       ],
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
+          "localized": false
         }
       }
     },
@@ -388,7 +370,7 @@
     "hide": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "boolean"
@@ -397,20 +379,20 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::vehicles-we-armor.vehicles-we-armor",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "inversedBy": "stock"
-    },
-    "videoURL": {
+      "inversedBy": "stock",
       "pluginOptions": {
         "i18n": {
           "localized": true
         },
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
+        }
+      }
+    },
+    "videoURL": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
         }
       },
       "type": "string"
@@ -466,7 +448,7 @@
     "rentalsDescription": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "type": "richtext"
@@ -499,10 +481,13 @@
       "pluginOptions": {
         "i18n": {
           "localized": true
+        },
+        "translate": {
+          "translate": "translate"
         }
       },
       "type": "string",
-      "required": true
+      "unique": false
     }
   }
 }
