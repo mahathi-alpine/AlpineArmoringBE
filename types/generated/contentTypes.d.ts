@@ -1252,6 +1252,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    blog_evergreens: Attribute.Relation<
+      'api::article.article',
+      'oneToMany',
+      'api::blog-evergreen.blog-evergreen'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1460,7 +1465,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   info: {
     singularName: 'blog';
     pluralName: 'blogs';
-    displayName: 'Blog';
+    displayName: 'News';
     description: '';
   };
   options: {
@@ -1563,12 +1568,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    evergreen: Attribute.Boolean &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     blogDynamic: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1628,6 +1627,145 @@ export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
+  collectionName: 'blog_evergreens';
+  info: {
+    singularName: 'blog-evergreen';
+    pluralName: 'blog-evergreens';
+    displayName: 'BlogEvergreen';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.UID<'api::blog-evergreen.blog-evergreen', 'title'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    excerpt: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    categories: Attribute.Relation<
+      'api::blog-evergreen.blog-evergreen',
+      'oneToMany',
+      'api::blog-category.blog-category'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    date: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    videos: Attribute.Component<'shared.you-tube-video', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    authors: Attribute.Relation<
+      'api::blog-evergreen.blog-evergreen',
+      'manyToOne',
+      'api::article.article'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    blogDynamic: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blog-evergreen.blog-evergreen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blog-evergreen.blog-evergreen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::blog-evergreen.blog-evergreen',
+      'oneToMany',
+      'api::blog-evergreen.blog-evergreen'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -3782,6 +3920,7 @@ declare module '@strapi/types' {
       'api::become-a-dealer.become-a-dealer': ApiBecomeADealerBecomeADealer;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
+      'api::blog-evergreen.blog-evergreen': ApiBlogEvergreenBlogEvergreen;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::category.category': ApiCategoryCategory;
       'api::contact-page.contact-page': ApiContactPageContactPage;

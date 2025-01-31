@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "blogs",
+  "collectionName": "blog_evergreens",
   "info": {
-    "singularName": "blog",
-    "pluralName": "blogs",
-    "displayName": "News",
+    "singularName": "blog-evergreen",
+    "pluralName": "blog-evergreens",
+    "displayName": "BlogEvergreen",
     "description": ""
   },
   "options": {
@@ -25,7 +25,8 @@
           "translate": "translate"
         }
       },
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "slug": {
       "pluginOptions": {
@@ -34,13 +35,12 @@
         }
       },
       "type": "uid",
-      "targetField": "title",
-      "required": true
+      "targetField": "title"
     },
     "thumbnail": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
@@ -78,22 +78,9 @@
       "target": "api::blog-category.blog-category",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       }
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "component": "shared.seo"
     },
     "date": {
       "pluginOptions": {
@@ -116,10 +103,7 @@
       "repeatable": true,
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
+          "localized": false
         }
       },
       "component": "shared.you-tube-video"
@@ -127,13 +111,13 @@
     "authors": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::author.author",
-      "inversedBy": "blogs",
+      "target": "api::article.article",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
-      }
+      },
+      "inversedBy": "blog_evergreens"
     },
     "blogDynamic": {
       "pluginOptions": {
@@ -149,6 +133,19 @@
         "slices.text",
         "slices.single-media"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "shared.seo"
     }
   }
 }
