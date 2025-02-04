@@ -20,6 +20,9 @@
       "pluginOptions": {
         "i18n": {
           "localized": true
+        },
+        "translate": {
+          "translate": "translate"
         }
       },
       "type": "string"
@@ -36,7 +39,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::vehicles-we-armor.vehicles-we-armor",
-      "mappedBy": "make"
+      "mappedBy": "make",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "order": {
       "pluginOptions": {
@@ -45,6 +53,19 @@
         }
       },
       "type": "integer"
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.accordion"
     }
   }
 }

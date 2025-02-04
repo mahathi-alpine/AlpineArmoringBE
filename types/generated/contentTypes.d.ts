@@ -2831,6 +2831,9 @@ export interface ApiMakeMake extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     slug: Attribute.UID &
       Attribute.SetPluginOptions<{
@@ -2842,11 +2845,25 @@ export interface ApiMakeMake extends Schema.CollectionType {
       'api::make.make',
       'oneToMany',
       'api::vehicles-we-armor.vehicles-we-armor'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     order: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;

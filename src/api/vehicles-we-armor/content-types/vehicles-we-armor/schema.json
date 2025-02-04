@@ -44,12 +44,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::make.make",
-      "inversedBy": "vehicles_we_armors",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "inversedBy": "vehicles_we_armors"
     },
     "beforeAfterSlider": {
       "type": "component",
