@@ -1252,11 +1252,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    blog_evergreens: Attribute.Relation<
-      'api::article.article',
-      'oneToMany',
-      'api::blog-evergreen.blog-evergreen'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1305,6 +1300,11 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     >;
     slug: Attribute.UID<'api::author.author', 'Name'>;
     description: Attribute.RichText;
+    blog_evergreens: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::blog-evergreen.blog-evergreen'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1714,16 +1714,6 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    authors: Attribute.Relation<
-      'api::blog-evergreen.blog-evergreen',
-      'manyToOne',
-      'api::article.article'
-    > &
-      Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
-        };
-      }>;
     blogDynamic: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1738,6 +1728,16 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    authors: Attribute.Relation<
+      'api::blog-evergreen.blog-evergreen',
+      'manyToOne',
+      'api::author.author'
+    > &
+      Attribute.SetPluginOptions<{
         translate: {
           translate: 'translate';
         };

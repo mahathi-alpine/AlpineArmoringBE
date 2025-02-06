@@ -108,17 +108,6 @@
       },
       "component": "shared.you-tube-video"
     },
-    "authors": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::article.article",
-      "pluginOptions": {
-        "translate": {
-          "translate": "copy"
-        }
-      },
-      "inversedBy": "blog_evergreens"
-    },
     "blogDynamic": {
       "pluginOptions": {
         "i18n": {
@@ -146,6 +135,17 @@
         }
       },
       "component": "shared.seo"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "inversedBy": "blog_evergreens"
     }
   }
 }

@@ -125,12 +125,6 @@
           "localized": true
         }
       }
-    },
-    "blog_evergreens": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::blog-evergreen.blog-evergreen",
-      "mappedBy": "authors"
     }
   }
 }
