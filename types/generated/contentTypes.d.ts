@@ -2323,7 +2323,10 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     engine: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     order: Attribute.Integer &
@@ -2402,26 +2405,15 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     armor_level: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
+          localized: false;
         };
       }>;
     year: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
+          localized: false;
         };
       }>;
-    specifications: Attribute.Relation<
-      'api::inventory.inventory',
-      'oneToMany',
-      'api::specification.specification'
-    >;
     description: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2482,7 +2474,10 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     flag: Attribute.Enumeration<
@@ -2514,6 +2509,9 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     OEMWindowSticker: Attribute.Media &
@@ -2556,10 +2554,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
     > &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'copy';
+          localized: false;
         };
       }>;
     videoURL: Attribute.String &
@@ -2597,6 +2592,9 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     faqs: Attribute.Component<'slices.accordion', true> &
       Attribute.SetPluginOptions<{
@@ -2617,6 +2615,7 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
       }>;
     slug: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

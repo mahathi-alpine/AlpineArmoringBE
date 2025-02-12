@@ -57,12 +57,18 @@
       "type": "string"
     },
     "engine": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
         }
       },
-      "type": "string"
+      "translate": {
+        "translate": "translate"
+      }
     },
     "order": {
       "pluginOptions": {
@@ -163,10 +169,7 @@
     "armor_level": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
+          "localized": false
         }
       },
       "type": "string"
@@ -174,18 +177,10 @@
     "year": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
+          "localized": false
         }
       },
       "type": "string"
-    },
-    "specifications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::specification.specification"
     },
     "description": {
       "pluginOptions": {
@@ -270,7 +265,10 @@
       "repeatable": false,
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
         }
       },
       "component": "shared.seo"
@@ -314,6 +312,9 @@
       "pluginOptions": {
         "i18n": {
           "localized": false
+        },
+        "translate": {
+          "translate": "translate"
         }
       }
     },
@@ -382,10 +383,7 @@
       "inversedBy": "stock",
       "pluginOptions": {
         "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "copy"
+          "localized": false
         }
       }
     },
@@ -449,6 +447,9 @@
       "pluginOptions": {
         "i18n": {
           "localized": true
+        },
+        "translate": {
+          "translate": "translate"
         }
       },
       "type": "richtext"
@@ -478,6 +479,8 @@
       "type": "richtext"
     },
     "slug": {
+      "type": "string",
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -485,9 +488,7 @@
         "translate": {
           "translate": "translate"
         }
-      },
-      "type": "string",
-      "unique": false
+      }
     }
   }
 }

@@ -23,20 +23,6 @@ const populate = {
       }
     }
   },
-  specifications:{
-    populate: {
-      image: {
-        populate: true
-      }
-    },
-  },
-  accessories:{
-    populate: {
-      image: {
-        populate: true
-      }
-    },
-  },
   gallery:{
     populate: true
   },

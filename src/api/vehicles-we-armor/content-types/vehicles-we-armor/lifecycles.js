@@ -7,63 +7,25 @@ module.exports = {
   },
 
   async beforeUpdate(event) {
-
-    try {
-      // Check if this update contains a new localization
-      if (event.params.data.localizations?.length > 0) {        
-        // Get the original entry with its relationships
-        const originalEntry = await strapi.entityService.findOne(
-          'api::inventory.inventory',
-          event.params.where.id,
-          {
-            populate: {
-              vehicles_we_armor: true
-            }
-          }
-        );
-  
-        if (originalEntry?.vehicles_we_armor?.length > 0) {          
-          // Update the newly created translation with the vehicles
-          const translationId = event.params.data.localizations[0];
-          await strapi.entityService.update(
-            'api::inventory.inventory',
-            translationId,
-            {
-              data: {
-                vehicles_we_armor: {
-                  connect: originalEntry.vehicles_we_armor.map(vehicle => ({
-                    id: vehicle.id,
-                    position: { end: true }
-                  }))
-                }
-              }
-            }
-          );
-        } else {
-          console.log('No vehicles_we_armor found in original entry');
-        }
-      }
-    } catch (error) {
-      console.error('Error in beforeUpdate:', error);
-    }
+    console.log('Update/Publish event triggered');
     
     // Skip slug generation if we don't have title or slug in the update data
     if (!event.params.data.title && !event.params.data.slug) {
-      // console.log('Skipping slug generation - no title or slug in update data');
+      console.log('Skipping slug generation - no title or slug in update data');
       return;
     }
 
     // If this is a publish action (data only contains publishedAt and updates)
     if (event.params.data.publishedAt && !event.params.data.title) {
       const fullEntity = await strapi.entityService.findOne(
-        'api::inventory.inventory',
+        'api::vehicles-we-armor.vehicles-we-armor',
         event.params.where.id,
         { populate: '*' }
       );
       
       if (!fullEntity.slug && fullEntity.title) {
         event.params.data.slug = generateValidSlug(fullEntity.title);
-        // console.log('Generated slug on publish:', event.params.data.slug);
+        console.log('Generated slug on publish:', event.params.data.slug);
       }
       return;
     }
@@ -85,7 +47,7 @@ const generateValidSlug = (text) => {
 const generateSlug = async (event) => {
   const { data } = event.params;
   
-  // console.log('Current data:', data);
+  console.log('Current data:', data);
 
   // Only proceed if we have either a slug or title to work with
   if (!data.slug && !data.title) {
@@ -102,7 +64,7 @@ const generateSlug = async (event) => {
     data.slug = generateValidSlug(data.title);
   }
 
-  // console.log('Generated/formatted slug:', data.slug);
+  console.log('Generated/formatted slug:', data.slug);
 
   // Validate that the slug matches the required pattern
   const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -112,7 +74,7 @@ const generateSlug = async (event) => {
 };
 
 const getLocale = async (id) => {
-  const res = await strapi.service("api::inventory.inventory").findOne(id);
-  // console.log('Found locale:', res?.locale);
+  const res = await strapi.service("api::vehicles-we-armor.vehicles-we-armor").findOne(id);
+  console.log('Found locale:', res?.locale);
   return res?.locale;
 };
