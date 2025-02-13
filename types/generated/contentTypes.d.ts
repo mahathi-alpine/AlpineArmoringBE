@@ -2889,6 +2889,68 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
   };
 }
 
+export interface ApiLocationsWeServePageLocationsWeServePage
+  extends Schema.SingleType {
+  collectionName: 'locations_we_serve_pages';
+  info: {
+    singularName: 'locations-we-serve-page';
+    pluralName: 'locations-we-serve-pages';
+    displayName: 'LocationsWeServePage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    defaultText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::locations-we-serve-page.locations-we-serve-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::locations-we-serve-page.locations-we-serve-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::locations-we-serve-page.locations-we-serve-page',
+      'oneToMany',
+      'api::locations-we-serve-page.locations-we-serve-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiMakeMake extends Schema.CollectionType {
   collectionName: 'makes';
   info: {
@@ -4031,6 +4093,7 @@ declare module '@strapi/types' {
       'api::landing.landing': ApiLandingLanding;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
+      'api::locations-we-serve-page.locations-we-serve-page': ApiLocationsWeServePageLocationsWeServePage;
       'api::make.make': ApiMakeMake;
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::media.media': ApiMediaMedia;
