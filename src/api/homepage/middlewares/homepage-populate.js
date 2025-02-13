@@ -56,7 +56,17 @@ const populate = {
       }
     }
   },
-  blogs:{
+  blog_evergreens:{
+    populate: {
+      thumbnail: {
+        populate: true
+      },    
+      categories: {
+        populate: true
+      }
+    }
+  },
+  news:{
     populate: {
       thumbnail: {
         populate: true

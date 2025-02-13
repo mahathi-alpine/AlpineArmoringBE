@@ -2183,11 +2183,17 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     allVehiclesImage: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     ballistingTestingsMedia: Attribute.DynamicZone<['slices.tab-section']> &
@@ -2195,16 +2201,27 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
-    blogs: Attribute.Relation<
+    blog_evergreens: Attribute.Relation<
       'api::homepage.homepage',
       'oneToMany',
-      'api::blog.blog'
-    >;
+      'api::blog-evergreen.blog-evergreen'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     quote: Attribute.Component<'slices.text-filling'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     hpMiddleText: Attribute.Component<'slices.text-filling'> &
@@ -2212,11 +2229,17 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     topBannerTitle: Attribute.Text &
@@ -2224,11 +2247,17 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     topBannerDescription: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     disableCoolVideos: Attribute.Boolean &
@@ -2242,11 +2271,27 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     industryPartners: Attribute.Component<'slices.tab-section', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    news: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToMany',
+      'api::blog.blog'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
