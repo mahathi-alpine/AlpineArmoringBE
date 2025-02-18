@@ -45,16 +45,10 @@
         }
       }
     },
-    "slug": {
-      "pluginOptions": {},
-      "type": "uid",
-      "required": true,
-      "targetField": "title"
-    },
     "order": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
       "type": "integer"
@@ -178,6 +172,17 @@
           "translate": "translate"
         }
       }
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "string"
     }
   }
 }

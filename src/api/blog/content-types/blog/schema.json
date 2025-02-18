@@ -72,16 +72,6 @@
       },
       "type": "richtext"
     },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::blog-category.blog-category",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
@@ -128,12 +118,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::author.author",
-      "inversedBy": "blogs",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "inversedBy": "blogs"
     },
     "blogDynamic": {
       "pluginOptions": {

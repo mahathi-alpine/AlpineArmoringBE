@@ -28,15 +28,6 @@
       "type": "string",
       "required": false
     },
-    "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "uid",
-      "targetField": "title"
-    },
     "thumbnail": {
       "type": "media",
       "multiple": false,
@@ -71,16 +62,6 @@
         }
       },
       "type": "richtext"
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::blog-category.blog-category",
-      "pluginOptions": {
-        "translate": {
-          "translate": "copy"
-        }
-      }
     },
     "date": {
       "pluginOptions": {
@@ -161,6 +142,17 @@
       "component": "slices.accordion"
     },
     "faqsTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "string"
+    },
+    "slug": {
       "pluginOptions": {
         "i18n": {
           "localized": true

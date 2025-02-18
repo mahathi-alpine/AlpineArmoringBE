@@ -1186,17 +1186,14 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
-      }>;
-    slug: Attribute.UID<'api::article.article', 'title'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
+        translate: {
+          translate: 'translate';
         };
       }>;
     thumbnail: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     excerpt: Attribute.Text &
@@ -1204,23 +1201,32 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     order: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     content: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     region: Attribute.Enumeration<
@@ -1237,19 +1243,28 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     > &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     type: Attribute.Enumeration<['country', 'state', 'city']> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     flag: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
+          localized: false;
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -1290,16 +1305,58 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Name: Attribute.String;
-    linkedinURL: Attribute.Text;
+    Name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    linkedinURL: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     blogs: Attribute.Relation<
       'api::author.author',
       'oneToMany',
       'api::blog.blog'
-    >;
-    slug: Attribute.UID<'api::author.author', 'Name'>;
-    description: Attribute.RichText;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     blog_evergreens: Attribute.Relation<
       'api::author.author',
       'oneToMany',
@@ -1322,6 +1379,12 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::author.author'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1518,16 +1581,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    categories: Attribute.Relation<
-      'api::blog.blog',
-      'oneToMany',
-      'api::blog-category.blog-category'
-    > &
-      Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1614,40 +1667,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
-export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
-  collectionName: 'blog_categories';
-  info: {
-    singularName: 'blog-category';
-    pluralName: 'blog-categories';
-    displayName: 'BlogCategories';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String;
-    slug: Attribute.UID<'api::blog-category.blog-category', 'name'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::blog-category.blog-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::blog-category.blog-category',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-  };
-}
-
 export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
   collectionName: 'blog_evergreens';
   info: {
@@ -1674,12 +1693,6 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    slug: Attribute.UID<'api::blog-evergreen.blog-evergreen', 'title'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     thumbnail: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1702,16 +1715,6 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
         };
         translate: {
           translate: 'translate';
-        };
-      }>;
-    categories: Attribute.Relation<
-      'api::blog-evergreen.blog-evergreen',
-      'oneToMany',
-      'api::blog-category.blog-category'
-    > &
-      Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'copy';
         };
       }>;
     date: Attribute.DateTime &
@@ -1770,6 +1773,15 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
         };
       }>;
     faqsTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1902,11 +1914,10 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    slug: Attribute.UID<'api::category.category', 'title'> & Attribute.Required;
     order: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     inventoryBanner: Attribute.Component<'slices.banner'> &
@@ -1993,6 +2004,15 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
         };
       }>;
     faqs_stock: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -4158,7 +4178,6 @@ declare module '@strapi/types' {
       'api::ballistic-testing.ballistic-testing': ApiBallisticTestingBallisticTesting;
       'api::become-a-dealer.become-a-dealer': ApiBecomeADealerBecomeADealer;
       'api::blog.blog': ApiBlogBlog;
-      'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::blog-evergreen.blog-evergreen': ApiBlogEvergreenBlogEvergreen;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::category.category': ApiCategoryCategory;
