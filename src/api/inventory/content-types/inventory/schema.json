@@ -308,7 +308,6 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
-      "mappedBy": "inventory_vehicles",
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -316,7 +315,8 @@
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "mappedBy": "inventory_vehicles"
     },
     "OEMWindowSticker": {
       "type": "media",

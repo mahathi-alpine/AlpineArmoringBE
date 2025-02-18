@@ -1876,29 +1876,131 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String & Attribute.Required & Attribute.Unique;
-    image: Attribute.Media;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     slug: Attribute.UID<'api::category.category', 'title'> & Attribute.Required;
-    order: Attribute.Integer;
-    inventoryBanner: Attribute.Component<'slices.banner'>;
-    allBanner: Attribute.Component<'slices.banner'>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    inventoryBanner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    allBanner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     inventory_vehicles: Attribute.Relation<
       'api::category.category',
       'manyToMany',
       'api::inventory.inventory'
-    >;
-    seo: Attribute.Component<'shared.seo'>;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     vehicles_we_armors: Attribute.Relation<
       'api::category.category',
       'manyToMany',
       'api::vehicles-we-armor.vehicles-we-armor'
-    >;
-    bottomText: Attribute.RichText;
-    bottomTextInventory: Attribute.RichText;
-    heading: Attribute.Text;
-    faqs_vehicles_we_armor: Attribute.Component<'slices.accordion', true>;
-    faqs_stock: Attribute.Component<'slices.accordion', true>;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    bottomText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    bottomTextInventory: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    heading: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqs_vehicles_we_armor: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqs_stock: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1916,6 +2018,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::category.category'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -2696,40 +2804,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
   };
 }
 
-export interface ApiLandingLanding extends Schema.SingleType {
-  collectionName: 'landings';
-  info: {
-    singularName: 'landing';
-    pluralName: 'landings';
-    displayName: 'Landing';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::landing.landing',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::landing.landing',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-  };
-}
-
 export interface ApiListInventoryListInventory extends Schema.SingleType {
   collectionName: 'list_inventories';
   info: {
@@ -2971,16 +3045,10 @@ export interface ApiMakeMake extends Schema.CollectionType {
     title: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
         translate: {
           translate: 'translate';
-        };
-      }>;
-    slug: Attribute.UID &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
         };
       }>;
     vehicles_we_armors: Attribute.Relation<
@@ -2989,6 +3057,9 @@ export interface ApiMakeMake extends Schema.CollectionType {
       'api::vehicles-we-armor.vehicles-we-armor'
     > &
       Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
         translate: {
           translate: 'translate';
         };
@@ -2996,13 +3067,22 @@ export interface ApiMakeMake extends Schema.CollectionType {
     order: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     faqs: Attribute.Component<'slices.accordion', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
         translate: {
           translate: 'translate';
@@ -4090,7 +4170,6 @@ declare module '@strapi/types' {
       'api::faq.faq': ApiFaqFaq;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
-      'api::landing.landing': ApiLandingLanding;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::locations-we-serve-page.locations-we-serve-page': ApiLocationsWeServePageLocationsWeServePage;

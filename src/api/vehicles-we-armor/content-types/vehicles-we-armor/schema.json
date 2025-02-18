@@ -33,12 +33,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
-      "inversedBy": "vehicles_we_armors",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "inversedBy": "vehicles_we_armors"
     },
     "make": {
       "type": "relation",
