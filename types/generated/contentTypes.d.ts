@@ -3404,13 +3404,35 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
     singularName: 'news-page';
     pluralName: 'news-pages';
     displayName: 'NewsPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -3428,6 +3450,12 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::news-page.news-page',
+      'oneToMany',
+      'api::news-page.news-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -4060,6 +4088,16 @@ export interface ApiVideoVideo extends Schema.CollectionType {
       'oneToOne',
       'api::videos-category.videos-category'
     >;
+    videoCategory: Attribute.Enumeration<
+      [
+        'Selected Vans and Trucks',
+        'Selected SUVs and Sedans',
+        'Media Appearances',
+        'Cool Videos',
+        'Ballistic Tests'
+      ]
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

@@ -36,6 +36,17 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::videos-category.videos-category"
+    },
+    "videoCategory": {
+      "type": "enumeration",
+      "enum": [
+        "Selected Vans and Trucks",
+        "Selected SUVs and Sedans",
+        "Media Appearances",
+        "Cool Videos",
+        "Ballistic Tests"
+      ],
+      "required": true
     }
   }
 }
