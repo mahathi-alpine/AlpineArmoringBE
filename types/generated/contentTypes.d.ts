@@ -1399,10 +1399,39 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
-    BallisticStandards: Attribute.Component<'slices.ballistic-standard', true>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    BallisticStandards: Attribute.Component<'slices.ballistic-standard', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     bulletPoster: Attribute.Media;
     ammunitionChartPDF: Attribute.Media;
     createdAt: Attribute.DateTime;
@@ -1422,6 +1451,12 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::ballistic-chart.ballistic-chart',
+      'oneToMany',
+      'api::ballistic-chart.ballistic-chart'
+    >;
+    locale: Attribute.String;
   };
 }
 
