@@ -32,11 +32,6 @@
     "order": {
       "type": "integer"
     },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::videos-category.videos-category"
-    },
     "videoCategory": {
       "type": "enumeration",
       "enum": [
