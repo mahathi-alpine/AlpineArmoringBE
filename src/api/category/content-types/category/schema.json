@@ -107,12 +107,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::vehicles-we-armor.vehicles-we-armor",
-      "mappedBy": "category",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "mappedBy": "category"
     },
     "bottomText": {
       "type": "richtext",

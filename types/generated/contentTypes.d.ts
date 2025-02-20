@@ -1795,12 +1795,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'api::blog.blog',
       'manyToOne',
       'api::author.author'
-    > &
-      Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
+    >;
     blogDynamic: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -3916,10 +3911,39 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String;
-    image: Attribute.Media;
-    displayTitle: Attribute.String;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    displayTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     category: Attribute.Enumeration<
       [
         'Armoring Features',
@@ -3927,7 +3951,12 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
         'Communications & Electronics',
         'Other Options'
       ]
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -3945,6 +3974,12 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::specification.specification',
+      'oneToMany',
+      'api::specification.specification'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -3959,15 +3994,46 @@ export interface ApiTradeShowTradeShow extends Schema.CollectionType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     category: Attribute.Enumeration<
       ['International Trade Shows', 'USA Trade Shows']
     >;
-    description: Attribute.Text;
-    gallery: Attribute.Media;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    gallery: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     date: Attribute.Date;
-    location: Attribute.String;
+    location: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -3985,6 +4051,12 @@ export interface ApiTradeShowTradeShow extends Schema.CollectionType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::trade-show.trade-show',
+      'oneToMany',
+      'api::trade-show.trade-show'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -4054,7 +4126,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     make: Attribute.Relation<
@@ -4064,7 +4136,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     beforeAfterSlider: Attribute.Component<'slices.before-after-slider'> &
@@ -4077,6 +4149,9 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       Attribute.SetPluginOptions<{
         translate: {
           translate: 'translate';
+        };
+        i18n: {
+          localized: true;
         };
       }>;
     dimensions1: Attribute.Media &
@@ -4102,6 +4177,9 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         translate: {
           translate: 'translate';
         };
+        i18n: {
+          localized: true;
+        };
       }>;
     pdf: Attribute.Media &
       Attribute.SetPluginOptions<{
@@ -4126,6 +4204,9 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         translate: {
           translate: 'translate';
         };
+        i18n: {
+          localized: true;
+        };
       }>;
     protectionLevel: Attribute.String &
       Attribute.SetPluginOptions<{
@@ -4139,6 +4220,9 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         translate: {
           translate: 'translate';
         };
+        i18n: {
+          localized: true;
+        };
       }>;
     armoringFeatures: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
@@ -4147,7 +4231,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     conversionAccessories: Attribute.Relation<
@@ -4157,7 +4241,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     communications: Attribute.Relation<
@@ -4167,7 +4251,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     otherOptions: Attribute.Relation<
@@ -4177,7 +4261,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     videoMP4: Attribute.Media &
@@ -4199,7 +4283,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     order: Attribute.Integer & Attribute.DefaultTo<100>;
@@ -4207,6 +4291,9 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       Attribute.SetPluginOptions<{
         translate: {
           translate: 'translate';
+        };
+        i18n: {
+          localized: true;
         };
       }>;
     slug: Attribute.String &
@@ -4257,12 +4344,54 @@ export interface ApiVideoVideo extends Schema.CollectionType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String;
-    URLExternal: Attribute.String;
-    media: Attribute.Media;
-    location: Attribute.Text;
-    order: Attribute.Integer;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    URLExternal: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    media: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    location: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     videoCategory: Attribute.Enumeration<
       [
         'Selected Vans and Trucks',
@@ -4272,7 +4401,12 @@ export interface ApiVideoVideo extends Schema.CollectionType {
         'Ballistic Tests'
       ]
     > &
-      Attribute.Required;
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -4290,6 +4424,12 @@ export interface ApiVideoVideo extends Schema.CollectionType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::video.video',
+      'oneToMany',
+      'api::video.video'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -4304,10 +4444,30 @@ export interface ApiVideoPageVideoPage extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
-    titleH1: Attribute.String;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    titleH1: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -4325,6 +4485,12 @@ export interface ApiVideoPageVideoPage extends Schema.SingleType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::video-page.video-page',
+      'oneToMany',
+      'api::video-page.video-page'
+    >;
+    locale: Attribute.String;
   };
 }
 

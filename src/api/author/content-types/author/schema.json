@@ -42,12 +42,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::blog.blog",
-      "mappedBy": "authors",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "mappedBy": "authors"
     },
     "description": {
       "type": "richtext",

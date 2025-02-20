@@ -380,12 +380,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::vehicles-we-armor.vehicles-we-armor",
-      "inversedBy": "stock",
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "inversedBy": "stock"
     },
     "videoURL": {
       "pluginOptions": {

@@ -35,7 +35,7 @@
       "target": "api::category.category",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       },
       "inversedBy": "vehicles_we_armors"
@@ -46,7 +46,7 @@
       "target": "api::make.make",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       },
       "inversedBy": "vehicles_we_armors"
@@ -65,6 +65,9 @@
       "pluginOptions": {
         "translate": {
           "translate": "translate"
+        },
+        "i18n": {
+          "localized": true
         }
       },
       "type": "richtext"
@@ -112,6 +115,9 @@
       "pluginOptions": {
         "translate": {
           "translate": "translate"
+        },
+        "i18n": {
+          "localized": true
         }
       },
       "type": "text"
@@ -154,6 +160,9 @@
       "pluginOptions": {
         "translate": {
           "translate": "translate"
+        },
+        "i18n": {
+          "localized": true
         }
       },
       "type": "text"
@@ -173,6 +182,9 @@
       "pluginOptions": {
         "translate": {
           "translate": "translate"
+        },
+        "i18n": {
+          "localized": true
         }
       },
       "component": "shared.seo"
@@ -183,7 +195,7 @@
       "target": "api::specification.specification",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       }
     },
@@ -193,7 +205,7 @@
       "target": "api::specification.specification",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       }
     },
@@ -203,7 +215,7 @@
       "target": "api::specification.specification",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       }
     },
@@ -213,7 +225,7 @@
       "target": "api::specification.specification",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       }
     },
@@ -244,7 +256,7 @@
       "target": "api::inventory.inventory",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       },
       "mappedBy": "vehicles_we_armor"
@@ -260,6 +272,9 @@
       "pluginOptions": {
         "translate": {
           "translate": "translate"
+        },
+        "i18n": {
+          "localized": true
         }
       }
     },
