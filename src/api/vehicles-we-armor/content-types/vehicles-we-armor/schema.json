@@ -34,8 +34,11 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "pluginOptions": {
+        "i18n": {
+          "localized": false
+        },
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       },
       "inversedBy": "vehicles_we_armors"
@@ -45,8 +48,11 @@
       "relation": "manyToOne",
       "target": "api::make.make",
       "pluginOptions": {
+        "i18n": {
+          "localized": false
+        },
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       },
       "inversedBy": "vehicles_we_armors"
@@ -255,8 +261,11 @@
       "relation": "manyToMany",
       "target": "api::inventory.inventory",
       "pluginOptions": {
+        "i18n": {
+          "localized": false
+        },
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       },
       "mappedBy": "vehicles_we_armor"

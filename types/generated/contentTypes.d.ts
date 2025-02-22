@@ -2939,6 +2939,9 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         i18n: {
           localized: false;
         };
+        translate: {
+          translate: 'translate';
+        };
       }>;
     videoURL: Attribute.String &
       Attribute.SetPluginOptions<{
@@ -4336,8 +4339,11 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'api::category.category'
     > &
       Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     make: Attribute.Relation<
@@ -4346,8 +4352,11 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'api::make.make'
     > &
       Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     beforeAfterSlider: Attribute.Component<'slices.before-after-slider'> &
@@ -4493,8 +4502,11 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'api::inventory.inventory'
     > &
       Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     order: Attribute.Integer & Attribute.DefaultTo<100>;

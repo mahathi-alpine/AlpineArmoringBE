@@ -383,6 +383,9 @@
       "pluginOptions": {
         "i18n": {
           "localized": false
+        },
+        "translate": {
+          "translate": "translate"
         }
       },
       "inversedBy": "stock"
