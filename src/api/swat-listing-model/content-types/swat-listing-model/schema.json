@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "swat_listing_inventories",
+  "collectionName": "swat_listing_models",
   "info": {
-    "singularName": "swat-listing-inventory",
-    "pluralName": "swat-listing-inventories",
-    "displayName": "SWATListingInventory",
+    "singularName": "swat-listing-model",
+    "pluralName": "swat-listing-models",
+    "displayName": "SWATListingModels",
     "description": ""
   },
   "options": {
@@ -29,6 +29,29 @@
       },
       "component": "slices.banner"
     },
+    "vehicles_we_armors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.accordion"
+    },
     "seo": {
       "type": "component",
       "repeatable": false,
@@ -52,19 +75,6 @@
         }
       },
       "type": "richtext"
-    },
-    "faqs": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "component": "slices.accordion"
     }
   }
 }

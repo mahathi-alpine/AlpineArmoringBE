@@ -4,7 +4,8 @@
   "info": {
     "singularName": "swat-homepage",
     "pluralName": "swat-homepages",
-    "displayName": "SWATHomepage"
+    "displayName": "SWATHomepage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -50,21 +51,10 @@
       },
       "type": "string"
     },
-    "topText": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "type": "richtext"
-    },
-    "featuredVehicles": {
+    "vehicles_we_armors": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::inventory.inventory",
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
@@ -84,7 +74,7 @@
       },
       "component": "shared.seo"
     },
-    "GSA": {
+    "featuredVehiclesTitle": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -93,7 +83,33 @@
           "translate": "translate"
         }
       },
-      "type": "richtext"
+      "type": "text"
+    },
+    "topText": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.text-filling"
+    },
+    "GSA": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.accordion"
     }
   }
 }

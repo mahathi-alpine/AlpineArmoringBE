@@ -4027,6 +4027,7 @@ export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
     singularName: 'swat-homepage';
     pluralName: 'swat-homepages';
     displayName: 'SWATHomepage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -4064,19 +4065,10 @@ export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    topText: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    featuredVehicles: Attribute.Relation<
+    vehicles_we_armors: Attribute.Relation<
       'api::swat-homepage.swat-homepage',
       'oneToMany',
-      'api::inventory.inventory'
+      'api::vehicles-we-armor.vehicles-we-armor'
     > &
       Attribute.SetPluginOptions<{
         translate: {
@@ -4092,7 +4084,25 @@ export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    GSA: Attribute.RichText &
+    featuredVehiclesTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    topText: Attribute.Component<'slices.text-filling'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    GSA: Attribute.Component<'slices.accordion'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -4134,6 +4144,7 @@ export interface ApiSwatListingInventorySwatListingInventory
     singularName: 'swat-listing-inventory';
     pluralName: 'swat-listing-inventories';
     displayName: 'SWATListingInventory';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -4171,6 +4182,15 @@ export interface ApiSwatListingInventorySwatListingInventory
           translate: 'translate';
         };
       }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -4192,6 +4212,95 @@ export interface ApiSwatListingInventorySwatListingInventory
       'api::swat-listing-inventory.swat-listing-inventory',
       'oneToMany',
       'api::swat-listing-inventory.swat-listing-inventory'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSwatListingModelSwatListingModel extends Schema.SingleType {
+  collectionName: 'swat_listing_models';
+  info: {
+    singularName: 'swat-listing-model';
+    pluralName: 'swat-listing-models';
+    displayName: 'SWATListingModels';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehicles_we_armors: Attribute.Relation<
+      'api::swat-listing-model.swat-listing-model',
+      'oneToMany',
+      'api::vehicles-we-armor.vehicles-we-armor'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    bottomText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::swat-listing-model.swat-listing-model',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::swat-listing-model.swat-listing-model',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::swat-listing-model.swat-listing-model',
+      'oneToMany',
+      'api::swat-listing-model.swat-listing-model'
     >;
     locale: Attribute.String;
   };
@@ -4775,6 +4884,7 @@ declare module '@strapi/types' {
       'api::specification.specification': ApiSpecificationSpecification;
       'api::swat-homepage.swat-homepage': ApiSwatHomepageSwatHomepage;
       'api::swat-listing-inventory.swat-listing-inventory': ApiSwatListingInventorySwatListingInventory;
+      'api::swat-listing-model.swat-listing-model': ApiSwatListingModelSwatListingModel;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
