@@ -1432,8 +1432,18 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    bulletPoster: Attribute.Media;
-    ammunitionChartPDF: Attribute.Media;
+    bulletPoster: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    ammunitionChartPDF: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

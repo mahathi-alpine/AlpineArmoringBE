@@ -61,15 +61,27 @@
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images"
-      ]
+        "images",
+        "files"
+      ],
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "ammunitionChartPDF": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "files"
       ],
-      "type": "media",
-      "multiple": false
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     }
   }
 }
