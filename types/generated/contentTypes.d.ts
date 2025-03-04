@@ -4031,6 +4031,94 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   };
 }
 
+export interface ApiSwatAboutSwatAbout extends Schema.SingleType {
+  collectionName: 'swat_abouts';
+  info: {
+    singularName: 'swat-about';
+    pluralName: 'swat-abouts';
+    displayName: 'SWATAbout';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    topText: Attribute.Component<'slices.text-filling'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    boxes: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::swat-about.swat-about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::swat-about.swat-about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::swat-about.swat-about',
+      'oneToMany',
+      'api::swat-about.swat-about'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
   collectionName: 'swat_homepages';
   info: {
@@ -4892,6 +4980,7 @@ declare module '@strapi/types' {
       'api::shipping.shipping': ApiShippingShipping;
       'api::sold-vehicle.sold-vehicle': ApiSoldVehicleSoldVehicle;
       'api::specification.specification': ApiSpecificationSpecification;
+      'api::swat-about.swat-about': ApiSwatAboutSwatAbout;
       'api::swat-homepage.swat-homepage': ApiSwatHomepageSwatHomepage;
       'api::swat-listing-inventory.swat-listing-inventory': ApiSwatListingInventorySwatListingInventory;
       'api::swat-listing-model.swat-listing-model': ApiSwatListingModelSwatListingModel;
