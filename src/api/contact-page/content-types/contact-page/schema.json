@@ -40,6 +40,11 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "fa_qs_swats": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::fa-qs-swat.fa-qs-swat"
     }
   }
 }

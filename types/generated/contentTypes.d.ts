@@ -2289,6 +2289,11 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'api::fa-q.fa-q'
     >;
     mapImage: Attribute.Media;
+    fa_qs_swats: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToMany',
+      'api::fa-qs-swat.fa-qs-swat'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2480,6 +2485,72 @@ export interface ApiFaQsRentalFaQsRental extends Schema.CollectionType {
     sitemap_exclude: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ApiFaQsSwatFaQsSwat extends Schema.CollectionType {
+  collectionName: 'fa_qs_swats';
+  info: {
+    singularName: 'fa-qs-swat';
+    pluralName: 'fa-qs-swats';
+    displayName: 'FAQsSWAT';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::fa-qs-swat.fa-qs-swat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::fa-qs-swat.fa-qs-swat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    sitemap_exclude: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
+    localizations: Attribute.Relation<
+      'api::fa-qs-swat.fa-qs-swat',
+      'oneToMany',
+      'api::fa-qs-swat.fa-qs-swat'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -4962,6 +5033,7 @@ declare module '@strapi/types' {
       'api::email.email': ApiEmailEmail;
       'api::fa-q.fa-q': ApiFaQFaQ;
       'api::fa-qs-rental.fa-qs-rental': ApiFaQsRentalFaQsRental;
+      'api::fa-qs-swat.fa-qs-swat': ApiFaQsSwatFaQsSwat;
       'api::faq.faq': ApiFaqFaq;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
