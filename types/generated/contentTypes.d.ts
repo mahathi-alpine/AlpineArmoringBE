@@ -4459,7 +4459,7 @@ export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    topBannerTitle: Attribute.String &
+    topBannerTitle: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

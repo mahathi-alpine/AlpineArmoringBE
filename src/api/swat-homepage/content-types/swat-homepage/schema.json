@@ -38,7 +38,7 @@
           "translate": "translate"
         }
       },
-      "type": "string"
+      "type": "text"
     },
     "topBannerDescription": {
       "pluginOptions": {
