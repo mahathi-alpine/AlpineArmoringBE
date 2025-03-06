@@ -110,6 +110,19 @@
         }
       },
       "component": "slices.accordion"
+    },
+    "testimonials": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "shared.testimonials"
     }
   }
 }

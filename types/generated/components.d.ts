@@ -52,13 +52,26 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
+export interface SharedTestimonials extends Schema.Component {
+  collectionName: 'components_shared_testimonials';
+  info: {
+    displayName: 'Testimonials';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.Text;
+    testimonials: Attribute.Component<'slices.tab-section', true>;
+  };
+}
+
 export interface SharedTimeline extends Schema.Component {
   collectionName: 'components_shared_timelines';
   info: {
     displayName: 'timeline';
+    description: '';
   };
   attributes: {
-    year: Attribute.String;
+    year: Attribute.Text;
     image: Attribute.Media;
     Caption: Attribute.Text;
   };
@@ -192,6 +205,7 @@ declare module '@strapi/types' {
     export interface Components {
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
+      'shared.testimonials': SharedTestimonials;
       'shared.timeline': SharedTimeline;
       'shared.you-tube-video': SharedYouTubeVideo;
       'slices.accordion': SlicesAccordion;

@@ -1,20 +1,22 @@
 {
   "collectionName": "components_shared_timelines",
   "info": {
-    "displayName": "timeline"
+    "displayName": "timeline",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "year": {
-      "type": "string"
+      "type": "text"
     },
     "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "Caption": {
       "type": "text"

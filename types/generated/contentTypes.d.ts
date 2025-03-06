@@ -4523,6 +4523,15 @@ export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    testimonials: Attribute.Component<'shared.testimonials'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
