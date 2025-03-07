@@ -5059,6 +5059,16 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           translate: 'translate';
         };
       }>;
+    swatsStock: Attribute.Relation<
+      'api::vehicles-we-armor.vehicles-we-armor',
+      'oneToOne',
+      'api::inventory.inventory'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

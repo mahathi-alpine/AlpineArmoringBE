@@ -298,6 +298,16 @@
           "translate": "translate"
         }
       }
+    },
+    "swatsStock": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::inventory.inventory",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     }
   }
 }
