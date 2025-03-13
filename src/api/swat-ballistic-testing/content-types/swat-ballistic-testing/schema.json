@@ -4,7 +4,8 @@
   "info": {
     "singularName": "swat-ballistic-testing",
     "pluralName": "swat-ballistic-testings",
-    "displayName": "SWATBallisticTesting"
+    "displayName": "SWATBallisticTesting",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -41,8 +42,7 @@
         }
       }
     },
-    "section1Title": {
-      "type": "text",
+    "dynamicZone": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -50,273 +50,12 @@
         "translate": {
           "translate": "translate"
         }
-      }
-    },
-    "section2Title": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section3Title": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "mainTitle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "heading": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section3Video": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::video.video",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section2Armor": {
-      "type": "component",
-      "repeatable": true,
-      "component": "slices.tab-section",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section1Gallery1": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section1Gallery2": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "titleGallery1": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "titleGallery2": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "certificate1": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "certificate2": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section1Gallery12": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section1Gallery22": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "linkURL1": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "linkURL2": {
-      "type": "string",
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section1Heading": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section2Heading": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section3Heading": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section4Title": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "section4Heading": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "flipImage1": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "flipImage2": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "slices.text",
+        "slices.single-media"
+      ]
     }
   }
 }
