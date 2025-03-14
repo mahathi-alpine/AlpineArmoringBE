@@ -4402,6 +4402,15 @@ export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    industryPartners: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'copy';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

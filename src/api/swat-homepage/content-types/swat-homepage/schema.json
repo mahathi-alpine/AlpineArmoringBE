@@ -160,6 +160,19 @@
         }
       },
       "component": "slices.text-filling"
+    },
+    "industryPartners": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "copy"
+        }
+      },
+      "component": "slices.tab-section"
     }
   }
 }
