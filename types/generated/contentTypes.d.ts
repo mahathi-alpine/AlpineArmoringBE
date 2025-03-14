@@ -4375,6 +4375,33 @@ export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqsTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    middleText: Attribute.Component<'slices.text-filling'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
