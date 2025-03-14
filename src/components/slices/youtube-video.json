@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_slices_youtube_videos",
+  "info": {
+    "displayName": "youtubeVideo"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "text",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    }
+  }
+}

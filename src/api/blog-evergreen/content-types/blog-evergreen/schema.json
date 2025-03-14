@@ -79,16 +79,6 @@
       },
       "type": "integer"
     },
-    "videos": {
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "component": "shared.you-tube-video"
-    },
     "blogDynamic": {
       "pluginOptions": {
         "i18n": {
@@ -101,7 +91,8 @@
       "type": "dynamiczone",
       "components": [
         "slices.text",
-        "slices.single-media"
+        "slices.single-media",
+        "slices.youtube-video"
       ]
     },
     "seo": {
@@ -116,6 +107,16 @@
         }
       },
       "component": "shared.seo"
+    },
+    "videos": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "shared.you-tube-video"
     },
     "authors": {
       "type": "relation",

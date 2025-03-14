@@ -200,6 +200,21 @@ export interface SlicesVideo extends Schema.Component {
   };
 }
 
+export interface SlicesYoutubeVideo extends Schema.Component {
+  collectionName: 'components_slices_youtube_videos';
+  info: {
+    displayName: 'youtubeVideo';
+  };
+  attributes: {
+    url: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -217,6 +232,7 @@ declare module '@strapi/types' {
       'slices.text-filling': SlicesTextFilling;
       'slices.text': SlicesText;
       'slices.video': SlicesVideo;
+      'slices.youtube-video': SlicesYoutubeVideo;
     }
   }
 }

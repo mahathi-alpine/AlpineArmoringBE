@@ -1841,6 +1841,16 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    authors: Attribute.Relation<
+      'api::blog.blog',
+      'manyToOne',
+      'api::author.author'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     videos: Attribute.Component<'shared.you-tube-video', true> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1850,11 +1860,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    authors: Attribute.Relation<
-      'api::blog.blog',
-      'manyToOne',
-      'api::author.author'
-    >;
     blogDynamic: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1963,13 +1968,9 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    videos: Attribute.Component<'shared.you-tube-video', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    blogDynamic: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
+    blogDynamic: Attribute.DynamicZone<
+      ['slices.text', 'slices.single-media', 'slices.youtube-video']
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1985,6 +1986,12 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
         };
         translate: {
           translate: 'translate';
+        };
+      }>;
+    videos: Attribute.Component<'shared.you-tube-video', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     authors: Attribute.Relation<

@@ -101,6 +101,17 @@
       },
       "type": "integer"
     },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "blogs",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
     "videos": {
       "type": "component",
       "repeatable": true,
@@ -113,12 +124,6 @@
         }
       },
       "component": "shared.you-tube-video"
-    },
-    "authors": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::author.author",
-      "inversedBy": "blogs"
     },
     "blogDynamic": {
       "pluginOptions": {
