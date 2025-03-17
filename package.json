@@ -7,8 +7,7 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi",
-    "sitemap": "strapi-sitemap"
+    "strapi": "strapi"
   },
   "dependencies": {
     "@retikolo/drag-drop-content-types": "^1.5.0",
@@ -28,7 +27,6 @@
     "strapi-plugin-excel-export-2024": "^1.0.7",
     "strapi-plugin-populate-deep": "^3.0.1",
     "strapi-plugin-redirects": "^0.0.6",
-    "strapi-plugin-sitemap": "^3.0.8",
     "strapi-plugin-translate": "^1.2.7",
     "strapi-provider-translate-deepl": "^1.1.15",
     "strapi-provider-upload-aws-s3-plus-cdn": "^4.0.0",

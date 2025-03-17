@@ -423,9 +423,6 @@ export interface PluginUploadFile extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -540,9 +537,6 @@ export interface PluginContentReleasesRelease extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -593,9 +587,6 @@ export interface PluginContentReleasesReleaseAction
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -653,94 +644,6 @@ export interface PluginTranslateBatchTranslateJob
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
-  };
-}
-
-export interface PluginSitemapSitemap extends Schema.CollectionType {
-  collectionName: 'sitemap';
-  info: {
-    singularName: 'sitemap';
-    pluralName: 'sitemaps';
-    displayName: 'sitemap';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    sitemap_string: Attribute.Text & Attribute.Required;
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'default'>;
-    type: Attribute.Enumeration<['default_hreflang', 'index']> &
-      Attribute.DefaultTo<'default_hreflang'>;
-    delta: Attribute.Integer & Attribute.DefaultTo<1>;
-    link_count: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::sitemap.sitemap',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::sitemap.sitemap',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface PluginSitemapSitemapCache extends Schema.CollectionType {
-  collectionName: 'sitemap_cache';
-  info: {
-    singularName: 'sitemap-cache';
-    pluralName: 'sitemap-caches';
-    displayName: 'sitemap-cache';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    sitemap_json: Attribute.JSON & Attribute.Required;
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'default'>;
-    sitemap_id: Attribute.Integer & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'plugin::sitemap.sitemap-cache',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'plugin::sitemap.sitemap-cache',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
   };
 }
 
@@ -783,9 +686,6 @@ export interface PluginRedirectsRedirect extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -984,9 +884,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -1093,9 +990,6 @@ export interface ApiAboutAbout extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::about.about',
       'oneToMany',
@@ -1152,9 +1046,6 @@ export interface ApiAllDownloadAllDownload extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::all-download.all-download',
       'oneToMany',
@@ -1282,9 +1173,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::article.article',
       'oneToMany',
@@ -1390,9 +1278,6 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::author.author',
       'oneToMany',
@@ -1472,9 +1357,6 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::ballistic-chart.ballistic-chart',
       'oneToMany',
@@ -1715,9 +1597,6 @@ export interface ApiBallisticTestingBallisticTesting extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::ballistic-testing.ballistic-testing',
       'oneToMany',
@@ -1756,9 +1635,6 @@ export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -1896,9 +1772,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::blog.blog',
       'oneToMany',
@@ -2048,9 +1921,6 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::blog-evergreen.blog-evergreen',
       'oneToMany',
@@ -2108,9 +1978,6 @@ export interface ApiBlogPageBlogPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::blog-page.blog-page',
       'oneToMany',
@@ -2278,9 +2145,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::category.category',
       'oneToMany',
@@ -2331,9 +2195,6 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -2392,9 +2253,6 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -2443,9 +2301,6 @@ export interface ApiEmailEmail extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -2470,9 +2325,6 @@ export interface ApiFaQFaQ extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::fa-q.fa-q', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -2505,9 +2357,6 @@ export interface ApiFaQsRentalFaQsRental extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -2565,9 +2414,6 @@ export interface ApiFaQsSwatFaQsSwat extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::fa-qs-swat.fa-qs-swat',
       'oneToMany',
@@ -2597,9 +2443,6 @@ export interface ApiFaqFaq extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -2750,9 +2593,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::homepage.homepage',
       'oneToMany',
@@ -3129,9 +2969,6 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::inventory.inventory',
       'oneToMany',
@@ -3208,9 +3045,6 @@ export interface ApiListInventoryListInventory extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::list-inventory.list-inventory',
       'oneToMany',
@@ -3288,9 +3122,6 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::list-vehicles-we-armor.list-vehicles-we-armor',
       'oneToMany',
@@ -3350,9 +3181,6 @@ export interface ApiLocationsWeServePageLocationsWeServePage
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::locations-we-serve-page.locations-we-serve-page',
       'oneToMany',
@@ -3431,9 +3259,6 @@ export interface ApiMakeMake extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::make.make', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::make.make',
       'oneToMany',
@@ -3654,9 +3479,6 @@ export interface ApiManufacturingManufacturing extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::manufacturing.manufacturing',
       'oneToMany',
@@ -3709,9 +3531,6 @@ export interface ApiMediaMedia extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -3764,9 +3583,6 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::news-page.news-page',
       'oneToMany',
@@ -3804,9 +3620,6 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -3838,9 +3651,6 @@ export interface ApiRentalPolicyRentalPolicy extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -3879,9 +3689,6 @@ export interface ApiRentalsContactPageRentalsContactPage
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -3929,9 +3736,6 @@ export interface ApiRentalsHomepageRentalsHomepage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -3963,9 +3767,6 @@ export interface ApiRentalsListingRentalsListing extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -4003,9 +3804,6 @@ export interface ApiShippingShipping extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -4036,9 +3834,6 @@ export interface ApiSoldVehicleSoldVehicle extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -4113,9 +3908,6 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::specification.specification',
       'oneToMany',
@@ -4201,9 +3993,6 @@ export interface ApiSwatAboutSwatAbout extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::swat-about.swat-about',
       'oneToMany',
@@ -4273,9 +4062,6 @@ export interface ApiSwatBallisticTestingSwatBallisticTesting
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::swat-ballistic-testing.swat-ballistic-testing',
       'oneToMany',
@@ -4434,9 +4220,6 @@ export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::swat-homepage.swat-homepage',
       'oneToMany',
@@ -4514,9 +4297,6 @@ export interface ApiSwatListingInventorySwatListingInventory
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::swat-listing-inventory.swat-listing-inventory',
       'oneToMany',
@@ -4603,9 +4383,6 @@ export interface ApiSwatListingModelSwatListingModel extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::swat-listing-model.swat-listing-model',
       'oneToMany',
@@ -4680,9 +4457,6 @@ export interface ApiTradeShowTradeShow extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::trade-show.trade-show',
       'oneToMany',
@@ -4721,9 +4495,6 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
   };
 }
 
@@ -4972,9 +4743,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToMany',
@@ -5072,9 +4840,6 @@ export interface ApiVideoVideo extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::video.video',
       'oneToMany',
@@ -5133,9 +4898,6 @@ export interface ApiVideoPageVideoPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    sitemap_exclude: Attribute.Boolean &
-      Attribute.Private &
-      Attribute.DefaultTo<false>;
     localizations: Attribute.Relation<
       'api::video-page.video-page',
       'oneToMany',
@@ -5160,8 +4922,6 @@ declare module '@strapi/types' {
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::translate.batch-translate-job': PluginTranslateBatchTranslateJob;
-      'plugin::sitemap.sitemap': PluginSitemapSitemap;
-      'plugin::sitemap.sitemap-cache': PluginSitemapSitemapCache;
       'plugin::redirects.redirect': PluginRedirectsRedirect;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;

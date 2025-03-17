@@ -33,16 +33,16 @@ module.exports = ({ env }) => ({
   seo: {
     enabled: true,
   },
-  'sitemap': {
-    enabled: true,
-    config: {
-      cron: '0 0 0 * * *',
-      xsl: true,
-      autoGenerate: false,
-      caching: true,
-      allowedFields: ['id', 'uid'],
-    },
-  },
+  // 'sitemap': {
+  //   enabled: true,
+  //   config: {
+  //     cron: '0 0 0 * * *',
+  //     xsl: true,
+  //     autoGenerate: false,
+  //     caching: true,
+  //     allowedFields: ['id', 'uid'],
+  //   },
+  // },
   redirects : {
     enabled: true,
   },
