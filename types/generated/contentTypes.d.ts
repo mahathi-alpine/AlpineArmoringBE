@@ -1788,13 +1788,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    slug: Attribute.UID<'api::blog.blog', 'title'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     thumbnail: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1879,6 +1872,15 @@ export interface ApiBlogBlog extends Schema.CollectionType {
         };
       }>;
     faqsTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
