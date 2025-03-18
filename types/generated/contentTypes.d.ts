@@ -1617,6 +1617,11 @@ export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     text: Attribute.RichText;
@@ -1635,6 +1640,12 @@ export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::become-a-dealer.become-a-dealer',
+      'oneToMany',
+      'api::become-a-dealer.become-a-dealer'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -2165,6 +2176,11 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     salesInfo: Attribute.RichText;
@@ -2195,6 +2211,12 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToMany',
+      'api::contact-page.contact-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -2209,6 +2231,11 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
   };
   options: {
     draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     section1Title: Attribute.Text;
@@ -2253,6 +2280,12 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::design-and-engineering.design-and-engineering',
+      'oneToMany',
+      'api::design-and-engineering.design-and-engineering'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -2434,6 +2467,11 @@ export interface ApiFaqFaq extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
@@ -2443,6 +2481,12 @@ export interface ApiFaqFaq extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::faq.faq',
+      'oneToMany',
+      'api::faq.faq'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -3499,6 +3543,11 @@ export interface ApiMediaMedia extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
@@ -3531,6 +3580,12 @@ export interface ApiMediaMedia extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::media.media',
+      'oneToMany',
+      'api::media.media'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -3603,6 +3658,11 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     seo: Attribute.Component<'shared.seo'>;
     text: Attribute.RichText;
@@ -3620,6 +3680,12 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToMany',
+      'api::privacy-policy.privacy-policy'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -3632,6 +3698,11 @@ export interface ApiRentalPolicyRentalPolicy extends Schema.SingleType {
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     text: Attribute.RichText;
@@ -3651,6 +3722,12 @@ export interface ApiRentalPolicyRentalPolicy extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::rental-policy.rental-policy',
+      'oneToMany',
+      'api::rental-policy.rental-policy'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -3781,6 +3858,11 @@ export interface ApiShippingShipping extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     heading: Attribute.RichText;
     banner: Attribute.Component<'slices.banner'>;
@@ -3804,6 +3886,12 @@ export interface ApiShippingShipping extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::shipping.shipping',
+      'oneToMany',
+      'api::shipping.shipping'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -3816,6 +3904,11 @@ export interface ApiSoldVehicleSoldVehicle extends Schema.SingleType {
   };
   options: {
     draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
@@ -3834,6 +3927,12 @@ export interface ApiSoldVehicleSoldVehicle extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::sold-vehicle.sold-vehicle',
+      'oneToMany',
+      'api::sold-vehicle.sold-vehicle'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -4477,6 +4576,11 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
     seo: Attribute.Component<'shared.seo'>;
@@ -4495,6 +4599,12 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::trade-shows-page.trade-shows-page',
+      'oneToMany',
+      'api::trade-shows-page.trade-shows-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
