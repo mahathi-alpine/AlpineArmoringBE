@@ -3885,7 +3885,7 @@ export interface ApiMediaMedia extends Schema.SingleType {
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     videos: Attribute.Relation<
@@ -3895,7 +3895,7 @@ export interface ApiMediaMedia extends Schema.SingleType {
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     tradeShows: Attribute.Relation<
@@ -3905,7 +3905,7 @@ export interface ApiMediaMedia extends Schema.SingleType {
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;

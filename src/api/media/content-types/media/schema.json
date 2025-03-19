@@ -48,7 +48,7 @@
       "target": "api::blog.blog",
       "pluginOptions": {
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       }
     },
@@ -58,7 +58,7 @@
       "target": "api::video.video",
       "pluginOptions": {
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       }
     },
@@ -68,7 +68,7 @@
       "target": "api::trade-show.trade-show",
       "pluginOptions": {
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       }
     }
