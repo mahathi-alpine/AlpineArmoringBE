@@ -19,23 +19,60 @@
     "banner": {
       "type": "component",
       "repeatable": false,
-      "component": "slices.banner"
+      "component": "slices.banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "salesInfo": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "partsInfo": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "fa_qs": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::fa-q.fa-q"
+      "target": "api::fa-q.fa-q",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "mapImage": {
       "type": "media",
@@ -43,12 +80,22 @@
       "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     },
     "fa_qs_swats": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::fa-qs-swat.fa-qs-swat"
+      "target": "api::fa-qs-swat.fa-qs-swat",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     }
   }
 }

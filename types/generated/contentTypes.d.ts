@@ -2182,21 +2182,68 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
     };
   };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    salesInfo: Attribute.RichText;
-    partsInfo: Attribute.RichText;
-    seo: Attribute.Component<'shared.seo'>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    salesInfo: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    partsInfo: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     fa_qs: Attribute.Relation<
       'api::contact-page.contact-page',
       'oneToMany',
       'api::fa-q.fa-q'
-    >;
-    mapImage: Attribute.Media;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    mapImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     fa_qs_swats: Attribute.Relation<
       'api::contact-page.contact-page',
       'oneToMany',
       'api::fa-qs-swat.fa-qs-swat'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2238,34 +2285,231 @@ export interface ApiDesignAndEngineeringDesignAndEngineering
     };
   };
   attributes: {
-    section1Title: Attribute.Text;
-    section1Text: Attribute.RichText;
-    section1Image: Attribute.Media;
-    section1Text2: Attribute.RichText;
-    section2Title: Attribute.Text;
-    section2Text: Attribute.RichText;
-    section2Image: Attribute.Media;
-    section2Text2: Attribute.RichText;
-    section2Image2: Attribute.Media;
-    banner: Attribute.Component<'slices.banner'>;
-    section3Title: Attribute.Text;
-    section3Heading: Attribute.RichText;
-    section3Text: Attribute.RichText;
-    section3Armor: Attribute.Component<'slices.tab-section', true>;
-    section4Title: Attribute.Text;
-    section4Heading: Attribute.RichText;
-    section4Image: Attribute.Media;
-    section4Text: Attribute.RichText;
-    section5Image: Attribute.Media;
-    seo: Attribute.Component<'shared.seo'>;
-    section1Image2: Attribute.Media;
-    section6Title: Attribute.Text;
-    section6Text: Attribute.RichText;
-    section6Gallery: Attribute.Media;
-    section6Image: Attribute.Media;
-    section6Image2: Attribute.Media;
-    section6Text2: Attribute.RichText;
-    section6Heading: Attribute.RichText;
+    section1Title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section1Text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section1Image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section1Text2: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section2Title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section2Text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section2Image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section2Text2: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section2Image2: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section3Title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section3Heading: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section3Text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section3Armor: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section4Title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section4Heading: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section4Image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section4Text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section5Image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section1Image2: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section6Title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section6Text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section6Gallery: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section6Image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section6Image2: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section6Text2: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section6Heading: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2348,9 +2592,30 @@ export interface ApiFaQFaQ extends Schema.CollectionType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String;
-    text: Attribute.RichText;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     order: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2358,6 +2623,12 @@ export interface ApiFaQFaQ extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::fa-q.fa-q', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::fa-q.fa-q',
+      'oneToMany',
+      'api::fa-q.fa-q'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -2473,8 +2744,24 @@ export interface ApiFaqFaq extends Schema.SingleType {
     };
   };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
@@ -3549,23 +3836,54 @@ export interface ApiMediaMedia extends Schema.SingleType {
     };
   };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     blogs: Attribute.Relation<
       'api::media.media',
       'oneToMany',
       'api::blog.blog'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
     videos: Attribute.Relation<
       'api::media.media',
       'oneToMany',
       'api::video.video'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
     tradeShows: Attribute.Relation<
       'api::media.media',
       'oneToMany',
       'api::trade-show.trade-show'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -3664,8 +3982,24 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
     };
   };
   attributes: {
-    seo: Attribute.Component<'shared.seo'>;
-    text: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -3864,14 +4198,69 @@ export interface ApiShippingShipping extends Schema.SingleType {
     };
   };
   attributes: {
-    heading: Attribute.RichText;
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
-    boxes: Attribute.Component<'slices.tab-section', true>;
-    licenseText: Attribute.RichText;
-    licenseImage: Attribute.Media;
-    licensePDF1: Attribute.Media;
-    licensePDF2: Attribute.Media;
+    heading: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    boxes: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    licenseText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    licenseImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    licensePDF1: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    licensePDF2: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -3901,6 +4290,7 @@ export interface ApiSoldVehicleSoldVehicle extends Schema.SingleType {
     singularName: 'sold-vehicle';
     pluralName: 'sold-vehicles';
     displayName: 'SoldVehicles';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -3911,8 +4301,21 @@ export interface ApiSoldVehicleSoldVehicle extends Schema.SingleType {
     };
   };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -4582,9 +4985,30 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
     };
   };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
-    titleH1: Attribute.String;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    titleH1: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
