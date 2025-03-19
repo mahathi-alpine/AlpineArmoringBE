@@ -1623,9 +1623,33 @@ export interface ApiBecomeADealerBecomeADealer extends Schema.SingleType {
     };
   };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    text: Attribute.RichText;
-    seo: Attribute.Component<'shared.seo'>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -4998,6 +5022,9 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
       Attribute.SetPluginOptions<{
         translate: {
           translate: 'translate';
+        };
+        i18n: {
+          localized: true;
         };
       }>;
     titleH1: Attribute.String &
