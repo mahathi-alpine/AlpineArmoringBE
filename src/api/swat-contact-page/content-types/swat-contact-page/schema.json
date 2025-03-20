@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "ballistic_charts",
+  "collectionName": "swat_contact_pages",
   "info": {
-    "singularName": "ballistic-chart",
-    "pluralName": "ballistic-charts",
-    "displayName": "Ballistic Chart",
-    "description": ""
+    "singularName": "swat-contact-page",
+    "pluralName": "swat-contact-pages",
+    "displayName": "SWATContactPage"
   },
   "options": {
     "draftAndPublish": false
@@ -19,7 +18,57 @@
     "banner": {
       "type": "component",
       "repeatable": false,
-      "component": "slices.banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.banner"
+    },
+    "salesInfo": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
+    },
+    "partsInfo": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
+    },
+    "fa_qs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::fa-qs-swat.fa-qs-swat",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "mapImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -30,60 +79,6 @@
       }
     },
     "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "BallisticStandards": {
-      "displayName": "Ballistic Standard",
-      "type": "component",
-      "repeatable": true,
-      "component": "slices.ballistic-standard",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "bulletPoster": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "ammunitionChartPDF": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "files"
-      ],
-      "pluginOptions": {
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "swatsSeo": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {

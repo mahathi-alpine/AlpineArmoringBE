@@ -1343,6 +1343,15 @@ export interface ApiBallisticChartBallisticChart extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    swatsSeo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -4597,6 +4606,100 @@ export interface ApiSwatBallisticTestingSwatBallisticTesting
   };
 }
 
+export interface ApiSwatContactPageSwatContactPage extends Schema.SingleType {
+  collectionName: 'swat_contact_pages';
+  info: {
+    singularName: 'swat-contact-page';
+    pluralName: 'swat-contact-pages';
+    displayName: 'SWATContactPage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    salesInfo: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    partsInfo: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    fa_qs: Attribute.Relation<
+      'api::swat-contact-page.swat-contact-page',
+      'oneToMany',
+      'api::fa-qs-swat.fa-qs-swat'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    mapImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::swat-contact-page.swat-contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::swat-contact-page.swat-contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::swat-contact-page.swat-contact-page',
+      'oneToMany',
+      'api::swat-contact-page.swat-contact-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiSwatHomepageSwatHomepage extends Schema.SingleType {
   collectionName: 'swat_homepages';
   info: {
@@ -5525,6 +5628,7 @@ declare module '@strapi/types' {
       'api::specification.specification': ApiSpecificationSpecification;
       'api::swat-about.swat-about': ApiSwatAboutSwatAbout;
       'api::swat-ballistic-testing.swat-ballistic-testing': ApiSwatBallisticTestingSwatBallisticTesting;
+      'api::swat-contact-page.swat-contact-page': ApiSwatContactPageSwatContactPage;
       'api::swat-homepage.swat-homepage': ApiSwatHomepageSwatHomepage;
       'api::swat-listing-inventory.swat-listing-inventory': ApiSwatListingInventorySwatListingInventory;
       'api::swat-listing-model.swat-listing-model': ApiSwatListingModelSwatListingModel;
