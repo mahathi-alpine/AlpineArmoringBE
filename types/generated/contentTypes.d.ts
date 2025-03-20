@@ -2267,16 +2267,6 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    fa_qs_swats: Attribute.Relation<
-      'api::contact-page.contact-page',
-      'oneToMany',
-      'api::fa-qs-swat.fa-qs-swat'
-    > &
-      Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
