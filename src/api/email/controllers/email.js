@@ -7,7 +7,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const emailData = await super.create(ctx);
 
     const { data } = ctx.request.body;
-    const { name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date, fromDate, toDate, mileage, driverNeeded, vehicleType, vehicleModel } = data;
+    const { name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date, fromDate, toDate, mileage, driverNeeded, vehicleType, vehicleModel, domain } = data;
 
     function getCurrentDateTime() {
       const now = new Date();
@@ -22,21 +22,24 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       
       return `${month}/${day}/${now.getFullYear()} ${hours}:${minutes} ${amPm}`;
     }
+
+    const notMain = domain === 'swats' || domain === 'rentals';
+    let sender = process.env.EMAIL_SENDER_MAIN;
+    if(domain === 'swats'){
+      sender = process.env.EMAIL_SENDER_SWATS;
+    } else if(domain === 'rentals'){
+      sender = process.env.EMAIL_SENDER_RENTALS;
+    }
     
-    // const emailDomain = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
-    // const emailDomain = !country ? 'stefaneste93@gmail.com' : 'petkovics93@yahoo.com';
-    const emailDomain = !country ?  process.env.EMAIL_SENDER_RENTALS : process.env.EMAIL_SENDER_MAIN;
-    // const fromEmail = !country ? 'rental@armoredautos.com' : 'sales@alpineco.com';
-    const fromEmail = !country ? process.env.EMAIL_SENDER_RENTALS : process.env.EMAIL_SENDER_MAIN;
     const subjectPrefix = !country ? 'Rental Alpine Armoring' : 'Alpine Armoring';
     const emailColorsDark = !country ? '#06374e' : '#9c9477';
     const emailColorsLight = !country ? '#84a8cc' : '#c3bfaf';
 
     try {
       await strapi.plugins['email'].services.email.send({
-        to: emailDomain, 
-        from: fromEmail,
-        ...((!country) ? { cc: 'sales@alpineco.com' } : {}), 
+        to: sender, 
+        from: sender,
+        ...((notMain) ? { cc: 'sales@alpineco.com' } : {}), 
         subject: `${subjectPrefix} - Inquiry${!country ? ` from ${name} (${state})` : ` about ${inquiry} from ${name} (${state} ${country})`}`,
         html: `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
