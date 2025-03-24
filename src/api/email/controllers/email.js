@@ -22,13 +22,21 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       
       return `${month}/${day}/${now.getFullYear()} ${hours}:${minutes} ${amPm}`;
     }
-
     const notMain = domain === 'swats' || domain === 'rentals';
-    let sender = process.env.EMAIL_SENDER_MAIN;
+    let sender = '';
+
+    console.log('DEBUG - Environment Variables:');
+    console.log('MAIN:', process.env.EMAIL_SENDER_MAIN);
+    console.log('RENTALS:', process.env.EMAIL_SENDER_RENTALS);
+    console.log('Domain:', domain);
+    console.log('SENDER:', sender);
+
     if(domain === 'swats'){
       sender = process.env.EMAIL_SENDER_SWATS;
     } else if(domain === 'rentals'){
       sender = process.env.EMAIL_SENDER_RENTALS;
+    } else {
+      sender = process.env.EMAIL_SENDER_MAIN;
     }
     
     const subjectPrefix = !country ? 'Rental Alpine Armoring' : 'Alpine Armoring';
