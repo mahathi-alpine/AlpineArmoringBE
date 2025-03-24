@@ -32,14 +32,6 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     } else {
       sender = process.env.EMAIL_SENDER_MAIN;
     }
-
-    console.log('----');
-    console.log('RENTALS:', process.env.EMAIL_SENDER_RENTALS);
-    console.log('----');
-    console.log('Domain:', domain);
-    console.log('----');
-    console.log('SENDER:', sender);
-    console.log('----');
     
     const subjectPrefix = !country ? 'Rental Alpine Armoring' : 'Alpine Armoring';
     const emailColorsDark = !country ? '#06374e' : '#9c9477';
