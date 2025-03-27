@@ -23,31 +23,40 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       return `${month}/${day}/${now.getFullYear()} ${hours}:${minutes} ${amPm}`;
     }
     const notMain = domain === 'swats' || domain === 'rentals';
+
     let sender = '';
+    let subjectPrefix = '';
+    let emailColorsDark = '';
+    let emailColorsLight = '';
 
     if(domain === 'swats'){
       sender = process.env.EMAIL_SENDER_SWATS;
+      subjectPrefix = 'Swats Alpine Armoring';
+      emailColorsDark = '#2b310a';
+      emailColorsLight = '#b7baa7';
     } else if(domain === 'rentals'){
       sender = process.env.EMAIL_SENDER_RENTALS;
+      subjectPrefix = 'Rental Alpine Armoring';
+      emailColorsDark = '#06374e';
+      emailColorsLight = '#84a8cc';
     } else {
       sender = process.env.EMAIL_SENDER_MAIN;
+      subjectPrefix = 'Alpine Armoring';
+      emailColorsDark = '#9c9477';
+      emailColorsLight = '#c3bfaf';
     }
-    
-    const subjectPrefix = !country ? 'Rental Alpine Armoring' : 'Alpine Armoring';
-    const emailColorsDark = !country ? '#06374e' : '#9c9477';
-    const emailColorsLight = !country ? '#84a8cc' : '#c3bfaf';
 
     try {
       await strapi.plugins['email'].services.email.send({
         to: sender, 
         from: sender,
         ...((notMain) ? { cc: 'sales@alpineco.com' } : {}), 
-        subject: `${subjectPrefix} - Inquiry${!country ? ` from ${name} (${state})` : ` about ${inquiry} from ${name} (${state} ${country})`}`,
+        subject: `${subjectPrefix} - Inquiry${domain === 'rentals' ? ` from ${name} (${state})` : ` about ${inquiry} from ${name} (${state} ${country})`}`,
         html: `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
             <tbody>
 
-              <tr style="background-color:${emailColorsDark}; ${!country ? 'color: white;' : `color: black;`}">
+              <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
                 <td colspan="2" style="padding:1.5pt">
                   <p align="center" style="margin:0in;">
                     <b>Website submission ${getCurrentDateTime()}</b>
@@ -64,7 +73,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
-              ${country ? `
+              ${domain !== 'rentals' ? `
               <tr>
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Country:</b></span></p>
@@ -129,7 +138,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
-              ${country ? `
+              ${domain !== 'rentals' ? `
               <tr>
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Inquiry:</b></span></p>
@@ -149,7 +158,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               `}
 
-              ${country ? `
+              ${domain !== 'rentals' ? `
               <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>I Prefer To Be Contacted Via:</b></span></p>
@@ -169,7 +178,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               `}
 
-              ${country ? `
+              ${domain !== 'rentals' ? `
               <tr>
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>How Did You Hear About Us?</b></span></p>
@@ -198,7 +207,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
-              ${!country ? `
+              ${domain === 'rentals' ? `
                 <tr>
                   <td style="padding:1.5pt;width: 20%;">
                     <p style="margin:0in;"><span><b>Projected dates:</b></span></p>
@@ -209,13 +218,13 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </tr>
               ` : null }
 
-              <tr style="background-color:${emailColorsDark}; ${!country ? 'color: white;' : `color: black;`}">
+              <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Referrer page:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
                   <p style="margin:0in;"><span style="color:rgb(5,99,193)"><u>
-                    <a href="${route}" style="${!country ? 'color: white;' : `color: black;`} margin-top:0px;margin-bottom:0px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=${route}&amp;source=gmail&amp;ust=1726743921528000&amp;usg=AOvVaw21rcKaKVWd5eFzmb8o8PuT">${route}</a>
+                    <a href="${route}" style="${notMain ? 'color: white;' : `color: black;`} margin-top:0px;margin-bottom:0px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=${route}&amp;source=gmail&amp;ust=1726743921528000&amp;usg=AOvVaw21rcKaKVWd5eFzmb8o8PuT">${route}</a>
                   </u></span></p>
                 </td>
               </tr>
