@@ -45,6 +45,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       emailColorsDark = '#9c9477';
       emailColorsLight = '#c3bfaf';
     }
+    console.log(domain)
 
     try {
       await strapi.plugins['email'].services.email.send({
