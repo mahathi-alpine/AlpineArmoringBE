@@ -2917,7 +2917,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     industryPartners: Attribute.Component<'slices.tab-section', true> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
         translate: {
           translate: 'translate';
