@@ -4527,6 +4527,72 @@ export interface ApiSwatAboutSwatAbout extends Schema.SingleType {
   };
 }
 
+export interface ApiSwatAllDownloadSwatAllDownload extends Schema.SingleType {
+  collectionName: 'swat_all_downloads';
+  info: {
+    singularName: 'swat-all-download';
+    pluralName: 'swat-all-downloads';
+    displayName: 'SWATAllDownloads';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pdfs: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::swat-all-download.swat-all-download',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::swat-all-download.swat-all-download',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::swat-all-download.swat-all-download',
+      'oneToMany',
+      'api::swat-all-download.swat-all-download'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiSwatBallisticTestingSwatBallisticTesting
   extends Schema.SingleType {
   collectionName: 'swat_ballistic_testings';
@@ -5617,6 +5683,7 @@ declare module '@strapi/types' {
       'api::sold-vehicle.sold-vehicle': ApiSoldVehicleSoldVehicle;
       'api::specification.specification': ApiSpecificationSpecification;
       'api::swat-about.swat-about': ApiSwatAboutSwatAbout;
+      'api::swat-all-download.swat-all-download': ApiSwatAllDownloadSwatAllDownload;
       'api::swat-ballistic-testing.swat-ballistic-testing': ApiSwatBallisticTestingSwatBallisticTesting;
       'api::swat-contact-page.swat-contact-page': ApiSwatContactPageSwatContactPage;
       'api::swat-homepage.swat-homepage': ApiSwatHomepageSwatHomepage;
