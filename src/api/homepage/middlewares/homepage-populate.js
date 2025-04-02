@@ -76,6 +76,9 @@ const populate = {
       }
     }
   },
+  localizations:{
+    populate: true
+  },
   industryPartners: {
     populate: {
       image: {
