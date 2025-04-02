@@ -133,7 +133,7 @@
     "slug": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         },
         "translate": {
           "translate": "translate"
