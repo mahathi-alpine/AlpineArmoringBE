@@ -23,6 +23,9 @@ const populate = {
       }
     }
   },
+  localizations:{
+    populate: true
+  },
   gallery:{
     populate: true
   },

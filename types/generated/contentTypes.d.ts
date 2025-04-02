@@ -4638,6 +4638,16 @@ export interface ApiSwatBallisticTestingSwatBallisticTesting
           translate: 'translate';
         };
       }>;
+    videos: Attribute.Relation<
+      'api::swat-ballistic-testing.swat-ballistic-testing',
+      'oneToMany',
+      'api::video.video'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

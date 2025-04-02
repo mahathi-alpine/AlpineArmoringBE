@@ -91,6 +91,9 @@ const populate = {
   },
   faqs:{
     populate: true
+  },
+  localizations:{
+    populate: true
   }
 }
 
