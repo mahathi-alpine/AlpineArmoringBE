@@ -3485,6 +3485,99 @@ export interface ApiListVehiclesWeArmorListVehiclesWeArmor
   };
 }
 
+export interface ApiLocationsRentalLocationsRental
+  extends Schema.CollectionType {
+  collectionName: 'locations_rentals';
+  info: {
+    singularName: 'locations-rental';
+    pluralName: 'locations-rentals';
+    displayName: 'LocationsRental';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    excerpt: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::locations-rental.locations-rental',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::locations-rental.locations-rental',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::locations-rental.locations-rental',
+      'oneToMany',
+      'api::locations-rental.locations-rental'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiLocationsWeServePageLocationsWeServePage
   extends Schema.SingleType {
   collectionName: 'locations_we_serve_pages';
@@ -4201,6 +4294,64 @@ export interface ApiRentalsListingRentalsListing extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface ApiRentalsLocationsPageRentalsLocationsPage
+  extends Schema.SingleType {
+  collectionName: 'rentals_locations_pages';
+  info: {
+    singularName: 'rentals-locations-page';
+    pluralName: 'rentals-locations-pages';
+    displayName: 'RentalsLocationsPage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    defaultText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rentals-locations-page.rentals-locations-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rentals-locations-page.rentals-locations-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::rentals-locations-page.rentals-locations-page',
+      'oneToMany',
+      'api::rentals-locations-page.rentals-locations-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -5679,6 +5830,7 @@ declare module '@strapi/types' {
       'api::inventory.inventory': ApiInventoryInventory;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
+      'api::locations-rental.locations-rental': ApiLocationsRentalLocationsRental;
       'api::locations-we-serve-page.locations-we-serve-page': ApiLocationsWeServePageLocationsWeServePage;
       'api::make.make': ApiMakeMake;
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
@@ -5689,6 +5841,7 @@ declare module '@strapi/types' {
       'api::rentals-contact-page.rentals-contact-page': ApiRentalsContactPageRentalsContactPage;
       'api::rentals-homepage.rentals-homepage': ApiRentalsHomepageRentalsHomepage;
       'api::rentals-listing.rentals-listing': ApiRentalsListingRentalsListing;
+      'api::rentals-locations-page.rentals-locations-page': ApiRentalsLocationsPageRentalsLocationsPage;
       'api::shipping.shipping': ApiShippingShipping;
       'api::sold-vehicle.sold-vehicle': ApiSoldVehicleSoldVehicle;
       'api::specification.specification': ApiSpecificationSpecification;
