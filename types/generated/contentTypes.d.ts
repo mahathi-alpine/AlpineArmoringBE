@@ -2917,10 +2917,10 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     industryPartners: Attribute.Component<'slices.tab-section', true> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     news: Attribute.Relation<

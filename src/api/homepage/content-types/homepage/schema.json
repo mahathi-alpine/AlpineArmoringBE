@@ -158,10 +158,10 @@
       "component": "slices.tab-section",
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         },
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       }
     },
