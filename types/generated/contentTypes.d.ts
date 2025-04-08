@@ -4780,7 +4780,9 @@ export interface ApiSwatBallisticTestingSwatBallisticTesting
           translate: 'translate';
         };
       }>;
-    dynamicZone: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
+    dynamicZone: Attribute.DynamicZone<
+      ['slices.text', 'slices.single-media', 'slices.videos-slider']
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -5233,6 +5235,55 @@ export interface ApiSwatListingModelSwatListingModel extends Schema.SingleType {
       'api::swat-listing-model.swat-listing-model',
       'oneToMany',
       'api::swat-listing-model.swat-listing-model'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSwatNewsTestimonialSwatNewsTestimonial
+  extends Schema.SingleType {
+  collectionName: 'swat_news_testimonials';
+  info: {
+    singularName: 'swat-news-testimonial';
+    pluralName: 'swat-news-testimonials';
+    displayName: 'SWATNewsTestimonials';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::swat-news-testimonial.swat-news-testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::swat-news-testimonial.swat-news-testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::swat-news-testimonial.swat-news-testimonial',
+      'oneToMany',
+      'api::swat-news-testimonial.swat-news-testimonial'
     >;
     locale: Attribute.String;
   };
@@ -5852,6 +5903,7 @@ declare module '@strapi/types' {
       'api::swat-homepage.swat-homepage': ApiSwatHomepageSwatHomepage;
       'api::swat-listing-inventory.swat-listing-inventory': ApiSwatListingInventorySwatListingInventory;
       'api::swat-listing-model.swat-listing-model': ApiSwatListingModelSwatListingModel;
+      'api::swat-news-testimonial.swat-news-testimonial': ApiSwatNewsTestimonialSwatNewsTestimonial;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;

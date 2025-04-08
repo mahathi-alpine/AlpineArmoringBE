@@ -200,6 +200,20 @@ export interface SlicesVideo extends Schema.Component {
   };
 }
 
+export interface SlicesVideosSlider extends Schema.Component {
+  collectionName: 'components_slices_videos_sliders';
+  info: {
+    displayName: 'VideosSlider';
+  };
+  attributes: {
+    videos: Attribute.Relation<
+      'slices.videos-slider',
+      'oneToMany',
+      'api::video.video'
+    >;
+  };
+}
+
 export interface SlicesYoutubeVideo extends Schema.Component {
   collectionName: 'components_slices_youtube_videos';
   info: {
@@ -232,6 +246,7 @@ declare module '@strapi/types' {
       'slices.text-filling': SlicesTextFilling;
       'slices.text': SlicesText;
       'slices.video': SlicesVideo;
+      'slices.videos-slider': SlicesVideosSlider;
       'slices.youtube-video': SlicesYoutubeVideo;
     }
   }

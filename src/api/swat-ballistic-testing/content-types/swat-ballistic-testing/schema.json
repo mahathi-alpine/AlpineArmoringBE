@@ -54,7 +54,8 @@
       "type": "dynamiczone",
       "components": [
         "slices.text",
-        "slices.single-media"
+        "slices.single-media",
+        "slices.videos-slider"
       ]
     },
     "videos": {

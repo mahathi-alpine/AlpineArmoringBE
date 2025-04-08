@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "swat_news_testimonials",
+  "info": {
+    "singularName": "swat-news-testimonial",
+    "pluralName": "swat-news-testimonials",
+    "displayName": "SWATNewsTestimonials"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.banner"
+    }
+  }
+}

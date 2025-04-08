@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_slices_videos_sliders",
+  "info": {
+    "displayName": "VideosSlider"
+  },
+  "options": {},
+  "attributes": {
+    "videos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video.video"
+    }
+  }
+}
