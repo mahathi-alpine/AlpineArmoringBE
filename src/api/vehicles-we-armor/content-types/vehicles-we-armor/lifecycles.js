@@ -17,11 +17,10 @@ module.exports = {
 
     // If this is a publish action (data only contains publishedAt and updates)
     if (event.params.data.publishedAt && !event.params.data.title) {
-      const fullEntity = await strapi.entityService.findOne(
-        'api::vehicles-we-armor.vehicles-we-armor',
-        event.params.where.id,
-        { populate: '*' }
-      );
+      const fullEntity = await strapi.documents('api::vehicles-we-armor.vehicles-we-armor').findOne({
+        documentId: "__TODO__",
+        populate: '*'
+      });
       
       if (!fullEntity.slug && fullEntity.title) {
         event.params.data.slug = generateValidSlug(fullEntity.title);

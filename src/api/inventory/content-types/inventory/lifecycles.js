@@ -12,33 +12,29 @@ module.exports = {
       // Check if this update contains a new localization
       if (event.params.data.localizations?.length > 0) {        
         // Get the original entry with its relationships
-        const originalEntry = await strapi.entityService.findOne(
-          'api::inventory.inventory',
-          event.params.where.id,
-          {
-            populate: {
-              vehicles_we_armor: true
-            }
+        const originalEntry = await strapi.documents('api::inventory.inventory').findOne({
+          documentId: "__TODO__",
+
+          populate: {
+            vehicles_we_armor: true
           }
-        );
+        });
   
         if (originalEntry?.vehicles_we_armor?.length > 0) {          
           // Update the newly created translation with the vehicles
           const translationId = event.params.data.localizations[0];
-          await strapi.entityService.update(
-            'api::inventory.inventory',
-            translationId,
-            {
-              data: {
-                vehicles_we_armor: {
-                  connect: originalEntry.vehicles_we_armor.map(vehicle => ({
-                    id: vehicle.id,
-                    position: { end: true }
-                  }))
-                }
+          await strapi.documents('api::inventory.inventory').update({
+            documentId: "__TODO__",
+
+            data: {
+              vehicles_we_armor: {
+                connect: originalEntry.vehicles_we_armor.map(vehicle => ({
+                  id: vehicle.id,
+                  position: { end: true }
+                }))
               }
             }
-          );
+          });
         } else {
           console.log('No vehicles_we_armor found in original entry');
         }
@@ -55,11 +51,10 @@ module.exports = {
 
     // If this is a publish action (data only contains publishedAt and updates)
     if (event.params.data.publishedAt && !event.params.data.title) {
-      const fullEntity = await strapi.entityService.findOne(
-        'api::inventory.inventory',
-        event.params.where.id,
-        { populate: '*' }
-      );
+      const fullEntity = await strapi.documents('api::inventory.inventory').findOne({
+        documentId: "__TODO__",
+        populate: '*'
+      });
       
       if (!fullEntity.slug && fullEntity.title) {
         event.params.data.slug = generateValidSlug(fullEntity.title);

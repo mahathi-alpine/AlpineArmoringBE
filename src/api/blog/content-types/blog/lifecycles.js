@@ -12,10 +12,9 @@ module.exports = {
       // Check if this update contains a new localization
       if (event.params.data.localizations?.length > 0) {        
         // Get the original entry with its relationships
-        const originalEntry = await strapi.entityService.findOne(
-          'api::blog.blog',
-          event.params.where.id
-        );
+        const originalEntry = await strapi.documents('api::blog.blog').findOne({
+          documentId: "__TODO__"
+        });
       }
     } catch (error) {
       console.error('Error in beforeUpdate:', error);
@@ -29,11 +28,10 @@ module.exports = {
 
     // If this is a publish action (data only contains publishedAt and updates)
     if (event.params.data.publishedAt && !event.params.data.title) {
-      const fullEntity = await strapi.entityService.findOne(
-        'api::blog.blog',
-        event.params.where.id,
-        { populate: '*' }
-      );
+      const fullEntity = await strapi.documents('api::blog.blog').findOne({
+        documentId: "__TODO__",
+        populate: '*'
+      });
       
       if (!fullEntity.slug && fullEntity.title) {
         event.params.data.slug = generateValidSlug(fullEntity.title);
