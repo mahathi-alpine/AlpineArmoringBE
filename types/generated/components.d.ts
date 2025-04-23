@@ -138,6 +138,19 @@ export interface SlicesBeforeAfterSlider extends Schema.Component {
   };
 }
 
+export interface SlicesMediaPasswordProtected extends Schema.Component {
+  collectionName: 'components_slices_media_password_protecteds';
+  info: {
+    displayName: 'MediaPasswordProtected';
+    icon: 'key';
+  };
+  attributes: {
+    media: Attribute.Media;
+    password: Attribute.String;
+    text: Attribute.Text;
+  };
+}
+
 export interface SlicesSingleMedia extends Schema.Component {
   collectionName: 'components_slices_single_medias';
   info: {
@@ -241,6 +254,7 @@ declare module '@strapi/types' {
       'slices.ballistic-standard': SlicesBallisticStandard;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
+      'slices.media-password-protected': SlicesMediaPasswordProtected;
       'slices.single-media': SlicesSingleMedia;
       'slices.tab-section': SlicesTabSection;
       'slices.text-filling': SlicesTextFilling;

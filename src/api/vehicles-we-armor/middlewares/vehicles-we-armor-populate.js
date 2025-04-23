@@ -79,7 +79,14 @@ const populate = {
   },
   pdf:{
     populate: true,
-    fields: ['url', 'isUrlSigned', 'provider', 'createdAt', 'ext', 'hash',  'mime', 'name', 'updatedAt', 'provider_metadata']
+    fields: ['url', 'isUrlSigned', 'provider', 'createdAt', 'ext', 'hash', 'mime', 'name', 'updatedAt', 'provider_metadata']
+  },
+  mediaPassword:{
+    populate: {
+      media: {
+        populate: true
+      }
+    },
   },
   videoUpload:{
     populate: true,

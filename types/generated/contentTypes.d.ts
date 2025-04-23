@@ -647,6 +647,46 @@ export interface PluginTranslateBatchTranslateJob
   };
 }
 
+export interface PluginTranslateUpdatedEntry extends Schema.CollectionType {
+  collectionName: 'translate_updated_entries';
+  info: {
+    singularName: 'updated-entry';
+    pluralName: 'updated-entries';
+    displayName: 'Translate updated Entry';
+  };
+  options: {
+    draftAndPublish: false;
+    comment: '';
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    contentType: Attribute.String;
+    groupID: Attribute.String;
+    localesWithUpdates: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::translate.updated-entry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::translate.updated-entry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginRedirectsRedirect extends Schema.CollectionType {
   collectionName: 'redirects';
   info: {
@@ -5660,6 +5700,15 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           translate: 'translate';
         };
       }>;
+    mediaPassword: Attribute.Component<'slices.media-password-protected'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -5854,6 +5903,7 @@ declare module '@strapi/types' {
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::translate.batch-translate-job': PluginTranslateBatchTranslateJob;
+      'plugin::translate.updated-entry': PluginTranslateUpdatedEntry;
       'plugin::redirects.redirect': PluginRedirectsRedirect;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
