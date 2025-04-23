@@ -57,12 +57,7 @@ module.exports = ({ env }) => ({
           ACL: env('AWS_ACL', 'private'),
           signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15*60),
           Bucket: env('AWS_BUCKET'),
-          ContentDisposition: 'inline',
-          ResponseContentDisposition: 'inline',
-          ContentType: 'image/jpeg',
         },
-        contentType: 'image/jpeg',
-        contentDisposition: 'inline',
         baseUrl: env('AWS_CLOUDFRONT_URL'),
         rootPath: '',
         cdnUrl: env('AWS_CLOUDFRONT_URL')
