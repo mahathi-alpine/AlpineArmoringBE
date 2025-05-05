@@ -3372,6 +3372,217 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
   };
 }
 
+export interface ApiKnowledgeBaseKnowledgeBase extends Schema.CollectionType {
+  collectionName: 'knowledge_bases';
+  info: {
+    singularName: 'knowledge-base';
+    pluralName: 'knowledge-bases';
+    displayName: 'KnowledgeBase';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    knowledge_base_category: Attribute.Relation<
+      'api::knowledge-base.knowledge-base',
+      'manyToOne',
+      'api::knowledge-base-category.knowledge-base-category'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    dynamicZone: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::knowledge-base.knowledge-base',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::knowledge-base.knowledge-base',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::knowledge-base.knowledge-base',
+      'oneToMany',
+      'api::knowledge-base.knowledge-base'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiKnowledgeBaseCategoryKnowledgeBaseCategory
+  extends Schema.CollectionType {
+  collectionName: 'knowledge_base_categories';
+  info: {
+    singularName: 'knowledge-base-category';
+    pluralName: 'knowledge-base-categories';
+    displayName: 'KnowledgeBaseCategories';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    knowledge_bases: Attribute.Relation<
+      'api::knowledge-base-category.knowledge-base-category',
+      'oneToMany',
+      'api::knowledge-base.knowledge-base'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::knowledge-base-category.knowledge-base-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::knowledge-base-category.knowledge-base-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::knowledge-base-category.knowledge-base-category',
+      'oneToMany',
+      'api::knowledge-base-category.knowledge-base-category'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiKnowledgeBasePageKnowledgeBasePage
+  extends Schema.SingleType {
+  collectionName: 'knowledge_base_pages';
+  info: {
+    singularName: 'knowledge-base-page';
+    pluralName: 'knowledge-base-pages';
+    displayName: 'KnowledgeBasePage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::knowledge-base-page.knowledge-base-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::knowledge-base-page.knowledge-base-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::knowledge-base-page.knowledge-base-page',
+      'oneToMany',
+      'api::knowledge-base-page.knowledge-base-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiListInventoryListInventory extends Schema.SingleType {
   collectionName: 'list_inventories';
   info: {
@@ -5929,6 +6140,9 @@ declare module '@strapi/types' {
       'api::faq.faq': ApiFaqFaq;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
+      'api::knowledge-base.knowledge-base': ApiKnowledgeBaseKnowledgeBase;
+      'api::knowledge-base-category.knowledge-base-category': ApiKnowledgeBaseCategoryKnowledgeBaseCategory;
+      'api::knowledge-base-page.knowledge-base-page': ApiKnowledgeBasePageKnowledgeBasePage;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::locations-rental.locations-rental': ApiLocationsRentalLocationsRental;

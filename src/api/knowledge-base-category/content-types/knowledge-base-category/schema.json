@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "knowledge_base_categories",
+  "info": {
+    "singularName": "knowledge-base-category",
+    "pluralName": "knowledge-base-categories",
+    "displayName": "KnowledgeBaseCategories",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "string"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "string"
+    },
+    "knowledge_bases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::knowledge-base.knowledge-base",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "mappedBy": "knowledge_base_category"
+    },
+    "order": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
+    }
+  }
+}

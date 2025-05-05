@@ -55,7 +55,6 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         html: `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
             <tbody>
-
               <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
                 <td colspan="2" style="padding:1.5pt">
                   <p align="center" style="margin:0in;">
@@ -63,7 +62,6 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                   </p>
                 </td>
               </tr>
-
               <tr style="background-color:${emailColorsLight};">
                 <td style="padding:1.5pt;width: 20%;">
                   <p style="margin:0in;"><span><b>Name:</b></span></p>
@@ -203,7 +201,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                   <p style="margin:0in;"><span><b>Comments:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${message}</span></p>
+                  <p style="margin:0in;"><span>${message || ''}</span></p>
                 </td>
               </tr>
 
