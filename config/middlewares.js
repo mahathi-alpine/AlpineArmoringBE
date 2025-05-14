@@ -14,7 +14,26 @@ module.exports = [
       },
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: true,
+      origin: [
+        'http://localhost:3000',
+        'http://localhost:3001',
+        'http://127.0.0.1:3000',
+        'http://127.0.0.1:3001',
+        'http://localhost:1337',
+        'https://alpinetesting.cloudflex-ha.com',
+        'https://www.alpineco.com'
+      ],
+      headers: ['*'],
+      expose: ['WWW-Authenticate', 'Server-Authorization'],
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
+      maxAge: 86400,
+    },
+  },
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',

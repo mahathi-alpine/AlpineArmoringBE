@@ -3436,6 +3436,15 @@ export interface ApiKnowledgeBaseKnowledgeBase extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
+    shortDescription: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -3509,6 +3518,15 @@ export interface ApiKnowledgeBaseCategoryKnowledgeBaseCategory
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
