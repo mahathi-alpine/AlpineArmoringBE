@@ -201,7 +201,7 @@
       "target": "api::specification.specification",
       "pluginOptions": {
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       }
     },
@@ -211,7 +211,7 @@
       "target": "api::specification.specification",
       "pluginOptions": {
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       }
     },
@@ -221,7 +221,7 @@
       "target": "api::specification.specification",
       "pluginOptions": {
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       }
     },
@@ -231,7 +231,7 @@
       "target": "api::specification.specification",
       "pluginOptions": {
         "translate": {
-          "translate": "copy"
+          "translate": "translate"
         }
       }
     },

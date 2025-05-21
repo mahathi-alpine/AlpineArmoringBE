@@ -5841,7 +5841,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     conversionAccessories: Attribute.Relation<
@@ -5851,7 +5851,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     communications: Attribute.Relation<
@@ -5861,7 +5861,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     otherOptions: Attribute.Relation<
@@ -5871,7 +5871,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'copy';
+          translate: 'translate';
         };
       }>;
     videoMP4: Attribute.Media &
