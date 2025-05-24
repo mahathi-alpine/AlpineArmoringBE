@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "pitbull_homepages",
+  "info": {
+    "singularName": "pitbull-homepage",
+    "pluralName": "pitbull-homepages",
+    "displayName": "PITBULLHomepage"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_slices_buttons",
+  "info": {
+    "displayName": "Button"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "URL": {
+      "type": "string"
+    }
+  }
+}

@@ -36,6 +36,15 @@
     },
     "subtitle": {
       "type": "text"
+    },
+    "Button": {
+      "displayName": "Button",
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.button"
+    },
+    "Description": {
+      "type": "richtext"
     }
   }
 }

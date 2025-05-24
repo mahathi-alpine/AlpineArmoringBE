@@ -4350,6 +4350,35 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
   };
 }
 
+export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
+  collectionName: 'pitbull_homepages';
+  info: {
+    singularName: 'pitbull-homepage';
+    pluralName: 'pitbull-homepages';
+    displayName: 'PITBULLHomepage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pitbull-homepage.pitbull-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pitbull-homepage.pitbull-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
   collectionName: 'privacy_policies';
   info: {
@@ -6169,6 +6198,7 @@ declare module '@strapi/types' {
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::media.media': ApiMediaMedia;
       'api::news-page.news-page': ApiNewsPageNewsPage;
+      'api::pitbull-homepage.pitbull-homepage': ApiPitbullHomepagePitbullHomepage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;
       'api::rentals-contact-page.rentals-contact-page': ApiRentalsContactPageRentalsContactPage;

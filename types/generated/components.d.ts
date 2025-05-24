@@ -124,6 +124,8 @@ export interface SlicesBanner extends Schema.Component {
     mediaMP4: Attribute.Media;
     imageMobile: Attribute.Media;
     subtitle: Attribute.Text;
+    Button: Attribute.Component<'slices.button'>;
+    Description: Attribute.RichText;
   };
 }
 
@@ -135,6 +137,17 @@ export interface SlicesBeforeAfterSlider extends Schema.Component {
   attributes: {
     before: Attribute.Media;
     after: Attribute.Media;
+  };
+}
+
+export interface SlicesButton extends Schema.Component {
+  collectionName: 'components_slices_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    Title: Attribute.String;
+    URL: Attribute.String;
   };
 }
 
@@ -254,6 +267,7 @@ declare module '@strapi/types' {
       'slices.ballistic-standard': SlicesBallisticStandard;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
+      'slices.button': SlicesButton;
       'slices.media-password-protected': SlicesMediaPasswordProtected;
       'slices.single-media': SlicesSingleMedia;
       'slices.tab-section': SlicesTabSection;
