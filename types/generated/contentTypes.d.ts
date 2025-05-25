@@ -4356,12 +4356,53 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
     singularName: 'pitbull-homepage';
     pluralName: 'pitbull-homepages';
     displayName: 'PITBULLHomepage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    otherPages: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    otherPagesTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    otherPagesText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -4376,6 +4417,12 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::pitbull-homepage.pitbull-homepage',
+      'oneToMany',
+      'api::pitbull-homepage.pitbull-homepage'
+    >;
+    locale: Attribute.String;
   };
 }
 

@@ -4,17 +4,65 @@
   "info": {
     "singularName": "pitbull-homepage",
     "pluralName": "pitbull-homepages",
-    "displayName": "PITBULLHomepage"
+    "displayName": "PITBULLHomepage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "banner": {
       "type": "component",
       "repeatable": false,
-      "component": "slices.banner"
+      "component": "slices.banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "otherPages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "otherPagesTitle": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "otherPagesText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
     }
   }
 }
