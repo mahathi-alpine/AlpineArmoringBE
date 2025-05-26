@@ -4376,15 +4376,6 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    otherPages: Attribute.Component<'slices.tab-section', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     otherPagesTitle: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -4399,6 +4390,43 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
         i18n: {
           localized: true;
         };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    otherPages: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehiclesTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehiclesText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehicles_we_armors: Attribute.Relation<
+      'api::pitbull-homepage.pitbull-homepage',
+      'oneToMany',
+      'api::vehicles-we-armor.vehicles-we-armor'
+    > &
+      Attribute.SetPluginOptions<{
         translate: {
           translate: 'translate';
         };
@@ -5901,15 +5929,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         };
       }> &
       Attribute.DefaultTo<'A4, A6, A9, A11'>;
-    seo: Attribute.Component<'shared.seo'> &
-      Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-        i18n: {
-          localized: true;
-        };
-      }>;
     armoringFeatures: Attribute.Relation<
       'api::vehicles-we-armor.vehicles-we-armor',
       'oneToMany',
@@ -6006,6 +6025,42 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         };
       }>;
     mediaPassword: Attribute.Component<'slices.media-password-protected'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+        i18n: {
+          localized: true;
+        };
+      }>;
+    pitbullFeaturedImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pitbullHomepageSubtitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pitbullHomepageTitle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

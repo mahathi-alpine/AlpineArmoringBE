@@ -29,19 +29,6 @@
         }
       }
     },
-    "otherPages": {
-      "type": "component",
-      "repeatable": true,
-      "component": "slices.tab-section",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
     "otherPagesTitle": {
       "type": "text",
       "pluginOptions": {
@@ -63,6 +50,51 @@
         }
       },
       "type": "richtext"
+    },
+    "otherPages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "vehiclesTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "text"
+    },
+    "vehiclesText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
+    },
+    "vehicles_we_armors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     }
   }
 }
