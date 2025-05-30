@@ -321,47 +321,6 @@
         }
       },
       "component": "shared.seo"
-    },
-    "pitbullFeaturedImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      }
-    },
-    "pitbullHomepageSubtitle": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "type": "string"
-    },
-    "pitbullHomepageTitle": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "type": "string"
     }
   }
 }

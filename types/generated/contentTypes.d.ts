@@ -4421,10 +4421,10 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    vehicles_we_armors: Attribute.Relation<
+    vehicles: Attribute.Relation<
       'api::pitbull-homepage.pitbull-homepage',
       'oneToMany',
-      'api::vehicles-we-armor.vehicles-we-armor'
+      'api::vehicles-alternative.vehicles-alternative'
     > &
       Attribute.SetPluginOptions<{
         translate: {
@@ -5803,6 +5803,93 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
   };
 }
 
+export interface ApiVehiclesAlternativeVehiclesAlternative
+  extends Schema.CollectionType {
+  collectionName: 'vehicles_alternatives';
+  info: {
+    singularName: 'vehicles-alternative';
+    pluralName: 'vehicles-alternatives';
+    displayName: 'VehiclesAlternative';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    featuredImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    featuredSubtitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    featuredTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vehicles-alternative.vehicles-alternative',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vehicles-alternative.vehicles-alternative',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::vehicles-alternative.vehicles-alternative',
+      'oneToMany',
+      'api::vehicles-alternative.vehicles-alternative'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiVehiclesWeArmorVehiclesWeArmor
   extends Schema.CollectionType {
   collectionName: 'vehicles_we_armors';
@@ -6040,33 +6127,6 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         };
         i18n: {
           localized: true;
-        };
-      }>;
-    pitbullFeaturedImage: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    pitbullHomepageSubtitle: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    pitbullHomepageTitle: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -6320,6 +6380,7 @@ declare module '@strapi/types' {
       'api::swat-news-testimonial.swat-news-testimonial': ApiSwatNewsTestimonialSwatNewsTestimonial;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
+      'api::vehicles-alternative.vehicles-alternative': ApiVehiclesAlternativeVehiclesAlternative;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
       'api::video.video': ApiVideoVideo;
       'api::video-page.video-page': ApiVideoPageVideoPage;

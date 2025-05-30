@@ -86,10 +86,10 @@
       },
       "type": "richtext"
     },
-    "vehicles_we_armors": {
+    "vehicles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "target": "api::vehicles-alternative.vehicles-alternative",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
