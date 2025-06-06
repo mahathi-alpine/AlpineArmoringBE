@@ -49,29 +49,25 @@ const populate = {
       }
     }
   },
-  ballistingTestingsMedia:{
-    populate: {
-      image: {
-        populate: true
-      }
-    }
-  },
+  // ballistingTestingsMedia:{
+  //   populate: {
+  //     image: {
+  //       populate: true
+  //     }
+  //   }
+  // },
   blog_evergreens:{
+    fields: ['title', 'slug', 'excerpt', 'date', 'publishedAt'],
     populate: {
       thumbnail: {
-        populate: true
-      },    
-      categories: {
         populate: true
       }
     }
   },
   news:{
+    fields: ['title', 'slug', 'excerpt', 'date', 'publishedAt'],
     populate: {
       thumbnail: {
-        populate: true
-      },    
-      categories: {
         populate: true
       }
     }
@@ -80,6 +76,7 @@ const populate = {
     populate: true
   },
   industryPartners: {
+    fields: ['title', 'linkURL'],
     populate: {
       image: {
         populate: true
