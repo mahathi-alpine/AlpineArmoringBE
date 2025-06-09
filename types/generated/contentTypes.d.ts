@@ -1813,7 +1813,14 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    blogDynamic: Attribute.DynamicZone<['slices.text', 'slices.single-media']> &
+    blogDynamic: Attribute.DynamicZone<
+      [
+        'slices.text',
+        'slices.single-media',
+        'slices.two-images',
+        'slices.youtube-video'
+      ]
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1928,7 +1935,12 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
         };
       }>;
     blogDynamic: Attribute.DynamicZone<
-      ['slices.text', 'slices.single-media', 'slices.youtube-video']
+      [
+        'slices.text',
+        'slices.single-media',
+        'slices.youtube-video',
+        'slices.two-images'
+      ]
     > &
       Attribute.SetPluginOptions<{
         i18n: {

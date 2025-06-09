@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_slices_two_images",
+  "info": {
+    "displayName": "TwoImages",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "firstImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "secondImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    }
+  }
+}

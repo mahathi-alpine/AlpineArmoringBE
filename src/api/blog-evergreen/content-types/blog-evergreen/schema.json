@@ -92,7 +92,8 @@
       "components": [
         "slices.text",
         "slices.single-media",
-        "slices.youtube-video"
+        "slices.youtube-video",
+        "slices.two-images"
       ]
     },
     "seo": {

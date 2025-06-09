@@ -127,7 +127,9 @@
       "type": "dynamiczone",
       "components": [
         "slices.text",
-        "slices.single-media"
+        "slices.single-media",
+        "slices.two-images",
+        "slices.youtube-video"
       ]
     },
     "faqs": {
