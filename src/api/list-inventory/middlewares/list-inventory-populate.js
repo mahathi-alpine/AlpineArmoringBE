@@ -20,6 +20,9 @@ const populate = {
   faqs:{
     populate: true
   },
+  bottomTextDynamic:{
+    populate: true
+  },   
   seo:{
     populate: {
       metaImage: {

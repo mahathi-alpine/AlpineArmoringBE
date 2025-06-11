@@ -3666,6 +3666,15 @@ export interface ApiListInventoryListInventory extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    bottomTextDynamic: Attribute.DynamicZone<['slices.text']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
