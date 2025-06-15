@@ -492,6 +492,19 @@
           "translate": "translate"
         }
       }
+    },
+    "mediaPassword": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "copy"
+        }
+      },
+      "component": "slices.media-password-protected"
     }
   }
 }

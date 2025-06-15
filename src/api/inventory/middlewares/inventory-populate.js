@@ -23,6 +23,13 @@ const populate = {
       }
     }
   },
+  mediaPassword:{
+    populate: {
+      media: {
+        populate: true
+      }
+    },
+  },
   localizations:{
     populate: true
   },

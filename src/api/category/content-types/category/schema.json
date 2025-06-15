@@ -83,12 +83,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::inventory.inventory",
-      "inversedBy": "categories",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "inversedBy": "categories"
     },
     "seo": {
       "type": "component",

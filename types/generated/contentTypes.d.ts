@@ -1972,7 +1972,7 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
     > &
       Attribute.SetPluginOptions<{
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     faqs: Attribute.Component<'slices.accordion', true> &
@@ -3358,6 +3358,15 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
         translate: {
           translate: 'translate';
+        };
+      }>;
+    mediaPassword: Attribute.Component<'slices.media-password-protected'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'copy';
         };
       }>;
     createdAt: Attribute.DateTime;

@@ -125,7 +125,7 @@
       "target": "api::author.author",
       "pluginOptions": {
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       },
       "inversedBy": "blog_evergreens"
