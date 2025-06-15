@@ -25,7 +25,8 @@ module.exports = [
         'http://127.0.0.1:3001',
         'http://localhost:1337',
         'https://alpinetesting.cloudflex-ha.com',
-        'https://www.alpineco.com'
+        'https://www.alpineco.com',
+        'https://alpine-armoring-fe-kappa.vercel.app'
       ],
       headers: ['*'],
       expose: ['WWW-Authenticate', 'Server-Authorization'],
