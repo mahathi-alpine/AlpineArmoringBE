@@ -99,6 +99,14 @@
         }
       },
       "type": "string"
+    },
+    "year": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "biginteger"
     }
   }
 }

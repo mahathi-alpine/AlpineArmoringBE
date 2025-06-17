@@ -6266,6 +6266,12 @@ export interface ApiVideoVideo extends Schema.CollectionType {
           translate: 'copy';
         };
       }>;
+    year: Attribute.BigInteger &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
