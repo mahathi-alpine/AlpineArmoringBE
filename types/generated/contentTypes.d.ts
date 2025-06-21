@@ -2227,6 +2227,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
+    orderAlternative: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

@@ -183,6 +183,14 @@
         }
       },
       "type": "string"
+    },
+    "orderAlternative": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
     }
   }
 }
