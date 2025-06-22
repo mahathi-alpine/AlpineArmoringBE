@@ -214,6 +214,27 @@ export interface SlicesText extends Schema.Component {
   };
 }
 
+export interface SlicesTwoColumnsText extends Schema.Component {
+  collectionName: 'components_slices_two_columns_texts';
+  info: {
+    displayName: 'twoColumnsText';
+  };
+  attributes: {
+    leftText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    rightText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+  };
+}
+
 export interface SlicesTwoImages extends Schema.Component {
   collectionName: 'components_slices_two_images';
   info: {
@@ -285,6 +306,7 @@ declare module '@strapi/types' {
       'slices.tab-section': SlicesTabSection;
       'slices.text-filling': SlicesTextFilling;
       'slices.text': SlicesText;
+      'slices.two-columns-text': SlicesTwoColumnsText;
       'slices.two-images': SlicesTwoImages;
       'slices.video': SlicesVideo;
       'slices.videos-slider': SlicesVideosSlider;

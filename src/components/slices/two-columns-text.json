@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_slices_two_columns_texts",
+  "info": {
+    "displayName": "twoColumnsText"
+  },
+  "options": {},
+  "attributes": {
+    "leftText": {
+      "type": "richtext",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "rightText": {
+      "type": "richtext",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    }
+  }
+}

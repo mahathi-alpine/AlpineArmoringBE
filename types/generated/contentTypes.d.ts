@@ -1016,6 +1016,17 @@ export interface ApiAboutAbout extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    dynamicZone: Attribute.DynamicZone<
+      ['slices.two-columns-text', 'slices.text']
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

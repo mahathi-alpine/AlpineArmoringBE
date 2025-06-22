@@ -127,6 +127,21 @@
         }
       },
       "type": "richtext"
+    },
+    "dynamicZone": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "slices.two-columns-text",
+        "slices.text"
+      ]
     }
   }
 }
