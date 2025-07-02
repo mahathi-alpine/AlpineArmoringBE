@@ -505,6 +505,14 @@
         }
       },
       "component": "slices.media-password-protected"
+    },
+    "orderCategory": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer"
     }
   }
 }

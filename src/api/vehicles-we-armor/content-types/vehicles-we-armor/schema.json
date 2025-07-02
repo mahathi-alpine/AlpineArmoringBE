@@ -321,6 +321,14 @@
         }
       },
       "component": "shared.seo"
+    },
+    "orderCategory": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer"
     }
   }
 }

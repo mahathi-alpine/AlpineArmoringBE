@@ -2238,12 +2238,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    orderAlternative: Attribute.Integer &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -3412,6 +3406,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
         translate: {
           translate: 'copy';
+        };
+      }>;
+    orderCategory: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -6370,6 +6370,12 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         };
         i18n: {
           localized: true;
+        };
+      }>;
+    orderCategory: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
