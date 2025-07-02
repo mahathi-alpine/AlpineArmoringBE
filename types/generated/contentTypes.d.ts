@@ -2730,13 +2730,35 @@ export interface ApiFaQsRentalFaQsRental extends Schema.CollectionType {
     singularName: 'fa-qs-rental';
     pluralName: 'fa-qs-rentals';
     displayName: 'FAQsRentals';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title: Attribute.String;
-    text: Attribute.RichText;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     order: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2753,6 +2775,12 @@ export interface ApiFaQsRentalFaQsRental extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::fa-qs-rental.fa-qs-rental',
+      'oneToMany',
+      'api::fa-qs-rental.fa-qs-rental'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -4608,19 +4636,54 @@ export interface ApiRentalsContactPageRentalsContactPage
     singularName: 'rentals-contact-page';
     pluralName: 'rentals-contact-pages';
     displayName: 'RentalsContactPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    salesInfo: Attribute.RichText;
-    seo: Attribute.Component<'shared.seo'>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    salesInfo: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     fa_qs: Attribute.Relation<
       'api::rentals-contact-page.rentals-contact-page',
       'oneToMany',
       'api::fa-qs-rental.fa-qs-rental'
-    >;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -4636,6 +4699,12 @@ export interface ApiRentalsContactPageRentalsContactPage
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::rentals-contact-page.rentals-contact-page',
+      'oneToMany',
+      'api::rentals-contact-page.rentals-contact-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -4650,24 +4719,109 @@ export interface ApiRentalsHomepageRentalsHomepage extends Schema.SingleType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    bannerVideo: Attribute.Component<'slices.video'>;
-    topBannerTitle: Attribute.Text;
-    topBannerDescription: Attribute.Text;
-    quote: Attribute.Component<'slices.text-filling'>;
+    bannerVideo: Attribute.Component<'slices.video'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    topBannerTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    topBannerDescription: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    quote: Attribute.Component<'slices.text-filling'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     featuredRentalVehicles: Attribute.Relation<
       'api::rentals-homepage.rentals-homepage',
       'oneToMany',
       'api::inventory.inventory'
-    >;
-    seo: Attribute.Component<'shared.seo'>;
-    featuredVehiclesTitle: Attribute.Text;
-    section1Title: Attribute.Text;
-    section1Text: Attribute.RichText;
-    section1text2: Attribute.RichText;
-    section1List: Attribute.Component<'slices.tab-section', true>;
-    section2title: Attribute.Text;
-    section2text: Attribute.RichText;
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    featuredVehiclesTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section1Title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section1Text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section1text2: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section1List: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section2title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    section2text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -4683,6 +4837,12 @@ export interface ApiRentalsHomepageRentalsHomepage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::rentals-homepage.rentals-homepage',
+      'oneToMany',
+      'api::rentals-homepage.rentals-homepage'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -4692,14 +4852,44 @@ export interface ApiRentalsListingRentalsListing extends Schema.SingleType {
     singularName: 'rentals-listing';
     pluralName: 'rentals-listings';
     displayName: 'RentalsListing';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    seo: Attribute.Component<'shared.seo'>;
-    bottomText: Attribute.RichText;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    bottomText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -4714,6 +4904,12 @@ export interface ApiRentalsListingRentalsListing extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::rentals-listing.rentals-listing',
+      'oneToMany',
+      'api::rentals-listing.rentals-listing'
+    >;
+    locale: Attribute.String;
   };
 }
 
