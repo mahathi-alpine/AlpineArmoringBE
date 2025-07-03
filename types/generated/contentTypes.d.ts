@@ -6491,6 +6491,15 @@ export interface ApiVideoVideo extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    instagramReelId: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
