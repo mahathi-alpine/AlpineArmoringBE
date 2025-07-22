@@ -68,6 +68,10 @@
     },
     "mileage": {
       "type": "string"
+    },
+    "trackingData": {
+      "type": "json",
+      "required": false
     }
   }
 }

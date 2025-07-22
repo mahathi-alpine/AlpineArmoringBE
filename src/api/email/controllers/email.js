@@ -7,7 +7,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const emailData = await super.create(ctx);
 
     const { data } = ctx.request.body;
-    const { name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date, fromDate, toDate, mileage, driverNeeded, vehicleType, vehicleModel, domain } = data;
+    const { name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date, fromDate, toDate, mileage, driverNeeded, vehicleType, vehicleModel, domain, trackingData } = data;
 
     function getCurrentDateTime() {
       const now = new Date();
@@ -45,6 +45,18 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       emailColorsDark = '#9c9477';
       emailColorsLight = '#c3bfaf';
     }
+
+    const isGoogleAdsLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.gclid || 
+        trackingData.gad_source || 
+        trackingData.gbraid || 
+        trackingData.wbraid ||
+        (trackingData.utm_source && trackingData.utm_source.toLowerCase() === 'google' && trackingData.utm_medium && trackingData.utm_medium.toLowerCase() === 'cpc')
+      );
+    };
 
     try {
       await strapi.plugins['email'].services.email.send({
@@ -214,7 +226,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                     <p style="margin:0in;"><span>From: <b>${fromDate}</b>  To: <b>${toDate}</b></span></p>
                   </td>
                 </tr>
-              ` : null }
+              ` : '' }
 
               <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
                 <td style="padding:1.5pt;width: 20%;">
@@ -226,6 +238,14 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                   </u></span></p>
                 </td>
               </tr>
+
+              ${isGoogleAdsLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: green;">
+                    <p style="margin:0in;"><span><b>From Google Ads</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
 
             </tbody>
           </table>

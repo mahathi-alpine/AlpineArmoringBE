@@ -2650,6 +2650,7 @@ export interface ApiEmailEmail extends Schema.CollectionType {
     toDate: Attribute.Date;
     driverNeeded: Attribute.String;
     mileage: Attribute.String;
+    trackingData: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
