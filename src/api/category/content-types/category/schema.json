@@ -183,6 +183,20 @@
         }
       },
       "type": "string"
+    },
+    "bottomTextDynamic": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "slices.text"
+      ]
     }
   }
 }
