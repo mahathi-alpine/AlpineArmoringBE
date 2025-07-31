@@ -6110,6 +6110,17 @@ export interface ApiVehiclesAlternativeVehiclesAlternative
           translate: 'translate';
         };
       }>;
+    dynamicZone: Attribute.DynamicZone<
+      ['slices.text', 'slices.stacking-cards']
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_slices_stacking_cards",
+  "info": {
+    "displayName": "stackingCards"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
+    }
+  }
+}

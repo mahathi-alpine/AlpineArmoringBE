@@ -1,12 +1,21 @@
 {
   "collectionName": "components_slices_texts",
   "info": {
-    "displayName": "Text"
+    "displayName": "Text",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Content": {
       "type": "richtext"
+    },
+    "class": {
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
     }
   }
 }
