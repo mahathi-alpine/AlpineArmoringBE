@@ -155,6 +155,7 @@ export interface SlicesEventSnippet extends Schema.Component {
   collectionName: 'components_slices_event_snippets';
   info: {
     displayName: 'eventSnippet';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
