@@ -151,6 +151,22 @@ export interface SlicesButton extends Schema.Component {
   };
 }
 
+export interface SlicesEventSnippet extends Schema.Component {
+  collectionName: 'components_slices_event_snippets';
+  info: {
+    displayName: 'eventSnippet';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.RichText;
+    date: Attribute.String;
+    location: Attribute.String;
+    url: Attribute.String;
+    ribbon: Attribute.String;
+    media: Attribute.Media;
+  };
+}
+
 export interface SlicesMediaPasswordProtected extends Schema.Component {
   collectionName: 'components_slices_media_password_protecteds';
   info: {
@@ -318,6 +334,7 @@ declare module '@strapi/types' {
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
       'slices.button': SlicesButton;
+      'slices.event-snippet': SlicesEventSnippet;
       'slices.media-password-protected': SlicesMediaPasswordProtected;
       'slices.single-media': SlicesSingleMedia;
       'slices.stacking-cards': SlicesStackingCards;

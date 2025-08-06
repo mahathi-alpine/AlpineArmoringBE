@@ -42,6 +42,13 @@ const populate = {
   hpMiddleText:{
     populate: true
   },
+  event:{
+    populate: {
+      media: {
+        populate: true
+      }
+    }
+  },
   tabSection:{
     populate: {
       image: {

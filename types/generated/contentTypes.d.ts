@@ -3034,6 +3034,15 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    event: Attribute.Component<'slices.event-snippet'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
