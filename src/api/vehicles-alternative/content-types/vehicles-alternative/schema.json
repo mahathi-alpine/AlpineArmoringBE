@@ -90,7 +90,8 @@
       "type": "dynamiczone",
       "components": [
         "slices.text",
-        "slices.stacking-cards"
+        "slices.stacking-cards",
+        "slices.single-media"
       ]
     }
   }

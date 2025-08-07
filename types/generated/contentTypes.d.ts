@@ -6129,7 +6129,7 @@ export interface ApiVehiclesAlternativeVehiclesAlternative
         };
       }>;
     dynamicZone: Attribute.DynamicZone<
-      ['slices.text', 'slices.stacking-cards']
+      ['slices.text', 'slices.stacking-cards', 'slices.single-media']
     > &
       Attribute.SetPluginOptions<{
         i18n: {
