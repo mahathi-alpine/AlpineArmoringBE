@@ -189,6 +189,12 @@ export interface SlicesSingleMedia extends Schema.Component {
   };
   attributes: {
     media: Attribute.Media;
+    class: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
   };
 }
 

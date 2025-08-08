@@ -15,6 +15,14 @@
         "files",
         "videos"
       ]
+    },
+    "class": {
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
     }
   }
 }
