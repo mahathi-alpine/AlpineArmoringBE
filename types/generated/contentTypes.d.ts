@@ -4450,12 +4450,22 @@ export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
     singularName: 'pitbull-about';
     pluralName: 'pitbull-abouts';
     displayName: 'PITBULLAbout';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'slices.single-media',
+        'slices.spacing',
+        'slices.stacking-cards',
+        'slices.text',
+        'slices.two-columns-text'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -13,6 +13,9 @@
           "translate": "copy"
         }
       }
+    },
+    "anchor": {
+      "type": "string"
     }
   }
 }

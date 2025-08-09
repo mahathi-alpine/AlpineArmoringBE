@@ -211,6 +211,7 @@ export interface SlicesSpacing extends Schema.Component {
           translate: 'copy';
         };
       }>;
+    anchor: Attribute.String;
   };
 }
 

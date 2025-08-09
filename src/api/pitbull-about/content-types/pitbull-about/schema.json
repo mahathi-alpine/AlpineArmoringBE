@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pitbull-about",
     "pluralName": "pitbull-abouts",
-    "displayName": "PITBULLAbout"
+    "displayName": "PITBULLAbout",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,16 @@
       "type": "component",
       "repeatable": false,
       "component": "slices.banner"
+    },
+    "dynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "slices.single-media",
+        "slices.spacing",
+        "slices.stacking-cards",
+        "slices.text",
+        "slices.two-columns-text"
+      ]
     }
   }
 }
