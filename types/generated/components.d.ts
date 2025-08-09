@@ -198,6 +198,22 @@ export interface SlicesSingleMedia extends Schema.Component {
   };
 }
 
+export interface SlicesSpacing extends Schema.Component {
+  collectionName: 'components_slices_spacings';
+  info: {
+    displayName: 'Spacing';
+    description: '';
+  };
+  attributes: {
+    class: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+  };
+}
+
 export interface SlicesStackingCards extends Schema.Component {
   collectionName: 'components_slices_stacking_cards';
   info: {
@@ -344,6 +360,7 @@ declare module '@strapi/types' {
       'slices.event-snippet': SlicesEventSnippet;
       'slices.media-password-protected': SlicesMediaPasswordProtected;
       'slices.single-media': SlicesSingleMedia;
+      'slices.spacing': SlicesSpacing;
       'slices.stacking-cards': SlicesStackingCards;
       'slices.tab-section': SlicesTabSection;
       'slices.text-filling': SlicesTextFilling;

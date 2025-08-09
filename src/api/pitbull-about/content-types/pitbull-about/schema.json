@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "pitbull_abouts",
+  "info": {
+    "singularName": "pitbull-about",
+    "pluralName": "pitbull-abouts",
+    "displayName": "PITBULLAbout"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    }
+  }
+}

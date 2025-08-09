@@ -4444,6 +4444,36 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
   };
 }
 
+export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
+  collectionName: 'pitbull_abouts';
+  info: {
+    singularName: 'pitbull-about';
+    pluralName: 'pitbull-abouts';
+    displayName: 'PITBULLAbout';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pitbull-about.pitbull-about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pitbull-about.pitbull-about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
   collectionName: 'pitbull_homepages';
   info: {
@@ -6129,7 +6159,12 @@ export interface ApiVehiclesAlternativeVehiclesAlternative
         };
       }>;
     dynamicZone: Attribute.DynamicZone<
-      ['slices.text', 'slices.stacking-cards', 'slices.single-media']
+      [
+        'slices.text',
+        'slices.stacking-cards',
+        'slices.single-media',
+        'slices.spacing'
+      ]
     > &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -6663,6 +6698,7 @@ declare module '@strapi/types' {
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::media.media': ApiMediaMedia;
       'api::news-page.news-page': ApiNewsPageNewsPage;
+      'api::pitbull-about.pitbull-about': ApiPitbullAboutPitbullAbout;
       'api::pitbull-homepage.pitbull-homepage': ApiPitbullHomepagePitbullHomepage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;

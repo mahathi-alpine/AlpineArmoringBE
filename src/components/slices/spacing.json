@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_slices_spacings",
+  "info": {
+    "displayName": "Spacing",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "class": {
+      "type": "string",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    }
+  }
+}
