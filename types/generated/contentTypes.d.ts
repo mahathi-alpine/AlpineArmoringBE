@@ -4463,7 +4463,9 @@ export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
         'slices.spacing',
         'slices.stacking-cards',
         'slices.text',
-        'slices.two-columns-text'
+        'slices.two-columns-text',
+        'slices.sticky-sections',
+        'slices.youtube-video'
       ]
     >;
     createdAt: Attribute.DateTime;

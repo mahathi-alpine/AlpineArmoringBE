@@ -225,6 +225,18 @@ export interface SlicesStackingCards extends Schema.Component {
   };
 }
 
+export interface SlicesStickySections extends Schema.Component {
+  collectionName: 'components_slices_sticky_sections';
+  info: {
+    displayName: 'StickySections';
+    description: '';
+  };
+  attributes: {
+    item: Attribute.Component<'shared.timeline', true>;
+    media: Attribute.Media;
+  };
+}
+
 export interface SlicesTabSection extends Schema.Component {
   collectionName: 'components_slices_tab_sections';
   info: {
@@ -363,6 +375,7 @@ declare module '@strapi/types' {
       'slices.single-media': SlicesSingleMedia;
       'slices.spacing': SlicesSpacing;
       'slices.stacking-cards': SlicesStackingCards;
+      'slices.sticky-sections': SlicesStickySections;
       'slices.tab-section': SlicesTabSection;
       'slices.text-filling': SlicesTextFilling;
       'slices.text': SlicesText;

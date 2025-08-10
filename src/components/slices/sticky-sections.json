@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_slices_sticky_sections",
+  "info": {
+    "displayName": "StickySections",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.timeline"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
