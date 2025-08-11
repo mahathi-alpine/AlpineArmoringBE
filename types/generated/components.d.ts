@@ -346,6 +346,7 @@ export interface SlicesYoutubeVideo extends Schema.Component {
   collectionName: 'components_slices_youtube_videos';
   info: {
     displayName: 'youtubeVideo';
+    description: '';
   };
   attributes: {
     url: Attribute.Text &
@@ -354,6 +355,7 @@ export interface SlicesYoutubeVideo extends Schema.Component {
           translate: 'copy';
         };
       }>;
+    class: Attribute.String;
   };
 }
 
