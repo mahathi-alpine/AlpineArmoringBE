@@ -95,6 +95,19 @@
           "translate": "translate"
         }
       }
+    },
+    "featured": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.tab-section"
     }
   }
 }

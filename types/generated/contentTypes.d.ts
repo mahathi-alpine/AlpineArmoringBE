@@ -4567,6 +4567,15 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    featured: Attribute.Component<'slices.tab-section'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
