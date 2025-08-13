@@ -12,12 +12,16 @@
       "component": "shared.timeline"
     },
     "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "text": {
+      "type": "richtext"
     }
   }
 }

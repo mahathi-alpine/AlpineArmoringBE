@@ -234,6 +234,7 @@ export interface SlicesStickySections extends Schema.Component {
   attributes: {
     item: Attribute.Component<'shared.timeline', true>;
     media: Attribute.Media;
+    text: Attribute.RichText;
   };
 }
 
