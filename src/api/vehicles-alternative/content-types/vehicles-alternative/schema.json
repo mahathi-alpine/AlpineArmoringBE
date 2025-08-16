@@ -94,6 +94,22 @@
         "slices.single-media",
         "slices.spacing"
       ]
+    },
+    "configuratorMedia": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "copy"
+        }
+      }
     }
   }
 }
