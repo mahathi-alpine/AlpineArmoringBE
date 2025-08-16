@@ -4576,6 +4576,24 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    stickySections: Attribute.Component<'slices.sticky-sections'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
