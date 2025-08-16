@@ -132,6 +132,19 @@
         }
       },
       "component": "slices.sticky-sections"
+    },
+    "socialFeed": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "copy"
+        }
+      },
+      "component": "slices.social-feed-item"
     }
   }
 }

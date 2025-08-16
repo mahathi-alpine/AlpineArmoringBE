@@ -4594,6 +4594,15 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    socialFeed: Attribute.Component<'slices.social-feed-item', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'copy';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

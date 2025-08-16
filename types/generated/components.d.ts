@@ -198,6 +198,33 @@ export interface SlicesSingleMedia extends Schema.Component {
   };
 }
 
+export interface SlicesSocialFeedItem extends Schema.Component {
+  collectionName: 'components_slices_social_feed_items';
+  info: {
+    displayName: 'socialFeedItem';
+  };
+  attributes: {
+    youtubeURL: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    video: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+  };
+}
+
 export interface SlicesSpacing extends Schema.Component {
   collectionName: 'components_slices_spacings';
   info: {
@@ -376,6 +403,7 @@ declare module '@strapi/types' {
       'slices.event-snippet': SlicesEventSnippet;
       'slices.media-password-protected': SlicesMediaPasswordProtected;
       'slices.single-media': SlicesSingleMedia;
+      'slices.social-feed-item': SlicesSocialFeedItem;
       'slices.spacing': SlicesSpacing;
       'slices.stacking-cards': SlicesStackingCards;
       'slices.sticky-sections': SlicesStickySections;
