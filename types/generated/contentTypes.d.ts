@@ -3637,55 +3637,6 @@ export interface ApiKnowledgeBaseCategoryKnowledgeBaseCategory
   };
 }
 
-export interface ApiKnowledgeBasePageKnowledgeBasePage
-  extends Schema.SingleType {
-  collectionName: 'knowledge_base_pages';
-  info: {
-    singularName: 'knowledge-base-page';
-    pluralName: 'knowledge-base-pages';
-    displayName: 'KnowledgeBasePage';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    seo: Attribute.Component<'shared.seo'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::knowledge-base-page.knowledge-base-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::knowledge-base-page.knowledge-base-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::knowledge-base-page.knowledge-base-page',
-      'oneToMany',
-      'api::knowledge-base-page.knowledge-base-page'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface ApiListInventoryListInventory extends Schema.SingleType {
   collectionName: 'list_inventories';
   info: {
@@ -4568,15 +4519,6 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
         };
       }>;
     featured: Attribute.Component<'slices.tab-section'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    content: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -6746,7 +6688,6 @@ declare module '@strapi/types' {
       'api::inventory.inventory': ApiInventoryInventory;
       'api::knowledge-base.knowledge-base': ApiKnowledgeBaseKnowledgeBase;
       'api::knowledge-base-category.knowledge-base-category': ApiKnowledgeBaseCategoryKnowledgeBaseCategory;
-      'api::knowledge-base-page.knowledge-base-page': ApiKnowledgeBasePageKnowledgeBasePage;
       'api::list-inventory.list-inventory': ApiListInventoryListInventory;
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::locations-rental.locations-rental': ApiLocationsRentalLocationsRental;

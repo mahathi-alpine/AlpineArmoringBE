@@ -109,17 +109,6 @@
       },
       "component": "slices.tab-section"
     },
-    "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "type": "richtext"
-    },
     "stickySections": {
       "type": "component",
       "repeatable": false,
