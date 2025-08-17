@@ -202,6 +202,7 @@ export interface SlicesSocialFeedItem extends Schema.Component {
   collectionName: 'components_slices_social_feed_items';
   info: {
     displayName: 'socialFeedItem';
+    description: '';
   };
   attributes: {
     youtubeURL: Attribute.String &
@@ -222,6 +223,8 @@ export interface SlicesSocialFeedItem extends Schema.Component {
           translate: 'copy';
         };
       }>;
+    url: Attribute.Text;
+    views: Attribute.String;
   };
 }
 

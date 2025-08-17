@@ -1,7 +1,8 @@
 {
   "collectionName": "components_slices_social_feed_items",
   "info": {
-    "displayName": "socialFeedItem"
+    "displayName": "socialFeedItem",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,11 +15,12 @@
       }
     },
     "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "videos"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "translate": {
           "translate": "copy"
@@ -26,16 +28,23 @@
       }
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "translate": {
           "translate": "copy"
         }
       }
+    },
+    "url": {
+      "type": "text"
+    },
+    "views": {
+      "type": "string"
     }
   }
 }
