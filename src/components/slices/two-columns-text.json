@@ -1,7 +1,8 @@
 {
   "collectionName": "components_slices_two_columns_texts",
   "info": {
-    "displayName": "twoColumnsText"
+    "displayName": "twoColumnsText",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -20,6 +21,9 @@
           "translate": "translate"
         }
       }
+    },
+    "class": {
+      "type": "string"
     }
   }
 }

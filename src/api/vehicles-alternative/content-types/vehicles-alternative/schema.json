@@ -92,16 +92,18 @@
         "slices.text",
         "slices.stacking-cards",
         "slices.single-media",
-        "slices.spacing"
+        "slices.spacing",
+        "slices.two-columns-text"
       ]
     },
     "configuratorMedia": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
       ],
-      "type": "media",
-      "multiple": true,
       "pluginOptions": {
         "i18n": {
           "localized": true

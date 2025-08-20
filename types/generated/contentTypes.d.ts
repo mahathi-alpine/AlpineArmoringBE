@@ -6153,7 +6153,8 @@ export interface ApiVehiclesAlternativeVehiclesAlternative
         'slices.text',
         'slices.stacking-cards',
         'slices.single-media',
-        'slices.spacing'
+        'slices.spacing',
+        'slices.two-columns-text'
       ]
     > &
       Attribute.SetPluginOptions<{

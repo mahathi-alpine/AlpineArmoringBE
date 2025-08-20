@@ -318,6 +318,7 @@ export interface SlicesTwoColumnsText extends Schema.Component {
   collectionName: 'components_slices_two_columns_texts';
   info: {
     displayName: 'twoColumnsText';
+    description: '';
   };
   attributes: {
     leftText: Attribute.RichText &
@@ -332,6 +333,7 @@ export interface SlicesTwoColumnsText extends Schema.Component {
           translate: 'translate';
         };
       }>;
+    class: Attribute.String;
   };
 }
 
