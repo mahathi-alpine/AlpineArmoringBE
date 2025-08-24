@@ -24,6 +24,22 @@ const URL_MAPPINGS = {
     '/shipping-and-logistics': '/es/envio-y-logistica',
     '/sold-vehicles': '/es/vehiculos-vendidos',
     '/faqs': '/es/preguntas-frecuentes',
+    '/blog/understanding-armor-levels-in-vehicles-nij-cen-and-vpam-standards-explained': '/es/blog/comprension-de-niveles-de-blindaje-en-vehiculos-nij-cen-y-vpam-normas-explicadas',
+    '/vehicles-we-armor/armored-mercedes-benz-s580-s-class': '/es/vehiculos-que-blindamos/blindado-mercedes-benz-s580-s-class',
+    '/available-now/armored-mercedes-benz-s580-5179': '/es/disponible-ahora/armored-mercedes-benz-s580-5179',
+    '/available-now/armored-mercedes-benz-s560-5805': '/es/disponible-ahora/armored-mercedes-benz-s560-5805',
+    '/vehicles-we-armor/armored-mercedes-maybach-s-class': '/es/vehiculos-que-blindamos/blindado-mercedes-maybach-s-class',
+    '/available-now/armored-mercedes-benz-s580-8905bach': '/es/disponible-ahora/armored-mercedes-benz-s580-8905bach',
+    '/vehicles-we-armor/armored-bmw-xm': '/es/vehiculos-que-blindamos/blindado-bmw-xm',
+    '/vehicles-we-armor/armored-cadillac-escalade-esv': '/es/vehiculos-que-blindamos/blindado-cadillac-escalade-esv',
+    '/vehicles-we-armor/armored-cadillac-escalade-v': '/es/vehiculos-que-blindamos/blindado-cadillac-escalade-v',
+    '/vehicles-we-armor/armored-chevrolet-suburban': '/es/vehiculos-que-blindamos/blindado-chevrolet-suburban',
+    '/vehicles-we-armor/armored-range-rover': '/es/vehiculos-que-blindamos/telescopico-blindado',
+    '/vehicles-we-armor?make=range-rover': '/es/vehiculos-que-blindamos?make=range-rover',
+    '/available-now/armored-mercedes-benz-g63-amg-6773': '/es/vehiculos-que-blindamos/armored-mercedes-benz-g63-amg-6773',
+    '/vehicles-we-armor/armored-ford-f-350': '/es/vehiculos-que-blindamos/blindado-ford-f-350',
+    '/available-now/armored-ford-f-350-lariat-0101': '/es/disponible-ahora/armored-ford-f-350-lariat-0101',
+    '/vehicles-we-armor/armored-mastiff-50-cal-truck': '/es/vehiculos-que-blindamos/camion-blindado-mastiff-50-cal'
   }
 };
 
