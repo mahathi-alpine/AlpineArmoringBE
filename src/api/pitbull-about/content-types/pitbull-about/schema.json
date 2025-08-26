@@ -28,6 +28,11 @@
         "slices.sticky-sections",
         "slices.youtube-video"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
