@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "pibull_contacts",
+  "collectionName": "pitbull_contacts",
   "info": {
-    "singularName": "pibull-contact",
-    "pluralName": "pibull-contacts",
-    "displayName": "PIBULLContact",
-    "description": ""
+    "singularName": "pitbull-contact",
+    "pluralName": "pitbull-contacts",
+    "displayName": "PITBULLContact"
   },
   "options": {
     "draftAndPublish": true

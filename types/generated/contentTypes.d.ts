@@ -4395,38 +4395,6 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
   };
 }
 
-export interface ApiPibullContactPibullContact extends Schema.SingleType {
-  collectionName: 'pibull_contacts';
-  info: {
-    singularName: 'pibull-contact';
-    pluralName: 'pibull-contacts';
-    displayName: 'PIBULLContact';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    faqs: Attribute.Component<'slices.accordion', true>;
-    seo: Attribute.Component<'shared.seo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::pibull-contact.pibull-contact',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::pibull-contact.pibull-contact',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
   collectionName: 'pitbull_abouts';
   info: {
@@ -4463,6 +4431,37 @@ export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::pitbull-about.pitbull-about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPitbullContactPitbullContact extends Schema.SingleType {
+  collectionName: 'pitbull_contacts';
+  info: {
+    singularName: 'pitbull-contact';
+    pluralName: 'pitbull-contacts';
+    displayName: 'PITBULLContact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faqs: Attribute.Component<'slices.accordion', true>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pitbull-contact.pitbull-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pitbull-contact.pitbull-contact',
       'oneToOne',
       'admin::user'
     > &
@@ -6739,8 +6738,8 @@ declare module '@strapi/types' {
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::media.media': ApiMediaMedia;
       'api::news-page.news-page': ApiNewsPageNewsPage;
-      'api::pibull-contact.pibull-contact': ApiPibullContactPibullContact;
       'api::pitbull-about.pitbull-about': ApiPitbullAboutPitbullAbout;
+      'api::pitbull-contact.pitbull-contact': ApiPitbullContactPitbullContact;
       'api::pitbull-homepage.pitbull-homepage': ApiPitbullHomepagePitbullHomepage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;
