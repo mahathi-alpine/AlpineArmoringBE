@@ -26,7 +26,8 @@
         "slices.text",
         "slices.two-columns-text",
         "slices.sticky-sections",
-        "slices.youtube-video"
+        "slices.youtube-video",
+        "slices.two-images"
       ]
     },
     "seo": {

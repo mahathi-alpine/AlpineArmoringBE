@@ -344,8 +344,10 @@ export interface SlicesTwoImages extends Schema.Component {
     description: '';
   };
   attributes: {
-    firstImage: Attribute.Media & Attribute.Required;
-    secondImage: Attribute.Media & Attribute.Required;
+    firstImage: Attribute.Media;
+    secondImage: Attribute.Media;
+    ytVideo1: Attribute.String;
+    ytVideo2: Attribute.String;
   };
 }
 

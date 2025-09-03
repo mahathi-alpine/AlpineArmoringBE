@@ -9,7 +9,7 @@
     "firstImage": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
@@ -18,11 +18,17 @@
     "secondImage": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
       ]
+    },
+    "ytVideo1": {
+      "type": "string"
+    },
+    "ytVideo2": {
+      "type": "string"
     }
   }
 }

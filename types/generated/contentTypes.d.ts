@@ -4416,7 +4416,8 @@ export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
         'slices.text',
         'slices.two-columns-text',
         'slices.sticky-sections',
-        'slices.youtube-video'
+        'slices.youtube-video',
+        'slices.two-images'
       ]
     >;
     seo: Attribute.Component<'shared.seo'>;
@@ -6213,6 +6214,15 @@ export interface ApiVehiclesAlternativeVehiclesAlternative
         };
         translate: {
           translate: 'copy';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
