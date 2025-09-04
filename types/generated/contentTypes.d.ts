@@ -4417,7 +4417,8 @@ export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
         'slices.two-columns-text',
         'slices.sticky-sections',
         'slices.youtube-video',
-        'slices.two-images'
+        'slices.two-images',
+        'slices.repeatable-component'
       ]
     >;
     seo: Attribute.Component<'shared.seo'>;

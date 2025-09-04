@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_slices_repeatable_components",
+  "info": {
+    "displayName": "RepeatableComponent"
+  },
+  "options": {},
+  "attributes": {
+    "timeline": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.timeline"
+    }
+  }
+}
