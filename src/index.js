@@ -52,9 +52,26 @@ function fixMarkdownLinks(text, locale) {
   // Apply URL translations
   const mappings = URL_MAPPINGS[locale];
   if (mappings) {
+    // First, handle markdown links: [text](url)
     fixedText = fixedText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
       const translatedUrl = mappings[url] || url;
       return `[${linkText}](${translatedUrl})`;
+    });
+    
+    // Then, handle standalone URLs
+    Object.keys(mappings).forEach(originalUrl => {
+      const translatedUrl = mappings[originalUrl];
+      if (fixedText.includes(originalUrl)) {
+        // Replace only if it's not already inside a markdown link
+        fixedText = fixedText.replace(new RegExp(originalUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), (match, offset) => {
+          // Check if this URL is inside a markdown link by looking backwards for ](
+          const beforeMatch = fixedText.substring(Math.max(0, offset - 20), offset);
+          if (beforeMatch.includes('](')) {
+            return match; // Don't replace if inside markdown link
+          }
+          return translatedUrl;
+        });
+      }
     });
   }
   
@@ -80,6 +97,9 @@ function processContentRecursively(content, locale) {
         processed[key] = value;
       } else if (key.endsWith('_id') || key.endsWith('Id')) {
         // Skip ID fields completely - don't process them
+        processed[key] = value;
+      } else if (key === '__component') {
+        // Preserve the __component field for dynamic zone components
         processed[key] = value;
       } else {
         processed[key] = processContentRecursively(value, locale);
@@ -111,6 +131,9 @@ module.exports = {
    * run jobs, or perform some special logic.
    */
   bootstrap({ strapi }) {        
+    // Keep track of entries being processed to avoid infinite loops
+    const processingEntries = new Set();
+    
     // Get all content types that have i18n enabled
     const allContentTypes = Object.keys(strapi.contentTypes);
     const i18nContentTypes = allContentTypes.filter(uid => {
@@ -131,13 +154,28 @@ module.exports = {
         
         async afterCreate(event) {
           const { result } = event;
+          const entryKey = `${contentType}-${result.id}`;
           
           // Only process non-default locales (assuming 'en' is your default)
           if (result.locale && result.locale !== 'en') {
             
+            // Skip if already processing this entry
+            if (processingEntries.has(entryKey)) {
+              return;
+            }
+            
             try {
+              // Mark entry as being processed
+              processingEntries.add(entryKey);
+              
+              // Fetch the full entry with populated components
+              const fullEntry = await strapi.db.query(contentType).findOne({
+                where: { id: result.id },
+                populate: true
+              });
+              
               // Process the content after translation
-              const processedData = processContentRecursively(result, result.locale);
+              const processedData = processContentRecursively(fullEntry, result.locale);
               
               // Create a clean data object with only the fields that need updating
               const updateData = {};
@@ -145,50 +183,63 @@ module.exports = {
                 // Skip system fields, relations, and any ID fields
                 if (!['id', 'createdAt', 'updatedAt', 'publishedAt', 'locale', 'localizations', 'created_by_id', 'updated_by_id'].includes(key) && !key.endsWith('_id') && !key.endsWith('Id')) {
                   // Only include if the value is different from original
-                  if (JSON.stringify(value) !== JSON.stringify(result[key])) {
+                  if (JSON.stringify(value) !== JSON.stringify(fullEntry[key])) {
                     updateData[key] = value;
                   }
                 }
               }
               
               if (Object.keys(updateData).length > 0) {
-                // Update the entry with processed content
-                await strapi.db.query(contentType).update({
-                  where: { id: result.id },
+                // Use Entity Service API instead of db.query for component updates
+                await strapi.entityService.update(contentType, result.id, {
                   data: updateData
                 });
                 
                 strapi.log.info(`Processed translation links for ${contentType} ID: ${result.id}, locale: ${result.locale}`);
-              } else {
-                console.log(`ℹ️ No changes needed for ${contentType} ID: ${result.id}, locale: ${result.locale}`);
               }
             } catch (error) {
-              console.error(`❌ Error processing translation links for ${contentType}:`, error);
-              console.error('Error details:', error.message);
               strapi.log.error(`Error processing translation links for ${contentType}:`, error);
+            } finally {
+              // Remove from processing set
+              processingEntries.delete(entryKey);
             }
-          } else {
-            console.log(`⏭️ Skipping processing for ${contentType} locale: ${result.locale} (default locale or no locale)`);
           }
         },
         
         async afterUpdate(event) {
           const { result } = event;
+          const entryKey = `${contentType}-${result.id}`;
           
           // Only process non-default locales
           if (result.locale && result.locale !== 'en') {
             
+            // Skip if already processing this entry
+            if (processingEntries.has(entryKey)) {
+              return;
+            }
+            
             try {
+              // Mark entry as being processed
+              processingEntries.add(entryKey);
+              
+              // Fetch the full entry with populated components
+              const fullEntry = await strapi.db.query(contentType).findOne({
+                where: { id: result.id },
+                populate: true
+              });
+              
               // Process the content after translation
-              const processedData = processContentRecursively(result, result.locale);
+              const processedData = processContentRecursively(fullEntry, result.locale);
               
               // Create a clean data object with only the fields that need updating
               const updateData = {};
               for (const [key, value] of Object.entries(processedData)) {
                 // Skip system fields, relations, and any ID fields
-                if (!['id', 'createdAt', 'updatedAt', 'publishedAt', 'locale', 'localizations', 'created_by_id', 'updated_by_id'].includes(key) && !key.endsWith('_id') && !key.endsWith('Id')) {
+                const shouldSkip = ['id', 'createdAt', 'updatedAt', 'publishedAt', 'locale', 'localizations', 'created_by_id', 'updated_by_id'].includes(key) || key.endsWith('_id') || key.endsWith('Id');
+                
+                if (!shouldSkip) {
                   // Only include if the value is different from original
-                  if (JSON.stringify(value) !== JSON.stringify(result[key])) {
+                  if (JSON.stringify(value) !== JSON.stringify(fullEntry[key])) {
                     updateData[key] = value;
                   }
                 }
@@ -196,22 +247,19 @@ module.exports = {
               
               // Only update if there are actual changes
               if (Object.keys(updateData).length > 0) {
-                await strapi.db.query(contentType).update({
-                  where: { id: result.id },
+                // Use Entity Service API instead of db.query for component updates
+                await strapi.entityService.update(contentType, result.id, {
                   data: updateData
                 });
                 
                 strapi.log.info(`Processed translation links for ${contentType} ID: ${result.id}, locale: ${result.locale}`);
-              } else {
-                console.log(`ℹ️ No changes needed for ${contentType} ID: ${result.id}, locale: ${result.locale}`);
               }
             } catch (error) {
-              console.error(`❌ Error processing translation links for ${contentType}:`, error);
-              console.error('Error details:', error.message);
               strapi.log.error(`Error processing translation links for ${contentType}:`, error);
+            } finally {
+              // Remove from processing set
+              processingEntries.delete(entryKey);
             }
-          } else {
-            console.log(`⏭️ Skipping processing for ${contentType} locale: ${result.locale} (default locale or no locale)`);
           }
         }
       });
