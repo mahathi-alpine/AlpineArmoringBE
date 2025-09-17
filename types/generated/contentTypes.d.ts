@@ -4395,6 +4395,94 @@ export interface ApiNewsPageNewsPage extends Schema.SingleType {
   };
 }
 
+export interface ApiPibullBallisticChartPibullBallisticChart
+  extends Schema.SingleType {
+  collectionName: 'pibull_ballistic_charts';
+  info: {
+    singularName: 'pibull-ballistic-chart';
+    pluralName: 'pibull-ballistic-charts';
+    displayName: 'PIBULLBallisticChart';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'slices.single-media',
+        'slices.spacing',
+        'slices.stacking-cards',
+        'slices.text',
+        'slices.two-columns-text',
+        'slices.sticky-sections',
+        'slices.youtube-video',
+        'slices.two-images',
+        'slices.repeatable-component'
+      ]
+    >;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pibull-ballistic-chart.pibull-ballistic-chart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pibull-ballistic-chart.pibull-ballistic-chart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPibullTacticalFeaturePibullTacticalFeature
+  extends Schema.SingleType {
+  collectionName: 'pibull_tactical_features';
+  info: {
+    singularName: 'pibull-tactical-feature';
+    pluralName: 'pibull-tactical-features';
+    displayName: 'PIBULLTacticalFeatures';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'slices.youtube-video',
+        'slices.repeatable-component',
+        'slices.two-images',
+        'slices.sticky-sections',
+        'slices.two-columns-text',
+        'slices.stacking-cards',
+        'slices.text',
+        'slices.spacing',
+        'slices.single-media'
+      ]
+    >;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pibull-tactical-feature.pibull-tactical-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pibull-tactical-feature.pibull-tactical-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
   collectionName: 'pitbull_abouts';
   info: {
@@ -4464,6 +4552,50 @@ export interface ApiPitbullContactPitbullContact extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::pitbull-contact.pitbull-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPitbullHistoryPitbullHistory extends Schema.SingleType {
+  collectionName: 'pitbull_histories';
+  info: {
+    singularName: 'pitbull-history';
+    pluralName: 'pitbull-histories';
+    displayName: 'PITBULLHistory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'slices.youtube-video',
+        'slices.repeatable-component',
+        'slices.two-images',
+        'slices.sticky-sections',
+        'slices.two-columns-text',
+        'slices.stacking-cards',
+        'slices.text',
+        'slices.spacing',
+        'slices.single-media'
+      ]
+    >;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pitbull-history.pitbull-history',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pitbull-history.pitbull-history',
       'oneToOne',
       'admin::user'
     > &
@@ -6749,8 +6881,11 @@ declare module '@strapi/types' {
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::media.media': ApiMediaMedia;
       'api::news-page.news-page': ApiNewsPageNewsPage;
+      'api::pibull-ballistic-chart.pibull-ballistic-chart': ApiPibullBallisticChartPibullBallisticChart;
+      'api::pibull-tactical-feature.pibull-tactical-feature': ApiPibullTacticalFeaturePibullTacticalFeature;
       'api::pitbull-about.pitbull-about': ApiPitbullAboutPitbullAbout;
       'api::pitbull-contact.pitbull-contact': ApiPitbullContactPitbullContact;
+      'api::pitbull-history.pitbull-history': ApiPitbullHistoryPitbullHistory;
       'api::pitbull-homepage.pitbull-homepage': ApiPitbullHomepagePitbullHomepage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;

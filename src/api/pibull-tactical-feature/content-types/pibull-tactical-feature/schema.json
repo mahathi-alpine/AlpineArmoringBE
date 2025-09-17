@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "pibull_tactical_features",
+  "info": {
+    "singularName": "pibull-tactical-feature",
+    "pluralName": "pibull-tactical-features",
+    "displayName": "PIBULLTacticalFeatures"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "dynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "slices.youtube-video",
+        "slices.repeatable-component",
+        "slices.two-images",
+        "slices.sticky-sections",
+        "slices.two-columns-text",
+        "slices.stacking-cards",
+        "slices.text",
+        "slices.spacing",
+        "slices.single-media"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

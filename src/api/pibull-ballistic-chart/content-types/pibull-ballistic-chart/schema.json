@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "pibull_ballistic_charts",
+  "info": {
+    "singularName": "pibull-ballistic-chart",
+    "pluralName": "pibull-ballistic-charts",
+    "displayName": "PIBULLBallisticChart"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "dynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "slices.single-media",
+        "slices.spacing",
+        "slices.stacking-cards",
+        "slices.text",
+        "slices.two-columns-text",
+        "slices.sticky-sections",
+        "slices.youtube-video",
+        "slices.two-images",
+        "slices.repeatable-component"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
