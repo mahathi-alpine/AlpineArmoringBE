@@ -22,6 +22,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       
       return `${month}/${day}/${now.getFullYear()} ${hours}:${minutes} ${amPm}`;
     }
+
     const notMain = domain === 'swats' || domain === 'rentals';
 
     let sender = '';
@@ -57,6 +58,78 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         (trackingData.utm_source && trackingData.utm_source.toLowerCase() === 'google' && trackingData.utm_medium && trackingData.utm_medium.toLowerCase() === 'cpc')
       );
     };
+    
+    const isGoogleOrganicLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.referrer == 'https://www.google.com/' && !trackingData.gclid
+      );
+    }    
+    
+    const isBingLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.referrer == 'https://www.bing.com/' && !trackingData.gclid
+      );
+    }    
+    
+    const isDuckLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.referrer == 'https://duckduckgo.com/' && !trackingData.gclid
+      );
+    }     
+    
+    const isFacebookLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.fbclid && !trackingData.gclid
+      );
+    } 
+
+    const isUKYahooLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.referrer == 'https://uk.search.yahoo.com/' && !trackingData.gclid
+      );
+    }    
+       
+    const isChatGPTLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.referrer == 'https://chatgpt.com/' && !trackingData.gclid
+      );
+    }  
+       
+    const isFordLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.referrer == 'https://www.f150gen14.com/' && !trackingData.gclid
+      );
+    }  
+       
+    const isYoutubeLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.referrer == 'https://www.youtube.com/' && !trackingData.gclid
+      );
+    }  
+       
+    const isTiktokLead = () => {
+      if (!trackingData) return false;
+      
+      return !!(
+        trackingData.referrer == 'https://www.tiktok.com/' && !trackingData.gclid
+      );
+    }  
 
     try {
       await strapi.plugins['email'].services.email.send({
@@ -246,6 +319,78 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                   </td>
                 </tr>
               ` : '' }
+
+              ${isGoogleOrganicLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From Google Organic</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
+
+              ${isBingLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From Bing</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
+
+              ${isDuckLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From DuckDuckGo</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
+
+              ${isFacebookLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From Facebook</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
+
+              ${isUKYahooLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From UK search Yahoo</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
+
+              ${isChatGPTLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From Chat GPT</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
+
+              ${isFordLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From f150gen14.com (Ford)</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
+
+              ${isYoutubeLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From Youtube</b></span></p>
+                  </td>
+                </tr>
+              ` : '' }
+
+              ${isTiktokLead() ? `
+                <tr>
+                  <td style="padding:1.5pt; width: 20%; text-align: center; color: orange;">
+                    <p style="margin:0in;"><span><b>From Tiktok</b></span></p>
+                  </td>
+                </tr>
+              ` : '' } 
 
             </tbody>
           </table>
