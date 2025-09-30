@@ -4483,51 +4483,6 @@ export interface ApiPibullTacticalFeaturePibullTacticalFeature
   };
 }
 
-export interface ApiPitbullAboutPitbullAbout extends Schema.SingleType {
-  collectionName: 'pitbull_abouts';
-  info: {
-    singularName: 'pitbull-about';
-    pluralName: 'pitbull-abouts';
-    displayName: 'PITBULLAbout';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    dynamicZone: Attribute.DynamicZone<
-      [
-        'slices.single-media',
-        'slices.spacing',
-        'slices.stacking-cards',
-        'slices.text',
-        'slices.two-columns-text',
-        'slices.sticky-sections',
-        'slices.youtube-video',
-        'slices.two-images',
-        'slices.repeatable-component'
-      ]
-    >;
-    seo: Attribute.Component<'shared.seo'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::pitbull-about.pitbull-about',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::pitbull-about.pitbull-about',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiPitbullContactPitbullContact extends Schema.SingleType {
   collectionName: 'pitbull_contacts';
   info: {
@@ -6883,7 +6838,6 @@ declare module '@strapi/types' {
       'api::news-page.news-page': ApiNewsPageNewsPage;
       'api::pibull-ballistic-chart.pibull-ballistic-chart': ApiPibullBallisticChartPibullBallisticChart;
       'api::pibull-tactical-feature.pibull-tactical-feature': ApiPibullTacticalFeaturePibullTacticalFeature;
-      'api::pitbull-about.pitbull-about': ApiPitbullAboutPitbullAbout;
       'api::pitbull-contact.pitbull-contact': ApiPitbullContactPitbullContact;
       'api::pitbull-history.pitbull-history': ApiPitbullHistoryPitbullHistory;
       'api::pitbull-homepage.pitbull-homepage': ApiPitbullHomepagePitbullHomepage;
