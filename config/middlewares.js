@@ -28,7 +28,9 @@ module.exports = [
         'https://www.alpineco.com',
         'https://alpine-armoring-fe-kappa.vercel.app',
         'https://www.armoredautos.com',
-        'https://www.armored-swat.com'
+        'https://www.armored-swat.com',
+        'https://pit-bull.net',
+        'https://alpine-pitbull.vercel.app'
       ],
       headers: ['*'],
       expose: ['WWW-Authenticate', 'Server-Authorization'],
