@@ -137,12 +137,20 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         name: 'Tiktok',
         color: 'orange',
         check: (data) => !!(data.referrer === 'https://www.tiktok.com/' && !data.gclid)
+      },
+      {
+        name: 'Alpine Armoring Main Website',
+        color: 'orange',
+        check: (data) => !!(data.referrer === 'https://www.alpineco.com/' && !data.gclid)
       }
     ];
 
     const detectedLeadSource = trackingData
       ? leadSources.find(source => source.check(trackingData))
       : null;      
+
+    console.log(domain);
+    console.log(sender);
 
     try {
       let emailSubject;
