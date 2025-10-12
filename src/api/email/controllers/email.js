@@ -149,9 +149,6 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       ? leadSources.find(source => source.check(trackingData))
       : null;      
 
-    console.log(domain);
-    console.log(sender);
-
     try {
       let emailSubject;
       if (isPitbullConfigurator) {
