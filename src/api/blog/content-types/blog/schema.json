@@ -95,12 +95,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::author.author",
-      "inversedBy": "blogs",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "inversedBy": "blogs"
     },
     "videos": {
       "type": "component",

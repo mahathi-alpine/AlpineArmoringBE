@@ -1315,6 +1315,39 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
+    position: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    shortDescription: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    education: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    knowsAbout: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2029,6 +2062,16 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<false>;
+    relatedBlogs: Attribute.Relation<
+      'api::blog-evergreen.blog-evergreen',
+      'oneToMany',
+      'api::blog-evergreen.blog-evergreen'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

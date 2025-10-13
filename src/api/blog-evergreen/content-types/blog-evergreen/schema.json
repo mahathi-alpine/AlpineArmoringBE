@@ -184,6 +184,16 @@
       },
       "type": "boolean",
       "default": false
+    },
+    "relatedBlogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-evergreen.blog-evergreen",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     }
   }
 }
