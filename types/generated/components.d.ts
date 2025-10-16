@@ -126,6 +126,7 @@ export interface SlicesBanner extends Schema.Component {
     subtitle: Attribute.Text;
     Button: Attribute.Component<'slices.button'>;
     Description: Attribute.RichText;
+    Button2: Attribute.Component<'slices.button'>;
   };
 }
 

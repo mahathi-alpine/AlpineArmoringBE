@@ -45,6 +45,11 @@
     },
     "Description": {
       "type": "richtext"
+    },
+    "Button2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.button"
     }
   }
 }
