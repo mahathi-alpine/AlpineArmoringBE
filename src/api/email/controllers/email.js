@@ -52,12 +52,12 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
     if(domain === 'swats'){
       sender = process.env.EMAIL_SENDER_SWATS;
-      subjectPrefix = 'Swats Alpine Armoring';
-      emailColorsDark = '#2b310a';
-      emailColorsLight = '#b7baa7';
+      subjectPrefix = 'SWAT - Alpine Armoring';
+      emailColorsDark = '#006400';
+      emailColorsLight = '#88E788';
     } else if(domain === 'rentals'){
       sender = process.env.EMAIL_SENDER_RENTALS;
-      subjectPrefix = 'Rental Alpine Armoring';
+      subjectPrefix = 'Rental - Alpine Armoring';
       emailColorsDark = '#06374e';
       emailColorsLight = '#84a8cc';
     } else if(domain === 'pitbull'){
@@ -72,8 +72,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       } else {
         subjectPrefix = 'Pit-Bull®';
       }
-      emailColorsDark = '#101010';
-      emailColorsLight = '#b7baa7';
+      emailColorsDark = '#8B0000';
+      emailColorsLight = '#FFCCCB';
     } else {
       sender = process.env.EMAIL_SENDER_MAIN;
       subjectPrefix = 'Alpine Armoring';
@@ -148,7 +148,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const detectedLeadSource = trackingData
       ? leadSources.find(source => source.check(trackingData))
       : null;      
-
+      
     try {
       let emailSubject;
       if (isPitbullConfigurator) {
@@ -175,7 +175,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Name:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -184,7 +184,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
 
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Company:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -193,7 +193,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
 
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Phone:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -202,7 +202,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
 
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Email:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -212,7 +212,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
               ${inquiry !== 'requestPassword' ? `
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Selected Options:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -222,7 +222,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               ` : ''}
 
               <tr style="background-color:${emailColorsDark}; color: white;">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Referrer page:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -259,7 +259,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Name:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -269,7 +269,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
               ${domain !== 'rentals' ? `
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Country:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -278,7 +278,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               ` : `
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Mileage:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -288,7 +288,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               `}
 
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>State:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -297,7 +297,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
 
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Customer Type:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -306,8 +306,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
 
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
-                  <p style="margin:0in;"><span"><b>Mobile Number:</b></span></p>
+                <td style="padding:1.5pt;width: 120px;">
+                  <p style="margin:0in;"><span"><b>Mobile #:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
                   <p style="margin:0in;"><span>${mobileNumber}</span></p>
@@ -315,8 +315,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
 
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
-                  <p style="margin:0in;"><span><b>Phone Number:</b></span></p>
+                <td style="padding:1.5pt;width: 120px;">
+                  <p style="margin:0in;"><span><b>Phone #:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
                   <p style="margin:0in;"><span>${phoneNumber}</span></p>
@@ -324,7 +324,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
 
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Email:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -334,7 +334,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
               ${domain !== 'rentals' ? `
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Inquiry:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -343,7 +343,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               ` : `
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Driver Needed:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -354,8 +354,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
               ${domain !== 'rentals' ? `
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
-                  <p style="margin:0in;"><span><b>I Prefer To Be Contacted Via:</b></span></p>
+                <td style="padding:1.5pt;width: 120px;">
+                  <p style="margin:0in;"><span><b>Contact me via:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
                   <p style="margin:0in;"><span>${preferredContact}</span></p>
@@ -363,7 +363,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               ` : `
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Vehicle Type:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -374,8 +374,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
               ${domain !== 'rentals' ? `
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
-                  <p style="margin:0in;"><span><b>How Did You Hear About Us?</b></span></p>
+                <td style="padding:1.5pt;width: 120px;">
+                  <p style="margin:0in;"><span><b>Found via:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
                   <p style="margin:0in;"><span>${hear}</span></p>
@@ -383,7 +383,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               ` : `
               <tr>
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Vehicle Model:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -393,7 +393,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               `}
 
               <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Message:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
@@ -403,7 +403,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
               ${domain === 'rentals' ? `
                 <tr>
-                  <td style="padding:1.5pt;width: 20%;">
+                  <td style="padding:1.5pt;width: 120px;">
                     <p style="margin:0in;"><span><b>Projected dates:</b></span></p>
                   </td>
                   <td style="padding:1.5pt">
@@ -413,7 +413,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               ` : '' }
 
               <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
-                <td style="padding:1.5pt;width: 20%;">
+                <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Referrer page:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
