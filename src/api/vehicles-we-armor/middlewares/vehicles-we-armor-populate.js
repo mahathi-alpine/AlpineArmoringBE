@@ -33,6 +33,12 @@ const populate = {
       }
     }
   },
+  category:{
+    populate: true
+  },
+  make:{
+    populate: true
+  },
   dimensions1:{
     populate: true
   },
