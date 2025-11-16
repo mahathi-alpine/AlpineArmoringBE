@@ -30,6 +30,9 @@ const populate = {
       }
     },
   },
+  exportField:{
+    populate: true
+  },
   localizations:{
     populate: true
   },

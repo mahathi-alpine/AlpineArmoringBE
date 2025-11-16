@@ -513,6 +513,14 @@
         }
       },
       "type": "integer"
+    },
+    "exportField": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean"
     }
   }
 }
