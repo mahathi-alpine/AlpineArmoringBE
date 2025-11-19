@@ -34,7 +34,8 @@ const populate = {
     populate: true
   },
   localizations:{
-    populate: true
+    populate: true,
+    fields: ['slug', 'locale', 'hide', 'title']
   },
   gallery:{
     populate: true

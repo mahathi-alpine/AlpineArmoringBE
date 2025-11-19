@@ -47,7 +47,7 @@ const generateValidSlug = (text) => {
 const generateSlug = async (event) => {
   const { data } = event.params;
   
-  console.log('Current data:', data);
+  // console.log('Current data:', data);
 
   // Only proceed if we have either a slug or title to work with
   if (!data.slug && !data.title) {

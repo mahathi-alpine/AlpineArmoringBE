@@ -69,6 +69,71 @@ module.exports = {
     }
 
     await generateSlug(event);
+  },
+
+  async afterFindOne(event) {
+    filterImageFormats(event.result);
+  },
+
+  async afterFindMany(event) {
+    if (event.result?.results) {
+      event.result.results.forEach(item => filterImageFormats(item));
+    } else if (Array.isArray(event.result)) {
+      event.result.forEach(item => filterImageFormats(item));
+    }
+  }
+};
+
+// Helper function to filter image formats
+const filterImageFormats = (data) => {
+  if (!data) return;
+
+  // Process featuredImage - keep thumbnail and medium
+  if (data.featuredImage?.formats) {
+    const { thumbnail, medium } = data.featuredImage.formats;
+    data.featuredImage.formats = {};
+    if (thumbnail) data.featuredImage.formats.thumbnail = thumbnail;
+    if (medium) data.featuredImage.formats.medium = medium;
+  }
+
+  // Process rentalsFeaturedImage - keep thumbnail and medium
+  if (data.rentalsFeaturedImage?.formats) {
+    const { thumbnail, medium } = data.rentalsFeaturedImage.formats;
+    data.rentalsFeaturedImage.formats = {};
+    if (thumbnail) data.rentalsFeaturedImage.formats.thumbnail = thumbnail;
+    if (medium) data.rentalsFeaturedImage.formats.medium = medium;
+  }
+
+  // Process transparentImage - keep thumbnail and medium
+  if (data.transparentImage?.formats) {
+    const { thumbnail, medium } = data.transparentImage.formats;
+    data.transparentImage.formats = {};
+    if (thumbnail) data.transparentImage.formats.thumbnail = thumbnail;
+    if (medium) data.transparentImage.formats.medium = medium;
+  }
+
+  // Process gallery - keep large and thumbnail formats
+  if (Array.isArray(data.gallery)) {
+    data.gallery.forEach(image => {
+      if (image?.formats) {
+        const { large, thumbnail } = image.formats;
+        image.formats = {};
+        if (large) image.formats.large = large;
+        if (thumbnail) image.formats.thumbnail = thumbnail;
+      }
+    });
+  }
+
+  // Process rentalsGallery - keep large and thumbnail formats
+  if (Array.isArray(data.rentalsGallery)) {
+    data.rentalsGallery.forEach(image => {
+      if (image?.formats) {
+        const { large, thumbnail } = image.formats;
+        image.formats = {};
+        if (large) image.formats.large = large;
+        if (thumbnail) image.formats.thumbnail = thumbnail;
+      }
+    });
   }
 };
 
