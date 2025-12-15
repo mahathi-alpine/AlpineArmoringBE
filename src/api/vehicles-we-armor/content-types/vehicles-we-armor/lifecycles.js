@@ -109,12 +109,13 @@ const filterImageFormats = (data) => {
     data.dimensions2.formats = {};
   }
 
-  // Process featuredImage - large and medium format
+  // Process featuredImage - large, medium and thumbnail format
   if (data.featuredImage?.formats) {
-    const { large, medium } = data.featuredImage.formats;
+    const { large, medium, thumbnail } = data.featuredImage.formats;
     data.featuredImage.formats = {};
     if (large) data.featuredImage.formats.large = large;
     if (medium) data.featuredImage.formats.medium = medium;
+    if (thumbnail) data.featuredImage.formats.thumbnail = thumbnail;
   }
 
   // Process gallery - thumbnail and large
