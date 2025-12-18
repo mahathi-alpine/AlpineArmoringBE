@@ -74,6 +74,11 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       }
       emailColorsDark = '#8B0000';
       emailColorsLight = '#FFCCCB';
+    } else if(domain === 'application'){
+      sender = 'stefaneste93@gmail.com';
+      subjectPrefix = 'Application - Alpine Armoring';
+      emailColorsDark = '#06374e';
+      emailColorsLight = '#84a8cc';
     } else {
       sender = process.env.EMAIL_SENDER_MAIN;
       subjectPrefix = 'Alpine Armoring';
@@ -162,7 +167,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       await strapi.plugins['email'].services.email.send({
         to: sender,
         from: sender,
-        ...((notMain) ? { cc: 'sales@alpineco.com' } : {}),
+        ...((notMain && domain !== 'application') ? { cc: 'sales@alpineco.com' } : {}),
         subject: emailSubject,
         html: isPitbullConfigurator ? `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
