@@ -17,6 +17,7 @@
     "@strapi/plugin-users-permissions": "4.23.1",
     "@strapi/provider-email-amazon-ses": "^4.23.1",
     "@strapi/strapi": "4.23.1",
+    "axios": "^1.13.2",
     "better-sqlite3": "8.6.0",
     "pg": "^8.11.3",
     "pg-connection-string": "^2.6.2",

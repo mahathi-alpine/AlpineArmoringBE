@@ -12,7 +12,11 @@ import redirects from "strapi-plugin-redirects/strapi-admin";
 import translate from "strapi-plugin-translate/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
+import customisations from "../../src/admin/app.js";
+
 renderAdmin(document.getElementById("strapi"), {
+  customisations,
+
   plugins: {
     "drag-drop-content-types": dragDropContentTypes,
     "strapi-cloud": strapiCloud,
