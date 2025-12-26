@@ -4,7 +4,9 @@ const { ApplicationError } = require("@strapi/utils").errors;
 // Try to load pushApiClient, but don't break if it's not available
 let pushApiClient;
 try {
-  pushApiClient = require('../../../../utils/pushApiClient').pushApiClient;
+  // Use dynamic import to handle ES6 module
+  const module = require('../../../../utils/pushApiClient');
+  pushApiClient = module.pushApiClient || module.default;
 } catch (error) {
   console.warn('Push notification client not available:', error.message);
   pushApiClient = null;
