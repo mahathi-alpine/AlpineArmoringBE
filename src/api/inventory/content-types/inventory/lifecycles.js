@@ -1,21 +1,6 @@
 let slugify = require("slugify");
 const { ApplicationError } = require("@strapi/utils").errors;
-
-// Lazy load pushApiClient to avoid ES6 import issues
-let pushApiClient;
-const getPushApiClient = async () => {
-  if (pushApiClient === undefined) {
-    try {
-      // Use dynamic import() for ES6 modules
-      const module = await import('../../../../utils/pushApiClient.js');
-      pushApiClient = module.pushApiClient || module.default;
-    } catch (error) {
-      console.warn('Push notification client not available:', error.message);
-      pushApiClient = null;
-    }
-  }
-  return pushApiClient;
-};
+const axios = require('axios');
 
 module.exports = {
   async beforeCreate(event) {
@@ -224,14 +209,6 @@ const getLocale = async (id) => {
 
 const sendInventoryNotification = async (entry) => {
   try {
-    // Dynamically load push notification client
-    const client = await getPushApiClient();
-
-    // Skip if push notification client is not available
-    if (!client) {
-      return;
-    }
-
     // Only send for EN-US locale
     if (entry.locale !== 'en') {
       return;
@@ -248,19 +225,41 @@ const sendInventoryNotification = async (entry) => {
       return;
     }
 
-    const result = await client.sendGlobalNotification(
-      "New Vehicle Available for immediate shipping",
-      `Check out the ${entry.title}`,
-      JSON.stringify({ vehicleSlug: entry.slug })
+    // Check if push notification environment variables are configured
+    const PUSH_SERVER_URL = process.env.STRAPI_ADMIN_PUSH_SERVER_URL;
+    const PUSH_USERNAME = process.env.STRAPI_ADMIN_PUSH_SERVER_USERNAME;
+    const PUSH_PASSWORD = process.env.STRAPI_ADMIN_PUSH_SERVER_PASSWORD;
+
+    if (!PUSH_SERVER_URL || !PUSH_USERNAME || !PUSH_PASSWORD) {
+      // Push notifications not configured, skip silently
+      return;
+    }
+
+    // Send push notification directly
+    const payload = {
+      title: "New Vehicle Available for immediate shipping",
+      body: `Check out the ${entry.title}`,
+      data: { vehicleSlug: entry.slug }
+    };
+
+    const response = await axios.post(
+      `${PUSH_SERVER_URL}/api/admin/notifications/global`,
+      payload,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${Buffer.from(`${PUSH_USERNAME}:${PUSH_PASSWORD}`).toString('base64')}`
+        },
+        timeout: 10000
+      }
     );
 
-    if (result.success) {
-      strapi.log.info(`Push notification sent for inventory: ${entry.title} (${result.data?.totalDevices || 0} devices)`);
-    } else {
-      strapi.log.error(`Failed to send push notification: ${result.message}`);
+    if (response.data) {
+      const totalDevices = response.data.totalDevices || response.data.deviceCount || 0;
+      strapi.log.info(`Push notification sent for inventory: ${entry.title} (${totalDevices} devices)`);
     }
   } catch (error) {
     // Log error but don't throw - notification failures shouldn't block publishing
-    strapi.log.error('Error sending push notification:', error);
+    strapi.log.error('Error sending push notification:', error.message);
   }
 };
