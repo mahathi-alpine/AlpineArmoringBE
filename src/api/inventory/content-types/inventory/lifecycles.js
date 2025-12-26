@@ -1,6 +1,14 @@
 let slugify = require("slugify");
 const { ApplicationError } = require("@strapi/utils").errors;
-const { pushApiClient } = require('../../../../utils/pushApiClient');
+
+// Try to load pushApiClient, but don't break if it's not available
+let pushApiClient;
+try {
+  pushApiClient = require('../../../../utils/pushApiClient').pushApiClient;
+} catch (error) {
+  console.warn('Push notification client not available:', error.message);
+  pushApiClient = null;
+}
 
 module.exports = {
   async beforeCreate(event) {
@@ -208,6 +216,11 @@ const getLocale = async (id) => {
 };
 
 const sendInventoryNotification = async (entry) => {
+  // Skip if push notification client is not available
+  if (!pushApiClient) {
+    return;
+  }
+
   try {
     // Only send for EN-US locale
     if (entry.locale !== 'en') {
