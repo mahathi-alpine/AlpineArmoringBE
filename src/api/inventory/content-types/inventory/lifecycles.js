@@ -1,5 +1,6 @@
 let slugify = require("slugify");
 const { ApplicationError } = require("@strapi/utils").errors;
+const { pushApiClient } = require('../../../../utils/pushApiClient');
 
 module.exports = {
   async beforeCreate(event) {
@@ -78,6 +79,32 @@ module.exports = {
       event.result.results.forEach(item => filterImageFormats(item));
     } else if (Array.isArray(event.result)) {
       event.result.forEach(item => filterImageFormats(item));
+    }
+  },
+
+  async afterCreate(event) {
+    // Send notification if vehicle was published on creation
+    if (event.result?.publishedAt) {
+      await sendInventoryNotification(event.result);
+    }
+  },
+
+  async afterUpdate(event) {
+    // Only send notification if this update is publishing a draft (publishedAt was just added)
+    if (event.params.data.publishedAt !== undefined) {
+      // Fetch the full entry to get the actual current state
+      const fullEntry = await strapi.entityService.findOne(
+        'api::inventory.inventory',
+        event.result.id,
+        {
+          fields: ['title', 'slug', 'locale', 'publishedAt']
+        }
+      );
+
+      // Check if publishedAt exists in the fetched entry (meaning it's now published)
+      if (fullEntry?.publishedAt) {
+        await sendInventoryNotification(fullEntry);
+      }
     }
   }
 };
@@ -178,4 +205,39 @@ const getLocale = async (id) => {
   const res = await strapi.service("api::inventory.inventory").findOne(id);
   // console.log('Found locale:', res?.locale);
   return res?.locale;
+};
+
+const sendInventoryNotification = async (entry) => {
+  try {
+    // Only send for EN-US locale
+    if (entry.locale !== 'en') {
+      return;
+    }
+
+    // Only send if published
+    if (!entry.publishedAt) {
+      return;
+    }
+
+    // Only send if we have required fields
+    if (!entry.title || !entry.slug) {
+      strapi.log.warn('Cannot send notification - missing title or slug');
+      return;
+    }
+
+    const result = await pushApiClient.sendGlobalNotification(
+      "New Vehicle Available for immediate shipping",
+      `Check out the ${entry.title}`,
+      JSON.stringify({ vehicleSlug: entry.slug })
+    );
+
+    if (result.success) {
+      strapi.log.info(`Push notification sent for inventory: ${entry.title} (${result.data?.totalDevices || 0} devices)`);
+    } else {
+      strapi.log.error(`Failed to send push notification: ${result.message}`);
+    }
+  } catch (error) {
+    // Log error but don't throw - notification failures shouldn't block publishing
+    strapi.log.error('Error sending push notification:', error);
+  }
 };
