@@ -1,16 +1,21 @@
 let slugify = require("slugify");
 const { ApplicationError } = require("@strapi/utils").errors;
 
-// Try to load pushApiClient, but don't break if it's not available
+// Lazy load pushApiClient to avoid ES6 import issues
 let pushApiClient;
-try {
-  // Use dynamic import to handle ES6 module
-  const module = require('../../../../utils/pushApiClient');
-  pushApiClient = module.pushApiClient || module.default;
-} catch (error) {
-  console.warn('Push notification client not available:', error.message);
-  pushApiClient = null;
-}
+const getPushApiClient = async () => {
+  if (pushApiClient === undefined) {
+    try {
+      // Use dynamic import() for ES6 modules
+      const module = await import('../../../../utils/pushApiClient.js');
+      pushApiClient = module.pushApiClient || module.default;
+    } catch (error) {
+      console.warn('Push notification client not available:', error.message);
+      pushApiClient = null;
+    }
+  }
+  return pushApiClient;
+};
 
 module.exports = {
   async beforeCreate(event) {
@@ -218,12 +223,15 @@ const getLocale = async (id) => {
 };
 
 const sendInventoryNotification = async (entry) => {
-  // Skip if push notification client is not available
-  if (!pushApiClient) {
-    return;
-  }
-
   try {
+    // Dynamically load push notification client
+    const client = await getPushApiClient();
+
+    // Skip if push notification client is not available
+    if (!client) {
+      return;
+    }
+
     // Only send for EN-US locale
     if (entry.locale !== 'en') {
       return;
@@ -240,7 +248,7 @@ const sendInventoryNotification = async (entry) => {
       return;
     }
 
-    const result = await pushApiClient.sendGlobalNotification(
+    const result = await client.sendGlobalNotification(
       "New Vehicle Available for immediate shipping",
       `Check out the ${entry.title}`,
       JSON.stringify({ vehicleSlug: entry.slug })
