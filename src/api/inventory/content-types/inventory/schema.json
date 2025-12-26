@@ -521,6 +521,16 @@
         }
       },
       "type": "boolean"
+    },
+    "armoringFeatures": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specification.specification",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     }
   }
 }

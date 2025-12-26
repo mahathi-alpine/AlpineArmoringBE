@@ -3498,6 +3498,16 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    armoringFeatures: Attribute.Relation<
+      'api::inventory.inventory',
+      'oneToMany',
+      'api::specification.specification'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
