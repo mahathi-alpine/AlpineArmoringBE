@@ -3,7 +3,7 @@
 module.exports = (config, { strapi }) => {
   return async (ctx, next) => {
     // Log vehicles-we-armor and inventories requests
-    if (ctx.path.includes('vehicles-we-armor') || ctx.path.includes('inventories')) {
+    if (ctx.path.includes('vehicles-we-armor') || ctx.path.includes('vehicles-we-armors') || ctx.path.includes('inventories')) {
       const ip = ctx.request.headers['x-forwarded-for']?.split(',')[0]?.trim()
               || ctx.request.headers['x-real-ip']
               || ctx.request.ip
