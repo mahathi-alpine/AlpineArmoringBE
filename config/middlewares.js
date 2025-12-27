@@ -1,5 +1,6 @@
 module.exports = [
   'strapi::errors',
+  'global::request-tracker', // Diagnostic logging for vehicles-we-armor requests
   {
     name: 'strapi::security',
     config: {
