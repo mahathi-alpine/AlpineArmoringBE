@@ -22,23 +22,21 @@ module.exports = {
           }
         );
   
-        if (originalEntry?.vehicles_we_armor?.length > 0) {          
+        if (originalEntry?.vehicles_we_armor?.length > 0) {
           // Update the newly created translation with the vehicles
           const translationId = event.params.data.localizations[0];
-          await strapi.entityService.update(
-            'api::inventory.inventory',
-            translationId,
-            {
-              data: {
-                vehicles_we_armor: {
-                  connect: originalEntry.vehicles_we_armor.map(vehicle => ({
-                    id: vehicle.id,
-                    position: { end: true }
-                  }))
-                }
+          // Use db.query to bypass lifecycle hooks and prevent infinite loop
+          await strapi.db.query('api::inventory.inventory').update({
+            where: { id: translationId },
+            data: {
+              vehicles_we_armor: {
+                connect: originalEntry.vehicles_we_armor.map(vehicle => ({
+                  id: vehicle.id,
+                  position: { end: true }
+                }))
               }
             }
-          );
+          });
         } else {
           console.log('No vehicles_we_armor found in original entry');
         }

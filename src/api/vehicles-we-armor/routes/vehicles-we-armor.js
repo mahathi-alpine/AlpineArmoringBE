@@ -1,13 +1,11 @@
 'use strict';
 
 /**
- * vehicles-we-armor router - TEMPORARILY DISABLED
+ * vehicles-we-armor router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-// BLOCKED: Uncomment to re-enable
-/*
 module.exports = createCoreRouter('api::vehicles-we-armor.vehicles-we-armor', {
     config: {
         find: {
@@ -17,10 +15,4 @@ module.exports = createCoreRouter('api::vehicles-we-armor.vehicles-we-armor', {
         }
     }
 });
-*/
-
-// Return empty router to disable endpoint
-module.exports = {
-  routes: []
-};
 
