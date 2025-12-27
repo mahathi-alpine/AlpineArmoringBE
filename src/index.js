@@ -190,11 +190,12 @@ module.exports = {
               }
               
               if (Object.keys(updateData).length > 0) {
-                // Use Entity Service API instead of db.query for component updates
-                await strapi.entityService.update(contentType, result.id, {
+                // Use db.query to bypass lifecycle hooks and prevent infinite loop
+                await strapi.db.query(contentType).update({
+                  where: { id: result.id },
                   data: updateData
                 });
-                
+
                 strapi.log.info(`Processed translation links for ${contentType} ID: ${result.id}, locale: ${result.locale}`);
               }
             } catch (error) {
@@ -247,11 +248,12 @@ module.exports = {
               
               // Only update if there are actual changes
               if (Object.keys(updateData).length > 0) {
-                // Use Entity Service API instead of db.query for component updates
-                await strapi.entityService.update(contentType, result.id, {
+                // Use db.query to bypass lifecycle hooks and prevent infinite loop
+                await strapi.db.query(contentType).update({
+                  where: { id: result.id },
                   data: updateData
                 });
-                
+
                 strapi.log.info(`Processed translation links for ${contentType} ID: ${result.id}, locale: ${result.locale}`);
               }
             } catch (error) {
