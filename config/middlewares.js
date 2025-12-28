@@ -17,22 +17,21 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
       origin: [
         'http://localhost:3000',
-        'http://localhost:3001',
-        'http://127.0.0.1:3000',
-        'http://127.0.0.1:3001',
-        'http://127.0.0.1:3002',
+        // 'http://localhost:3001',
+        // 'http://127.0.0.1:3000',
+        // 'http://127.0.0.1:3001',
+        // 'http://127.0.0.1:3002',
         'http://localhost:1337',
-        'http://localhost:3002',
-        'https://alpinetesting.cloudflex-ha.com',
+        // 'http://localhost:3002',
+        // 'https://alpinetesting.cloudflex-ha.com',
         'https://www.alpineco.com',
-        'https://alpine-armoring-fe-kappa.vercel.app',
+        // 'https://alpine-armoring-fe-kappa.vercel.app',
         'https://www.armoredautos.com',
         'https://www.armored-swat.com',
         'https://pit-bull.net',
-        'https://alpine-pitbull.vercel.app'
+        // 'https://alpine-pitbull.vercel.app'
       ],
       headers: ['*'],
       expose: ['WWW-Authenticate', 'Server-Authorization'],
@@ -48,5 +47,5 @@ module.exports = [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
-  'global::request-tracker' // Diagnostic for IP addresses
+  'global::request-tracker' // Diagnostic
 ];
