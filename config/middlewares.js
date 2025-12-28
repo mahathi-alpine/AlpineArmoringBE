@@ -1,5 +1,6 @@
 module.exports = [
   'strapi::errors',
+  'global::bot-blocker', // Block suspicious bots early
   {
     name: 'strapi::security',
     config: {
