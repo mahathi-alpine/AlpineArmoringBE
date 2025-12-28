@@ -24,7 +24,7 @@ module.exports = [
         // 'http://127.0.0.1:3000',
         // 'http://127.0.0.1:3001',
         // 'http://127.0.0.1:3002',
-        'http://localhost:1337',
+        'http://localhost:8081',
         // 'http://localhost:3002',
         'https://alpinetesting.cloudflex-ha.com',
         'https://www.alpineco.com',
