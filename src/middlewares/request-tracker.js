@@ -12,14 +12,18 @@ module.exports = (config, { strapi }) => {
       const userAgent = ctx.request.headers['user-agent'] || 'unknown';
       const referer = ctx.request.headers['referer'] || ctx.request.headers['referrer'] || 'none';
       const origin = ctx.request.headers['origin'] || 'none';
+      const requestedFrom = ctx.request.headers['x-requested-from'] || 'none';
+      const timestamp = new Date().toISOString();
 
+      // Console log (automatically captured by PM2 on AWS)
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
       console.log('🔍 API REQUEST DETECTED (vehicles-we-armor / inventories)');
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-      console.log(`⏰ Time: ${new Date().toISOString()}`);
+      console.log(`⏰ Time: ${timestamp}`);
       console.log(`🌐 IP: ${ip}`);
       console.log(`🔗 Origin: ${origin}`);
       console.log(`📄 Referer: ${referer}`);
+      console.log(`📑 Requested From: ${requestedFrom}`);
       console.log(`🤖 User-Agent: ${userAgent}`);
       console.log(`📍 Path: ${ctx.path}`);
       console.log(`🔧 Method: ${ctx.method}`);

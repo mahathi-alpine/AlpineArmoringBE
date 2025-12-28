@@ -68,7 +68,11 @@ const populate = {
     populate: {
       thumbnail: {
         populate: true
-      }
+      },
+      authors: {
+        populate: true
+      },
+      
     }
   },
   news:{
