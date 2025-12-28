@@ -25,7 +25,7 @@ module.exports = [
         // 'http://127.0.0.1:3002',
         'http://localhost:1337',
         // 'http://localhost:3002',
-        // 'https://alpinetesting.cloudflex-ha.com',
+        'https://alpinetesting.cloudflex-ha.com',
         'https://www.alpineco.com',
         // 'https://alpine-armoring-fe-kappa.vercel.app',
         'https://www.armoredautos.com',
