@@ -1,6 +1,6 @@
 module.exports = [
   'strapi::errors',
-  'global::bot-blocker', // Block suspicious bots early
+  'global::bot-blocker',
   {
     name: 'strapi::security',
     config: {
@@ -20,18 +20,15 @@ module.exports = [
     config: {
       origin: [
         'http://localhost:3000',
-        // 'http://localhost:3001',
-        // 'http://127.0.0.1:3000',
-        // 'http://127.0.0.1:3001',
-        // 'http://127.0.0.1:3002',
+        'http://localhost:1337',
+        'http://localhost:3001',
         'http://localhost:8081',
-        // 'http://localhost:3002',
         'https://alpinetesting.cloudflex-ha.com',
         'https://www.alpineco.com',
-        // 'https://alpine-armoring-fe-kappa.vercel.app',
         'https://www.armoredautos.com',
         'https://www.armored-swat.com',
         'https://pit-bull.net',
+        // 'https://alpine-armoring-fe-kappa.vercel.app',
         // 'https://alpine-pitbull.vercel.app'
       ],
       headers: ['*'],
@@ -43,10 +40,12 @@ module.exports = [
   },
   'strapi::poweredBy',
   'strapi::logger',
+  'global::compression',
+  'global::http-cache',
   'strapi::query',
   'strapi::body',
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
-  'global::request-tracker' // Diagnostic
+  'global::request-tracker'
 ];
