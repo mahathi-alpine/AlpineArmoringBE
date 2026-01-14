@@ -2329,6 +2329,37 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiCondorContactCondorContact extends Schema.SingleType {
+  collectionName: 'condor_contacts';
+  info: {
+    singularName: 'condor-contact';
+    pluralName: 'condor-contacts';
+    displayName: 'CONDORContact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faqs: Attribute.Component<'slices.accordion', true>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::condor-contact.condor-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::condor-contact.condor-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCondorHomepageCondorHomepage extends Schema.SingleType {
   collectionName: 'condor_homepages';
   info: {
@@ -2366,6 +2397,50 @@ export interface ApiCondorHomepageCondorHomepage extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::condor-homepage.condor-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCondorLuxuryFeatureCondorLuxuryFeature
+  extends Schema.SingleType {
+  collectionName: 'condor_luxury_features';
+  info: {
+    singularName: 'condor-luxury-feature';
+    pluralName: 'condor-luxury-features';
+    displayName: 'CONDORLuxuryFeatures';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'slices.youtube-video',
+        'slices.repeatable-component',
+        'slices.two-images',
+        'slices.sticky-sections',
+        'slices.two-columns-text',
+        'slices.stacking-cards',
+        'slices.text',
+        'slices.spacing',
+        'slices.single-media'
+      ]
+    >;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::condor-luxury-feature.condor-luxury-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::condor-luxury-feature.condor-luxury-feature',
       'oneToOne',
       'admin::user'
     > &
@@ -6936,7 +7011,9 @@ declare module '@strapi/types' {
       'api::blog-evergreen.blog-evergreen': ApiBlogEvergreenBlogEvergreen;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::category.category': ApiCategoryCategory;
+      'api::condor-contact.condor-contact': ApiCondorContactCondorContact;
       'api::condor-homepage.condor-homepage': ApiCondorHomepageCondorHomepage;
+      'api::condor-luxury-feature.condor-luxury-feature': ApiCondorLuxuryFeatureCondorLuxuryFeature;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::design-and-engineering.design-and-engineering': ApiDesignAndEngineeringDesignAndEngineering;
       'api::email.email': ApiEmailEmail;

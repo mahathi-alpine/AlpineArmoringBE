@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "condor_luxury_features",
+  "info": {
+    "singularName": "condor-luxury-feature",
+    "pluralName": "condor-luxury-features",
+    "displayName": "CONDORLuxuryFeatures"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "dynamicZone": {
+      "type": "dynamiczone",
+      "components": [
+        "slices.youtube-video",
+        "slices.repeatable-component",
+        "slices.two-images",
+        "slices.sticky-sections",
+        "slices.two-columns-text",
+        "slices.stacking-cards",
+        "slices.text",
+        "slices.spacing",
+        "slices.single-media"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
