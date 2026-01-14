@@ -34,10 +34,10 @@ const populate = {
     }
   },
   category:{
-    populate: true
+    fields: ['title', 'slug']
   },
   make:{
-    populate: true
+    fields: ['title']
   },
   dimensions1:{
     populate: true
@@ -112,14 +112,11 @@ const populate = {
 }
 
 module.exports = (config, { strapi }) => {
-  // Add your own logic here.
   return async (ctx, next) => {
-    strapi.log.info('In vehicles-we-armor-populate middleware.');
-
     ctx.query = {
       populate,
       ...ctx.query
-    }
+    };
 
     await next();
   };

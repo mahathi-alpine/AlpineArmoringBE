@@ -1,0 +1,63 @@
+{
+  "kind": "singleType",
+  "collectionName": "condor_homepages",
+  "info": {
+    "singularName": "condor-homepage",
+    "pluralName": "condor-homepages",
+    "displayName": "CONDORHomepage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "otherPagesTitle": {
+      "type": "text"
+    },
+    "otherPages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
+    },
+    "vehiclesTitle": {
+      "type": "text"
+    },
+    "vehiclesText": {
+      "type": "richtext"
+    },
+    "otherPagesText": {
+      "type": "richtext"
+    },
+    "vehicles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vehicles-alternative.vehicles-alternative"
+    },
+    "featured": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.tab-section"
+    },
+    "stickySections": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.sticky-sections"
+    },
+    "socialFeed": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.social-feed-item"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

@@ -2329,6 +2329,50 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiCondorHomepageCondorHomepage extends Schema.SingleType {
+  collectionName: 'condor_homepages';
+  info: {
+    singularName: 'condor-homepage';
+    pluralName: 'condor-homepages';
+    displayName: 'CONDORHomepage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    otherPagesTitle: Attribute.Text;
+    otherPages: Attribute.Component<'slices.tab-section', true>;
+    vehiclesTitle: Attribute.Text;
+    vehiclesText: Attribute.RichText;
+    otherPagesText: Attribute.RichText;
+    vehicles: Attribute.Relation<
+      'api::condor-homepage.condor-homepage',
+      'oneToMany',
+      'api::vehicles-alternative.vehicles-alternative'
+    >;
+    featured: Attribute.Component<'slices.tab-section'>;
+    stickySections: Attribute.Component<'slices.sticky-sections'>;
+    socialFeed: Attribute.Component<'slices.social-feed-item', true>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::condor-homepage.condor-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::condor-homepage.condor-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiContactPageContactPage extends Schema.SingleType {
   collectionName: 'contact_pages';
   info: {
@@ -6892,6 +6936,7 @@ declare module '@strapi/types' {
       'api::blog-evergreen.blog-evergreen': ApiBlogEvergreenBlogEvergreen;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::category.category': ApiCategoryCategory;
+      'api::condor-homepage.condor-homepage': ApiCondorHomepageCondorHomepage;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::design-and-engineering.design-and-engineering': ApiDesignAndEngineeringDesignAndEngineering;
       'api::email.email': ApiEmailEmail;
