@@ -522,10 +522,10 @@
       },
       "type": "boolean"
     },
-    "armoringFeatures": {
+    "stock_accessories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::specification.specification",
+      "target": "api::stock-accessory.stock-accessory",
       "pluginOptions": {
         "translate": {
           "translate": "translate"
