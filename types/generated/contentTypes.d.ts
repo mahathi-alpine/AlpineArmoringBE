@@ -3617,12 +3617,11 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    stock_accessories: Attribute.Relation<
-      'api::inventory.inventory',
-      'oneToMany',
-      'api::stock-accessory.stock-accessory'
-    > &
+    stock_accessories: Attribute.Component<'slices.options', true> &
       Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
         translate: {
           translate: 'translate';
         };
@@ -5572,40 +5571,6 @@ export interface ApiSpecificationSpecification extends Schema.CollectionType {
   };
 }
 
-export interface ApiStockAccessoryStockAccessory extends Schema.CollectionType {
-  collectionName: 'stock_accessories';
-  info: {
-    singularName: 'stock-accessory';
-    pluralName: 'stock-accessories';
-    displayName: 'StockAccessory';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    displayTitle: Attribute.String;
-    image: Attribute.Media;
-    description: Attribute.RichText;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::stock-accessory.stock-accessory',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::stock-accessory.stock-accessory',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiSwatAboutSwatAbout extends Schema.SingleType {
   collectionName: 'swat_abouts';
   info: {
@@ -7081,7 +7046,6 @@ declare module '@strapi/types' {
       'api::shipping.shipping': ApiShippingShipping;
       'api::sold-vehicle.sold-vehicle': ApiSoldVehicleSoldVehicle;
       'api::specification.specification': ApiSpecificationSpecification;
-      'api::stock-accessory.stock-accessory': ApiStockAccessoryStockAccessory;
       'api::swat-about.swat-about': ApiSwatAboutSwatAbout;
       'api::swat-all-download.swat-all-download': ApiSwatAllDownloadSwatAllDownload;
       'api::swat-ballistic-testing.swat-ballistic-testing': ApiSwatBallisticTestingSwatBallisticTesting;

@@ -523,14 +523,17 @@
       "type": "boolean"
     },
     "stock_accessories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::stock-accessory.stock-accessory",
+      "type": "component",
+      "repeatable": true,
       "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
         "translate": {
           "translate": "translate"
         }
-      }
+      },
+      "component": "slices.options"
     }
   }
 }
