@@ -1933,7 +1933,7 @@ export interface ApiBlogEvergreenBlogEvergreen extends Schema.CollectionType {
     };
   };
   attributes: {
-    title: Attribute.String &
+    title: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

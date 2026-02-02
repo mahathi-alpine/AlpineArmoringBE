@@ -182,6 +182,39 @@ export interface SlicesMediaPasswordProtected extends Schema.Component {
   };
 }
 
+export interface SlicesOptions extends Schema.Component {
+  collectionName: 'components_slices_options';
+  info: {
+    displayName: 'Options';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    displayTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+  };
+}
+
 export interface SlicesRepeatableComponent extends Schema.Component {
   collectionName: 'components_slices_repeatable_components';
   info: {
@@ -420,6 +453,7 @@ declare module '@strapi/types' {
       'slices.button': SlicesButton;
       'slices.event-snippet': SlicesEventSnippet;
       'slices.media-password-protected': SlicesMediaPasswordProtected;
+      'slices.options': SlicesOptions;
       'slices.repeatable-component': SlicesRepeatableComponent;
       'slices.single-media': SlicesSingleMedia;
       'slices.social-feed-item': SlicesSocialFeedItem;
