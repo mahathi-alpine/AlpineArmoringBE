@@ -6477,7 +6477,9 @@ export interface ApiVehiclesAlternativeVehiclesAlternative
         'slices.stacking-cards',
         'slices.single-media',
         'slices.spacing',
-        'slices.two-columns-text'
+        'slices.two-columns-text',
+        'slices.big-section',
+        'slices.slider'
       ]
     > &
       Attribute.SetPluginOptions<{

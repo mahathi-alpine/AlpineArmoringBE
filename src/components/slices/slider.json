@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_slices_sliders",
+  "info": {
+    "displayName": "Slider"
+  },
+  "options": {},
+  "attributes": {
+    "item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.single-media",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    }
+  }
+}

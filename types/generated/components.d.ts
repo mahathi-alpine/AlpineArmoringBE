@@ -141,6 +141,39 @@ export interface SlicesBeforeAfterSlider extends Schema.Component {
   };
 }
 
+export interface SlicesBigSection extends Schema.Component {
+  collectionName: 'components_slices_big_sections';
+  info: {
+    displayName: 'BigSection';
+  };
+  attributes: {
+    text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    marqueeText: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    backgroundImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    sideImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+  };
+}
+
 export interface SlicesButton extends Schema.Component {
   collectionName: 'components_slices_buttons';
   info: {
@@ -234,6 +267,21 @@ export interface SlicesSingleMedia extends Schema.Component {
   attributes: {
     media: Attribute.Media;
     class: Attribute.String &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+  };
+}
+
+export interface SlicesSlider extends Schema.Component {
+  collectionName: 'components_slices_sliders';
+  info: {
+    displayName: 'Slider';
+  };
+  attributes: {
+    item: Attribute.Component<'slices.single-media', true> &
       Attribute.SetPluginOptions<{
         translate: {
           translate: 'copy';
@@ -450,12 +498,14 @@ declare module '@strapi/types' {
       'slices.ballistic-standard': SlicesBallisticStandard;
       'slices.banner': SlicesBanner;
       'slices.before-after-slider': SlicesBeforeAfterSlider;
+      'slices.big-section': SlicesBigSection;
       'slices.button': SlicesButton;
       'slices.event-snippet': SlicesEventSnippet;
       'slices.media-password-protected': SlicesMediaPasswordProtected;
       'slices.options': SlicesOptions;
       'slices.repeatable-component': SlicesRepeatableComponent;
       'slices.single-media': SlicesSingleMedia;
+      'slices.slider': SlicesSlider;
       'slices.social-feed-item': SlicesSocialFeedItem;
       'slices.spacing': SlicesSpacing;
       'slices.stacking-cards': SlicesStackingCards;
