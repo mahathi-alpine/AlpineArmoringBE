@@ -1,0 +1,55 @@
+{
+  "kind": "singleType",
+  "collectionName": "armoring_homepages",
+  "info": {
+    "singularName": "armoring-homepage",
+    "pluralName": "armoring-homepages",
+    "displayName": "ARMORING_Homepage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "videoURL": {
+      "type": "string"
+    },
+    "bannerText": {
+      "type": "richtext"
+    },
+    "missionStatement": {
+      "type": "richtext"
+    },
+    "missionStatementNumbers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion"
+    },
+    "smallVideos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "mainText1": {
+      "type": "richtext"
+    },
+    "mainText2": {
+      "type": "richtext"
+    },
+    "typesOfVehiclesWeArmor": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.options"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    }
+  }
+}

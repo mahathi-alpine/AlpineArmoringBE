@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "armoring_ballistics",
+  "info": {
+    "singularName": "armoring-ballistic",
+    "pluralName": "armoring-ballistics",
+    "displayName": "ARMORING_Ballistic",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    }
+  }
+}

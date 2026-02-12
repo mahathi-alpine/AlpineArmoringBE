@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "armoring_contacts",
+  "info": {
+    "singularName": "armoring-contact",
+    "pluralName": "armoring-contacts",
+    "displayName": "ARMORING_Contact",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    }
+  }
+}

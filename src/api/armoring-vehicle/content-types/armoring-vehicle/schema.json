@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "armoring_vehicles",
+  "info": {
+    "singularName": "armoring-vehicle",
+    "pluralName": "armoring-vehicles",
+    "displayName": "ARMORING_Vehicles",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "topText": {
+      "type": "richtext"
+    },
+    "categories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    }
+  }
+}

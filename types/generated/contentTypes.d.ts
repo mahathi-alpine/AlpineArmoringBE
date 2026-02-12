@@ -1106,6 +1106,146 @@ export interface ApiAllDownloadAllDownload extends Schema.SingleType {
   };
 }
 
+export interface ApiArmoringBallisticArmoringBallistic
+  extends Schema.SingleType {
+  collectionName: 'armoring_ballistics';
+  info: {
+    singularName: 'armoring-ballistic';
+    pluralName: 'armoring-ballistics';
+    displayName: 'ARMORING_Ballistic';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.RichText;
+    metaTitle: Attribute.String;
+    metaDescription: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::armoring-ballistic.armoring-ballistic',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::armoring-ballistic.armoring-ballistic',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArmoringContactArmoringContact extends Schema.SingleType {
+  collectionName: 'armoring_contacts';
+  info: {
+    singularName: 'armoring-contact';
+    pluralName: 'armoring-contacts';
+    displayName: 'ARMORING_Contact';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    faqs: Attribute.Component<'slices.accordion', true>;
+    metaTitle: Attribute.String;
+    metaDescription: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::armoring-contact.armoring-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::armoring-contact.armoring-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArmoringHomepageArmoringHomepage extends Schema.SingleType {
+  collectionName: 'armoring_homepages';
+  info: {
+    singularName: 'armoring-homepage';
+    pluralName: 'armoring-homepages';
+    displayName: 'ARMORING_Homepage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    videoURL: Attribute.String;
+    bannerText: Attribute.RichText;
+    missionStatement: Attribute.RichText;
+    missionStatementNumbers: Attribute.Component<'slices.accordion', true>;
+    smallVideos: Attribute.Media;
+    mainText1: Attribute.RichText;
+    mainText2: Attribute.RichText;
+    typesOfVehiclesWeArmor: Attribute.Component<'slices.options', true>;
+    metaTitle: Attribute.String;
+    metaDescription: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::armoring-homepage.armoring-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::armoring-homepage.armoring-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiArmoringVehicleArmoringVehicle extends Schema.SingleType {
+  collectionName: 'armoring_vehicles';
+  info: {
+    singularName: 'armoring-vehicle';
+    pluralName: 'armoring-vehicles';
+    displayName: 'ARMORING_Vehicles';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    topText: Attribute.RichText;
+    categories: Attribute.Component<'slices.tab-section', true>;
+    metaTitle: Attribute.String;
+    metaDescription: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::armoring-vehicle.armoring-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::armoring-vehicle.armoring-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
@@ -7003,6 +7143,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
       'api::all-download.all-download': ApiAllDownloadAllDownload;
+      'api::armoring-ballistic.armoring-ballistic': ApiArmoringBallisticArmoringBallistic;
+      'api::armoring-contact.armoring-contact': ApiArmoringContactArmoringContact;
+      'api::armoring-homepage.armoring-homepage': ApiArmoringHomepageArmoringHomepage;
+      'api::armoring-vehicle.armoring-vehicle': ApiArmoringVehicleArmoringVehicle;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::ballistic-chart.ballistic-chart': ApiBallisticChartBallisticChart;
