@@ -32,7 +32,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         .replace(/\n/g, '<br/>');
     };
 
-    const notMain = domain === 'swats' || domain === 'rentals' || domain === 'pitbull';
+    const notMain = domain === 'swats' || domain === 'rentals' || domain === 'pitbull' || domain === 'armoring' || domain === 'condor';
     
     let sender = '';
     let subjectPrefix = '';
@@ -58,6 +58,16 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     } else if(domain === 'rentals'){
       sender = process.env.EMAIL_SENDER_RENTALS;
       subjectPrefix = 'Rental - Alpine Armoring';
+      emailColorsDark = '#06374e';
+      emailColorsLight = '#84a8cc';
+    } else if(domain === 'armoring'){
+      sender = process.env.EMAIL_SENDER_ARMORING;
+      subjectPrefix = 'Armoring.com';
+      emailColorsDark = '#06374e';
+      emailColorsLight = '#84a8cc';
+    } else if(domain === 'condor'){
+      sender = process.env.EMAIL_SENDER_CONDOR;
+      subjectPrefix = 'Condor - Alpine Armoring';
       emailColorsDark = '#06374e';
       emailColorsLight = '#84a8cc';
     } else if(domain === 'pitbull'){
