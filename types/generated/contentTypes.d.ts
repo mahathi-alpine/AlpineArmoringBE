@@ -6619,7 +6619,8 @@ export interface ApiVehiclesAlternativeVehiclesAlternative
         'slices.spacing',
         'slices.two-columns-text',
         'slices.big-section',
-        'slices.slider'
+        'slices.slider',
+        'slices.two-images'
       ]
     > &
       Attribute.SetPluginOptions<{
