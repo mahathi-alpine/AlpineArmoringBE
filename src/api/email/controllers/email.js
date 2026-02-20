@@ -63,13 +63,13 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     } else if(domain === 'armoring'){
       sender = process.env.EMAIL_SENDER_ARMORING;
       subjectPrefix = 'Armoring.com';
-      emailColorsDark = '#06374e';
-      emailColorsLight = '#84a8cc';
+      emailColorsDark = '#BC1948';
+      emailColorsLight = '#171717';
     } else if(domain === 'condor'){
       sender = process.env.EMAIL_SENDER_CONDOR;
       subjectPrefix = 'Condor - Alpine Armoring';
-      emailColorsDark = '#06374e';
-      emailColorsLight = '#84a8cc';
+      emailColorsDark = '#BEB285';
+      emailColorsLight = '#f0eee9';
     } else if(domain === 'pitbull'){
       sender = process.env.EMAIL_SENDER_PITBULL;
       if (isPitbullConfigurator) {
