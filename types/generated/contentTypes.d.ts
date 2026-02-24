@@ -6649,6 +6649,12 @@ export interface ApiVehiclesAlternativeVehiclesAlternative
           translate: 'translate';
         };
       }>;
+    mediaPassword: Attribute.Component<'slices.media-password-protected'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

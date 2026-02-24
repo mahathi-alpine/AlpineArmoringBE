@@ -128,6 +128,16 @@
         }
       },
       "component": "shared.seo"
+    },
+    "mediaPassword": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "component": "slices.media-password-protected"
     }
   }
 }
