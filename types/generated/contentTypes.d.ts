@@ -7013,7 +7013,8 @@ export interface ApiVideoVideo extends Schema.CollectionType {
         'Selected SUVs and Sedans',
         'Media Appearances',
         'Cool Videos',
-        'Ballistic Tests'
+        'Ballistic Tests',
+        'App'
       ]
     > &
       Attribute.Required &

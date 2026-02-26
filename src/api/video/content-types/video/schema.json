@@ -80,7 +80,8 @@
         "Selected SUVs and Sedans",
         "Media Appearances",
         "Cool Videos",
-        "Ballistic Tests"
+        "Ballistic Tests",
+        "App"
       ],
       "required": true,
       "pluginOptions": {
