@@ -68,8 +68,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     } else if(domain === 'condor'){
       sender = process.env.EMAIL_SENDER_CONDOR;
       subjectPrefix = 'Condor - Alpine Armoring';
-      emailColorsDark = '#BEB285';
-      emailColorsLight = '#f0eee9';
+      emailColorsDark = '#E3963E';
+      emailColorsLight = '#F2D2BD';
     } else if(domain === 'pitbull'){
       sender = process.env.EMAIL_SENDER_PITBULL;
       if (isPitbullConfigurator) {

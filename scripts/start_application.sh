@@ -27,5 +27,9 @@ mkdir -p /home/ubuntu/logs && touch /home/ubuntu/logs/strapi.log && chmod 777 /h
 # Update permissions on project directory
 chmod -R 777 /var/www/html/alpine
 
+# Kill any process occupying port 1337 before starting fresh (handles stale processes started outside PM2)
+fuser -k 1337/tcp 2>/dev/null || true
+sleep 2
+
 # Install project dependencies, remove previous deployments from pm2, and build the application
-su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && yarn install && yarn build && pm2 delete all || : && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
+su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && yarn install && yarn build && pm2 delete all || : && sleep 2 && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
