@@ -46,8 +46,8 @@ const getAvailability = () => {
  * Reason: "pre-owned" vehicles are used/refurbished; everything else is new.
  */
 const getCondition = (flag) => {
-  if (flag === 'pre-owned') return 'used';
-  return 'new';
+  if (flag === 'pre-owned') return 'Used (like new)';
+  return 'New';
 };
 
 module.exports = {

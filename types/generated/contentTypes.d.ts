@@ -6650,6 +6650,46 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
   };
 }
 
+export interface ApiVansHomepageVansHomepage extends Schema.SingleType {
+  collectionName: 'vans_homepages';
+  info: {
+    singularName: 'vans-homepage';
+    pluralName: 'vans-homepages';
+    displayName: 'VANSHomepage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    otherPagesTitle: Attribute.Text;
+    otherPages: Attribute.Component<'slices.tab-section', true>;
+    vehiclesTitle: Attribute.Text;
+    vehiclesText: Attribute.RichText;
+    otherPagesText: Attribute.RichText;
+    vehicles: Attribute.Relation<
+      'api::vans-homepage.vans-homepage',
+      'oneToMany',
+      'api::vehicles-alternative.vehicles-alternative'
+    >;
+    stickySections: Attribute.Component<'slices.sticky-sections'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vans-homepage.vans-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vans-homepage.vans-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiVehiclesAlternativeVehiclesAlternative
   extends Schema.CollectionType {
   collectionName: 'vehicles_alternatives';
@@ -7319,6 +7359,7 @@ declare module '@strapi/types' {
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
+      'api::vans-homepage.vans-homepage': ApiVansHomepageVansHomepage;
       'api::vehicles-alternative.vehicles-alternative': ApiVehiclesAlternativeVehiclesAlternative;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
       'api::video.video': ApiVideoVideo;

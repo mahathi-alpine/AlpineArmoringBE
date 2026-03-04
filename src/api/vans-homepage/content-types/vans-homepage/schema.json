@@ -1,0 +1,47 @@
+{
+  "kind": "singleType",
+  "collectionName": "vans_homepages",
+  "info": {
+    "singularName": "vans-homepage",
+    "pluralName": "vans-homepages",
+    "displayName": "VANSHomepage"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner"
+    },
+    "otherPagesTitle": {
+      "type": "text"
+    },
+    "otherPages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.tab-section"
+    },
+    "vehiclesTitle": {
+      "type": "text"
+    },
+    "vehiclesText": {
+      "type": "richtext"
+    },
+    "otherPagesText": {
+      "type": "richtext"
+    },
+    "vehicles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vehicles-alternative.vehicles-alternative"
+    },
+    "stickySections": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.sticky-sections"
+    }
+  }
+}
