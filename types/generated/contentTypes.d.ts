@@ -6407,6 +6407,108 @@ export interface ApiSwatNewsTestimonialSwatNewsTestimonial
   };
 }
 
+export interface ApiTestimonialTestimonial extends Schema.CollectionType {
+  collectionName: 'testimonials';
+  info: {
+    singularName: 'testimonial';
+    pluralName: 'testimonials';
+    displayName: 'Testimonials';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    date: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehicle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    text: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    featuredImage: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    gallery: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    homepage: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<50>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiTradeShowTradeShow extends Schema.CollectionType {
   collectionName: 'trade_shows';
   info: {
@@ -7214,6 +7316,7 @@ declare module '@strapi/types' {
       'api::swat-listing-inventory.swat-listing-inventory': ApiSwatListingInventorySwatListingInventory;
       'api::swat-listing-model.swat-listing-model': ApiSwatListingModelSwatListingModel;
       'api::swat-news-testimonial.swat-news-testimonial': ApiSwatNewsTestimonialSwatNewsTestimonial;
+      'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
       'api::vehicles-alternative.vehicles-alternative': ApiVehiclesAlternativeVehiclesAlternative;
