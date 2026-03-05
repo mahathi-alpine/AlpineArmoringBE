@@ -31,5 +31,5 @@ chmod -R 777 /var/www/html/alpine
 fuser -k 1337/tcp 2>/dev/null || true
 sleep 2
 
-# Install project dependencies, remove previous deployments from pm2, and build the application
-su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && yarn install && yarn build && pm2 delete all || : && sleep 2 && pm2 start yarn --name "Alpine" -- start > /home/ubuntu/logs/strapi.log 2>&1'
+# Stop PM2 BEFORE build to free memory (Strapi uses ~400-800MB that we need for yarn install/build)
+su - ubuntu -c 'cd /var/www/html/alpine && source ~/.nvm/nvm.sh && nvm use 18.17.0 && pm2 delete all || : && yarn install && NODE_OPTIONS="--max-old-space-size=1536" yarn build && pm2 start yarn --name "Alpine" --max-memory-restart 1G -- start > /home/ubuntu/logs/strapi.log 2>&1'
