@@ -28,6 +28,8 @@ module.exports = [
         'https://www.armoredautos.com',
         'https://www.armored-swat.com',
         'https://pit-bull.net',
+        'https://thecondor.vercel.app',
+        'https://thecondor.us',
         // 'https://alpine-armoring-fe-kappa.vercel.app',
         // 'https://alpine-pitbull.vercel.app'
       ],
