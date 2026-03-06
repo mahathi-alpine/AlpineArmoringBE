@@ -421,11 +421,30 @@ module.exports = {
     const processingEntries = new Set();
 
     // Shared handler for afterCreate and afterUpdate
-    const processTranslationLinks = async (contentType, result) => {
+    const processTranslationLinks = async (contentType, event) => {
+      const { result } = event;
       const entryKey = `${contentType}-${result.id}`;
 
       // Only process non-default locales (assuming 'en' is the default)
       if (!result.locale || result.locale === 'en') return;
+
+      // Reason: When an English entry is saved, Strapi's i18n plugin syncs
+      // non-localized fields to the Spanish entry, triggering afterUpdate.
+      // That sync doesn't change any localized text fields, so there are
+      // no URLs to rewrite. Detect this by checking event.params.data.
+      const schema = strapi.contentTypes[contentType];
+      const changedKeys = Object.keys(event.params?.data || {});
+      const hasLocalizedTextChange = changedKeys.some(key => {
+        const attr = schema.attributes[key];
+        if (!attr) return false;
+        const isLocalized = attr.pluginOptions?.i18n?.localized !== false;
+        const isText = ['string', 'text', 'richtext'].includes(attr.type);
+        return isLocalized && isText;
+      });
+
+      if (!hasLocalizedTextChange && changedKeys.length > 0) {
+        return;
+      }
 
       // Skip if already processing this entry
       if (processingEntries.has(entryKey)) return;
@@ -435,7 +454,7 @@ module.exports = {
 
         // Reason: getFullPopulateObject returns { populate: { ... } } wrapper —
         // unwrap it so entityService.findOne receives the correct params shape.
-        const modelObject = getFullPopulateObject(contentType, 5);
+        const modelObject = getFullPopulateObject(contentType, 2);
         const populateConfig = modelObject?.populate || modelObject;
         const fullEntry = await strapi.entityService.findOne(contentType, result.id, {
           populate: populateConfig === true ? {} : populateConfig,
@@ -486,12 +505,12 @@ module.exports = {
       strapi.db.lifecycles.subscribe({
         models: [contentType],
 
-        async afterCreate(event) {
-          await processTranslationLinks(contentType, event.result);
+        afterCreate(event) {
+          processTranslationLinks(contentType, event);
         },
 
-        async afterUpdate(event) {
-          await processTranslationLinks(contentType, event.result);
+        afterUpdate(event) {
+          processTranslationLinks(contentType, event);
         }
       });
     });

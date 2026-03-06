@@ -57,7 +57,7 @@ module.exports = {
       const fullEntity = await strapi.entityService.findOne(
         'api::inventory.inventory',
         event.params.where.id,
-        { populate: '*' }
+        { fields: ['slug', 'title'] }
       );
       
       if (!fullEntity.slug && fullEntity.title) {
@@ -85,7 +85,7 @@ module.exports = {
   async afterCreate(event) {
     // Send notification if vehicle was published on creation
     if (event.result?.publishedAt) {
-      await sendInventoryNotification(event.result);
+      sendInventoryNotification(event.result);
     }
   },
 
@@ -103,7 +103,7 @@ module.exports = {
 
       // Check if publishedAt exists in the fetched entry (meaning it's now published)
       if (fullEntry?.publishedAt) {
-        await sendInventoryNotification(fullEntry);
+        sendInventoryNotification(fullEntry);
       }
     }
   }
