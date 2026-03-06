@@ -10,7 +10,8 @@ module.exports = createCoreRouter('api::vehicles-we-armor.vehicles-we-armor', {
     config: {
         find: {
             middlewares: ['api::vehicles-we-armor.vehicles-we-armor-populate']
-        }, findOne: {
+        },
+        findOne: {
             middlewares: ['api::vehicles-we-armor.vehicles-we-armor-populate']
         }
     }

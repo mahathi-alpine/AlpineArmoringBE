@@ -2,9 +2,13 @@
 
 /**
  * `vehicles-we-armor-populate` middleware
+ * Smart populate: detects detail vs listing requests.
+ * - Slug filter present (detail page) or findOne → full populate (~20 JOINs)
+ * - No slug filter (listing page / bots) → lean populate (~5 JOINs)
  */
 
-const populate = { 
+// Reason: Full populate for detail/slug pages — all sections needed for the vehicle detail view.
+const fullPopulate = {
   seo:{
     populate: {
       metaImage: {
@@ -27,7 +31,7 @@ const populate = {
     populate: {
       before: {
         populate: true
-      },    
+      },
       after: {
         populate: true
       }
@@ -109,13 +113,39 @@ const populate = {
     populate: true,
     fields: ['slug', 'locale', 'hide', 'title']
   }
-}
+};
+
+// Reason: Lean populate for listing pages — only card-level fields to reduce JOINs from ~20 to ~5.
+const leanPopulate = {
+  featuredImage: {
+    populate: true
+  },
+  category: {
+    fields: ['title', 'slug']
+  },
+  make: {
+    fields: ['title']
+  },
+  stock: {
+    fields: ['title', 'flag', 'hide']
+  },
+  localizations: {
+    fields: ['slug', 'locale', 'hide', 'title']
+  }
+};
 
 module.exports = (config, { strapi }) => {
   return async (ctx, next) => {
+    // Reason: Detail page uses find with filters[slug][$eq]=xxx,
+    // so we detect slug filter to serve full populate for detail requests.
+    const isDetailRequest = !!ctx.query?.filters?.slug;
+    const populate = isDetailRequest ? fullPopulate : leanPopulate;
+
+    // Reason: Spread ctx.query first so our populate always wins,
+    // preventing clients from sending populate=deep to trigger massive JOINs.
     ctx.query = {
-      populate,
-      ...ctx.query
+      ...ctx.query,
+      populate
     };
 
     await next();

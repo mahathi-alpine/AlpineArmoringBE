@@ -9,6 +9,11 @@ module.exports = ({ env }) => ({
       password: env('DATABASE_PASSWORD'),
       schema: env('DATABASE_SCHEMA', 'public')
     },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    acquireConnectionTimeout: 60000,
     debug: false,
   },
 });
