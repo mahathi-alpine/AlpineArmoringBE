@@ -87,8 +87,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     } else if(domain === 'application'){
       sender = process.env.EMAIL_SENDER_MAIN;
       subjectPrefix = 'Application - Alpine Armoring';
-      emailColorsDark = '#06374e';
-      emailColorsLight = '#84a8cc';
+      emailColorsDark = '#FF3300';
+      emailColorsLight = '#ffd2c7';
     } else {
       sender = process.env.EMAIL_SENDER_MAIN;
       subjectPrefix = 'Alpine Armoring';
