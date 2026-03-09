@@ -326,8 +326,11 @@ function fixMarkdownLinks(text, locale) {
 
   // Reason: matching markdown links as the first alternative ensures the entire
   // [text](url) is consumed before the standalone alternative can see the URL.
+  // Reason: negative lookbehind (?<!\w) on the standalone alternative prevents
+  // matching source URLs as substrings inside already-translated URLs.
+  // E.g. "/contact" won't match inside "/es/contacto" because "s" precedes it.
   const combinedRegex = new RegExp(
-    `(\\[[^\\]]+\\]\\()(${urlPattern})(\\))|(${urlPattern})`,
+    `(\\[[^\\]]+\\]\\()(${urlPattern})(\\))|((?<!\\w)(?:${urlPattern}))`,
     'g'
   );
 
