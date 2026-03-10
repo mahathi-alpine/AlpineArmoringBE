@@ -6424,7 +6424,7 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
     };
   };
   attributes: {
-    name: Attribute.String &
+    name: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
