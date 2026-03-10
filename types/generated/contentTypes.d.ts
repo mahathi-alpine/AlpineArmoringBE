@@ -1195,7 +1195,6 @@ export interface ApiArmoringHomepageArmoringHomepage extends Schema.SingleType {
     typesOfVehiclesWeArmor: Attribute.Component<'slices.options', true>;
     metaTitle: Attribute.String;
     metaDescription: Attribute.Text;
-    bottomText: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2528,6 +2527,7 @@ export interface ApiCondorHomepageCondorHomepage extends Schema.SingleType {
     stickySections: Attribute.Component<'slices.sticky-sections'>;
     socialFeed: Attribute.Component<'slices.social-feed-item', true>;
     seo: Attribute.Component<'shared.seo'>;
+    bottomText: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

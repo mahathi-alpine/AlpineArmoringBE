@@ -58,6 +58,9 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "bottomText": {
+      "type": "richtext"
     }
   }
 }
