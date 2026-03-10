@@ -1195,6 +1195,7 @@ export interface ApiArmoringHomepageArmoringHomepage extends Schema.SingleType {
     typesOfVehiclesWeArmor: Attribute.Component<'slices.options', true>;
     metaTitle: Attribute.String;
     metaDescription: Attribute.Text;
+    bottomText: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

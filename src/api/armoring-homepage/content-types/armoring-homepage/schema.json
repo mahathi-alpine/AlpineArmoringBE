@@ -50,6 +50,9 @@
     },
     "metaDescription": {
       "type": "text"
+    },
+    "bottomText": {
+      "type": "richtext"
     }
   }
 }
