@@ -2523,7 +2523,6 @@ export interface ApiCondorHomepageCondorHomepage extends Schema.SingleType {
       'oneToMany',
       'api::vehicles-alternative.vehicles-alternative'
     >;
-    featured: Attribute.Component<'slices.tab-section'>;
     stickySections: Attribute.Component<'slices.sticky-sections'>;
     socialFeed: Attribute.Component<'slices.social-feed-item', true>;
     seo: Attribute.Component<'shared.seo'>;
@@ -4969,15 +4968,6 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
       'api::vehicles-alternative.vehicles-alternative'
     > &
       Attribute.SetPluginOptions<{
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    featured: Attribute.Component<'slices.tab-section'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
         translate: {
           translate: 'translate';
         };

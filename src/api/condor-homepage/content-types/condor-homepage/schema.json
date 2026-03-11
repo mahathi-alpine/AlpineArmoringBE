@@ -39,11 +39,6 @@
       "relation": "oneToMany",
       "target": "api::vehicles-alternative.vehicles-alternative"
     },
-    "featured": {
-      "type": "component",
-      "repeatable": false,
-      "component": "slices.tab-section"
-    },
     "stickySections": {
       "type": "component",
       "repeatable": false,
