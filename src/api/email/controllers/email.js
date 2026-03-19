@@ -32,12 +32,25 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         .replace(/\n/g, '<br/>');
     };
 
-    const notMain = domain === 'swats' || domain === 'rentals' || domain === 'pitbull' || domain === 'armoring' || domain === 'condor';
-    
-    let sender = '';
-    let subjectPrefix = '';
-    let emailColorsDark = '';
-    let emailColorsLight = '';
+    // Domain-specific email configuration
+    const domainConfig = {
+      swats:            { sender: 'EMAIL_SENDER_SWATS',    subject: 'SWAT - Alpine Armoring',        dark: '#006400', light: '#88E788' },
+      rentals:          { sender: 'EMAIL_SENDER_RENTALS',  subject: 'Rental - Alpine Armoring',      dark: '#06374e', light: '#84a8cc' },
+      armoring:         { sender: 'EMAIL_SENDER_ARMORING', subject: 'Armoring.com',                  dark: '#BC1948', light: '#171717' },
+      condor:           { sender: 'EMAIL_SENDER_CONDOR',   subject: 'Condor - Alpine Armoring',      dark: '#E3963E', light: '#F2D2BD' },
+      armoredvehicles:  { sender: 'EMAIL_SENDER_MAIN',    subject: 'ArmoredVehicles.com',            dark: '#101010', light: '#A7A7A7' },
+      pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB' },
+      application:      { sender: 'EMAIL_SENDER_MAIN',    subject: 'Application - Alpine Armoring',  dark: '#FF3300', light: '#ffd2c7' },
+    };
+
+    const defaultConfig = { sender: 'EMAIL_SENDER_MAIN', subject: 'Alpine Armoring', dark: '#9c9477', light: '#c3bfaf' };
+    const config = domainConfig[domain] || defaultConfig;
+    const notMain = domain in domainConfig;
+
+    const sender = process.env[config.sender];
+    let subjectPrefix = config.subject;
+    const emailColorsDark = config.dark;
+    const emailColorsLight = config.light;
     let mainMessage = '';
 
     // Extract vehicle type from route for Pit-Bull configurator
@@ -50,50 +63,14 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const isPitbullConfigurator = inquiry === 'requestPassword' || inquiry === 'requestInquiry';
     const vehicleTypeFromRoute = isPitbullConfigurator ? extractVehicleType(route) : '';
 
-    if(domain === 'swats'){
-      sender = process.env.EMAIL_SENDER_SWATS;
-      subjectPrefix = 'SWAT - Alpine Armoring';
-      emailColorsDark = '#006400';
-      emailColorsLight = '#88E788';
-    } else if(domain === 'rentals'){
-      sender = process.env.EMAIL_SENDER_RENTALS;
-      subjectPrefix = 'Rental - Alpine Armoring';
-      emailColorsDark = '#06374e';
-      emailColorsLight = '#84a8cc';
-    } else if(domain === 'armoring'){
-      sender = process.env.EMAIL_SENDER_ARMORING;
-      subjectPrefix = 'Armoring.com';
-      emailColorsDark = '#BC1948';
-      emailColorsLight = '#171717';
-    } else if(domain === 'condor'){
-      sender = process.env.EMAIL_SENDER_CONDOR;
-      subjectPrefix = 'Condor - Alpine Armoring';
-      emailColorsDark = '#E3963E';
-      emailColorsLight = '#F2D2BD';
-    } else if(domain === 'pitbull'){
-      sender = process.env.EMAIL_SENDER_PITBULL;
-      if (isPitbullConfigurator) {
-        subjectPrefix = inquiry === 'requestPassword'
-          ? `Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator password request`
-          : `Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator inquiry`;
-        mainMessage = inquiry === 'requestPassword'
-          ? `Password request for the Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator`
-          : `Inquiry for the Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator`;
-      } else {
-        subjectPrefix = 'Pit-Bull®';
-      }
-      emailColorsDark = '#8B0000';
-      emailColorsLight = '#FFCCCB';
-    } else if(domain === 'application'){
-      sender = process.env.EMAIL_SENDER_MAIN;
-      subjectPrefix = 'Application - Alpine Armoring';
-      emailColorsDark = '#FF3300';
-      emailColorsLight = '#ffd2c7';
-    } else {
-      sender = process.env.EMAIL_SENDER_MAIN;
-      subjectPrefix = 'Alpine Armoring';
-      emailColorsDark = '#9c9477';
-      emailColorsLight = '#c3bfaf';
+    // Pit-Bull configurator overrides subject and adds a main message
+    if (domain === 'pitbull' && isPitbullConfigurator) {
+      subjectPrefix = inquiry === 'requestPassword'
+        ? `Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator password request`
+        : `Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator inquiry`;
+      mainMessage = inquiry === 'requestPassword'
+        ? `Password request for the Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator`
+        : `Inquiry for the Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator`;
     }
 
     const leadSources = [
