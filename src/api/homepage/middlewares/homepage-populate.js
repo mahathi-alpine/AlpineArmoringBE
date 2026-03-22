@@ -30,6 +30,9 @@ const populate = {
       },    
       video_mp4: {
         populate: true
+      },
+      poster: {
+        populate: true
       }
     }
   },
