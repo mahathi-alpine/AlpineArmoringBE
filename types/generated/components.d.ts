@@ -127,6 +127,7 @@ export interface SlicesBanner extends Schema.Component {
     Button: Attribute.Component<'slices.button'>;
     Description: Attribute.RichText;
     Button2: Attribute.Component<'slices.button'>;
+    poster: Attribute.Media;
   };
 }
 
@@ -448,10 +449,12 @@ export interface SlicesVideo extends Schema.Component {
   info: {
     displayName: 'video';
     icon: 'play';
+    description: '';
   };
   attributes: {
     video_webm: Attribute.Media;
     video_mp4: Attribute.Media;
+    poster: Attribute.Media;
   };
 }
 

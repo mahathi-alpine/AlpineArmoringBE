@@ -50,6 +50,13 @@
       "type": "component",
       "repeatable": false,
       "component": "slices.button"
+    },
+    "poster": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
