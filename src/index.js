@@ -250,6 +250,7 @@ const URL_MAPPINGS = {
     '/blog/what-you-should-know-about-armored-cars': '/es/blog/lo-que-debe-saber-sobre-los-coches-blindados',
     '/blog/why-the-ultra-wealthy-choose-custom-armored-vehicles': '/es/blog/por-que-los-ultra-salvajes-eligen-vehiculos-blindados-a-medida',
     '/blog/how-much-does-an-armored-vehicle-cost': '/es/blog/cuanto-cuesta-un-vehiculo-armado',
+    '/blog/armored-electric-vehicles-guide': '/es/blog/guia-de-vehiculos-electricos-blindados',
 
     // News
     '/news': '/es/noticias',
