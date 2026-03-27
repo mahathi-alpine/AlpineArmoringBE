@@ -348,6 +348,17 @@ export interface SlicesStackingCards extends Schema.Component {
   };
 }
 
+export interface SlicesStats extends Schema.Component {
+  collectionName: 'components_slices_stats';
+  info: {
+    displayName: 'Stats';
+  };
+  attributes: {
+    number: Attribute.String;
+    label: Attribute.String;
+  };
+}
+
 export interface SlicesStickySections extends Schema.Component {
   collectionName: 'components_slices_sticky_sections';
   info: {
@@ -512,6 +523,7 @@ declare module '@strapi/types' {
       'slices.social-feed-item': SlicesSocialFeedItem;
       'slices.spacing': SlicesSpacing;
       'slices.stacking-cards': SlicesStackingCards;
+      'slices.stats': SlicesStats;
       'slices.sticky-sections': SlicesStickySections;
       'slices.tab-section': SlicesTabSection;
       'slices.text-filling': SlicesTextFilling;

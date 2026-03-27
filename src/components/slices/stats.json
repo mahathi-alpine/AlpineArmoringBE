@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_slices_stats",
+  "info": {
+    "displayName": "Stats"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}
