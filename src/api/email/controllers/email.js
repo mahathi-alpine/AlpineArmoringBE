@@ -73,7 +73,26 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         : `Inquiry for the Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator`;
     }
 
+    // Reason: exact referrer matching (e.g. === 'https://www.google.com/') misses most traffic
+    // because document.referrer includes full URL path. Hostname-based matching fixes this.
+    // When exact is true, hostname must match exactly (needed for short domains like 't.co'
+    // to avoid substring false positives).
+    const referrerIncludes = (referrer, hostname, exact = false) => {
+      try {
+        const host = new URL(referrer).hostname;
+        return exact ? host === hostname : host.includes(hostname);
+      } catch {
+        return false;
+      }
+    };
+
+    // Reason: most lead sources share the same pattern — match referrer hostname and exclude gclid.
+    // This helper builds those check functions from a simple hostname list, reducing repetition.
+    const referrerSource = (hostname, exact = false) =>
+      (data) => !!(referrerIncludes(data.referrer, hostname, exact) && !data.gclid);
+
     const leadSources = [
+      // Paid sources first — most valuable to identify
       {
         name: 'Google Ads',
         color: 'green',
@@ -86,60 +105,51 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         )
       },
       {
-        name: 'Google Organic',
-        color: 'orange',
-        check: (data) => !!(data.referrer === 'https://www.google.com/' && !data.gclid)
-      },
-      {
-        name: 'Bing',
-        color: 'orange',
-        check: (data) => !!(data.referrer === 'https://www.bing.com/' && !data.gclid)
-      },
-      {
-        name: 'DuckDuckGo',
-        color: 'orange',
-        check: (data) => !!(data.referrer === 'https://duckduckgo.com/' && !data.gclid)
+        name: 'Microsoft Ads',
+        color: 'green',
+        check: (data) => !!data.msclkid
       },
       {
         name: 'Facebook',
-        color: 'orange',
+        color: 'blue',
         check: (data) => !!(data.fbclid && !data.gclid)
       },
+      // AI tools
+      { name: 'ChatGPT',          color: 'orange', check: referrerSource('chatgpt.com') },
+      { name: 'Gemini',           color: 'orange', check: referrerSource('gemini.google.com') },
+      { name: 'Claude',           color: 'orange', check: referrerSource('claude.ai') },
+      { name: 'Perplexity',       color: 'orange', check: referrerSource('perplexity.ai') },
+      { name: 'Microsoft Copilot', color: 'orange', check: referrerSource('copilot.microsoft.com') },
+      // Organic search
+      { name: 'Google Organic',   color: 'orange', check: referrerSource('google.com') },
+      { name: 'Bing',             color: 'orange', check: referrerSource('bing.com') },
+      { name: 'DuckDuckGo',       color: 'orange', check: referrerSource('duckduckgo.com') },
+      { name: 'Yahoo',            color: 'orange', check: referrerSource('yahoo.com') },
+      { name: 'Baidu',            color: 'orange', check: referrerSource('baidu.com') },
+      { name: 'Yandex',           color: 'orange', check: referrerSource('yandex') },
+      // Social media
+      { name: 'YouTube',          color: 'orange', check: referrerSource('youtube.com') },
+      { name: 'TikTok',           color: 'orange', check: referrerSource('tiktok.com') },
+      { name: 'LinkedIn',         color: 'orange', check: referrerSource('linkedin.com') },
       {
-        name: 'UK search Yahoo',
+        // Reason: 't.co' needs exact hostname match to avoid substring false positives (e.g. 'etc.com')
+        name: 'Twitter/X',
         color: 'orange',
-        check: (data) => !!(data.referrer === 'https://uk.search.yahoo.com/' && !data.gclid)
+        check: (data) => !!(
+          (referrerIncludes(data.referrer, 't.co', true) || referrerIncludes(data.referrer, 'x.com')) && !data.gclid
+        )
       },
-      {
-        name: 'Chat GPT',
-        color: 'orange',
-        check: (data) => !!(data.referrer === 'https://chatgpt.com/' && !data.gclid)
-      },
-      {
-        name: 'f150gen14.com (Ford)',
-        color: 'orange',
-        check: (data) => !!(data.referrer === 'https://www.f150gen14.com/' && !data.gclid)
-      },
-      {
-        name: 'Youtube',
-        color: 'orange',
-        check: (data) => !!(data.referrer === 'https://www.youtube.com/' && !data.gclid)
-      },
-      {
-        name: 'Tiktok',
-        color: 'orange',
-        check: (data) => !!(data.referrer === 'https://www.tiktok.com/' && !data.gclid)
-      },
-      {
-        name: 'Alpine Armoring Main Website',
-        color: 'orange',
-        check: (data) => !!(data.referrer === 'https://www.alpineco.com/' && !data.gclid)
-      }
+      { name: 'Instagram',        color: 'orange', check: referrerSource('instagram.com') },
+      { name: 'Reddit',           color: 'orange', check: referrerSource('reddit.com') },
+      { name: 'Pinterest',        color: 'orange', check: referrerSource('pinterest.com') },
+      // Referral sites
+      { name: 'f150gen14.com (Ford)',          color: 'orange', check: referrerSource('f150gen14.com') },
+      { name: 'Alpine Armoring Main Website',  color: 'orange', check: referrerSource('alpineco.com') }
     ];
 
     const detectedLeadSource = trackingData
-      ? leadSources.find(source => source.check(trackingData))
-      : null;      
+      ? leadSources.find(source => source.check(trackingData)) || { name: 'Direct', color: 'gray' }
+      : { name: 'Direct', color: 'gray' };
       
     try {
       let emailSubject;
@@ -230,13 +240,11 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
-              ${detectedLeadSource ? `
-                <tr>
-                  <td colspan="2" style="padding:1.5pt; text-align: center; color: ${detectedLeadSource.color};">
-                    <p style="margin:0in;"><span><b>From ${detectedLeadSource.name}</b></span></p>
-                  </td>
-                </tr>
-              ` : ''}
+              <tr>
+                <td colspan="2" style="padding:1.5pt; text-align: center; color: ${detectedLeadSource.color};">
+                  <p style="margin:0in;"><span><b>From ${detectedLeadSource.name}</b></span></p>
+                </td>
+              </tr>
 
             </tbody>
           </table>
@@ -415,13 +423,11 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
-              ${detectedLeadSource ? `
-                <tr>
-                  <td colspan="2" style="padding:1.5pt; text-align: center; color: ${detectedLeadSource.color};">
-                    <p style="margin:0in;"><span><b>From ${detectedLeadSource.name}</b></span></p>
-                  </td>
-                </tr>
-              ` : ''}
+              <tr>
+                <td colspan="2" style="padding:1.5pt; text-align: center; color: ${detectedLeadSource.color};">
+                  <p style="margin:0in;"><span><b>From ${detectedLeadSource.name}</b></span></p>
+                </td>
+              </tr>
 
             </tbody>
           </table>
