@@ -1249,6 +1249,12 @@ export interface ApiApplicationAboutApplicationAbout extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    groupLogo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
