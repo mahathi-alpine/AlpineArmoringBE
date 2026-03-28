@@ -1112,6 +1112,7 @@ export interface ApiApplicationAboutApplicationAbout extends Schema.SingleType {
     singularName: 'application-about';
     pluralName: 'application-abouts';
     displayName: 'ApplicationAbout';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1231,6 +1232,15 @@ export interface ApiApplicationAboutApplicationAbout extends Schema.SingleType {
         };
       }>;
     stats: Attribute.Component<'slices.stats', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    groupIntro: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

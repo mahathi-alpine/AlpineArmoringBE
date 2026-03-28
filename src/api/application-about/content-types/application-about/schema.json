@@ -4,7 +4,8 @@
   "info": {
     "singularName": "application-about",
     "pluralName": "application-abouts",
-    "displayName": "ApplicationAbout"
+    "displayName": "ApplicationAbout",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -160,6 +161,17 @@
         }
       },
       "component": "slices.stats"
+    },
+    "groupIntro": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
     }
   }
 }
