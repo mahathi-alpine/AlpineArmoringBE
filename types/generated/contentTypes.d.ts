@@ -6878,19 +6878,85 @@ export interface ApiVansHomepageVansHomepage extends Schema.SingleType {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    banner: Attribute.Component<'slices.banner'>;
-    otherPagesTitle: Attribute.Text;
-    otherPages: Attribute.Component<'slices.tab-section', true>;
-    vehiclesTitle: Attribute.Text;
-    vehiclesText: Attribute.RichText;
-    otherPagesText: Attribute.RichText;
-    vehicles: Attribute.Relation<
+    bannerVideo: Attribute.Component<'slices.video'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    topBannerTitle: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    topBannerDescription: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehicles_we_armors: Attribute.Relation<
       'api::vans-homepage.vans-homepage',
       'oneToMany',
-      'api::vehicles-alternative.vehicles-alternative'
-    >;
-    stickySections: Attribute.Component<'slices.sticky-sections'>;
+      'api::vehicles-we-armor.vehicles-we-armor'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    featuredVehiclesTitle: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    topText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    middleText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -6905,6 +6971,12 @@ export interface ApiVansHomepageVansHomepage extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::vans-homepage.vans-homepage',
+      'oneToMany',
+      'api::vans-homepage.vans-homepage'
+    >;
+    locale: Attribute.String;
   };
 }
 

@@ -9,39 +9,102 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
-    "banner": {
+    "bannerVideo": {
       "type": "component",
       "repeatable": false,
-      "component": "slices.banner"
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.video"
     },
-    "otherPagesTitle": {
-      "type": "text"
-    },
-    "otherPages": {
-      "type": "component",
-      "repeatable": true,
-      "component": "slices.tab-section"
-    },
-    "vehiclesTitle": {
-      "type": "text"
-    },
-    "vehiclesText": {
+    "topBannerTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "type": "richtext"
     },
-    "otherPagesText": {
+    "topBannerDescription": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
       "type": "richtext"
     },
-    "vehicles": {
+    "vehicles_we_armors": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::vehicles-alternative.vehicles-alternative"
+      "target": "api::vehicles-we-armor.vehicles-we-armor",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
     },
-    "stickySections": {
+    "featuredVehiclesTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
+    },
+    "topText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
+    },
+    "middleText": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
+    },
+    "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "slices.sticky-sections"
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "shared.seo"
     }
   }
 }
