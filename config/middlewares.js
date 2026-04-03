@@ -30,6 +30,7 @@ module.exports = [
         'https://pit-bull.net',
         'https://thecondor.vercel.app',
         'https://thecondor.us',
+        'https://armoredvehicles.com',
         // 'https://alpine-armoring-fe-kappa.vercel.app',
         // 'https://alpine-pitbull.vercel.app'
       ],
