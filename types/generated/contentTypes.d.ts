@@ -4574,6 +4574,15 @@ export interface ApiMakeMake extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
+    allBanner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::make.make', 'oneToOne', 'admin::user'> &
