@@ -78,6 +78,7 @@ module.exports = {
         locale: 'en',
         populate: {
           featuredImage: true,
+          gallery: true,
           categories: { fields: ['title', 'slug'] },
           vehicles_we_armor: {
             fields: ['title'],
@@ -98,6 +99,7 @@ module.exports = {
         'price',
         'link',
         'image_link',
+        'additional_image_link',
         'brand',
         'vehicle_year',
         'color',
@@ -108,8 +110,8 @@ module.exports = {
         // Determine unique ID: vehicleID → VIN → Strapi id
         const id = item.vehicleID || item.VIN || String(item.id);
 
-        // Description: prefer shortDescription, fallback to stripped richtext
-        const description = item.shortDescription || stripHtml(item.description) || '';
+        // Description: use richtext description field, HTML-stripped
+        const description = stripHtml(item.description) || '';
 
         // Build product page URL
         const link = item.slug
@@ -118,6 +120,11 @@ module.exports = {
 
         // Featured image URL (already includes CDN prefix from S3 provider)
         const imageLink = item.featuredImage?.url || '';
+
+        // Additional gallery images (Meta supports up to 10 comma-separated URLs)
+        const additionalImageLink = Array.isArray(item.gallery)
+          ? item.gallery.map((img) => img.url).filter(Boolean).slice(0, 10).join(',')
+          : '';
 
         // Brand: try vehicles_we_armor relation → make → title, then vehicle title, then fallback
         const vehicleModel = item.vehicles_we_armor?.[0];
@@ -138,6 +145,7 @@ module.exports = {
           '0.00 USD',
           link,
           imageLink,
+          additionalImageLink,
           brand,
           item.year || '',
           item.color_ext || '',
