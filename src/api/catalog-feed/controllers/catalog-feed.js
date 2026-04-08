@@ -15,12 +15,18 @@ const escapeCsvField = (value) => {
 };
 
 /**
- * Strips HTML tags from a string.
+ * Strips HTML tags and markdown syntax from a string.
  */
-const stripHtml = (html) => {
-  if (!html) return '';
-  return html
+const stripMarkup = (text) => {
+  if (!text) return '';
+  return text
+    // HTML tags
     .replace(/<[^>]*>/g, ' ')
+    // Markdown links [text](url) → text
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    // Bold/italic ***text*** or **text** or *text*
+    .replace(/\*{1,3}([^*]+)\*{1,3}/g, '$1')
+    // HTML entities
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
@@ -77,8 +83,8 @@ module.exports = {
         },
         locale: 'en',
         populate: {
-          featuredImage: true,
-          gallery: true,
+          featuredImage: { fields: ['url'] },
+          gallery: { fields: ['url'] },
           categories: { fields: ['title', 'slug'] },
           vehicles_we_armor: {
             fields: ['title'],
@@ -87,6 +93,7 @@ module.exports = {
             },
           },
         },
+        sort: { order: 'asc' },
         limit: 10000,
       });
 
@@ -100,6 +107,8 @@ module.exports = {
         'link',
         'image_link',
         'additional_image_link',
+        'google_product_category',
+        'custom_label_0',
         'brand',
         'vehicle_year',
         'color',
@@ -111,7 +120,7 @@ module.exports = {
         const id = item.vehicleID || item.VIN || String(item.id);
 
         // Description: use richtext description field, HTML-stripped
-        const description = stripHtml(item.description) || '';
+        const description = stripMarkup(item.description) || '';
 
         // Build product page URL
         const link = item.slug
@@ -146,6 +155,8 @@ module.exports = {
           link,
           imageLink,
           additionalImageLink,
+          '916',
+          item.categories?.[0]?.title || '',
           brand,
           item.year || '',
           item.color_ext || '',
