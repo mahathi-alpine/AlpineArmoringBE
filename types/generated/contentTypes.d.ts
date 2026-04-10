@@ -1278,6 +1278,163 @@ export interface ApiApplicationAboutApplicationAbout extends Schema.SingleType {
   };
 }
 
+export interface ApiArmoredVehicleArmoredVehicle extends Schema.SingleType {
+  collectionName: 'armored_vehicles';
+  info: {
+    singularName: 'armored-vehicle';
+    pluralName: 'armored-vehicles';
+    displayName: 'ArmoredVehicles';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    homepage_topText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    brands: Attribute.Component<'shared.timeline', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    sections: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    homepageMetaTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    homepageMetaDescription: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    ballisticChartText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    ballisticchartMetaTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    ballisticchartMetaDescription: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    aboutText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    aboutMetaTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    aboutMetaDescription: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    contactMetaTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    contactMetaDescription: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::armored-vehicle.armored-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::armored-vehicle.armored-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::armored-vehicle.armored-vehicle',
+      'oneToMany',
+      'api::armored-vehicle.armored-vehicle'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiArmoringBallisticArmoringBallistic
   extends Schema.SingleType {
   collectionName: 'armoring_ballistics';
@@ -7599,6 +7756,7 @@ declare module '@strapi/types' {
       'api::about.about': ApiAboutAbout;
       'api::all-download.all-download': ApiAllDownloadAllDownload;
       'api::application-about.application-about': ApiApplicationAboutApplicationAbout;
+      'api::armored-vehicle.armored-vehicle': ApiArmoredVehicleArmoredVehicle;
       'api::armoring-ballistic.armoring-ballistic': ApiArmoringBallisticArmoringBallistic;
       'api::armoring-contact.armoring-contact': ApiArmoringContactArmoringContact;
       'api::armoring-homepage.armoring-homepage': ApiArmoringHomepageArmoringHomepage;
