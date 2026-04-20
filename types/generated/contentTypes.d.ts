@@ -1412,6 +1412,16 @@ export interface ApiArmoredVehicleArmoredVehicle extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    blog_armored_vehicles: Attribute.Relation<
+      'api::armored-vehicle.armored-vehicle',
+      'oneToMany',
+      'api::blog-armored-vehicle.blog-armored-vehicle'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1817,6 +1827,11 @@ export interface ApiAuthorAuthor extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
+    blog_armored_vehicles: Attribute.Relation<
+      'api::author.author',
+      'oneToMany',
+      'api::blog-armored-vehicle.blog-armored-vehicle'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2380,6 +2395,134 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'api::blog.blog',
       'oneToMany',
       'api::blog.blog'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiBlogArmoredVehicleBlogArmoredVehicle
+  extends Schema.CollectionType {
+  collectionName: 'blog_armored_vehicles';
+  info: {
+    singularName: 'blog-armored-vehicle';
+    pluralName: 'blog-armored-vehicles';
+    displayName: 'BlogArmoredVehicles';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    excerpt: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    blogDynamic: Attribute.DynamicZone<
+      [
+        'slices.text',
+        'slices.single-media',
+        'slices.youtube-video',
+        'slices.two-images'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    Intro: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    authors: Attribute.Relation<
+      'api::blog-armored-vehicle.blog-armored-vehicle',
+      'manyToOne',
+      'api::author.author'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blog-armored-vehicle.blog-armored-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blog-armored-vehicle.blog-armored-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::blog-armored-vehicle.blog-armored-vehicle',
+      'oneToMany',
+      'api::blog-armored-vehicle.blog-armored-vehicle'
     >;
     locale: Attribute.String;
   };
@@ -7767,6 +7910,7 @@ declare module '@strapi/types' {
       'api::ballistic-testing.ballistic-testing': ApiBallisticTestingBallisticTesting;
       'api::become-a-dealer.become-a-dealer': ApiBecomeADealerBecomeADealer;
       'api::blog.blog': ApiBlogBlog;
+      'api::blog-armored-vehicle.blog-armored-vehicle': ApiBlogArmoredVehicleBlogArmoredVehicle;
       'api::blog-evergreen.blog-evergreen': ApiBlogEvergreenBlogEvergreen;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::category.category': ApiCategoryCategory;

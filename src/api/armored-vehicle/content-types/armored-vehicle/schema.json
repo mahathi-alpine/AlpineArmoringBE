@@ -162,6 +162,16 @@
         }
       },
       "type": "text"
+    },
+    "blog_armored_vehicles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-armored-vehicle.blog-armored-vehicle",
+      "pluginOptions": {
+        "translate": {
+          "translate": "copy"
+        }
+      }
     }
   }
 }
