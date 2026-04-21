@@ -24,7 +24,7 @@ module.exports = [
         'http://localhost:3001',
         'http://localhost:8081',
         // 'https://alpinetesting.cloudflex-ha.com',
-        'https://cms.alpine-web.com/',
+        'https://cms.alpine-web.com',
         'https://www.alpineco.com',
         'https://www.armoredautos.com',
         'https://www.armored-swat.com',
