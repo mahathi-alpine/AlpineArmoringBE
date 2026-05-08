@@ -4,7 +4,8 @@
   "info": {
     "singularName": "vans-homepage",
     "pluralName": "vans-homepages",
-    "displayName": "VANSHomepage"
+    "displayName": "VANSHomepage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -15,19 +16,6 @@
     }
   },
   "attributes": {
-    "bannerVideo": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "component": "slices.video"
-    },
     "topBannerTitle": {
       "pluginOptions": {
         "i18n": {

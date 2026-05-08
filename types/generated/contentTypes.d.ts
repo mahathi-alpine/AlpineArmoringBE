@@ -7177,12 +7177,48 @@ export interface ApiTradeShowsPageTradeShowsPage extends Schema.SingleType {
   };
 }
 
+export interface ApiVansContactPageVansContactPage extends Schema.SingleType {
+  collectionName: 'vans_contact_pages';
+  info: {
+    singularName: 'vans-contact-page';
+    pluralName: 'vans-contact-pages';
+    displayName: 'VANSContactPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    salesInfo: Attribute.RichText;
+    partsInfo: Attribute.RichText;
+    faqs: Attribute.Component<'slices.accordion', true>;
+    mapImage: Attribute.Media;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vans-contact-page.vans-contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vans-contact-page.vans-contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiVansHomepageVansHomepage extends Schema.SingleType {
   collectionName: 'vans_homepages';
   info: {
     singularName: 'vans-homepage';
     pluralName: 'vans-homepages';
     displayName: 'VANSHomepage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -7193,15 +7229,6 @@ export interface ApiVansHomepageVansHomepage extends Schema.SingleType {
     };
   };
   attributes: {
-    bannerVideo: Attribute.Component<'slices.video'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     topBannerTitle: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -7961,6 +7988,7 @@ declare module '@strapi/types' {
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::trade-show.trade-show': ApiTradeShowTradeShow;
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
+      'api::vans-contact-page.vans-contact-page': ApiVansContactPageVansContactPage;
       'api::vans-homepage.vans-homepage': ApiVansHomepageVansHomepage;
       'api::vehicles-alternative.vehicles-alternative': ApiVehiclesAlternativeVehiclesAlternative;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
