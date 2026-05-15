@@ -7183,16 +7183,14 @@ export interface ApiVansContactPageVansContactPage extends Schema.SingleType {
     singularName: 'vans-contact-page';
     pluralName: 'vans-contact-pages';
     displayName: 'VANSContactPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     banner: Attribute.Component<'slices.banner'>;
-    salesInfo: Attribute.RichText;
-    partsInfo: Attribute.RichText;
     faqs: Attribute.Component<'slices.accordion', true>;
-    mapImage: Attribute.Media;
     seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

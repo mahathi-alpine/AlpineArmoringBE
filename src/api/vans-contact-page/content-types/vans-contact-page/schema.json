@@ -4,7 +4,8 @@
   "info": {
     "singularName": "vans-contact-page",
     "pluralName": "vans-contact-pages",
-    "displayName": "VANSContactPage"
+    "displayName": "VANSContactPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,23 +17,10 @@
       "repeatable": false,
       "component": "slices.banner"
     },
-    "salesInfo": {
-      "type": "richtext"
-    },
-    "partsInfo": {
-      "type": "richtext"
-    },
     "faqs": {
       "type": "component",
       "repeatable": true,
       "component": "slices.accordion"
-    },
-    "mapImage": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
     },
     "seo": {
       "type": "component",
