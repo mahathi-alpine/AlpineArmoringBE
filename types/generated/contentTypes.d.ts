@@ -7229,24 +7229,6 @@ export interface ApiVansHomepageVansHomepage extends Schema.SingleType {
     };
   };
   attributes: {
-    topBannerTitle: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    topBannerDescription: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     vehicles_we_armors: Attribute.Relation<
       'api::vans-homepage.vans-homepage',
       'oneToMany',
@@ -7266,25 +7248,25 @@ export interface ApiVansHomepageVansHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    topText: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    middleText: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    text1: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

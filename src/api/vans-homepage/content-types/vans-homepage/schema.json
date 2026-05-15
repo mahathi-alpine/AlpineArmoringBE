@@ -16,28 +16,6 @@
     }
   },
   "attributes": {
-    "topBannerTitle": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "type": "richtext"
-    },
-    "topBannerDescription": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "type": "richtext"
-    },
     "vehicles_we_armors": {
       "type": "relation",
       "relation": "oneToMany",
@@ -49,28 +27,6 @@
       }
     },
     "featuredVehiclesTitle": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "type": "richtext"
-    },
-    "topText": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "type": "richtext"
-    },
-    "middleText": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -93,6 +49,30 @@
         }
       },
       "component": "shared.seo"
+    },
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.banner"
+    },
+    "text1": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "richtext"
     }
   }
 }
