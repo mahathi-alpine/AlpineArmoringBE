@@ -7296,6 +7296,38 @@ export interface ApiVansHomepageVansHomepage extends Schema.SingleType {
   };
 }
 
+export interface ApiVansPrivacyPolicyVansPrivacyPolicy
+  extends Schema.SingleType {
+  collectionName: 'vans_privacy_policies';
+  info: {
+    singularName: 'vans-privacy-policy';
+    pluralName: 'vans-privacy-policies';
+    displayName: 'VANSPrivacyPolicy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vans-privacy-policy.vans-privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vans-privacy-policy.vans-privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiVehiclesAlternativeVehiclesAlternative
   extends Schema.CollectionType {
   collectionName: 'vehicles_alternatives';
@@ -7970,6 +8002,7 @@ declare module '@strapi/types' {
       'api::trade-shows-page.trade-shows-page': ApiTradeShowsPageTradeShowsPage;
       'api::vans-contact-page.vans-contact-page': ApiVansContactPageVansContactPage;
       'api::vans-homepage.vans-homepage': ApiVansHomepageVansHomepage;
+      'api::vans-privacy-policy.vans-privacy-policy': ApiVansPrivacyPolicyVansPrivacyPolicy;
       'api::vehicles-alternative.vehicles-alternative': ApiVehiclesAlternativeVehiclesAlternative;
       'api::vehicles-we-armor.vehicles-we-armor': ApiVehiclesWeArmorVehiclesWeArmor;
       'api::video.video': ApiVideoVideo;
