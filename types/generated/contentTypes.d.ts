@@ -2903,7 +2903,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     slug: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
         translate: {
           translate: 'translate';
