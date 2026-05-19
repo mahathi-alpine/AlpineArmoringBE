@@ -367,31 +367,37 @@ function fixMarkdownLinks(text, locale) {
   return fixedText;
 }
 
-function processContentRecursively(content, locale) {
+// Reason: DeepL translates URL-only fields (e.g. "/about-us" → "/sobre nosotros"),
+// so we can't match EN URLs in the ES text after translation. When enContent is
+// provided, walk both trees in parallel: if the EN field value is an exact key in
+// URL_MAPPINGS, replace the ES value with the correct mapped URL regardless of what
+// DeepL wrote. For richtext with embedded links, fall back to fixMarkdownLinks.
+function processContent(content, locale, enContent = undefined) {
   if (!content) return content;
 
   if (typeof content === 'string') {
+    const mappings = URL_MAPPINGS[locale];
+    if (mappings && typeof enContent === 'string' && mappings[enContent]) {
+      return mappings[enContent];
+    }
     return fixMarkdownLinks(content, locale);
   }
 
   if (Array.isArray(content)) {
-    return content.map(item => processContentRecursively(item, locale));
+    // Zip with EN array if lengths match so dynamic zone components align by index
+    if (Array.isArray(enContent) && enContent.length === content.length) {
+      return content.map((item, i) => processContent(item, locale, enContent[i]));
+    }
+    return content.map(item => processContent(item, locale));
   }
 
   if (typeof content === 'object') {
     const processed = {};
     for (const [key, value] of Object.entries(content)) {
-      // Skip system fields, relations, and IDs that shouldn't be processed
-      if (['id', 'createdAt', 'updatedAt', 'publishedAt', 'locale', 'localizations', 'created_by_id', 'updated_by_id'].includes(key)) {
-        processed[key] = value;
-      } else if (key.endsWith('_id') || key.endsWith('Id')) {
-        // Skip ID fields completely - don't process them
-        processed[key] = value;
-      } else if (key === '__component') {
-        // Preserve the __component field for dynamic zone components
+      if (SKIP_FIELDS.has(key) || key.endsWith('_id') || key.endsWith('Id') || key === '__component') {
         processed[key] = value;
       } else {
-        processed[key] = processContentRecursively(value, locale);
+        processed[key] = processContent(value, locale, enContent?.[key]);
       }
     }
     return processed;
@@ -462,10 +468,24 @@ module.exports = {
         const modelObject = getFullPopulateObject(contentType, 2);
         const populateConfig = modelObject?.populate || modelObject;
         const fullEntry = await strapi.entityService.findOne(contentType, result.id, {
-          populate: populateConfig === true ? {} : populateConfig,
+          populate: {
+            ...(populateConfig === true ? {} : populateConfig),
+            // Ensure localizations includes locale so we can find the EN entry
+            localizations: { fields: ['id', 'locale'] },
+          },
         });
 
-        const processedData = processContentRecursively(fullEntry, result.locale);
+        // Fetch the EN entry so we can detect DeepL-mangled URL fields by comparing
+        // the EN value against URL_MAPPINGS rather than searching the ES text.
+        let enEntry = null;
+        const enLocalization = fullEntry.localizations?.find(l => l.locale === 'en');
+        if (enLocalization) {
+          enEntry = await strapi.entityService.findOne(contentType, enLocalization.id, {
+            populate: populateConfig === true ? {} : populateConfig,
+          });
+        }
+
+        const processedData = processContent(fullEntry, result.locale, enEntry || undefined);
 
         // Build update payload with only changed fields
         const updateData = {};
