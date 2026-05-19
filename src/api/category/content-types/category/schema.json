@@ -179,7 +179,7 @@
           "localized": true
         },
         "translate": {
-          "translate": "copy"
+          "translate": "delete"
         }
       },
       "type": "string"

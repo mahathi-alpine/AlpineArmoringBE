@@ -2906,7 +2906,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
           localized: true;
         };
         translate: {
-          translate: 'copy';
+          translate: 'delete';
         };
       }>;
     bottomTextDynamic: Attribute.DynamicZone<['slices.text']> &
