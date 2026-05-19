@@ -176,10 +176,10 @@
     "slug": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         },
         "translate": {
-          "translate": "translate"
+          "translate": "copy"
         }
       },
       "type": "string"

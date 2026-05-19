@@ -2903,10 +2903,10 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     slug: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
         translate: {
-          translate: 'translate';
+          translate: 'copy';
         };
       }>;
     bottomTextDynamic: Attribute.DynamicZone<['slices.text']> &
