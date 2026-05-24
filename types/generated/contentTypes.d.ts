@@ -7704,6 +7704,19 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: false;
         };
       }>;
+    vansCategory: Attribute.Enumeration<
+      [
+        'Tactical',
+        'CIT',
+        'Personal protection',
+        'Multi-passenger specialty vehicles'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

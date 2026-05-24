@@ -329,6 +329,20 @@
         }
       },
       "type": "integer"
+    },
+    "vansCategory": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "Tactical",
+        "CIT",
+        "Personal protection",
+        "Multi-passenger specialty vehicles"
+      ]
     }
   }
 }
