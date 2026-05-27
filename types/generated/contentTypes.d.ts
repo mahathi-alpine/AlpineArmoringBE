@@ -3833,6 +3833,16 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
+    faqs: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToMany',
+      'api::knowledge-base.knowledge-base'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

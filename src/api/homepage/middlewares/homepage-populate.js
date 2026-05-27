@@ -36,6 +36,9 @@ const populate = {
       }
     }
   },
+  faqs:{
+    populate: true
+  },
   quote:{
     populate: true
   },

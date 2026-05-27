@@ -187,6 +187,16 @@
         }
       },
       "component": "slices.event-snippet"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::knowledge-base.knowledge-base",
+      "pluginOptions": {
+        "translate": {
+          "translate": "translate"
+        }
+      }
     }
   }
 }
