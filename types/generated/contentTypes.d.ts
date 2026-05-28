@@ -7719,7 +7719,7 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
         'Tactical',
         'CIT',
         'Personal protection',
-        'Multi-passenger specialty vehicles'
+        'Multi-passenger Specialty Vans'
       ]
     > &
       Attribute.SetPluginOptions<{
