@@ -343,6 +343,17 @@
         "Personal protection",
         "Multi-passenger Specialty Vans"
       ]
+    },
+    "heroBannerSpecial": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "type": "text"
     }
   }
 }

@@ -7727,6 +7727,15 @@ export interface ApiVehiclesWeArmorVehiclesWeArmor
           localized: true;
         };
       }>;
+    heroBannerSpecial: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
