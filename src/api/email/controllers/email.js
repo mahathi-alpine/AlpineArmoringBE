@@ -4,9 +4,47 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::email.email', ({ strapi }) => ({
   async create(ctx) {
+    const { data } = ctx.request.body || {};
+
+    // Guard 1: required fields must be present. The frontend forms block empty submits,
+    // but direct API calls / bots bypass the frontend — so enforce it here too.
+    // Reason: prevents blank junk records and blank emails to sales@.
+    const isBlank = (v) => v === undefined || v === null || String(v).trim() === '';
+    if (!data || isBlank(data.name) || isBlank(data.email)) {
+      return ctx.badRequest('Missing required fields');
+    }
+
+    // message is required for normal contact forms, but the rentals form and the Pit-Bull
+    // configurator flows (requestPassword / requestInquiry) legitimately omit it — so don't
+    // require it there, otherwise those valid submissions would be wrongly rejected.
+    const messageOptional =
+      data.domain === 'rentals' ||
+      data.inquiry === 'requestPassword' ||
+      data.inquiry === 'requestInquiry';
+    if (!messageOptional && isBlank(data.message)) {
+      return ctx.badRequest('Missing required fields');
+    }
+
+    // Guard 2: reject submissions containing HTML/script injection.
+    // Reason: blocks stored-XSS / email HTML-injection at the source.
+    // dangerousPattern catches genuinely harmful content in ANY field — script/iframe/embed
+    // tags, links and images (phishing / tracking pixels), javascript: URLs, and inline event
+    // handlers. anyTagPattern additionally rejects any other HTML-looking tag (e.g. "<b>") in
+    // the short fields. The free-text "message" is exempt from anyTagPattern so people can write
+    // stray comparisons like "I want a car < $50000 > my budget"; dangerousPattern still guards it.
+    const dangerousPattern = /<\s*\/?\s*(?:script|iframe|object|embed|a|img|svg|link|style|form|input|base|meta)\b|javascript:|on\w+\s*=/i;
+    const anyTagPattern = /<\s*\/?\s*[a-z][^>]*>/i;
+    const hasInjection = Object.entries(data).some(([key, value]) => {
+      if (typeof value !== 'string') return false;
+      if (dangerousPattern.test(value)) return true;
+      return key !== 'message' && anyTagPattern.test(value);
+    });
+    if (hasInjection) {
+      return ctx.badRequest('Invalid input');
+    }
+
     const emailData = await super.create(ctx);
 
-    const { data } = ctx.request.body;
     const { name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date, fromDate, toDate, mileage, driverNeeded, vehicleType, vehicleModel, domain, trackingData } = data;
 
     function getCurrentDateTime() {
