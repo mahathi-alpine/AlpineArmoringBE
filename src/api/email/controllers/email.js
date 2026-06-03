@@ -227,7 +227,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         leadSource: detectedLeadSource.name,
       });
 
-      await strapi.plugins['email'].services.email.send({
+      const sesResponse = await strapi.plugins['email'].services.email.send({
         to: sender,
         from: sender,
         ...((notMain) ? { cc: 'sales@alpineco.com' } : {}),
@@ -499,7 +499,14 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
           </table>
         `
       });
-      console.log(`[email] sent successfully — domain "${domain}", to ${sender}`);
+      // Debug: log the raw SES response. The MessageId is the proof-of-handoff — once SES
+      // returns it, the message is in Amazon's hands and any non-delivery is downstream
+      // (SES suppression/bounce or the receiving mail server), NOT this backend.
+      // BDNet can search this MessageId in the SES delivery logs / their mail trace.
+      const sesMessageId =
+        (sesResponse && (sesResponse.MessageId || sesResponse.messageId)) || '(none returned)';
+      console.log(`[email] sent successfully — domain "${domain}", to ${sender}, SES MessageId: ${sesMessageId}`);
+      console.log('[email] raw SES response:', JSON.stringify(sesResponse));
     } catch (err) {
       console.error(`[email] FAILED to send — domain "${domain}", sender env ${config.sender}=${sender || '(undefined)'}:`, err);
     }
