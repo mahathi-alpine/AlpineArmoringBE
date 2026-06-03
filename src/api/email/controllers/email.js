@@ -222,12 +222,11 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         to: sender || '(UNDEFINED)',
         from: sender || '(UNDEFINED)',
         cc: notMain ? 'sales@alpineco.com' : '(none)',
-        replyTo: email,
         subject: emailSubject,
         leadSource: detectedLeadSource.name,
       });
 
-      const sesResponse = await strapi.plugins['email'].services.email.send({
+      await strapi.plugins['email'].services.email.send({
         to: sender,
         from: sender,
         ...((notMain) ? { cc: 'sales@alpineco.com' } : {}),
@@ -499,14 +498,10 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
           </table>
         `
       });
-      // Debug: log the raw SES response. The MessageId is the proof-of-handoff — once SES
-      // returns it, the message is in Amazon's hands and any non-delivery is downstream
-      // (SES suppression/bounce or the receiving mail server), NOT this backend.
-      // BDNet can search this MessageId in the SES delivery logs / their mail trace.
-      const sesMessageId =
-        (sesResponse && (sesResponse.MessageId || sesResponse.messageId)) || '(none returned)';
-      console.log(`[email] sent successfully — domain "${domain}", to ${sender}, SES MessageId: ${sesMessageId}`);
-      console.log('[email] raw SES response:', JSON.stringify(sesResponse));
+      // Debug: the plugin's send() resolves only when SES accepts the message and rejects
+      // (-> catch block below) when SES errors. So this success line firing means SES
+      // accepted the message; a delivery failure after this point is downstream, not here.
+      console.log(`[email] sent successfully — domain "${domain}", to ${sender}`);
     } catch (err) {
       console.error(`[email] FAILED to send — domain "${domain}", sender env ${config.sender}=${sender || '(undefined)'}:`, err);
     }
