@@ -79,7 +79,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       armoredvehicles:  { sender: 'EMAIL_SENDER_ARMOREDVEHICLES',    subject: 'ArmoredVehicles.com', dark: '#101010', light: '#A7A7A7' },
       pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB' },
       application:      { sender: 'EMAIL_SENDER_MAIN',    subject: 'Application - Alpine Armoring',  dark: '#FF3300', light: '#ffd2c7' },
-      vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#1a1d1a', light: '#f0eee9' },
+      vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#FFFF00', light: '#ffffc8' },
     };
 
     const defaultConfig = { sender: 'EMAIL_SENDER_MAIN', subject: 'Alpine Armoring', dark: '#9c9477', light: '#c3bfaf' };
@@ -87,6 +87,22 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const notMain = domain in domainConfig;
 
     const sender = process.env[config.sender];
+
+    // Debug: surface the resolved sender so it's visible in AWS CloudWatch in real time.
+    // Reason: lets us confirm whether the env var (e.g. EMAIL_SENDER_VANS) is actually set
+    // and what address SES is being told to send from/to — the usual cause of "no email
+    // received" is an empty/undefined sender env var rather than a code bug.
+    console.log('[email] incoming submission', {
+      domain: domain || '(none)',
+      matchedConfig: domain in domainConfig ? domain : 'default',
+      senderEnvVar: config.sender,
+      senderValue: sender || '(UNDEFINED — env var not set!)',
+      ccSales: domain in domainConfig,
+    });
+    if (!sender) {
+      console.warn(`[email] WARNING: env var ${config.sender} is not set for domain "${domain}" — SES will fail or drop this message.`);
+    }
+
     let subjectPrefix = config.subject;
     const emailColorsDark = config.dark;
     const emailColorsLight = config.light;
@@ -199,6 +215,17 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       } else {
         emailSubject = `${subjectPrefix} - Inquiry about ${inquiry} from ${name} (${state} ${country})`;
       }
+
+      // Debug: log the exact envelope handed to SES so it's traceable in CloudWatch.
+      console.log('[email] sending via SES', {
+        domain: domain || '(none)',
+        to: sender || '(UNDEFINED)',
+        from: sender || '(UNDEFINED)',
+        cc: notMain ? 'sales@alpineco.com' : '(none)',
+        replyTo: email,
+        subject: emailSubject,
+        leadSource: detectedLeadSource.name,
+      });
 
       await strapi.plugins['email'].services.email.send({
         to: sender,
@@ -472,9 +499,9 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
           </table>
         `
       });
-      console.log('Email sent successfully');
+      console.log(`[email] sent successfully — domain "${domain}", to ${sender}`);
     } catch (err) {
-      console.error('Error sending email:', err);
+      console.error(`[email] FAILED to send — domain "${domain}", sender env ${config.sender}=${sender || '(undefined)'}:`, err);
     }
 
     return emailData;
