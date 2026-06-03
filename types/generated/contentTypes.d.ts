@@ -3518,6 +3518,50 @@ export interface ApiFaQFaQ extends Schema.CollectionType {
   };
 }
 
+export interface ApiFaQsArmoredVehicleFaQsArmoredVehicle
+  extends Schema.CollectionType {
+  collectionName: 'fa_qs_armored_vehicles';
+  info: {
+    singularName: 'fa-qs-armored-vehicle';
+    pluralName: 'fa-qs-armored-vehicles';
+    displayName: 'FAQsArmoredVehicles';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    text: Attribute.RichText;
+    category: Attribute.Enumeration<
+      [
+        'Getting Started',
+        'Cost and Investment',
+        'Legality and Compliance',
+        'Process and Timelines',
+        'Protection and Performance',
+        'Buying, Renting, or Leasing'
+      ]
+    >;
+    homepage: Attribute.Boolean;
+    order: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::fa-qs-armored-vehicle.fa-qs-armored-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::fa-qs-armored-vehicle.fa-qs-armored-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaQsRentalFaQsRental extends Schema.CollectionType {
   collectionName: 'fa_qs_rentals';
   info: {
@@ -7992,6 +8036,7 @@ declare module '@strapi/types' {
       'api::design-and-engineering.design-and-engineering': ApiDesignAndEngineeringDesignAndEngineering;
       'api::email.email': ApiEmailEmail;
       'api::fa-q.fa-q': ApiFaQFaQ;
+      'api::fa-qs-armored-vehicle.fa-qs-armored-vehicle': ApiFaQsArmoredVehicleFaQsArmoredVehicle;
       'api::fa-qs-rental.fa-qs-rental': ApiFaQsRentalFaQsRental;
       'api::fa-qs-swat.fa-qs-swat': ApiFaQsSwatFaQsSwat;
       'api::faq.faq': ApiFaqFaq;
