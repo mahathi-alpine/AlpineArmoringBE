@@ -1,18 +1,46 @@
 'use strict';
 
-// Mapping of EN vehicle type slugs to ES equivalents (used by regex pass for type+make combos)
+// Mapping of EN vehicle type slugs to localized equivalents (used by regex pass for type+make combos)
 const VEHICLE_TYPE_MAP = {
-  'special-of-the-month': 'especial-del-mes',
-  'armored-suvs': 'suvs-blindados',
-  'armored-sedans': 'sedanes-blindados',
-  'armored-pickup-trucks': 'camionetas-blindadas',
-  'armored-law-enforcement': 'fuerzas-del-orden-blindadas',
-  'armored-cash-in-transit-cit': 'transporte-blindado-valores-cit',
-  'armored-specialty-vehicles': 'vehiculos-blindados-especiales',
-  'armored-pre-owned': 'blindados-pre-usados',
-  'recently-sold-armored-vehicles': 'vehiculos-blindados-vendidos-recientemente',
-  'armored-rental': 'alquiler-blindados',
-  'armored-vans-and-buses': 'furgonetas-y-autobuses-blindados',
+  es: {
+    'special-of-the-month': 'especial-del-mes',
+    'armored-suvs': 'suvs-blindados',
+    'armored-sedans': 'sedanes-blindados',
+    'armored-pickup-trucks': 'camionetas-blindadas',
+    'armored-law-enforcement': 'fuerzas-del-orden-blindadas',
+    'armored-cash-in-transit-cit': 'transporte-blindado-valores-cit',
+    'armored-specialty-vehicles': 'vehiculos-blindados-especiales',
+    'armored-pre-owned': 'blindados-pre-usados',
+    'recently-sold-armored-vehicles': 'vehiculos-blindados-vendidos-recientemente',
+    'armored-rental': 'alquiler-blindados',
+    'armored-vans-and-buses': 'furgonetas-y-autobuses-blindados',
+  },
+  fr: {
+    'special-of-the-month': 'offre-du-mois',
+    'armored-suvs': 'vus-blindes',
+    'armored-sedans': 'berlines-blindees',
+    'armored-pickup-trucks': 'camionnettes-blindees',
+    'armored-law-enforcement': 'forces-de-lordre-blindees',
+    'armored-cash-in-transit-cit': 'transport-de-fonds-blinde',
+    'armored-specialty-vehicles': 'vehicules-specialises-blindes',
+    'armored-pre-owned': 'blindes-doccasion',
+    'recently-sold-armored-vehicles': 'vehicules-blindes-vendus-recemment',
+    'armored-rental': 'location-blindee',
+    'armored-vans-and-buses': 'fourgons-et-autobus-blindes',
+  },
+};
+
+// Per-locale prefixes for the regex passes (slugs too numerous for static URL_MAPPINGS).
+// Reason: the path segment differs by locale — ES uses /tipo/, FR uses /type/.
+const LOCALE_REGEX_CONFIG = {
+  es: {
+    locationsPrefix: '/es/ubicaciones-que-servimos',
+    vehiclesTypePrefix: '/es/vehiculos-que-blindamos/tipo',
+  },
+  fr: {
+    locationsPrefix: '/fr/regions-desservies',
+    vehiclesTypePrefix: '/fr/vehicules-que-nous-blindons/type',
+  },
 };
 
 const SKIP_FIELDS = new Set([
@@ -307,6 +335,289 @@ const URL_MAPPINGS = {
     // Locations – Listing only (individual locations handled by regex)
     '/locations-we-serve': '/es/ubicaciones-que-servimos',
   },
+  'fr': {
+    // Static / Informational Pages
+    '/contact': '/fr/contact',
+    '/about-us': '/fr/a-propos',
+    '/all-downloads': '/fr/tous-les-telechargements',
+    '/ballistic-chart': '/fr/tableau-balistique',
+    '/ballistic-testing': '/fr/tests-balistiques',
+    '/become-a-dealer': '/fr/devenir-concessionnaire',
+    '/design-and-engineering': '/fr/conception-et-ingenierie',
+    '/manufacturing': '/fr/fabrication',
+    '/privacy-policy': '/fr/politique-de-confidentialite',
+    '/shipping-and-logistics': '/fr/expedition-et-logistique',
+    '/sold-vehicles': '/fr/vehicules-vendus',
+
+    // Media
+    '/media': '/fr/medias',
+    '/media/videos': '/fr/medias/videos',
+    '/media/trade-shows': '/fr/medias/salons-professionnels',
+
+    // Authors
+    '/author/laila-asbergs': '/fr/auteur/laila-asbergs',
+    '/author/dan-diana': '/fr/auteur/dan-diana',
+
+    // Vehicles We Armor – Listing + Make Filters
+    '/vehicles-we-armor': '/fr/vehicules-que-nous-blindons',
+    '/vehicles-we-armor?make=audi': '/fr/vehicules-que-nous-blindons?make=audi',
+    '/vehicles-we-armor?make=bentley': '/fr/vehicules-que-nous-blindons?make=bentley',
+    '/vehicles-we-armor?make=bmw': '/fr/vehicules-que-nous-blindons?make=bmw',
+    '/vehicles-we-armor?make=bulldog': '/fr/vehicules-que-nous-blindons?make=bulldog',
+    '/vehicles-we-armor?make=cadillac': '/fr/vehicules-que-nous-blindons?make=cadillac',
+    '/vehicles-we-armor?make=chevrolet': '/fr/vehicules-que-nous-blindons?make=chevrolet',
+    '/vehicles-we-armor?make=cuda': '/fr/vehicules-que-nous-blindons?make=cuda',
+    '/vehicles-we-armor?make=cyclone': '/fr/vehicules-que-nous-blindons?make=cyclone',
+    '/vehicles-we-armor?make=ford': '/fr/vehicules-que-nous-blindons?make=ford',
+    '/vehicles-we-armor?make=genesis': '/fr/vehicules-que-nous-blindons?make=genesis',
+    '/vehicles-we-armor?make=gmc': '/fr/vehicules-que-nous-blindons?make=gmc',
+    '/vehicles-we-armor?make=honda': '/fr/vehicules-que-nous-blindons?make=honda',
+    '/vehicles-we-armor?make=hummer': '/fr/vehicules-que-nous-blindons?make=hummer',
+    '/vehicles-we-armor?make=infiniti': '/fr/vehicules-que-nous-blindons?make=infiniti',
+    '/vehicles-we-armor?make=ineos': '/fr/vehicules-que-nous-blindons?make=ineos',
+    '/vehicles-we-armor?make=international': '/fr/vehicules-que-nous-blindons?make=international',
+    '/vehicles-we-armor?make=jeep': '/fr/vehicules-que-nous-blindons?make=jeep',
+    '/vehicles-we-armor?make=lamborghini': '/fr/vehicules-que-nous-blindons?make=lamborghini',
+    '/vehicles-we-armor?make=land-rover': '/fr/vehicules-que-nous-blindons?make=land-rover',
+    '/vehicles-we-armor?make=lexus': '/fr/vehicules-que-nous-blindons?make=lexus',
+    '/vehicles-we-armor?make=lincoln': '/fr/vehicules-que-nous-blindons?make=lincoln',
+    '/vehicles-we-armor?make=mastiff': '/fr/vehicules-que-nous-blindons?make=mastiff',
+    '/vehicles-we-armor?make=maybach': '/fr/vehicules-que-nous-blindons?make=maybach',
+    '/vehicles-we-armor?make=mercedes-benz': '/fr/vehicules-que-nous-blindons?make=mercedes-benz',
+    '/vehicles-we-armor?make=nissan': '/fr/vehicules-que-nous-blindons?make=nissan',
+    '/vehicles-we-armor?make=omicron': '/fr/vehicules-que-nous-blindons?make=omicron',
+    '/vehicles-we-armor?make=pit-bull': '/fr/vehicules-que-nous-blindons?make=pit-bull',
+    '/vehicles-we-armor?make=pointer': '/fr/vehicules-que-nous-blindons?make=pointer',
+    '/vehicles-we-armor?make=range-rover': '/fr/vehicules-que-nous-blindons?make=range-rover',
+    '/vehicles-we-armor?make=rolls-royce': '/fr/vehicules-que-nous-blindons?make=rolls-royce',
+    '/vehicles-we-armor?make=tesla': '/fr/vehicules-que-nous-blindons?make=tesla',
+    '/vehicles-we-armor?make=toyota': '/fr/vehicules-que-nous-blindons?make=toyota',
+    '/vehicles-we-armor?make=typhoon': '/fr/vehicules-que-nous-blindons?make=typhoon',
+
+    // Vehicles We Armor – Type Categories
+    '/vehicles-we-armor/type/special-of-the-month': '/fr/vehicules-que-nous-blindons/type/offre-du-mois',
+    '/vehicles-we-armor/type/armored-suvs': '/fr/vehicules-que-nous-blindons/type/vus-blindes',
+    '/vehicles-we-armor/type/armored-sedans': '/fr/vehicules-que-nous-blindons/type/berlines-blindees',
+    '/vehicles-we-armor/type/armored-pickup-trucks': '/fr/vehicules-que-nous-blindons/type/camionnettes-blindees',
+    '/vehicles-we-armor/type/armored-law-enforcement': '/fr/vehicules-que-nous-blindons/type/forces-de-lordre-blindees',
+    '/vehicles-we-armor/type/armored-cash-in-transit-cit': '/fr/vehicules-que-nous-blindons/type/transport-de-fonds-blinde',
+    '/vehicles-we-armor/type/armored-specialty-vehicles': '/fr/vehicules-que-nous-blindons/type/vehicules-specialises-blindes',
+    '/vehicles-we-armor/type/armored-pre-owned': '/fr/vehicules-que-nous-blindons/type/blindes-doccasion',
+    '/vehicles-we-armor/type/recently-sold-armored-vehicles': '/fr/vehicules-que-nous-blindons/type/vehicules-blindes-vendus-recemment',
+    '/vehicles-we-armor/type/armored-rental': '/fr/vehicules-que-nous-blindons/type/location-blindee',
+    '/vehicles-we-armor/type/armored-vans-and-buses': '/fr/vehicules-que-nous-blindons/type/fourgons-et-autobus-blindes',
+
+    // Vehicles We Armor – Individual Vehicles
+    '/vehicles-we-armor/armored-audi-a8': '/fr/vehicules-que-nous-blindons/audi-a8-blindee',
+    '/vehicles-we-armor/armored-audi-q7': '/fr/vehicules-que-nous-blindons/audi-q7-blindee',
+    '/vehicles-we-armor/armored-audi-q8': '/fr/vehicules-que-nous-blindons/audi-q8-blindee',
+    '/vehicles-we-armor/armored-audi-s8': '/fr/vehicules-que-nous-blindons/audi-s8-blindee',
+    '/vehicles-we-armor/armored-bentley-bentayga': '/fr/vehicules-que-nous-blindons/bentley-bentayga-blindee',
+    '/vehicles-we-armor/armored-bentley-flying-spur': '/fr/vehicules-que-nous-blindons/bentley-flying-spur-blindee',
+    '/vehicles-we-armor/armored-bmw-7-series': '/fr/vehicules-que-nous-blindons/bmw-serie-7-blindee',
+    '/vehicles-we-armor/armored-bmw-i7': '/fr/vehicules-que-nous-blindons/bmw-i7-blindee',
+    '/vehicles-we-armor/armored-bmw-x5': '/fr/vehicules-que-nous-blindons/bmw-x5-blindee',
+    '/vehicles-we-armor/armored-bmw-x7': '/fr/vehicules-que-nous-blindons/bmw-x7-blindee',
+    '/vehicles-we-armor/armored-bmw-xm': '/fr/vehicules-que-nous-blindons/bmw-xm-blindee',
+    '/vehicles-we-armor/armored-bulldog-swat-truck': '/fr/vehicules-que-nous-blindons/camion-blinde-de-type-bulldog-pour-les-forces-dintervention',
+    '/vehicles-we-armor/armored-cadillac-escalade': '/fr/vehicules-que-nous-blindons/cadillac-escalade-blindee',
+    '/vehicles-we-armor/armored-cadillac-escalade-esv': '/fr/vehicules-que-nous-blindons/cadillac-escalade-esv-blindee',
+    '/vehicles-we-armor/armored-cadillac-escalade-iq': '/fr/vehicules-que-nous-blindons/cadillac-escalade-blindee-iq',
+    '/vehicles-we-armor/armored-cadillac-escalade-v': '/fr/vehicules-que-nous-blindons/cadillac-escalade-v-blindee',
+    '/vehicles-we-armor/armored-chevrolet-silverado-1500': '/fr/vehicules-que-nous-blindons/chevrolet-silverado-1500-blinde',
+    '/vehicles-we-armor/armored-chevrolet-silverado-3500': '/fr/vehicules-que-nous-blindons/chevrolet-silverado-3500-blinde',
+    '/vehicles-we-armor/armored-chevrolet-suburban': '/fr/vehicules-que-nous-blindons/chevrolet-suburban-blindee',
+    '/vehicles-we-armor/armored-chevrolet-tahoe': '/fr/vehicules-que-nous-blindons/chevrolet-tahoe-blinde',
+    '/vehicles-we-armor/armored-chevy-express-cit-van': '/fr/vehicules-que-nous-blindons/chevy-express-cit-van-blindee',
+    '/vehicles-we-armor/armored-condor-tactical-suv': '/fr/vehicules-que-nous-blindons/suv-tactique-blinde-condor',
+    '/vehicles-we-armor/armored-cuda-apc-swat': '/fr/vehicules-que-nous-blindons/vehicule-blinde-cuda-apc-swat',
+    '/vehicles-we-armor/armored-cyclone': '/fr/vehicules-que-nous-blindons/cyclone-blinde',
+    '/vehicles-we-armor/armored-ford-expedition': '/fr/vehicules-que-nous-blindons/expedition-du-ford-blinde',
+    '/vehicles-we-armor/armored-ford-explorer': '/fr/vehicules-que-nous-blindons/ford-explorer-blinde',
+    '/vehicles-we-armor/armored-ford-explorer-interceptor-ppv': '/fr/vehicules-que-nous-blindons/ford-explorer-interceptor-blinde-ppv',
+    '/vehicles-we-armor/armored-ford-f-150': '/fr/vehicules-que-nous-blindons/ford-f-150-blinde',
+    '/vehicles-we-armor/armored-ford-f-350': '/fr/vehicules-que-nous-blindons/ford-f-350-blinde',
+    '/vehicles-we-armor/armored-ford-f-350-cit-truck': '/fr/vehicules-que-nous-blindons/camion-ford-f-350-blinde',
+    '/vehicles-we-armor/armored-ford-transit-cit': '/fr/vehicules-que-nous-blindons/ford-transit-cit-blinde',
+    '/vehicles-we-armor/armored-genesis-g90': '/fr/vehicules-que-nous-blindons/armored-genesis-g90',
+    '/vehicles-we-armor/armored-genesis-gv-80': '/fr/vehicules-que-nous-blindons/armored-genesis-gv-80',
+    '/vehicles-we-armor/armored-gmc-savana-cit-van': '/fr/vehicules-que-nous-blindons/gmc-savana-cit-van-blindee',
+    '/vehicles-we-armor/armored-gmc-sierra-1500': '/fr/vehicules-que-nous-blindons/gmc-sierra-1500-blinde',
+    '/vehicles-we-armor/armored-gmc-yukon': '/fr/vehicules-que-nous-blindons/gmc-yukon-blinde',
+    '/vehicles-we-armor/armored-gmc-yukon-xl': '/fr/vehicules-que-nous-blindons/gmc-yukon-xl-blinde',
+    '/vehicles-we-armor/armored-grand-wagoneer': '/fr/vehicules-que-nous-blindons/grand-wagoneer-blinde',
+    '/vehicles-we-armor/armored-honda-odyssey': '/fr/vehicules-que-nous-blindons/honda-odyssey-blindee',
+    '/vehicles-we-armor/armored-hummer-ev-suv': '/fr/vehicules-que-nous-blindons/hummer-blinde-electrique-suv',
+    '/vehicles-we-armor/armored-ineos-grenadier': '/fr/vehicules-que-nous-blindons/arme-ineos-grenadier',
+    '/vehicles-we-armor/armored-infiniti-qx-80': '/fr/vehicules-que-nous-blindons/armored-infiniti-qx-80',
+    '/vehicles-we-armor/armored-international-mv-series-cit-truck': '/fr/vehicules-que-nous-blindons/serie-mv-darmored-international-camion-cit',
+    '/vehicles-we-armor/armored-jeep-grand-cherokee': '/fr/vehicules-que-nous-blindons/jeep-blindee-grand-cherokee',
+    '/vehicles-we-armor/armored-jeep-grand-cherokee-l': '/fr/vehicules-que-nous-blindons/jeep-blindee-grand-cherokee-l',
+    '/vehicles-we-armor/armored-lamborghini-urus': '/fr/vehicules-que-nous-blindons/lamborghini-urus-blindee',
+    '/vehicles-we-armor/armored-land-rover-defender-110': '/fr/vehicules-que-nous-blindons/land-rover-defender-110-blinde',
+    '/vehicles-we-armor/armored-lexus-ls500': '/fr/vehicules-que-nous-blindons/lexus-ls-500-blindee',
+    '/vehicles-we-armor/armored-lexus-lx': '/fr/vehicules-que-nous-blindons/lexus-lx-blindee',
+    '/vehicles-we-armor/armored-lincoln-aviator': '/fr/vehicules-que-nous-blindons/lincoln-aviator-blindee',
+    '/vehicles-we-armor/armored-lincoln-navigator': '/fr/vehicules-que-nous-blindons/lincoln-navigator-blindee',
+    '/vehicles-we-armor/armored-mastiff-50-cal-truck': '/fr/vehicules-que-nous-blindons/camion-blinde-equipe-dun-mastiff-de-calibre-50',
+    '/vehicles-we-armor/armored-mercedes-benz-g-class': '/fr/vehicules-que-nous-blindons/mercedes-benz-classe-g-blindee',
+    '/vehicles-we-armor/armored-mercedes-benz-g580-ev': '/fr/vehicules-que-nous-blindons/mercedes-benz-g580-ev-blindee',
+    '/vehicles-we-armor/armored-mercedes-benz-gle': '/fr/vehicules-que-nous-blindons/mercedes-benz-gle-blindee',
+    '/vehicles-we-armor/armored-mercedes-benz-gls': '/fr/vehicules-que-nous-blindons/mercedes-benz-gls-blindee',
+    '/vehicles-we-armor/armored-mercedes-benz-s580-s-class': '/fr/vehicules-que-nous-blindons/mercedes-benz-classe-s-s580-blindee',
+    '/vehicles-we-armor/armored-mercedes-maybach-gls': '/fr/vehicules-que-nous-blindons/mercedes-maybach-gls-blindee',
+    '/vehicles-we-armor/armored-mercedes-maybach-s-class': '/fr/vehicules-que-nous-blindons/mercedes-maybach-classe-s-blindee',
+    '/vehicles-we-armor/armored-nissan-patrol': '/fr/vehicules-que-nous-blindons/nissan-patrol-blinde',
+    '/vehicles-we-armor/armored-omicron-ambulance': '/fr/vehicules-que-nous-blindons/ambulance-blindee-omicron',
+    '/vehicles-we-armor/armored-pit-bull-vx': '/fr/vehicules-que-nous-blindons/pitbull-blinde-vx',
+    '/vehicles-we-armor/armored-pit-bull-vx-50-cal': '/fr/vehicules-que-nous-blindons/pitbull-blinde-vx-calibre-50',
+    '/vehicles-we-armor/armored-pit-bull-vxt': '/fr/vehicules-que-nous-blindons/armored-pit-bull-vxt',
+    '/vehicles-we-armor/armored-pit-bull-vxt-50-cal': '/fr/vehicules-que-nous-blindons/pitbull-blinde-vxt-calibre-50',
+    '/vehicles-we-armor/armored-pointer-mobile-command': '/fr/vehicules-que-nous-blindons/vehicule-blinde-de-commandement-mobile',
+    '/vehicles-we-armor/armored-pointer-swat-van-sprinter': '/fr/vehicules-que-nous-blindons/fourgon-blinde-de-la-brigade-dintervention-speciale-swat-sprinter',
+    '/vehicles-we-armor/armored-pointer-swat-van-transit': '/fr/vehicules-que-nous-blindons/fourgon-blinde-de-transport-de-fonds',
+    '/vehicles-we-armor/armored-range-rover': '/fr/vehicules-que-nous-blindons/range-rover-blinde',
+    '/vehicles-we-armor/armored-range-rover-sport': '/fr/vehicules-que-nous-blindons/range-rover-sport-blinde',
+    '/vehicles-we-armor/armored-riot-control-tactical-swat-apc-truck': '/fr/vehicules-que-nous-blindons/camion-blinde-de-controle-des-emeutes-tactique-swat-apc',
+    '/vehicles-we-armor/armored-rivian-r1s': '/fr/vehicules-que-nous-blindons/rivian-r1s-blinde',
+    '/vehicles-we-armor/armored-rivian-r1t': '/fr/vehicules-que-nous-blindons/rivian-r1t-blinde',
+    '/vehicles-we-armor/armored-rolls-royce-cullinan': '/fr/vehicules-que-nous-blindons/rolls-royce-cullinan-blindee',
+    '/vehicles-we-armor/armored-rolls-royce-ghost': '/fr/vehicules-que-nous-blindons/rolls-royce-ghost-blindee',
+    '/vehicles-we-armor/armored-rolls-royce-phantom': '/fr/vehicules-que-nous-blindons/rolls-royce-phantom-blindee',
+    '/vehicles-we-armor/armored-tesla-cybertruck': '/fr/vehicules-que-nous-blindons/tesla-cybertruck-blinde',
+    '/vehicles-we-armor/armored-tesla-model-s': '/fr/vehicules-que-nous-blindons/tesla-model-s-blindee',
+    '/vehicles-we-armor/armored-tesla-model-y': '/fr/vehicules-que-nous-blindons/tesla-model-y-blindee',
+    '/vehicles-we-armor/armored-toyota-4-runner': '/fr/vehicules-que-nous-blindons/toyota-4runner-blindee',
+    '/vehicles-we-armor/armored-toyota-ambulance': '/fr/vehicules-que-nous-blindons/ambulance-toyota-blindee',
+    '/vehicles-we-armor/armored-toyota-camry': '/fr/vehicules-que-nous-blindons/toyota-camry-blindee',
+    '/vehicles-we-armor/armored-toyota-coaster': '/fr/vehicules-que-nous-blindons/toyota-coaster-blindee',
+    '/vehicles-we-armor/armored-toyota-fortuner': '/fr/vehicules-que-nous-blindons/toyota-fortuner-blinde',
+    '/vehicles-we-armor/armored-toyota-hiace': '/fr/vehicules-que-nous-blindons/toyota-hiace-blinde',
+    '/vehicles-we-armor/armored-toyota-hilux': '/fr/vehicules-que-nous-blindons/toyota-hilux-blinde',
+    '/vehicles-we-armor/armored-toyota-land-cruiser-300': '/fr/vehicules-que-nous-blindons/toyota-land-cruiser-300-blinde',
+    '/vehicles-we-armor/armored-toyota-land-cruiser-76': '/fr/vehicules-que-nous-blindons/toyota-land-cruiser-blinde-76',
+    '/vehicles-we-armor/armored-toyota-land-cruiser-78': '/fr/vehicules-que-nous-blindons/toyota-land-cruiser-78-blinde',
+    '/vehicles-we-armor/armored-toyota-land-cruiser-79': '/fr/vehicules-que-nous-blindons/toyota-land-cruiser-79-blinde',
+    '/vehicles-we-armor/armored-toyota-land-cruiser-us': '/fr/vehicules-que-nous-blindons/toyota-land-cruiser-blinde-etats-unis',
+    '/vehicles-we-armor/armored-toyota-prado': '/fr/vehicules-que-nous-blindons/toyota-prado-blinde',
+    '/vehicles-we-armor/armored-toyota-sequoia': '/fr/vehicules-que-nous-blindons/toyota-sequoia-blindee',
+    '/vehicles-we-armor/armored-toyota-tacoma': '/fr/vehicules-que-nous-blindons/toyota-tacoma-blinde',
+    '/vehicles-we-armor/armored-toyota-tundra': '/fr/vehicules-que-nous-blindons/toyota-tundra-blindee',
+    '/vehicles-we-armor/armored-typhoon': '/fr/vehicules-que-nous-blindons/tempete-blindee',
+    '/vehicles-we-armor/armored-volkswagen-atlas': '/fr/vehicules-que-nous-blindons/volkswagen-atlas-blindee',
+
+    // Available Now – Listing
+    '/armored-vehicles-for-sale': '/fr/vehicules-blindes-a-vendre',
+
+    // Available Now – Type Categories
+    '/available-now/type/special-of-the-month': '/fr/disponible-maintenant/type/offre-du-mois',
+    '/available-now/type/armored-suvs': '/fr/disponible-maintenant/type/vus-blindes',
+    '/available-now/type/armored-sedans': '/fr/disponible-maintenant/type/berlines-blindees',
+    '/available-now/type/armored-pickup-trucks': '/fr/disponible-maintenant/type/camionnettes-blindees',
+    '/available-now/type/armored-law-enforcement': '/fr/disponible-maintenant/type/forces-de-lordre-blindees',
+    '/available-now/type/armored-cash-in-transit-cit': '/fr/disponible-maintenant/type/transport-de-fonds-blinde',
+    '/available-now/type/armored-specialty-vehicles': '/fr/disponible-maintenant/type/vehicules-specialises-blindes',
+    '/available-now/type/armored-pre-owned': '/fr/disponible-maintenant/type/blindes-doccasion',
+    '/available-now/type/recently-sold-armored-vehicles': '/fr/disponible-maintenant/type/vehicules-blindes-vendus-recemment',
+    '/available-now/type/armored-rental': '/fr/disponible-maintenant/type/location-blindee',
+    '/available-now/type/armored-vans-and-buses': '/fr/disponible-maintenant/type/fourgons-et-autobus-blindes',
+
+    // Available Now – Individual Vehicles
+    '/available-now/armored-cadillac-escalade-esv-4wd-3601': '/fr/disponible-maintenant/armored-cadillac-escalade-esv-4wd-3601',
+    '/available-now/armored-chevrolet-suburban-high-country-2562': '/fr/disponible-maintenant/armored-chevrolet-suburban-high-country-2562',
+    '/available-now/armored-condor-6300': '/fr/disponible-maintenant/armored-condor-6300',
+    '/available-now/armored-ford-f-350-lariat-0101': '/fr/disponible-maintenant/armored-ford-f-350-lariat-0101',
+    '/available-now/armored-ford-f-350-lariat-3964': '/fr/disponible-maintenant/armored-ford-f-350-lariat-3964',
+    '/available-now/armored-gmc-yukon-denali-xl-3329': '/fr/disponible-maintenant/armored-gmc-yukon-denali-xl-3329',
+    '/available-now/armored-mercedes-benz-g63-amg-6773': '/fr/disponible-maintenant/armored-mercedes-benz-g63-amg-6773',
+    '/available-now/armored-mercedes-benz-s580-5179': '/fr/disponible-maintenant/armored-mercedes-benz-s580-5179',
+    '/available-now/armored-mercedes-benz-s560-5805': '/fr/disponible-maintenant/armored-mercedes-benz-s560-5805',
+    '/available-now/armored-mercedes-benz-s580-8905bach': '/fr/disponible-maintenant/armored-mercedes-benz-s580-8905bach',
+    '/available-now/armored-mercedes-benz-s580-maybach-7643': '/fr/disponible-maintenant/armored-mercedes-benz-s580-maybach-7643',
+    '/available-now/armored-pointer-van-1600': '/fr/disponible-maintenant/armored-pointer-van-1600',
+    '/available-now/armored-range-rover-autobiography-lwb-0058': '/fr/disponible-maintenant/armored-range-rover-autobiography-lwb-0058',
+    '/available-now/armored-swat-truck-pit-bull-vx-2558': '/fr/disponible-maintenant/armored-swat-truck-pit-bull-vx-2558',
+    '/available-now/armored-swat-truck-pit-bull-vx-4370': '/fr/disponible-maintenant/armored-swat-truck-pit-bull-vx-4370',
+    '/available-now/armored-toyota-land-cruiser-300-1723': '/fr/disponible-maintenant/armored-toyota-land-cruiser-300-1723',
+    '/available-now/armored-toyota-land-cruiser-300-5978': '/fr/disponible-maintenant/armored-toyota-land-cruiser-300-5978',
+    '/available-now/tactical-armored-apc-cuda-5017': '/fr/disponible-maintenant/tactical-armored-apc-cuda-5017',
+
+    // Rental Vehicles
+    '/rental-vehicles': '/fr/vehicules-de-location',
+    '/rental-vehicles/armored-range-rover-autobiography-lwb-0058': '/fr/vehicules-de-location/armored-range-rover-autobiography-lwb-0058',
+
+    // Blog
+    '/blog': '/fr/blog',
+    '/blog/3-reasons-to-consider-purchasing-an-armored-vehicle': '/fr/blog/3-reasons-to-consider-purchasing-an-armored-vehicle',
+    '/blog/alpine-armoring-pit-bull': '/fr/blog/alpine-armoring-pit-bull',
+    '/blog/armored-vehicles-3-steps-to-help-you-find-the-right-one': '/fr/blog/armored-vehicles-3-steps-to-help-you-find-the-right-one',
+    '/blog/bridging-the-gap-between-tactical-requirements-and-luxury-expectations': '/fr/blog/bridging-the-gap-between-tactical-requirements-and-luxury-expectations',
+    '/blog/bulletproof-mercedes-amg-g63': '/fr/blog/bulletproof-mercedes-amg-g63',
+    '/blog/how-armored-vehicles-provide-peace-of-mind-for-families': '/fr/blog/how-armored-vehicles-provide-peace-of-mind-for-families',
+    '/blog/how-bulletproof-glass-works': '/fr/blog/how-bulletproof-glass-works',
+    '/blog/how-run-flat-tires-keep-you-moving-in-a-crisis': '/fr/blog/how-run-flat-tires-keep-you-moving-in-a-crisis',
+    '/blog/top-10-bulletproof-cars-the-most-desired-armored-vehicles-in-the-world': '/fr/blog/top-10-bulletproof-cars-the-most-desired-armored-vehicles-in-the-world',
+    '/blog/top-security-measures': '/fr/blog/top-security-measures',
+    '/blog/understanding-armor-levels-in-vehicles-nij-cen-and-vpam-standards-explained': '/fr/blog/understanding-armor-levels-in-vehicles-nij-cen-and-vpam-standards-explained',
+    '/blog/what-makes-an-armored-car-more-secure-than-other-cars': '/fr/blog/what-makes-an-armored-car-more-secure-than-other-cars',
+    '/blog/what-you-should-know-about-armored-cars': '/fr/blog/what-you-should-know-about-armored-cars',
+    '/blog/why-the-ultra-wealthy-choose-custom-armored-vehicles': '/fr/blog/why-the-ultra-wealthy-choose-custom-armored-vehicles',
+
+    // News
+    '/news': '/fr/actualites',
+    '/news/alpine-armoring-featured-autoevolution': '/fr/actualites/alpine-armoring-featured-autoevolution',
+    '/news/alpine-armoring-featured-in-car-and-driver-magazine': '/fr/actualites/alpine-armoring-featured-in-car-and-driver-magazine',
+    '/news/alpine-armoring-featured-in-motortrend': '/fr/actualites/alpine-armoring-featured-in-motortrend',
+    '/news/alpine-armoring-featured-on-the-drive-com': '/fr/actualites/alpine-armoring-featured-on-the-drive-com',
+    '/news/alpine-armoring-mastiff-featured-on-hot-cars-com': '/fr/actualites/alpine-armoring-mastiff-featured-on-hot-cars-com',
+    '/news/alpine-ceo-featured-in-cbs-money-watch-article': '/fr/actualites/alpine-ceo-featured-in-cbs-money-watch-article',
+    '/news/alpine-donates-pit-bull-vx-to-tunisia': '/fr/actualites/alpine-donates-pit-bull-vx-to-tunisia',
+    '/news/alpine-featured-on-hot-cars-com': '/fr/actualites/alpine-featured-on-hot-cars-com',
+    '/news/alpine-pit-bull-featured-in-car-and-driver': '/fr/actualites/alpine-pit-bull-featured-in-car-and-driver',
+    '/news/armored-rolls-royce-cullinan': '/fr/actualites/armored-rolls-royce-cullinan',
+    '/news/armored-tesla-model-s-withstands-live-fire-ballistic-testing': '/fr/actualites/armored-tesla-model-s-withstands-live-fire-ballistic-testing',
+    '/news/iacp-press-release': '/fr/actualites/iacp-press-release',
+    '/news/introducing-mastiff': '/fr/actualites/introducing-mastiff',
+    '/news/motor-trend-highlights-alpine-armoring': '/fr/actualites/motor-trend-highlights-alpine-armoring',
+    '/news/next-gen-pitbull-vxt-press-release': '/fr/actualites/next-gen-pitbull-vxt-press-release',
+    '/news/pitbull-autoevolution-feature': '/fr/actualites/pitbull-autoevolution-feature',
+    '/news/richmond-police-department-unveils-pit-bull-vx': '/fr/actualites/richmond-police-department-unveils-pit-bull-vx',
+    '/news/roswell-pds-newest-addition-alpine-armoring-pit-bull-vx': '/fr/actualites/roswell-pds-newest-addition-alpine-armoring-pit-bull-vx',
+    '/news/typhoon-pressrelease': '/fr/actualites/typhoon-pressrelease',
+
+    // FAQs – Categories
+    '/faqs': '/fr/faq',
+    '/faqs/product-information': '/fr/faq/product-information',
+    '/faqs/safety-and-security': '/fr/faq/safety-and-security',
+    '/faqs/purchasing-and-ordering': '/fr/faq/purchasing-and-ordering',
+    '/faqs/customization': '/fr/faq/customization',
+    '/faqs/ballistic-protection': '/fr/faq/ballistic-protection',
+    '/faqs/maintenance-and-support': '/fr/faq/maintenance-and-support',
+
+    // FAQs – Individual Articles
+    '/faqs/are-the-suspension-and-brakes-upgraded-to-allow-for-the-extra-weight': '/fr/faq/are-the-suspension-and-brakes-upgraded-to-allow-for-the-extra-weight',
+    '/faqs/can-civilians-buy-armored-vehicles-in-the-usa': '/fr/faq/can-civilians-buy-armored-vehicles-in-the-usa',
+    '/faqs/can-i-bulletproof-any-vehicle': '/fr/faq/can-i-bulletproof-any-vehicle',
+    '/faqs/can-i-just-add-bulletproof-glass-to-my-vehicle': '/fr/faq/can-i-just-add-bulletproof-glass-to-my-vehicle',
+    '/faqs/can-i-send-you-my-vehicle-to-armor': '/fr/faq/can-i-send-you-my-vehicle-to-armor',
+    '/faqs/do-i-need-a-special-license-to-drive-an-armored-car-in-the-united-states': '/fr/faq/do-i-need-a-special-license-to-drive-an-armored-car-in-the-united-states',
+    '/faqs/do-i-need-an-export-license-to-ship-armored-vehicles-outside-of-the-united-states': '/fr/faq/do-i-need-an-export-license-to-ship-armored-vehicles-outside-of-the-united-states',
+    '/faqs/how-do-i-insure-my-armored-car': '/fr/faq/how-do-i-insure-my-armored-car',
+    '/faqs/how-do-i-know-what-protection-level-i-need': '/fr/faq/how-do-i-know-what-protection-level-i-need',
+    '/faqs/how-do-i-pay-for-a-vehicle-and-does-alpine-offer-financing': '/fr/faq/how-do-i-pay-for-a-vehicle-and-does-alpine-offer-financing',
+    '/faqs/how-does-a-warranty-work-on-the-vehicle-itself-and-the-armoring-parts': '/fr/faq/how-does-a-warranty-work-on-the-vehicle-itself-and-the-armoring-parts',
+    '/faqs/how-local-police-can-apply-for-federal-or-homeland-security-grants': '/fr/faq/how-local-police-can-apply-for-federal-or-homeland-security-grants',
+    '/faqs/how-long-does-it-take-to-have-a-vehicle-armored': '/fr/faq/how-long-does-it-take-to-have-a-vehicle-armored',
+    '/faqs/how-much-armored-weight-is-usually-added-to-these-vehicles': '/fr/faq/how-much-armored-weight-is-usually-added-to-these-vehicles',
+    '/faqs/how-much-does-it-cost-to-get-an-armored-vehicle': '/fr/faq/how-much-does-it-cost-to-get-an-armored-vehicle',
+    '/faqs/how-thick-is-bulletproof-glass': '/fr/faq/how-thick-is-bulletproof-glass',
+    '/faqs/is-there-a-training-course-that-i-can-take-to-learn-to-operate-an-armored-car': '/fr/faq/is-there-a-training-course-that-i-can-take-to-learn-to-operate-an-armored-car',
+    '/faqs/what-do-people-mean-by-armored-vehicles': '/fr/faq/what-do-people-mean-by-armored-vehicles',
+    '/faqs/why-do-people-need-armored-cars': '/fr/faq/why-do-people-need-armored-cars',
+
+    // Locations – Listing only (individual locations handled by regex)
+    '/locations-we-serve': '/fr/regions-desservies',
+  },
 };
 
 function fixMarkdownLinks(text, locale) {
@@ -345,20 +656,21 @@ function fixMarkdownLinks(text, locale) {
     return mappings[standaloneUrl] || standaloneUrl;
   });
 
-  // Regex passes for ES locale: patterns that can't be covered by static URL_MAPPINGS
-  if (locale === 'es') {
+  // Regex passes: patterns that can't be covered by static URL_MAPPINGS
+  const regexCfg = LOCALE_REGEX_CONFIG[locale];
+  if (regexCfg) {
     // Translate /locations-we-serve/<slug> URLs (200+ locations handled automatically)
     fixedText = fixedText.replace(
       /\/locations-we-serve\/([^")\s]+)/g,
-      '/es/ubicaciones-que-servimos/$1'
+      `${regexCfg.locationsPrefix}/$1`
     );
 
     // Translate /vehicles-we-armor/type/<type>?<query> URLs (type+make filter combos)
     fixedText = fixedText.replace(
       /\/vehicles-we-armor\/type\/([\w-]+)(\?[^")\s]*)/g,
       (match, typeSlug, query) => {
-        const esType = VEHICLE_TYPE_MAP[typeSlug];
-        if (esType) return `/es/vehiculos-que-blindamos/tipo/${esType}${query}`;
+        const mapped = VEHICLE_TYPE_MAP[locale]?.[typeSlug];
+        if (mapped) return `${regexCfg.vehiclesTypePrefix}/${mapped}${query}`;
         return match;
       }
     );
