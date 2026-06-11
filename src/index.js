@@ -562,6 +562,8 @@ const URL_MAPPINGS = {
     '/blog/what-makes-an-armored-car-more-secure-than-other-cars': '/fr/blog/quest-ce-qui-rend-un-vehicule-blinde-plus-sur-que-les-autres-voitures',
     '/blog/what-you-should-know-about-armored-cars': '/fr/blog/ce-quil-faut-savoir-sur-les-vehicules-blindes',
     '/blog/why-the-ultra-wealthy-choose-custom-armored-vehicles': '/fr/blog/pourquoi-les-personnes-extremement-riches-optent-elles-pour-des-vehicules-blindes-sur-mesure',
+    '/blog/how-much-does-an-armored-vehicle-cost': '/fr/blog/combien-coute-un-vehicule-blinde',
+    '/blog/armored-electric-vehicles-guide': '/fr/blog/guide-des-vehicules-electriques-blindes',
 
     // News
     '/news': '/fr/actualites',
