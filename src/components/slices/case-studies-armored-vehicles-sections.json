@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_slices_case_studies_armored_vehicles_sections",
+  "info": {
+    "displayName": "caseStudiesArmoredVehiclesSections"
+  },
+  "options": {},
+  "attributes": {
+    "sections": {
+      "type": "enumeration",
+      "enum": [
+        "anchor",
+        "federal-government",
+        "us-law-enforcement",
+        "international",
+        "engineering"
+      ]
+    },
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

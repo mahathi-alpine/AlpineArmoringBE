@@ -2765,6 +2765,328 @@ export interface ApiBlogPageBlogPage extends Schema.SingleType {
   };
 }
 
+export interface ApiCaseStudiesArmoredVehicleCaseStudiesArmoredVehicle
+  extends Schema.CollectionType {
+  collectionName: 'case_studies_armored_vehicles';
+  info: {
+    singularName: 'case-studies-armored-vehicle';
+    pluralName: 'case-studies-armored-vehicles';
+    displayName: 'CaseStudiesArmoredVehicles';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    meta: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    body: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    proves: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    imageAlt: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    routes: Attribute.Component<'slices.button', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<50>;
+    category: Attribute.Enumeration<
+      [
+        'anchor',
+        'federal-government',
+        'us-law-enforcement',
+        'international',
+        'engineering'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::case-studies-armored-vehicle.case-studies-armored-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::case-studies-armored-vehicle.case-studies-armored-vehicle',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::case-studies-armored-vehicle.case-studies-armored-vehicle',
+      'oneToMany',
+      'api::case-studies-armored-vehicle.case-studies-armored-vehicle'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiCaseStudiesArmoredVehiclesPageCaseStudiesArmoredVehiclesPage
+  extends Schema.SingleType {
+  collectionName: 'case_studies_armored_vehicles_pages';
+  info: {
+    singularName: 'case-studies-armored-vehicles-page';
+    pluralName: 'case-studies-armored-vehicles-pages';
+    displayName: 'CaseStudiesArmoredVehiclesPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    heroEyebrow: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    heroTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    heroSubtitle: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    heroStats: Attribute.Component<'slices.button', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    cta: Attribute.Component<'slices.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    anchorSectionTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    anchorBadge: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    anchorEyebrow: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    sections: Attribute.Component<
+      'slices.case-studies-armored-vehicles-sections',
+      true
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    whoWeServeEyebrow: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    whoWeServeTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    audiences: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    closingEyebrow: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    closingTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    closingBody: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    closingButton1: Attribute.Component<'slices.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    closingButton2: Attribute.Component<'slices.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::case-studies-armored-vehicles-page.case-studies-armored-vehicles-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::case-studies-armored-vehicles-page.case-studies-armored-vehicles-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::case-studies-armored-vehicles-page.case-studies-armored-vehicles-page',
+      'oneToMany',
+      'api::case-studies-armored-vehicles-page.case-studies-armored-vehicles-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
@@ -8028,6 +8350,8 @@ declare module '@strapi/types' {
       'api::blog-armored-vehicle.blog-armored-vehicle': ApiBlogArmoredVehicleBlogArmoredVehicle;
       'api::blog-evergreen.blog-evergreen': ApiBlogEvergreenBlogEvergreen;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
+      'api::case-studies-armored-vehicle.case-studies-armored-vehicle': ApiCaseStudiesArmoredVehicleCaseStudiesArmoredVehicle;
+      'api::case-studies-armored-vehicles-page.case-studies-armored-vehicles-page': ApiCaseStudiesArmoredVehiclesPageCaseStudiesArmoredVehiclesPage;
       'api::category.category': ApiCategoryCategory;
       'api::condor-contact.condor-contact': ApiCondorContactCondorContact;
       'api::condor-homepage.condor-homepage': ApiCondorHomepageCondorHomepage;

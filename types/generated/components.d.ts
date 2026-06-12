@@ -186,6 +186,27 @@ export interface SlicesButton extends Schema.Component {
   };
 }
 
+export interface SlicesCaseStudiesArmoredVehiclesSections
+  extends Schema.Component {
+  collectionName: 'components_slices_case_studies_armored_vehicles_sections';
+  info: {
+    displayName: 'caseStudiesArmoredVehiclesSections';
+  };
+  attributes: {
+    sections: Attribute.Enumeration<
+      [
+        'anchor',
+        'federal-government',
+        'us-law-enforcement',
+        'international',
+        'engineering'
+      ]
+    >;
+    eyebrow: Attribute.String;
+    title: Attribute.String;
+  };
+}
+
 export interface SlicesEventSnippet extends Schema.Component {
   collectionName: 'components_slices_event_snippets';
   info: {
@@ -514,6 +535,7 @@ declare module '@strapi/types' {
       'slices.before-after-slider': SlicesBeforeAfterSlider;
       'slices.big-section': SlicesBigSection;
       'slices.button': SlicesButton;
+      'slices.case-studies-armored-vehicles-sections': SlicesCaseStudiesArmoredVehiclesSections;
       'slices.event-snippet': SlicesEventSnippet;
       'slices.media-password-protected': SlicesMediaPasswordProtected;
       'slices.options': SlicesOptions;
