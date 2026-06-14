@@ -49,7 +49,7 @@
 /vehicles-we-armor?make=toyota -> /fr/vehicules-que-nous-blindons?make=toyota
 /vehicles-we-armor?make=typhoon -> /fr/vehicules-que-nous-blindons?make=typhoon
 /vehicles-we-armor/type/special-of-the-month -> /fr/vehicules-que-nous-blindons/type/offre-du-mois
-/vehicles-we-armor/type/armored-suvs -> /fr/vehicules-que-nous-blindons/type/vus-blindes
+/vehicles-we-armor/type/armored-suvs -> /fr/vehicules-que-nous-blindons/type/suv-blindes
 /vehicles-we-armor/type/armored-sedans -> /fr/vehicules-que-nous-blindons/type/berlines-blindees
 /vehicles-we-armor/type/armored-pickup-trucks -> /fr/vehicules-que-nous-blindons/type/camionnettes-blindees
 /vehicles-we-armor/type/armored-law-enforcement -> /fr/vehicules-que-nous-blindons/type/forces-de-lordre-blindees
@@ -158,7 +158,7 @@
 /vehicles-we-armor/armored-volkswagen-atlas -> /fr/vehicules-que-nous-blindons/volkswagen-atlas-blindee
 /armored-vehicles-for-sale -> /fr/vehicules-blindes-a-vendre
 /available-now/type/special-of-the-month -> /fr/disponible-maintenant/type/offre-du-mois
-/available-now/type/armored-suvs -> /fr/disponible-maintenant/type/vus-blindes
+/available-now/type/armored-suvs -> /fr/disponible-maintenant/type/suv-blindes
 /available-now/type/armored-sedans -> /fr/disponible-maintenant/type/berlines-blindees
 /available-now/type/armored-pickup-trucks -> /fr/disponible-maintenant/type/camionnettes-blindees
 /available-now/type/armored-law-enforcement -> /fr/disponible-maintenant/type/forces-de-lordre-blindees

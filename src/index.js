@@ -17,7 +17,7 @@ const VEHICLE_TYPE_MAP = {
   },
   fr: {
     'special-of-the-month': 'offre-du-mois',
-    'armored-suvs': 'vus-blindes',
+    'armored-suvs': 'suv-blindes',
     'armored-sedans': 'berlines-blindees',
     'armored-pickup-trucks': 'camionnettes-blindees',
     'armored-law-enforcement': 'forces-de-lordre-blindees',
@@ -396,7 +396,7 @@ const URL_MAPPINGS = {
 
     // Vehicles We Armor – Type Categories
     '/vehicles-we-armor/type/special-of-the-month': '/fr/vehicules-que-nous-blindons/type/offre-du-mois',
-    '/vehicles-we-armor/type/armored-suvs': '/fr/vehicules-que-nous-blindons/type/vus-blindes',
+    '/vehicles-we-armor/type/armored-suvs': '/fr/vehicules-que-nous-blindons/type/suv-blindes',
     '/vehicles-we-armor/type/armored-sedans': '/fr/vehicules-que-nous-blindons/type/berlines-blindees',
     '/vehicles-we-armor/type/armored-pickup-trucks': '/fr/vehicules-que-nous-blindons/type/camionnettes-blindees',
     '/vehicles-we-armor/type/armored-law-enforcement': '/fr/vehicules-que-nous-blindons/type/forces-de-lordre-blindees',
@@ -511,7 +511,7 @@ const URL_MAPPINGS = {
 
     // Available Now – Type Categories
     '/available-now/type/special-of-the-month': '/fr/disponible-maintenant/type/offre-du-mois',
-    '/available-now/type/armored-suvs': '/fr/disponible-maintenant/type/vus-blindes',
+    '/available-now/type/armored-suvs': '/fr/disponible-maintenant/type/suv-blindes',
     '/available-now/type/armored-sedans': '/fr/disponible-maintenant/type/berlines-blindees',
     '/available-now/type/armored-pickup-trucks': '/fr/disponible-maintenant/type/camionnettes-blindees',
     '/available-now/type/armored-law-enforcement': '/fr/disponible-maintenant/type/forces-de-lordre-blindees',
