@@ -248,5 +248,5 @@
 /faqs/how-thick-is-bulletproof-glass -> /fr/faq/quelle-est-lepaisseur-du-verre-pare-balles
 /faqs/is-there-a-training-course-that-i-can-take-to-learn-to-operate-an-armored-car -> /fr/faq/existe-t-il-une-formation-que-je-pourrais-suivre-pour-apprendre-a-conduire-un-vehicule-blinde
 /faqs/what-do-people-mean-by-armored-vehicles -> /fr/faq/que-veut-on-dire-exactement-par-vehicules-blindes
-/faqs/why-do-people-need-armored-cars -> /fr/faq/pourquoi-a-t-on-besoin-de-voitures-blindees
+/faqs/why-do-people-need-armored-cars -> /fr/faq/pourquoi-les-gens-ont-ils-besoin-de-voitures-blindees
 /locations-we-serve -> /fr/regions-desservies

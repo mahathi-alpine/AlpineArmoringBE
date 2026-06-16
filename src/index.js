@@ -331,7 +331,7 @@ const URL_MAPPINGS = {
     '/faqs/how-thick-is-bulletproof-glass': '/es/preguntas-frecuentes/que-grosor-tiene-el-cristal-antibalas',
     '/faqs/is-there-a-training-course-that-i-can-take-to-learn-to-operate-an-armored-car': '/es/preguntas-frecuentes/existe-un-curso-de-formacion-para-aprender-a-manejar-un-vehiculo-blindado',
     '/faqs/what-do-people-mean-by-armored-vehicles': '/es/preguntas-frecuentes/que-entiende-la-gente-por-vehiculos-armados',
-    '/faqs/why-do-people-need-armored-cars': '/es/preguntas-frecuentes/por-que-necesitan-las-personas-coches-blindados',
+    '/faqs/why-do-people-need-armored-cars': '/es/preguntas-frecuentes/pourquoi-les-gens-ont-ils-besoin-de-voitures-blindees',
 
     // Locations – Listing only (individual locations handled by regex)
     '/locations-we-serve': '/es/ubicaciones-que-servimos',
