@@ -4766,6 +4766,12 @@ export interface ApiKnowledgeBaseKnowledgeBase extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
+    image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
