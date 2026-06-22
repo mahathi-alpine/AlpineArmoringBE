@@ -5940,6 +5940,136 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
   };
 }
 
+export interface ApiPointerHomepagePointerHomepage extends Schema.SingleType {
+  collectionName: 'pointer_homepages';
+  info: {
+    singularName: 'pointer-homepage';
+    pluralName: 'pointer-homepages';
+    displayName: 'POINTERHomepage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    otherPagesTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    otherPages: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehiclesTitle: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehiclesText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    otherPagesText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehicles: Attribute.Relation<
+      'api::pointer-homepage.pointer-homepage',
+      'oneToMany',
+      'api::vehicles-alternative.vehicles-alternative'
+    > &
+      Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    stickySections: Attribute.Component<'slices.sticky-sections'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    bottomText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pointer-homepage.pointer-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pointer-homepage.pointer-homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::pointer-homepage.pointer-homepage',
+      'oneToMany',
+      'api::pointer-homepage.pointer-homepage'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
   collectionName: 'privacy_policies';
   info: {
@@ -8387,6 +8517,7 @@ declare module '@strapi/types' {
       'api::pitbull-contact.pitbull-contact': ApiPitbullContactPitbullContact;
       'api::pitbull-history.pitbull-history': ApiPitbullHistoryPitbullHistory;
       'api::pitbull-homepage.pitbull-homepage': ApiPitbullHomepagePitbullHomepage;
+      'api::pointer-homepage.pointer-homepage': ApiPointerHomepagePointerHomepage;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;
       'api::rentals-contact-page.rentals-contact-page': ApiRentalsContactPageRentalsContactPage;
