@@ -475,7 +475,7 @@ const URL_MAPPINGS = {
     '/vehicles-we-armor/armored-pit-bull-vxt': '/fr/vehicules-que-nous-blindons/armored-pit-bull-vxt',
     '/vehicles-we-armor/armored-pit-bull-vxt-50-cal': '/fr/vehicules-que-nous-blindons/pitbull-blinde-vxt-calibre-50',
     '/vehicles-we-armor/armored-pointer-mobile-command': '/fr/vehicules-que-nous-blindons/vehicule-blinde-de-commandement-mobile',
-    '/vehicles-we-armor/armored-pointer-swat-van-sprinter': '/fr/vehicules-que-nous-blindons/fourgon-blinde-de-la-brigade-dintervention-speciale-swat-sprinter',
+    '/vehicles-we-armor/armored-pointer-swat-van-sprinter': '/fr/vehicules-que-nous-blindons/fourgon-blinde-de-la-swat-sprinter',
     '/vehicles-we-armor/armored-pointer-swat-van-transit': '/fr/vehicules-que-nous-blindons/fourgon-blinde-de-transport-de-fonds',
     '/vehicles-we-armor/armored-range-rover': '/fr/vehicules-que-nous-blindons/range-rover-blinde',
     '/vehicles-we-armor/armored-range-rover-sport': '/fr/vehicules-que-nous-blindons/range-rover-sport-blinde',
@@ -565,7 +565,7 @@ const URL_MAPPINGS = {
     '/blog/why-the-ultra-wealthy-choose-custom-armored-vehicles': '/fr/blog/pourquoi-les-personnes-extremement-riches-choisissent-elles-des-vehicules-blindes-sur-mesure',
     '/blog/how-much-does-an-armored-vehicle-cost': '/fr/blog/combien-coute-un-vehicule-blinde',
     '/blog/armored-electric-vehicles-guide': '/fr/blog/guide-des-vehicules-electriques-blindes',
-    '/blog/armored-cars-for-professional-athletes': '/fr/blog/voitures-blindees-pour-les-athletes-professionnels',
+    '/blog/armored-cars-for-professional-athletes': '/fr/blog/voitures-blindees-pour-les-sportifs-professionnels',
 
     // News
     '/news': '/fr/actualites',
@@ -617,7 +617,7 @@ const URL_MAPPINGS = {
     '/faqs/how-thick-is-bulletproof-glass': '/fr/faq/quelle-est-lepaisseur-dun-verre-pare-balles',
     '/faqs/is-there-a-training-course-that-i-can-take-to-learn-to-operate-an-armored-car': '/fr/faq/existe-t-il-une-formation-que-je-pourrais-suivre-pour-apprendre-a-conduire-un-vehicule-blinde',
     '/faqs/what-do-people-mean-by-armored-vehicles': '/fr/faq/que-veut-on-dire-exactement-par-vehicules-blindes',
-    '/faqs/why-do-people-need-armored-cars': '/fr/faq/pourquoi-a-t-on-besoin-de-voitures-blindees',
+    '/faqs/why-do-people-need-armored-cars': '/fr/faq/pourquoi-les-gens-ont-ils-besoin-de-voitures-blindees',
 
     // Locations – Listing only (individual locations handled by regex)
     '/locations-we-serve': '/fr/regions-desservies',
