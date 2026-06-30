@@ -4190,21 +4190,21 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
           translate: 'translate';
         };
       }>;
-    event: Attribute.Component<'slices.event-snippet'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     faqs: Attribute.Relation<
       'api::homepage.homepage',
       'oneToMany',
       'api::knowledge-base.knowledge-base'
     > &
       Attribute.SetPluginOptions<{
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    events: Attribute.Component<'slices.event-snippet', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
         translate: {
           translate: 'translate';
         };

@@ -48,7 +48,7 @@ const populate = {
   hpMiddleText:{
     populate: true
   },
-  event:{
+  events:{
     populate: {
       media: {
         populate: true
