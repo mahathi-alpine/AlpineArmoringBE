@@ -14,13 +14,15 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       return ctx.badRequest('Missing required fields');
     }
 
-    // message is required for normal contact forms, but the rentals form and the Pit-Bull
-    // configurator flows (requestPassword / requestInquiry) legitimately omit it — so don't
-    // require it there, otherwise those valid submissions would be wrongly rejected.
+    // message is required for normal contact forms, but the rentals form, the Pit-Bull
+    // configurator flows (requestPassword / requestInquiry) and the store-only show forms
+    // (skipEmail) legitimately omit it — so don't require it there, otherwise those valid
+    // submissions would be wrongly rejected.
     const messageOptional =
       data.domain === 'rentals' ||
       data.inquiry === 'requestPassword' ||
-      data.inquiry === 'requestInquiry';
+      data.inquiry === 'requestInquiry' ||
+      data.skipEmail;
     if (!messageOptional && isBlank(data.message)) {
       return ctx.badRequest('Missing required fields');
     }
@@ -44,6 +46,15 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     }
 
     const emailData = await super.create(ctx);
+
+    // Store-only forms (e.g. the trade-show landing pages): the submission is saved in
+    // Strapi above, but no notification email is sent.
+    if (data.skipEmail) {
+      console.log('[email] skipEmail set — submission stored, no email sent', {
+        inquiry: data.inquiry || '(none)',
+      });
+      return emailData;
+    }
 
     const { name, email, mobileNumber, phoneNumber, company, inquiry, preferredContact, hear, country, state, message, route, date, fromDate, toDate, mileage, driverNeeded, vehicleType, vehicleModel, domain, trackingData } = data;
 

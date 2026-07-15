@@ -72,6 +72,12 @@
     "trackingData": {
       "type": "json",
       "required": false
+    },
+    "representative": {
+      "type": "string"
+    },
+    "importance": {
+      "type": "string"
     }
   }
 }
