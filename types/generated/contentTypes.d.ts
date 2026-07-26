@@ -6072,6 +6072,50 @@ export interface ApiPointerHomepagePointerHomepage extends Schema.SingleType {
   };
 }
 
+export interface ApiPointerTacticalFeaturePointerTacticalFeature
+  extends Schema.SingleType {
+  collectionName: 'pointer_tactical_features';
+  info: {
+    singularName: 'pointer-tactical-feature';
+    pluralName: 'pointer-tactical-features';
+    displayName: 'POINTERTacticalFeatures';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'>;
+    dynamicZone: Attribute.DynamicZone<
+      [
+        'slices.youtube-video',
+        'slices.repeatable-component',
+        'slices.two-images',
+        'slices.sticky-sections',
+        'slices.two-columns-text',
+        'slices.stacking-cards',
+        'slices.text',
+        'slices.spacing',
+        'slices.single-media'
+      ]
+    >;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pointer-tactical-feature.pointer-tactical-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pointer-tactical-feature.pointer-tactical-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.SingleType {
   collectionName: 'privacy_policies';
   info: {
@@ -8520,6 +8564,7 @@ declare module '@strapi/types' {
       'api::pitbull-history.pitbull-history': ApiPitbullHistoryPitbullHistory;
       'api::pitbull-homepage.pitbull-homepage': ApiPitbullHomepagePitbullHomepage;
       'api::pointer-homepage.pointer-homepage': ApiPointerHomepagePointerHomepage;
+      'api::pointer-tactical-feature.pointer-tactical-feature': ApiPointerTacticalFeaturePointerTacticalFeature;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::rental-policy.rental-policy': ApiRentalPolicyRentalPolicy;
       'api::rentals-contact-page.rentals-contact-page': ApiRentalsContactPageRentalsContactPage;
