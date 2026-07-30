@@ -6,20 +6,18 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
   async create(ctx) {
     const { data } = ctx.request.body || {};
 
-    // Guard 1: required fields must be present. The frontend forms block empty submits,
-    // but direct API calls / bots bypass the frontend — so enforce it here too.
-    // Reason: prevents blank junk records and blank emails to sales@.
+    // Enforced here too since the API can be called directly, bypassing frontend validation
     const isBlank = (v) => v === undefined || v === null || String(v).trim() === '';
     if (!data || isBlank(data.name) || isBlank(data.email)) {
       return ctx.badRequest('Missing required fields');
     }
 
-    // message is required for normal contact forms, but the rentals form, the Pit-Bull
-    // configurator flows (requestPassword / requestInquiry) and the store-only show forms
-    // (skipEmail) legitimately omit it — so don't require it there, otherwise those valid
-    // submissions would be wrongly rejected.
+    // message is optional for: rentals, trade-show landing forms (the-quail, pebble-beach),
+    // Pit-Bull configurator (requestPassword/requestInquiry), and skipEmail submissions
     const messageOptional =
       data.domain === 'rentals' ||
+      data.domain === 'the-quail' ||
+      data.domain === 'pebble-beach' ||
       data.inquiry === 'requestPassword' ||
       data.inquiry === 'requestInquiry' ||
       data.skipEmail;
@@ -27,13 +25,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       return ctx.badRequest('Missing required fields');
     }
 
-    // Guard 2: reject submissions containing HTML/script injection.
-    // Reason: blocks stored-XSS / email HTML-injection at the source.
-    // dangerousPattern catches genuinely harmful content in ANY field — script/iframe/embed
-    // tags, links and images (phishing / tracking pixels), javascript: URLs, and inline event
-    // handlers. anyTagPattern additionally rejects any other HTML-looking tag (e.g. "<b>") in
-    // the short fields. The free-text "message" is exempt from anyTagPattern so people can write
-    // stray comparisons like "I want a car < $50000 > my budget"; dangerousPattern still guards it.
+    // Blocks stored-XSS/HTML-injection. anyTagPattern is skipped for "message" so free text
+    // like "car < $50000 > budget" isn't rejected; dangerousPattern still applies to it.
     const dangerousPattern = /<\s*\/?\s*(?:script|iframe|object|embed|a|img|svg|link|style|form|input|base|meta)\b|javascript:|on\w+\s*=/i;
     const anyTagPattern = /<\s*\/?\s*[a-z][^>]*>/i;
     const hasInjection = Object.entries(data).some(([key, value]) => {
@@ -47,8 +40,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
     const emailData = await super.create(ctx);
 
-    // Store-only forms (e.g. the trade-show landing pages): the submission is saved in
-    // Strapi above, but no notification email is sent.
+    // skipEmail forms: submission stored above, no notification email sent
     if (data.skipEmail) {
       console.log('[email] skipEmail set — submission stored, no email sent', {
         inquiry: data.inquiry || '(none)',
@@ -81,17 +73,16 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         .replace(/\n/g, '<br/>');
     };
 
-    // Domain-specific email configuration
-    // `label` is the big, obvious domain name banner shown at the very top of the email body.
+    // `label` is the domain banner shown at the top of the email body
     const domainConfig = {
-      swats:            { sender: 'EMAIL_SENDER_SWATS',    subject: 'SWAT - Alpine Armoring',        dark: '#006400', light: '#88E788', label: 'SWAT' },
-      rentals:          { sender: 'EMAIL_SENDER_RENTALS',  subject: 'Rental - Alpine Armoring',      dark: '#06374e', light: '#84a8cc', label: 'RENTALS' },
+      swats:            { sender: 'EMAIL_SENDER_SWATS',    subject: 'SWAT - Alpine Armoring',        dark: '#006400', light: '#88E788', label: 'SWAT.COM' },
+      rentals:          { sender: 'EMAIL_SENDER_RENTALS',  subject: 'Rental - Alpine Armoring',      dark: '#06374e', light: '#84a8cc', label: 'RENTALS.COM' },
       armoring:         { sender: 'EMAIL_SENDER_ARMORING', subject: 'Armoring.com',                  dark: '#BC1948', light: '#171717', label: 'ARMORING.COM' },
-      condor:           { sender: 'EMAIL_SENDER_CONDOR',   subject: 'Condor - Alpine Armoring',      dark: '#E3963E', light: '#F2D2BD', label: 'CONDOR' },
+      condor:           { sender: 'EMAIL_SENDER_CONDOR',   subject: 'Condor - Alpine Armoring',      dark: '#E3963E', light: '#F2D2BD', label: 'CONDOR.US' },
       armoredvehicles:  { sender: 'EMAIL_SENDER_ARMOREDVEHICLES',    subject: 'ArmoredVehicles.com', dark: '#101010', light: '#A7A7A7', label: 'ARMOREDVEHICLES.COM' },
-      pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB', label: 'PIT-BULL' },
+      pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB', label: 'PIT-BULL.NET' },
       application:      { sender: 'EMAIL_SENDER_MAIN',    subject: 'Application - Alpine Armoring',  dark: '#FF3300', light: '#ffd2c7', label: 'APPLICATION' },
-      vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#FFFF00', light: '#ffffc8', label: 'VANS' },
+      vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#FFFF00', light: '#ffffc8', label: 'ARMOREDVANS.COM' },
       'pebble-beach':   { sender: 'EMAIL_SENDER_MAIN',   subject: 'Pebble Beach - Alpine Armoring',  dark: '#1B4D3E', light: '#C9A96E', label: 'PEBBLE BEACH' },
       'the-quail':      { sender: 'EMAIL_SENDER_MAIN',   subject: 'The Quail - Alpine Armoring',     dark: '#4A2E2A', light: '#D4AF37', label: 'THE QUAIL' },
     };
@@ -102,10 +93,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
     const sender = process.env[config.sender];
 
-    // Debug: surface the resolved sender so it's visible in AWS CloudWatch in real time.
-    // Reason: lets us confirm whether the env var (e.g. EMAIL_SENDER_VANS) is actually set
-    // and what address SES is being told to send from/to — the usual cause of "no email
-    // received" is an empty/undefined sender env var rather than a code bug.
+    // Logged to CloudWatch: usually "no email received" means the sender env var isn't set
     console.log('[email] incoming submission', {
       domain: domain || '(none)',
       matchedConfig: domain in domainConfig ? domain : 'default',
@@ -123,7 +111,6 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const domainLabel = config.label;
     let mainMessage = '';
 
-    // Extract vehicle type from route for Pit-Bull configurator
     const extractVehicleType = (routeStr) => {
       if (!routeStr) return '';
       const match = routeStr.match(/armored-([^/]+)$/);
@@ -133,7 +120,6 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const isPitbullConfigurator = inquiry === 'requestPassword' || inquiry === 'requestInquiry';
     const vehicleTypeFromRoute = isPitbullConfigurator ? extractVehicleType(route) : '';
 
-    // Pit-Bull configurator overrides subject and adds a main message
     if (domain === 'pitbull' && isPitbullConfigurator) {
       subjectPrefix = inquiry === 'requestPassword'
         ? `Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator password request`
@@ -143,10 +129,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         : `Inquiry for the Pit-Bull ${vehicleTypeFromRoute}® vehicle configurator`;
     }
 
-    // Reason: exact referrer matching (e.g. === 'https://www.google.com/') misses most traffic
-    // because document.referrer includes full URL path. Hostname-based matching fixes this.
-    // When exact is true, hostname must match exactly (needed for short domains like 't.co'
-    // to avoid substring false positives).
+    // Hostname match, not exact string match — document.referrer includes the full path.
+    // exact=true avoids substring false positives on short domains like 't.co'.
     const referrerIncludes = (referrer, hostname, exact = false) => {
       try {
         const host = new URL(referrer).hostname;
@@ -156,8 +140,6 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       }
     };
 
-    // Reason: most lead sources share the same pattern — match referrer hostname and exclude gclid.
-    // This helper builds those check functions from a simple hostname list, reducing repetition.
     const referrerSource = (hostname, exact = false) =>
       (data) => !!(referrerIncludes(data.referrer, hostname, exact) && !data.gclid);
 
@@ -202,7 +184,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       { name: 'TikTok',           color: 'orange', check: referrerSource('tiktok.com') },
       { name: 'LinkedIn',         color: 'orange', check: referrerSource('linkedin.com') },
       {
-        // Reason: 't.co' needs exact hostname match to avoid substring false positives (e.g. 'etc.com')
+        // 't.co' needs exact match to avoid substring false positives (e.g. 'etc.com')
         name: 'Twitter/X',
         color: 'orange',
         check: (data) => !!(
@@ -527,9 +509,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
           </table>
         `
       });
-      // Debug: the plugin's send() resolves only when SES accepts the message and rejects
-      // (-> catch block below) when SES errors. So this success line firing means SES
-      // accepted the message; a delivery failure after this point is downstream, not here.
+      // send() only resolves on SES acceptance; delivery failures after this are downstream
       console.log(`[email] sent successfully — domain "${domain}", to ${sender}`);
     } catch (err) {
       console.error(`[email] FAILED to send — domain "${domain}", sender env ${config.sender}=${sender || '(undefined)'}:`, err);

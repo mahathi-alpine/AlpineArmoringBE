@@ -26,11 +26,9 @@ module.exports = (config, { strapi }) => {
       '150.109'
     ];
 
-    // Check if IP is in blocked range
     const isBlockedIP = blockedIPRanges.some(range => ip.startsWith(range));
 
     if (isBlockedIP) {
-      // Log the blocked attempt
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
       console.log('🚫 BOT BLOCKED');
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
