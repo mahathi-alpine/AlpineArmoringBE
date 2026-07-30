@@ -82,18 +82,21 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     };
 
     // Domain-specific email configuration
+    // `label` is the big, obvious domain name banner shown at the very top of the email body.
     const domainConfig = {
-      swats:            { sender: 'EMAIL_SENDER_SWATS',    subject: 'SWAT - Alpine Armoring',        dark: '#006400', light: '#88E788' },
-      rentals:          { sender: 'EMAIL_SENDER_RENTALS',  subject: 'Rental - Alpine Armoring',      dark: '#06374e', light: '#84a8cc' },
-      armoring:         { sender: 'EMAIL_SENDER_ARMORING', subject: 'Armoring.com',                  dark: '#BC1948', light: '#171717' },
-      condor:           { sender: 'EMAIL_SENDER_CONDOR',   subject: 'Condor - Alpine Armoring',      dark: '#E3963E', light: '#F2D2BD' },
-      armoredvehicles:  { sender: 'EMAIL_SENDER_ARMOREDVEHICLES',    subject: 'ArmoredVehicles.com', dark: '#101010', light: '#A7A7A7' },
-      pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB' },
-      application:      { sender: 'EMAIL_SENDER_MAIN',    subject: 'Application - Alpine Armoring',  dark: '#FF3300', light: '#ffd2c7' },
-      vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#FFFF00', light: '#ffffc8' },
+      swats:            { sender: 'EMAIL_SENDER_SWATS',    subject: 'SWAT - Alpine Armoring',        dark: '#006400', light: '#88E788', label: 'SWAT' },
+      rentals:          { sender: 'EMAIL_SENDER_RENTALS',  subject: 'Rental - Alpine Armoring',      dark: '#06374e', light: '#84a8cc', label: 'RENTALS' },
+      armoring:         { sender: 'EMAIL_SENDER_ARMORING', subject: 'Armoring.com',                  dark: '#BC1948', light: '#171717', label: 'ARMORING.COM' },
+      condor:           { sender: 'EMAIL_SENDER_CONDOR',   subject: 'Condor - Alpine Armoring',      dark: '#E3963E', light: '#F2D2BD', label: 'CONDOR' },
+      armoredvehicles:  { sender: 'EMAIL_SENDER_ARMOREDVEHICLES',    subject: 'ArmoredVehicles.com', dark: '#101010', light: '#A7A7A7', label: 'ARMOREDVEHICLES.COM' },
+      pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB', label: 'PIT-BULL' },
+      application:      { sender: 'EMAIL_SENDER_MAIN',    subject: 'Application - Alpine Armoring',  dark: '#FF3300', light: '#ffd2c7', label: 'APPLICATION' },
+      vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#FFFF00', light: '#ffffc8', label: 'VANS' },
+      'pebble-beach':   { sender: 'EMAIL_SENDER_MAIN',   subject: 'Pebble Beach - Alpine Armoring',  dark: '#1B4D3E', light: '#C9A96E', label: 'PEBBLE BEACH' },
+      'the-quail':      { sender: 'EMAIL_SENDER_MAIN',   subject: 'The Quail - Alpine Armoring',     dark: '#4A2E2A', light: '#D4AF37', label: 'THE QUAIL' },
     };
 
-    const defaultConfig = { sender: 'EMAIL_SENDER_MAIN', subject: 'Alpine Armoring', dark: '#9c9477', light: '#c3bfaf' };
+    const defaultConfig = { sender: 'EMAIL_SENDER_MAIN', subject: 'Alpine Armoring', dark: '#9c9477', light: '#c3bfaf', label: 'ALPINE ARMORING (MAIN)' };
     const config = domainConfig[domain] || defaultConfig;
     const notMain = domain in domainConfig;
 
@@ -117,6 +120,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     let subjectPrefix = config.subject;
     const emailColorsDark = config.dark;
     const emailColorsLight = config.light;
+    const domainLabel = config.label;
     let mainMessage = '';
 
     // Extract vehicle type from route for Pit-Bull configurator
@@ -245,6 +249,13 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         html: isPitbullConfigurator ? `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
             <tbody>
+              <tr style="background-color:#000000;">
+                <td colspan="2" style="padding:8pt;">
+                  <p align="center" style="margin:0in;">
+                    <span style="color:#ffffff;font-size:20pt;font-weight:bold;letter-spacing:1px;">${domainLabel}</span>
+                  </p>
+                </td>
+              </tr>
               <tr style="background-color:${emailColorsDark}; color: white;">
                 <td colspan="2" style="padding:1.5pt">
                   <p align="center" style="margin:0in;">
@@ -327,6 +338,13 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         ` : `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
             <tbody>
+              <tr style="background-color:#000000;">
+                <td colspan="2" style="padding:8pt;">
+                  <p align="center" style="margin:0in;">
+                    <span style="color:#ffffff;font-size:20pt;font-weight:bold;letter-spacing:1px;">${domainLabel}</span>
+                  </p>
+                </td>
+              </tr>
               <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
                 <td colspan="2" style="padding:1.5pt">
                   <p align="center" style="margin:0in;">
