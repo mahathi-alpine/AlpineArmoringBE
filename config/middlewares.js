@@ -20,8 +20,9 @@ module.exports = [
     config: {
       origin: [
         'http://localhost:3000',
-        'http://localhost:1337',
         'http://localhost:3001',
+        'http://localhost:3002',
+        'http://localhost:1337',
         'http://localhost:8081',
         // 'https://alpinetesting.cloudflex-ha.com',
         'https://cms.alpine-web.com',
@@ -32,6 +33,8 @@ module.exports = [
         'https://thecondor.vercel.app',
         'https://thecondor.us',
         'https://armoredvehicles.com',
+        'https://armoredvans.com',
+        'https://www.thepointer.us',
         // 'https://alpine-armoring-fe-kappa.vercel.app',
         // 'https://alpine-pitbull.vercel.app'
       ],
