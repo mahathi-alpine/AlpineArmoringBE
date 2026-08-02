@@ -7,7 +7,8 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@retikolo/drag-drop-content-types": "^1.5.0",
@@ -43,5 +44,8 @@
     "node": ">=18.0.0",
     "yarn": "1.x"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "patch-package": "^8.0.1"
+  }
 }

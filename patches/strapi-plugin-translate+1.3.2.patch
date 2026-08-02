@@ -1,0 +1,41 @@
+diff --git a/node_modules/strapi-plugin-translate/server/services/format.js b/node_modules/strapi-plugin-translate/server/services/format.js
+index 09b094b..ea83e7f 100644
+--- a/node_modules/strapi-plugin-translate/server/services/format.js
++++ b/node_modules/strapi-plugin-translate/server/services/format.js
+@@ -11,14 +11,35 @@ const dom = new jsdom.JSDOM()
+ const showdownConverter = new showdown.Converter({
+   noHeaderId: true,
+   strikethrough: true,
++  tables: true,
+ })
+ 
+ const blocksImageCache = cacheManager.createCache({
+   ttl: TRANSLATE_BLOCKS_IMAGE_CACHE_TTL
+ })
+ 
++// Reason: showdown treats <div>...</div> as an opaque raw-HTML block and skips
++// markdown parsing of its contents (e.g. pipe tables) unless the tag carries a
++// markdown="1" attribute. Content editors wrap tables in <div class="..."> for
++// CSS styling, so mark only divs whose content actually contains a markdown
++// table (detected via its header separator row, e.g. "| --- | --- |") to
++// avoid reinterpreting unrelated div content as markdown.
++const TABLE_SEPARATOR_RE = /^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?\s*$/m
++
++function markDivsAsMarkdown(text) {
++  if (!text.includes('<div')) return text
++  return text.replace(
++    /<div(\s[^>]*)?>([\s\S]*?)<\/div>/gi,
++    (match, attrs, inner) => {
++      if (attrs && /\bmarkdown\s*=\s*["']?1["']?/i.test(attrs)) return match
++      if (!TABLE_SEPARATOR_RE.test(inner)) return match
++      return `<div${attrs || ''} markdown="1">${inner}</div>`
++    }
++  )
++}
++
+ function markdownToHtml(singleText) {
+-  return showdownConverter.makeHtml(singleText)
++  return showdownConverter.makeHtml(markDivsAsMarkdown(singleText))
+ }
+ 
+ function htmlToMarkdown(singleText) {
