@@ -4059,6 +4059,51 @@ export interface ApiFaqFaq extends Schema.SingleType {
   };
 }
 
+export interface ApiGlobalGlobal extends Schema.SingleType {
+  collectionName: 'globals';
+  info: {
+    singularName: 'global';
+    pluralName: 'globals';
+    displayName: '_GLOBAL';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    qrcodevideo: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::global.global',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::global.global',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::global.global',
+      'oneToMany',
+      'api::global.global'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHomepageHomepage extends Schema.SingleType {
   collectionName: 'homepages';
   info: {
@@ -8546,6 +8591,7 @@ declare module '@strapi/types' {
       'api::fa-qs-rental.fa-qs-rental': ApiFaQsRentalFaQsRental;
       'api::fa-qs-swat.fa-qs-swat': ApiFaQsSwatFaQsSwat;
       'api::faq.faq': ApiFaqFaq;
+      'api::global.global': ApiGlobalGlobal;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::inventory.inventory': ApiInventoryInventory;
       'api::knowledge-base.knowledge-base': ApiKnowledgeBaseKnowledgeBase;
