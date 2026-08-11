@@ -35,6 +35,7 @@ module.exports = [
         'https://armoredvehicles.com',
         'https://armoredvans.com',
         'https://www.thepointer.us',
+        'https://armoring.com'
         // 'https://alpine-armoring-fe-kappa.vercel.app',
         // 'https://alpine-pitbull.vercel.app'
       ],
