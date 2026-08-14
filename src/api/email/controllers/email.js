@@ -77,7 +77,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const domainConfig = {
       swats:            { sender: 'EMAIL_SENDER_SWATS',    subject: 'SWAT - Alpine Armoring',        dark: '#006400', light: '#88E788', label: 'SWAT.COM' },
       rentals:          { sender: 'EMAIL_SENDER_RENTALS',  subject: 'Rental - Alpine Armoring',      dark: '#06374e', light: '#84a8cc', label: 'RENTALS.COM' },
-      armoring:         { sender: 'EMAIL_SENDER_ARMORING', subject: 'Armoring.com',                  dark: '#BC1948', light: '#171717', label: 'ARMORING.COM' },
+      armoring:         { sender: 'EMAIL_SENDER_ARMORING', subject: 'Armoring.com',                  dark: '#BC1948', light: '#F2C6D6', label: 'ARMORING.COM' },
       condor:           { sender: 'EMAIL_SENDER_CONDOR',   subject: 'Condor - Alpine Armoring',      dark: '#E3963E', light: '#F2D2BD', label: 'CONDOR.US' },
       armoredvehicles:  { sender: 'EMAIL_SENDER_ARMOREDVEHICLES',    subject: 'ArmoredVehicles.com', dark: '#101010', light: '#A7A7A7', label: 'ARMOREDVEHICLES.COM' },
       pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB', label: 'PIT-BULL.NET' },
