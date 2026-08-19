@@ -2,9 +2,94 @@
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
+// --- Rate limiting ---------------------------------------------------------------------
+// In-memory, per-IP. This endpoint is shared by every Alpine frontend 
+// and — unlike Public role permissions — nothing stops it being hit directly, bypassing whatever per-frontend protection (reCAPTCHA, honeypot, rate-limit) each site's own contact-form route runs first. This is the backstop for that.
+// Unlike a serverless function's per-instance memory, Strapi is one long-running process, so this map isn't reset on every cold start — makes it a meaningfully stronger backstop here than the same pattern is on an individual frontend's own API route.
+
+const RATE_LIMIT_SHORT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const RATE_LIMIT_SHORT_MAX = 5;
+const RATE_LIMIT_DAY_WINDOW_MS = 24 * 60 * 60 * 1000; // 24 hours
+const RATE_LIMIT_DAY_MAX = 30;
+
+const rateLimitStore = new Map();
+let lastSweepAt = 0;
+const SWEEP_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+
+function isRateLimited(ip) {
+  const now = Date.now();
+
+  // Opportunistic TTL cleanup so the map doesn't grow unbounded over the process's
+  // lifetime — piggybacks on a normal request instead of needing its own timer.
+  // Throttled to once per SWEEP_INTERVAL_MS so it can't become a full-map scan on
+  // every single request once the store is past the size threshold.
+  if (rateLimitStore.size > 2000 && now - lastSweepAt > SWEEP_INTERVAL_MS) {
+    lastSweepAt = now;
+    for (const [key, entryTimestamps] of rateLimitStore) {
+      const kept = entryTimestamps.filter((t) => now - t < RATE_LIMIT_DAY_WINDOW_MS);
+      if (kept.length === 0) rateLimitStore.delete(key);
+      else rateLimitStore.set(key, kept);
+    }
+  }
+
+  const timestamps = (rateLimitStore.get(ip) || []).filter((t) => now - t < RATE_LIMIT_DAY_WINDOW_MS);
+  const shortWindowCount = timestamps.filter((t) => now - t < RATE_LIMIT_SHORT_WINDOW_MS).length;
+  if (shortWindowCount >= RATE_LIMIT_SHORT_MAX || timestamps.length >= RATE_LIMIT_DAY_MAX) {
+    rateLimitStore.set(ip, timestamps);
+    return true;
+  }
+
+  timestamps.push(now);
+  rateLimitStore.set(ip, timestamps);
+  return false;
+}
+
+// Same extraction order already used by bot-blocker.js / request-tracker.js in this repo —
+// kept consistent rather than introducing a third variant of the same header-fallback chain.
+function getClientIp(ctx) {
+  return (
+    ctx.request.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+    ctx.request.headers['x-real-ip'] ||
+    ctx.request.ip ||
+    ctx.ip ||
+    null
+  );
+}
+
+const HONEYPOT_FIELDS = ['hp_field_b7x'];
+
+function honeypotTripped(data) {
+  return HONEYPOT_FIELDS.some(
+    (field) => typeof data[field] === 'string' && data[field].trim() !== ''
+  );
+}
+
 module.exports = createCoreController('api::email.email', ({ strapi }) => ({
   async create(ctx) {
     const { data } = ctx.request.body || {};
+
+    const ip = getClientIp(ctx);
+    if (ip && isRateLimited(ip)) {
+      console.log('[email] rate-limited', { ip, path: ctx.path, domain: data?.domain || '(none)' });
+      ctx.status = 429;
+      ctx.body = {
+        data: null,
+        error: { status: 429, name: 'TooManyRequestsError', message: 'Too many requests' },
+      };
+      return;
+    }
+
+    if (data && honeypotTripped(data)) {
+      console.log('[email] honeypot tripped — dropped silently', {
+        ip,
+        domain: data.domain || '(none)',
+      });
+      // 2xx so a scripted client doesn't learn which tell caught it — mirrors the shape
+      // a real create() call returns, just with no record actually written.
+      ctx.status = 200;
+      ctx.body = { data: null, meta: {} };
+      return;
+    }
 
     // Enforced here too since the API can be called directly, bypassing frontend validation
     const isBlank = (v) => v === undefined || v === null || String(v).trim() === '';
