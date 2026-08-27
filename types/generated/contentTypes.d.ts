@@ -1445,6 +1445,200 @@ export interface ApiArmoredVehicleArmoredVehicle extends Schema.SingleType {
   };
 }
 
+export interface ApiArmoredVehiclesCertificationsAndTestingArmoredVehiclesCertificationsAndTesting
+  extends Schema.SingleType {
+  collectionName: 'armored_vehicle_cert_testing';
+  info: {
+    singularName: 'armored-vehicles-certifications-and-testing';
+    pluralName: 'armored-vehicles-certifications-and-testings';
+    displayName: 'ArmoredVehiclesCertificationsAndTesting';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    statsBand: Attribute.Component<'slices.stats', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    credentials: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    credentialsItems: Attribute.Component<'slices.tab-section', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    testingProgram: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    testingProgramItems: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    testingProgramVideo: Attribute.Component<'slices.single-media'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    testingProgramQuote: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    standards: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    standardsTable: Attribute.Component<'slices.ballistic-standard', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    trackRecord: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    trackRecordCase: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    procurement: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    procurementQuote: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    procurementExportCompliance: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    CTA: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::armored-vehicles-certifications-and-testing.armored-vehicles-certifications-and-testing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::armored-vehicles-certifications-and-testing.armored-vehicles-certifications-and-testing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::armored-vehicles-certifications-and-testing.armored-vehicles-certifications-and-testing',
+      'oneToMany',
+      'api::armored-vehicles-certifications-and-testing.armored-vehicles-certifications-and-testing'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiArmoringBallisticArmoringBallistic
   extends Schema.SingleType {
   collectionName: 'armoring_ballistics';
@@ -8564,6 +8758,7 @@ declare module '@strapi/types' {
       'api::all-download.all-download': ApiAllDownloadAllDownload;
       'api::application-about.application-about': ApiApplicationAboutApplicationAbout;
       'api::armored-vehicle.armored-vehicle': ApiArmoredVehicleArmoredVehicle;
+      'api::armored-vehicles-certifications-and-testing.armored-vehicles-certifications-and-testing': ApiArmoredVehiclesCertificationsAndTestingArmoredVehiclesCertificationsAndTesting;
       'api::armoring-ballistic.armoring-ballistic': ApiArmoringBallisticArmoringBallistic;
       'api::armoring-contact.armoring-contact': ApiArmoringContactArmoringContact;
       'api::armoring-homepage.armoring-homepage': ApiArmoringHomepageArmoringHomepage;
