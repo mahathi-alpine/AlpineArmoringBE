@@ -1508,16 +1508,7 @@ export interface ApiArmoredVehiclesCertificationsAndTestingArmoredVehiclesCertif
           translate: 'translate';
         };
       }>;
-    testingProgramItems: Attribute.Component<'slices.text'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
-    testingProgramVideo: Attribute.Component<'slices.single-media'> &
+    testingProgramItems: Attribute.Component<'slices.text', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1608,6 +1599,15 @@ export interface ApiArmoredVehiclesCertificationsAndTestingArmoredVehiclesCertif
         };
       }>;
     seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    testingProgramVideo: Attribute.Component<'slices.youtube-video'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

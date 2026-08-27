@@ -83,7 +83,7 @@
     },
     "testingProgramItems": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -93,19 +93,6 @@
         }
       },
       "component": "slices.text"
-    },
-    "testingProgramVideo": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        },
-        "translate": {
-          "translate": "translate"
-        }
-      },
-      "component": "slices.single-media"
     },
     "testingProgramQuote": {
       "type": "component",
@@ -236,6 +223,19 @@
         }
       },
       "component": "shared.seo"
+    },
+    "testingProgramVideo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      },
+      "component": "slices.youtube-video"
     }
   }
 }
