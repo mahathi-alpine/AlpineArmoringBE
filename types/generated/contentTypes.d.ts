@@ -6181,6 +6181,38 @@ export interface ApiPitbullHomepagePitbullHomepage extends Schema.SingleType {
   };
 }
 
+export interface ApiPointerContactPagePointerContactPage
+  extends Schema.SingleType {
+  collectionName: 'pointer_contact_pages';
+  info: {
+    singularName: 'pointer-contact-page';
+    pluralName: 'pointer-contact-pages';
+    displayName: 'POINTERContactPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faqs: Attribute.Component<'slices.accordion', true>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pointer-contact-page.pointer-contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pointer-contact-page.pointer-contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPointerHomepagePointerHomepage extends Schema.SingleType {
   collectionName: 'pointer_homepages';
   info: {
@@ -8804,6 +8836,7 @@ declare module '@strapi/types' {
       'api::pitbull-contact.pitbull-contact': ApiPitbullContactPitbullContact;
       'api::pitbull-history.pitbull-history': ApiPitbullHistoryPitbullHistory;
       'api::pitbull-homepage.pitbull-homepage': ApiPitbullHomepagePitbullHomepage;
+      'api::pointer-contact-page.pointer-contact-page': ApiPointerContactPagePointerContactPage;
       'api::pointer-homepage.pointer-homepage': ApiPointerHomepagePointerHomepage;
       'api::pointer-tactical-feature.pointer-tactical-feature': ApiPointerTacticalFeaturePointerTacticalFeature;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
