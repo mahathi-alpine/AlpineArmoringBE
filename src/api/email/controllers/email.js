@@ -196,6 +196,73 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
     const domainLabel = config.label;
     let mainMessage = '';
 
+    // Blank/undefined -> '' so an unsent field renders as an empty cell, never "undefined"
+    const cell = (value) =>
+      value === undefined || value === null || value === '' ? '' : String(value);
+
+    const emailCellHtml = `<span style="color:rgb(5,99,193)"><u><a href="mailto:${email}" style="color:black;margin-top:0px;margin-bottom:0px" target="_blank">${email}</a></u></span>`;
+
+    // Row list is `[label, valueHtml]`; valueHtml is injected raw (Email/dates cells carry markup).
+    const renderRows = (rows) =>
+      rows
+        .map(
+          ([label, value], i) => `
+              <tr${i % 2 === 0 ? ` style="background-color:${emailColorsLight};"` : ''}>
+                <td style="padding:1.5pt;width: 120px;">
+                  <p style="margin:0in;"><span><b>${label}:</b></span></p>
+                </td>
+                <td style="padding:1.5pt">
+                  <p style="margin:0in;"><span>${value}</span></p>
+                </td>
+              </tr>`
+        )
+        .join('');
+
+    const rowsByLayout = {
+      default: [
+        ['Name', cell(name)],
+        ['Email', emailCellHtml],
+        ['Mobile #', cell(mobileNumber)],
+        ['Phone #', cell(phoneNumber)],
+        ['Customer Type', cell(company)],
+        ['Inquiry', cell(inquiry)],
+        ['Contact me via', cell(preferredContact)],
+        ['Found via', cell(hear)],
+        ['Country', cell(country)],
+        ['State', cell(state)],
+        ['Message', cell(message)],
+      ],
+      rentals: [
+        ['Name', cell(name)],
+        ['Email', emailCellHtml],
+        ['Mobile #', cell(mobileNumber)],
+        ['Phone #', cell(phoneNumber)],
+        ['Customer Type', cell(company)],
+        ['Inquiry', cell(inquiry)],
+        ['Contact me via', cell(preferredContact)],
+        ['Found via', cell(hear)],
+        ['Mileage', cell(mileage)],
+        ['State', cell(state)],
+        ['Driver Needed', cell(driverNeeded)],
+        ['Vehicle Type', cell(vehicleType)],
+        ['Vehicle Model', cell(vehicleModel)],
+        ['Projected dates', `From: <b>${cell(fromDate)}</b>&nbsp;&nbsp;To: <b>${cell(toDate)}</b>`],
+        ['Message', cell(message)],
+      ],
+      armoring: [
+        ['Name', cell(name)],
+        ['Email', emailCellHtml],
+        ['Phone #', cell(phoneNumber)],
+        ['Customer Type', cell(company)],
+        ['Inquiry', cell(inquiry)],
+        ['Contact me via', cell(preferredContact)],
+        ['Found via', cell(hear)],
+        ['Message', cell(message)],
+      ],
+    };
+
+    const layoutRows = rowsByLayout[domain] || rowsByLayout.default;
+
     const extractVehicleType = (routeStr) => {
       if (!routeStr) return '';
       const match = routeStr.match(/armored-([^/]+)$/);
@@ -293,9 +360,11 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       if (isPitbullConfigurator) {
         emailSubject = subjectPrefix;
       } else if (domain === 'rentals') {
-        emailSubject = `${subjectPrefix} - Inquiry from ${name} (${state})`;
+        emailSubject = `${subjectPrefix} - Inquiry from ${name}${state ? ` (${state})` : ''}`;
       } else {
-        emailSubject = `${subjectPrefix} - Inquiry about ${inquiry} from ${name} (${state} ${country})`;
+        // Some forms (armoring.com) collect no country/state — omit the parens entirely then
+        const loc = [state, country].filter(Boolean).join(' ');
+        emailSubject = `${subjectPrefix} - Inquiry about ${inquiry} from ${name}${loc ? ` (${loc})` : ''}`;
       }
 
       // Debug: log the exact envelope handed to SES so it's traceable in CloudWatch.
@@ -362,7 +431,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                   <p style="margin:0in;"><span><b>Email:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span style="color:rgb(5,99,193)"><u><a href="mailto:${email}" style="color:black;margin-top:0px;margin-bottom:0px" target="_blank">${email}</a></u></span></p>
+                  <p style="margin:0in;">${emailCellHtml}</p>
                 </td>
               </tr>
 
@@ -419,159 +488,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                   </p>
                 </td>
               </tr>
-              <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Name:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${name}</span></p>
-                </td>
-              </tr>
-
-              ${domain !== 'rentals' ? `
-              <tr>
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Country:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${country}</span></p>
-                </td>
-              </tr>
-              ` : `
-              <tr>
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Mileage:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${mileage}</span></p>
-                </td>
-              </tr>
-              `}
-
-              <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>State:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${state}</span></p>
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Customer Type:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${company}</span></p>
-                </td>
-              </tr>
-
-              <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span"><b>Mobile #:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${mobileNumber}</span></p>
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Phone #:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${phoneNumber}</span></p>
-                </td>
-              </tr>
-
-              <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Email:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span style="color:rgb(5,99,193)"><u><a href="mailto:${email}" style="color:black;margin-top:0px;margin-bottom:0px" target="_blank">${email}</a></u></span></p>
-                </td>
-              </tr>
-
-              ${domain !== 'rentals' ? `
-              <tr>
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Inquiry:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${inquiry}</span></p>
-                </td>
-              </tr>
-              ` : `
-              <tr>
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Driver Needed:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${driverNeeded}</span></p>
-                </td>
-              </tr>
-              `}
-
-              ${domain !== 'rentals' ? `
-              <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Contact me via:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${preferredContact}</span></p>
-                </td>
-              </tr>
-              ` : `
-              <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Vehicle Type:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${vehicleType}</span></p>
-                </td>
-              </tr>
-              `}
-
-              ${domain !== 'rentals' ? `
-              <tr>
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Found via:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${hear}</span></p>
-                </td>
-              </tr>
-              ` : `
-              <tr>
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Vehicle Model:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${vehicleModel}</span></p>
-                </td>
-              </tr>
-              `}
-
-              <tr style="background-color:${emailColorsLight};">
-                <td style="padding:1.5pt;width: 120px;">
-                  <p style="margin:0in;"><span><b>Message:</b></span></p>
-                </td>
-                <td style="padding:1.5pt">
-                  <p style="margin:0in;"><span>${message || ''}</span></p>
-                </td>
-              </tr>
-
-              ${domain === 'rentals' ? `
-                <tr>
-                  <td style="padding:1.5pt;width: 120px;">
-                    <p style="margin:0in;"><span><b>Projected dates:</b></span></p>
-                  </td>
-                  <td style="padding:1.5pt">
-                    <p style="margin:0in;"><span>From: <b>${fromDate}</b>  To: <b>${toDate}</b></span></p>
-                  </td>
-                </tr>
-              ` : '' }
+              ${renderRows(layoutRows)}
 
               <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
                 <td style="padding:1.5pt;width: 120px;">

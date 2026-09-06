@@ -14,6 +14,7 @@ module.exports = ({ env }) => ({
         localeMap: {
           EN: 'EN-US',
           ES: 'ES',
+          DE: 'DE'
         },
         apiOptions: {
           // see <https://github.com/DeepLcom/deepl-node#text-translation-options> for supported options.
