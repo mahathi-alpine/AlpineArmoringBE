@@ -58,6 +58,10 @@ function getClientIp(ctx) {
 
 const HONEYPOT_FIELDS = ['hp_field_b7x'];
 
+// Matches only a localhost URL: anchored, and the host must be followed by a port,
+// path/query/hash, or end-of-string so `http://localhost.evil.com` doesn't slip through.
+const LOCALHOST_URL_PATTERN = /^https?:\/\/(?:localhost|127\.0\.0\.1|\[::1\]|0\.0\.0\.0)(?::\d+)?(?:[/?#]|$)/i;
+
 function honeypotTripped(data) {
   return HONEYPOT_FIELDS.some(
     (field) => typeof data[field] === 'string' && data[field].trim() !== ''
@@ -178,13 +182,25 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
     const sender = process.env[config.sender];
 
+    // Skip the sales@alpineco.com CC for form submissions coming from a local dev
+    // machine, so testing from localhost doesn't hit the real sales inbox. Checks the
+    // browser Origin/Referer headers and the `route` value the frontend reports as the
+    // referring page.
+    const isLocalSubmission = [
+      ctx.request.headers.origin,
+      ctx.request.headers.referer,
+      route,
+    ].some((v) => typeof v === 'string' && LOCALHOST_URL_PATTERN.test(v));
+    const ccSales = notMain && !isLocalSubmission;
+
     // Logged to CloudWatch: usually "no email received" means the sender env var isn't set
     console.log('[email] incoming submission', {
       domain: domain || '(none)',
       matchedConfig: domain in domainConfig ? domain : 'default',
       senderEnvVar: config.sender,
       senderValue: sender || '(UNDEFINED — env var not set!)',
-      ccSales: domain in domainConfig,
+      ccSales,
+      isLocalSubmission,
     });
     if (!sender) {
       console.warn(`[email] WARNING: env var ${config.sender} is not set for domain "${domain}" — SES will fail or drop this message.`);
@@ -372,7 +388,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
         domain: domain || '(none)',
         to: sender || '(UNDEFINED)',
         from: sender || '(UNDEFINED)',
-        cc: notMain ? 'sales@alpineco.com' : '(none)',
+        cc: ccSales ? 'sales@alpineco.com' : '(none)',
         subject: emailSubject,
         leadSource: detectedLeadSource.name,
       });
@@ -380,7 +396,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       await strapi.plugins['email'].services.email.send({
         to: sender,
         from: sender,
-        ...((notMain) ? { cc: 'sales@alpineco.com' } : {}),
+        ...((ccSales) ? { cc: 'sales@alpineco.com' } : {}),
         subject: emailSubject,
         html: isPitbullConfigurator ? `
           <table style="width:100%;border-collapse:collapse;border-spacing:0px;box-sizing:border-box;font-size:11pt;font-family:Arial,sans-serif;color:black">
