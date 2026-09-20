@@ -2959,6 +2959,73 @@ export interface ApiBlogPageBlogPage extends Schema.SingleType {
   };
 }
 
+export interface ApiCareerCareer extends Schema.CollectionType {
+  collectionName: 'careers';
+  info: {
+    singularName: 'career';
+    pluralName: 'careers';
+    displayName: 'Careers';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::career.career',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::career.career',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::career.career',
+      'oneToMany',
+      'api::career.career'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiCaseStudiesArmoredVehicleCaseStudiesArmoredVehicle
   extends Schema.CollectionType {
   collectionName: 'case_studies_armored_vehicles';
@@ -8804,6 +8871,7 @@ declare module '@strapi/types' {
       'api::blog-armored-vehicle.blog-armored-vehicle': ApiBlogArmoredVehicleBlogArmoredVehicle;
       'api::blog-evergreen.blog-evergreen': ApiBlogEvergreenBlogEvergreen;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
+      'api::career.career': ApiCareerCareer;
       'api::case-studies-armored-vehicle.case-studies-armored-vehicle': ApiCaseStudiesArmoredVehicleCaseStudiesArmoredVehicle;
       'api::case-studies-armored-vehicles-page.case-studies-armored-vehicles-page': ApiCaseStudiesArmoredVehiclesPageCaseStudiesArmoredVehiclesPage;
       'api::category.category': ApiCategoryCategory;
