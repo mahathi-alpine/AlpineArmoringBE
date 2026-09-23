@@ -170,7 +170,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       condor:           { sender: 'EMAIL_SENDER_CONDOR',   subject: 'Condor - Alpine Armoring',      dark: '#E3963E', light: '#F2D2BD', label: 'CONDOR.US' },
       armoredvehicles:  { sender: 'EMAIL_SENDER_ARMOREDVEHICLES',    subject: 'ArmoredVehicles.com', dark: '#101010', light: '#A7A7A7', label: 'ARMOREDVEHICLES.COM' },
       pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB', label: 'PIT-BULL.NET' },
-      application:      { sender: 'EMAIL_SENDER_MAIN',    subject: 'Application - Alpine Armoring',  dark: '#FF3300', light: '#ffd2c7', label: 'APPLICATION' },
+      application:      { sender: 'EMAIL_SENDER_MAIN',    subject: 'Application - Alpine Armoring',  dark: '#FF3300', light: '#ffd2c7', label: 'ALPINE APP' },
       vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#FFFF00', light: '#ffffc8', label: 'ARMOREDVANS.COM' },
       'pebble-beach':   { sender: 'EMAIL_SENDER_MAIN',   subject: 'Pebble Beach - Alpine Armoring',  dark: '#1B4D3E', light: '#C9A96E', label: 'PEBBLE BEACH' },
       'the-quail':      { sender: 'EMAIL_SENDER_MAIN',   subject: 'The Quail - Alpine Armoring',     dark: '#4A2E2A', light: '#D4AF37', label: 'THE QUAIL' },
@@ -517,11 +517,13 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                 </td>
               </tr>
 
+              ${domain !== 'application' ? `
               <tr>
                 <td colspan="2" style="padding:1.5pt; text-align: center; color: ${detectedLeadSource.color};">
                   <p style="margin:0in;"><span><b>From ${detectedLeadSource.name}</b></span></p>
                 </td>
               </tr>
+              ` : ''}
 
             </tbody>
           </table>
