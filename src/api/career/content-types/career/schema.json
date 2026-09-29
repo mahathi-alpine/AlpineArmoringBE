@@ -4,7 +4,8 @@
   "info": {
     "singularName": "career",
     "pluralName": "careers",
-    "displayName": "Careers"
+    "displayName": "Careers",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -47,6 +48,43 @@
         }
       },
       "type": "richtext"
+    },
+    "department": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "Engineering",
+        "Sales",
+        "Marketing"
+      ]
+    },
+    "location": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "Center, VA",
+        "Dallas, TX"
+      ]
+    },
+    "type": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "On-site",
+        "Hybrid"
+      ]
     }
   }
 }

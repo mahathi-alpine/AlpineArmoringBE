@@ -2965,6 +2965,7 @@ export interface ApiCareerCareer extends Schema.CollectionType {
     singularName: 'career';
     pluralName: 'careers';
     displayName: 'Careers';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -3000,6 +3001,24 @@ export interface ApiCareerCareer extends Schema.CollectionType {
         };
         translate: {
           translate: 'translate';
+        };
+      }>;
+    department: Attribute.Enumeration<['Engineering', 'Sales', 'Marketing']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    location: Attribute.Enumeration<['Center, VA', 'Dallas, TX']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Attribute.Enumeration<['On-site', 'Hybrid']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     createdAt: Attribute.DateTime;
