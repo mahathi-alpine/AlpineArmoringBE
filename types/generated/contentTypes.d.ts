@@ -2985,15 +2985,6 @@ export interface ApiCareerCareer extends Schema.CollectionType {
           translate: 'translate';
         };
       }>;
-    slug: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-        translate: {
-          translate: 'translate';
-        };
-      }>;
     content: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -3001,12 +2992,6 @@ export interface ApiCareerCareer extends Schema.CollectionType {
         };
         translate: {
           translate: 'translate';
-        };
-      }>;
-    department: Attribute.Enumeration<['Engineering', 'Sales', 'Marketing']> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
         };
       }>;
     location: Attribute.Enumeration<['Center, VA', 'Dallas, TX']> &
@@ -3019,6 +3004,21 @@ export interface ApiCareerCareer extends Schema.CollectionType {
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::career.career', 'title'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    department: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
         };
       }>;
     createdAt: Attribute.DateTime;
