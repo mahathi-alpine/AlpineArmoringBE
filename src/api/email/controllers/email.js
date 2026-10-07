@@ -171,7 +171,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
       armoredvehicles:  { sender: 'EMAIL_SENDER_ARMOREDVEHICLES',    subject: 'ArmoredVehicles.com', dark: '#101010', light: '#A7A7A7', label: 'ARMOREDVEHICLES.COM' },
       pitbull:          { sender: 'EMAIL_SENDER_PITBULL',  subject: 'Pit-Bull®',                     dark: '#8B0000', light: '#FFCCCB', label: 'PIT-BULL.NET' },
       application:      { sender: 'EMAIL_SENDER_MAIN',    subject: 'Application - Alpine Armoring',  dark: '#FF3300', light: '#ffd2c7', label: 'ALPINE APP' },
-      vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#FFFF00', light: '#ffffc8', label: 'ARMOREDVANS.COM' },
+      vans:             { sender: 'EMAIL_SENDER_VANS',   subject: 'VANS - Alpine Armoring',          dark: '#FFFF00', light: '#ffffc8', darkText: '#000000', label: 'ARMOREDVANS.COM' },
       'pebble-beach':   { sender: 'EMAIL_SENDER_MAIN',   subject: 'Pebble Beach - Alpine Armoring',  dark: '#1B4D3E', light: '#C9A96E', label: 'PEBBLE BEACH' },
       'the-quail':      { sender: 'EMAIL_SENDER_MAIN',   subject: 'The Quail - Alpine Armoring',     dark: '#4A2E2A', light: '#D4AF37', label: 'THE QUAIL' },
     };
@@ -208,6 +208,8 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
 
     let subjectPrefix = config.subject;
     const emailColorsDark = config.dark;
+    // Light dark-row backgrounds (e.g. vans yellow) need black text; white is unreadable on them
+    const emailTextOnDark = config.darkText || (notMain ? 'white' : 'black');
     const emailColorsLight = config.light;
     const domainLabel = config.label;
     let mainMessage = '';
@@ -497,7 +499,7 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
                   </p>
                 </td>
               </tr>
-              <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
+              <tr style="background-color:${emailColorsDark}; color: ${emailTextOnDark};">
                 <td colspan="2" style="padding:1.5pt">
                   <p align="center" style="margin:0in;">
                     <b>Website submission ${getCurrentDateTime()}</b>
@@ -506,13 +508,13 @@ module.exports = createCoreController('api::email.email', ({ strapi }) => ({
               </tr>
               ${renderRows(layoutRows)}
 
-              <tr style="background-color:${emailColorsDark}; ${notMain ? 'color: white;' : `color: black;`}">
+              <tr style="background-color:${emailColorsDark}; color: ${emailTextOnDark};">
                 <td style="padding:1.5pt;width: 120px;">
                   <p style="margin:0in;"><span><b>Referrer page:</b></span></p>
                 </td>
                 <td style="padding:1.5pt">
                   <p style="margin:0in;"><span style="color:rgb(5,99,193)"><u>
-                    <a href="${route}" style="${notMain ? 'color: white;' : `color: black;`} margin-top:0px;margin-bottom:0px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=${route}&amp;source=gmail&amp;ust=1726743921528000&amp;usg=AOvVaw21rcKaKVWd5eFzmb8o8PuT">${route}</a>
+                    <a href="${route}" style="color: ${emailTextOnDark}; margin-top:0px;margin-bottom:0px" target="_blank" data-saferedirecturl="https://www.google.com/url?q=${route}&amp;source=gmail&amp;ust=1726743921528000&amp;usg=AOvVaw21rcKaKVWd5eFzmb8o8PuT">${route}</a>
                   </u></span></p>
                 </td>
               </tr>
