@@ -4996,6 +4996,12 @@ export interface ApiInventoryInventory extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<false>;
+    comingSoon: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
