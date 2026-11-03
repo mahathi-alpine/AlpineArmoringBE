@@ -1,0 +1,60 @@
+{
+  "collectionName": "components_slices_vehicle_classes",
+  "info": {
+    "displayName": "Vehicle Class",
+    "icon": "car",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "cardTitle": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "protectionRange": {
+      "type": "string"
+    },
+    "cenRange": {
+      "type": "string"
+    },
+    "protectionNote": {
+      "type": "string"
+    },
+    "finishedWeight": {
+      "type": "text"
+    },
+    "seating": {
+      "type": "string"
+    },
+    "payloadHeadroom": {
+      "type": "string"
+    },
+    "discretion": {
+      "type": "string"
+    },
+    "bestFitMission": {
+      "type": "text"
+    },
+    "linkURL": {
+      "type": "string"
+    }
+  }
+}

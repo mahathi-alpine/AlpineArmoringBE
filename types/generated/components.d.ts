@@ -476,6 +476,31 @@ export interface SlicesTwoImages extends Schema.Component {
   };
 }
 
+export interface SlicesVehicleClass extends Schema.Component {
+  collectionName: 'components_slices_vehicle_classes';
+  info: {
+    displayName: 'Vehicle Class';
+    icon: 'car';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    slug: Attribute.String;
+    cardTitle: Attribute.String;
+    image: Attribute.Media;
+    description: Attribute.RichText;
+    protectionRange: Attribute.String;
+    cenRange: Attribute.String;
+    protectionNote: Attribute.String;
+    finishedWeight: Attribute.Text;
+    seating: Attribute.String;
+    payloadHeadroom: Attribute.String;
+    discretion: Attribute.String;
+    bestFitMission: Attribute.Text;
+    linkURL: Attribute.String;
+  };
+}
+
 export interface SlicesVideo extends Schema.Component {
   collectionName: 'components_slices_videos';
   info: {
@@ -552,6 +577,7 @@ declare module '@strapi/types' {
       'slices.text': SlicesText;
       'slices.two-columns-text': SlicesTwoColumnsText;
       'slices.two-images': SlicesTwoImages;
+      'slices.vehicle-class': SlicesVehicleClass;
       'slices.video': SlicesVideo;
       'slices.videos-slider': SlicesVideosSlider;
       'slices.youtube-video': SlicesYoutubeVideo;

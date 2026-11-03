@@ -1639,6 +1639,331 @@ export interface ApiArmoredVehiclesCertificationsAndTestingArmoredVehiclesCertif
   };
 }
 
+export interface ApiArmoredVehiclesTypesArmoredVehiclesTypes
+  extends Schema.SingleType {
+  collectionName: 'armored_vehicle_types';
+  info: {
+    singularName: 'armored-vehicles-types';
+    pluralName: 'armored-vehicles-types-pages';
+    displayName: 'ArmoredVehiclesTypes';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    intro: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    statsBand: Attribute.Component<'slices.stats', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    compareClasses: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehicleClasses: Attribute.Component<'slices.vehicle-class', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    compareClassesFootnote: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    compareClassesPatterns: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    protectionLevel: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    protectionLevelItems: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    protectionLevelOutro: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    discretion: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    addedWeight: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    addedWeightItems: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    addedWeightOutro: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    fitGuide: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    fitGuideItems: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    suvVsSedan: Attribute.Component<'slices.tab-section'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    suvVsSedanRows: Attribute.Component<'slices.event-snippet', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    citVanVsSuv: Attribute.Component<'slices.tab-section'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    citVanVsSuvRows: Attribute.Component<'slices.event-snippet', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    a9VsA12: Attribute.Component<'slices.tab-section'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    a9VsA12Rows: Attribute.Component<'slices.event-snippet', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pickupVsApc: Attribute.Component<'slices.tab-section'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pickupVsApcRows: Attribute.Component<'slices.event-snippet', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    decisionFramework: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    decisionFrameworkSteps: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    decisionFrameworkOutro: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    faqs: Attribute.Component<'slices.accordion', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    CTA: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    reviewedBy: Attribute.Relation<
+      'api::armored-vehicles-types.armored-vehicles-types',
+      'oneToOne',
+      'api::author.author'
+    >;
+    reviewedDate: Attribute.Date &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'copy';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::armored-vehicles-types.armored-vehicles-types',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::armored-vehicles-types.armored-vehicles-types',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::armored-vehicles-types.armored-vehicles-types',
+      'oneToMany',
+      'api::armored-vehicles-types.armored-vehicles-types'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiArmoringBallisticArmoringBallistic
   extends Schema.SingleType {
   collectionName: 'armoring_ballistics';
@@ -8892,6 +9217,7 @@ declare module '@strapi/types' {
       'api::application-about.application-about': ApiApplicationAboutApplicationAbout;
       'api::armored-vehicle.armored-vehicle': ApiArmoredVehicleArmoredVehicle;
       'api::armored-vehicles-certifications-and-testing.armored-vehicles-certifications-and-testing': ApiArmoredVehiclesCertificationsAndTestingArmoredVehiclesCertificationsAndTesting;
+      'api::armored-vehicles-types.armored-vehicles-types': ApiArmoredVehiclesTypesArmoredVehiclesTypes;
       'api::armoring-ballistic.armoring-ballistic': ApiArmoringBallisticArmoringBallistic;
       'api::armoring-contact.armoring-contact': ApiArmoringContactArmoringContact;
       'api::armoring-homepage.armoring-homepage': ApiArmoringHomepageArmoringHomepage;

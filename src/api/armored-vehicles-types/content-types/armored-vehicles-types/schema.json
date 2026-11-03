@@ -1,0 +1,426 @@
+{
+  "kind": "singleType",
+  "collectionName": "armored_vehicle_types",
+  "info": {
+    "singularName": "armored-vehicles-types",
+    "pluralName": "armored-vehicles-types-pages",
+    "displayName": "ArmoredVehiclesTypes",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "intro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "statsBand": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.stats",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "compareClasses": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "vehicleClasses": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.vehicle-class",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "compareClassesFootnote": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "compareClassesPatterns": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "protectionLevel": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "protectionLevelItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "protectionLevelOutro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "discretion": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "addedWeight": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "addedWeightItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "addedWeightOutro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "fitGuide": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "fitGuideItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "suvVsSedan": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.tab-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "suvVsSedanRows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.event-snippet",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "citVanVsSuv": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.tab-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "citVanVsSuvRows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.event-snippet",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "a9VsA12": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.tab-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "a9VsA12Rows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.event-snippet",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "pickupVsApc": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.tab-section",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "pickupVsApcRows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.event-snippet",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "decisionFramework": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "decisionFrameworkSteps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "decisionFrameworkOutro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.accordion",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "CTA": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "reviewedBy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::author.author"
+    },
+    "reviewedDate": {
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "copy"
+        }
+      }
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    }
+  }
+}
