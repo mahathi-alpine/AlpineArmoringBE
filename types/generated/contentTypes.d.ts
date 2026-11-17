@@ -5860,6 +5860,146 @@ export interface ApiLocationsWeServePageLocationsWeServePage
   };
 }
 
+export interface ApiLpCivilianArmoredVehiclesLpCivilianArmoredVehicles
+  extends Schema.SingleType {
+  collectionName: 'lp_civilian_armored_vehicles_pages';
+  info: {
+    singularName: 'lp-civilian-armored-vehicles';
+    pluralName: 'lp-civilian-armored-vehicles-pages';
+    displayName: 'LP Civilian Armored Vehicles';
+    description: 'Landing page: /civilian-armored-vehicles';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    heroBadges: Attribute.Component<'slices.stats', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    threat: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    streetLegal: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    vehicles: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    manufacturer: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pricing: Attribute.Component<'slices.options'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pricingTable: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    pricingOutro: Attribute.Component<'slices.text'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    CTA: Attribute.Component<'slices.banner'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+        translate: {
+          translate: 'translate';
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::lp-civilian-armored-vehicles.lp-civilian-armored-vehicles',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::lp-civilian-armored-vehicles.lp-civilian-armored-vehicles',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::lp-civilian-armored-vehicles.lp-civilian-armored-vehicles',
+      'oneToMany',
+      'api::lp-civilian-armored-vehicles.lp-civilian-armored-vehicles'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiMakeMake extends Schema.CollectionType {
   collectionName: 'makes';
   info: {
@@ -9264,6 +9404,7 @@ declare module '@strapi/types' {
       'api::list-vehicles-we-armor.list-vehicles-we-armor': ApiListVehiclesWeArmorListVehiclesWeArmor;
       'api::locations-rental.locations-rental': ApiLocationsRentalLocationsRental;
       'api::locations-we-serve-page.locations-we-serve-page': ApiLocationsWeServePageLocationsWeServePage;
+      'api::lp-civilian-armored-vehicles.lp-civilian-armored-vehicles': ApiLpCivilianArmoredVehiclesLpCivilianArmoredVehicles;
       'api::make.make': ApiMakeMake;
       'api::manufacturing.manufacturing': ApiManufacturingManufacturing;
       'api::media.media': ApiMediaMedia;

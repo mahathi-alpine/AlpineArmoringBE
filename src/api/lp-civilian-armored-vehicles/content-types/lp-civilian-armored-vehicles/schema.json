@@ -1,0 +1,163 @@
+{
+  "kind": "singleType",
+  "collectionName": "lp_civilian_armored_vehicles_pages",
+  "info": {
+    "singularName": "lp-civilian-armored-vehicles",
+    "pluralName": "lp-civilian-armored-vehicles-pages",
+    "displayName": "LP Civilian Armored Vehicles",
+    "description": "Landing page: /civilian-armored-vehicles"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "heroBadges": {
+      "type": "component",
+      "repeatable": true,
+      "component": "slices.stats",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "threat": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "streetLegal": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "vehicles": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "manufacturer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "pricing": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.options",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "pricingTable": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "pricingOutro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "CTA": {
+      "type": "component",
+      "repeatable": false,
+      "component": "slices.banner",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        },
+        "translate": {
+          "translate": "translate"
+        }
+      }
+    }
+  }
+}
